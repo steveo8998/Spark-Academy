@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spark Benchmark Brief — Spark Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:   #1E3A5F;
+  --blue:   #2E6DA4;
+  --green:  #1A7A4A;
+  --gold:   #C8960C;
+  --sky:    #D6E4F0;
+  --ink:    #1A1A2E;
+  --mid:    #6B7A8D;
+  --mist:   #F5F7FA;
+  --border: #DDE3EC;
+  --white:  #FFFFFF;
+  --serif:  'DM Serif Display', Georgia, serif;
+  --sans:   'DM Sans', system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--sans);
+  background: var(--mist);
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+/* ── Header ── */
+.site-header {
+  background: var(--navy);
+  padding: 16px 24px;
+  border-bottom: 3px solid var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.logo-mark {
+  width: 34px; height: 34px;
+  background: var(--gold);
+  border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif);
+  font-size: 18px;
+  color: var(--navy);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.header-text h1 {
+  font-family: var(--serif);
+  font-size: 16px;
+  color: #fff;
+  line-height: 1.2;
+}
+.header-text p { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 1px; }
+
+/* ── Layout ── */
+.doc-wrapper {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 32px 20px 80px;
+}
+.doc-card {
+  background: var(--white);
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.doc-title-bar {
+  background: var(--navy);
+  padding: 28px 32px;
+  border-bottom: 4px solid var(--gold);
+}
+.doc-title-bar h2 {
+  font-family: var(--serif);
+  font-size: clamp(20px, 4vw, 28px);
+  color: #fff;
+  line-height: 1.2;
+}
+.doc-title-bar p { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 6px; }
+.doc-body { padding: 36px 32px 56px; }
+
+/* ── Typography ── */
+h1 {
+  font-family: var(--serif);
+  font-size: clamp(20px, 4vw, 26px);
+  color: var(--navy);
+  margin: 40px 0 10px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--sky);
+  line-height: 1.25;
+}
+h1:first-child { margin-top: 0; }
+h2 {
+  font-family: var(--serif);
+  font-size: clamp(17px, 3vw, 21px);
+  color: var(--blue);
+  margin: 30px 0 8px;
+  line-height: 1.3;
+}
+h3 {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--navy);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin: 24px 0 6px;
+}
+p { margin: 0 0 14px; }
+p:last-child { margin-bottom: 0; }
+strong { font-weight: 600; color: var(--navy); }
+em { font-style: italic; color: var(--mid); }
+ul { padding-left: 22px; margin: 0 0 16px; }
+li { margin-bottom: 6px; }
+
+/* ── Section label (colored header bar) ── */
+.section-label {
+  padding: 10px 16px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 28px 0 12px;
+  border-radius: 4px;
+  color: var(--white);
+}
+
+/* ── School name bar ── */
+.school-name-bar {
+  display: flex;
+  align-items: stretch;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 28px 0 20px;
+}
+.school-name {
+  background: var(--blue);
+  color: #fff;
+  font-family: var(--serif);
+  font-size: clamp(16px, 3vw, 20px);
+  padding: 14px 20px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+.school-loc {
+  background: var(--navy);
+  color: rgba(255,255,255,0.7);
+  font-size: 12px;
+  font-style: italic;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+/* ── What They Got Right header ── */
+.got-right-header {
+  background: var(--green);
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 11px 16px;
+  border-radius: 4px 4px 0 0;
+  margin-top: 24px;
+  margin-bottom: 0;
+}
+
+/* ── Two-column content table ── */
+.two-col-table {
+  border: 1px solid var(--border);
+  border-radius: 0 0 6px 6px;
+  overflow: hidden;
+  margin-bottom: 24px;
+  font-size: 14px;
+}
+.two-col-row {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+}
+.two-col-row:last-child { border-bottom: none; }
+.two-col-row.row-alt { background: var(--mist); }
+.two-col-cell {
+  flex: 1;
+  padding: 10px 14px;
+  line-height: 1.55;
+  border-right: 1px solid var(--border);
+}
+.two-col-cell:last-child { border-right: none; }
+
+/* ── Takeaway box ── */
+.takeaway-box {
+  border: 1px solid #E8D98A;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 12px 0 24px;
+}
+.takeaway-item {
+  display: flex;
+  gap: 14px;
+  padding: 14px 16px;
+  border-bottom: 1px solid #E8D98A;
+  line-height: 1.6;
+  font-size: 14px;
+}
+.takeaway-item:nth-child(even) { background: #FFFDF4; }
+.takeaway-item:nth-child(odd)  { background: #FEF9EC; }
+.takeaway-item:last-child { border-bottom: none; }
+.takeaway-num {
+  width: 26px; height: 26px;
+  background: var(--gold);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--navy);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.takeaway-text { flex: 1; color: var(--ink); }
+
+/* ── Info grid (school index) ── */
+.info-grid { margin: 16px 0 24px; display: flex; flex-direction: column; gap: 4px; }
+.info-row  { display: flex; gap: 4px; }
+.info-cell {
+  flex: 1;
+  padding: 10px 14px;
+  font-size: 14px;
+  border-radius: 4px;
+  line-height: 1.5;
+}
+
+/* ── Principle headers (synthesis page) ── */
+.principle-header {
+  background: var(--navy);
+  color: #fff;
+  padding: 13px 20px;
+  border-radius: 4px;
+  font-size: 15px;
+  font-weight: 600;
+  border-left: 5px solid var(--gold);
+  margin: 28px 0 8px;
+}
+.principle-label {
+  color: var(--gold);
+  font-weight: 700;
+  margin-right: 4px;
+}
+
+/* ── Shaded paragraph ── */
+.shaded-para {
+  padding: 10px 16px;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 24px 0 10px;
+}
+
+/* ── Score table (audit docs) ── */
+.table-wrap { overflow-x: auto; margin: 16px 0 20px; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 400px; }
+th, td { border: 1px solid var(--border); padding: 9px 12px; vertical-align: top; line-height: 1.5; }
+th { background: var(--navy); color: #fff; font-weight: 600; font-size: 13px; }
+tr:nth-child(even) td:not([class]) { background: var(--mist); }
+
+/* ── Score legend ── */
+.score-legend {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin: 12px 0 20px;
+}
+.legend-cell {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid var(--border);
+}
+
+/* ── Fill color classes ── */
+.fill-navy       { background: #1E3A5F; color: #fff; }
+.fill-blue       { background: #2E6DA4; color: #fff; }
+.fill-green      { background: #1A7A4A; color: #fff; }
+.fill-gold       { background: #C8960C; color: #fff; }
+.fill-sky        { background: #D6E4F0; color: var(--ink); }
+.fill-lightgray  { background: #F4F6F8; color: var(--ink); }
+.fill-goldtint-a { background: #FEF9EC; color: var(--ink); }
+.fill-goldtint-b { background: #FFFDF4; color: var(--ink); }
+.fill-white      { background: #FFFFFF; color: var(--ink); }
+.fill-green-light{ background: #C8E6C9; color: #1A4A1E; }
+.fill-green-pale { background: #DCEDC8; color: #1A4A1E; }
+.fill-yellow     { background: #FFF9C4; color: #5A4A00; }
+.fill-red-light  { background: #FFCDD2; color: #7A1A1A; }
+.fill-purple-light{ background: #EDE7F6; color: #3A1A6A; }
+.fill-sky-pale   { background: #EEF4FF; color: var(--ink); }
+
+/* ── Footer ── */
+.site-footer {
+  text-align: center;
+  padding: 16px;
+  font-size: 12px;
+  color: var(--mid);
+  border-top: 1px solid var(--border);
+  background: var(--white);
+}
+
+/* ── Mobile ── */
+@media (max-width: 600px) {
+  .doc-body { padding: 22px 18px 40px; }
+  .doc-title-bar { padding: 20px 20px; }
+  .two-col-row { flex-direction: column; }
+  .two-col-cell { border-right: none; border-bottom: 1px solid var(--border); }
+  .two-col-cell:last-child { border-bottom: none; }
+  .school-name-bar { flex-direction: column; }
+  .school-loc { justify-content: flex-start; }
+  .info-row { flex-direction: column; }
+  .score-legend { gap: 4px; }
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="logo-mark">S</div>
+  <div class="header-text">
+    <h1>Spark Docs</h1>
+    <p>Spark Academy Website Project</p>
+  </div>
+</header>
+<div class="doc-wrapper">
+  <div class="doc-card">
+    <div class="doc-title-bar">
+      <h2>Spark Benchmark Brief</h2>
+      <p>Spark Academy &middot; Internal Document</p>
+    </div>
+    <div class="doc-body">
+<p><span style="color:var(--navy)"><strong>SPARK ACADEMY</strong></span></p>
+<p><span style="color:var(--mid)"><em>Website Rebuild Project</em></span></p>
+<div class="shaded-para fill-blue"><strong>  Premium Preschool Website Benchmarks  </strong></div>
+<p><span style="color:var(--mid)"><em>A Review of Five National Leaders in Early Childhood Education Web Presence</em></span></p>
+<p><span style="color:var(--mid)">Prepared for</span></p>
+<p><span style="color:var(--navy)"><strong>Dr. Michelle Peterson, Ed.D.</strong></span></p>
+<p><span style="color:var(--mid)"><em>Spark Academy · Morton, Illinois</em></span></p>
+<p><span style="color:var(--mid)">Phase 1 — Research &amp; Discovery</span></p>
+<h1><span style="color:var(--navy)"><strong>About This Brief</strong></span></h1>
+<p>Before we write a single word of copy or design a single page for the new Spark Academy website, we studied the best. This brief summarizes five nationally recognized preschool websites selected because each one does something exceptionally well — and because each one has a clear lesson to teach us about what a premium preschool website should look like.</p>
+<p>These are not local competitors. They are benchmark schools from New York City, Seattle, Boulder, and beyond — schools that have invested serious effort into their web presence and, in several cases, have built nationally recognized brands around their philosophy and founder. We studied them so Spark can learn from the best rather than reinventing the wheel.</p>
+<p>For each school, you&#x27;ll find:</p>
+<ul>
+<li><strong>School Overview — </strong>Who they are, where they operate, and why they were selected.</li>
+<li><strong>Narrative Summary — </strong>A plain-language explanation of what makes this school&#x27;s website worth studying.</li>
+<li><strong>What This Site Does Well — </strong>Specific strengths across philosophy communication, founder authority, premium positioning, curriculum depth, emotional resonance, and audience architecture.</li>
+<li><strong>Key Takeaways — </strong>The lessons this school teaches us about what great preschool websites look like.</li>
+</ul>
+<p>At the end of the brief, you&#x27;ll find a synthesis section — &quot;So What for Spark?&quot; — that pulls the most important lessons together and points toward what Spark Academy&#x27;s website should do as a result of this research.</p>
+<p><span style="color:var(--navy)"><strong>The Five Schools We Studied:</strong></span></p>
+<div class="info-grid"><div class="info-row"><div class="info-cell fill-sky">Boulder Journey School<br>Boulder, CO</div><div class="info-cell fill-white">The gold standard for a founder-led, dual-audience (parent + educator) preschool website.</div></div></div>
+<div class="info-grid"><div class="info-row"><div class="info-cell fill-sky">Hilltop Children&#x27;s Center<br>Seattle, WA</div><div class="info-cell fill-white">The best example of an Outreach/Consulting section built into a preschool website&#x27;s core architecture.</div></div></div>
+<div class="info-grid"><div class="info-row"><div class="info-cell fill-sky">Resurrection Episcopal Day School (REDS)<br>New York, NY</div><div class="info-cell fill-white">The benchmark for premium trust-signal architecture and visual design in a competitive market.</div></div></div>
+<div class="info-grid"><div class="info-row"><div class="info-cell fill-sky">Playgarden Prep<br>New York, NY</div><div class="info-cell fill-white">The leader in parent testimonial architecture and founder media presence as an authority-building tool.</div></div></div>
+<div class="info-grid"><div class="info-row"><div class="info-cell fill-sky">The International Preschools (IPS)<br>New York, NY</div><div class="info-cell fill-white">A 62-year institution with the most compelling origin story in early childhood education — and the clearest lesson in what happens when great assets go underused.</div></div></div>
+<div class="school-name-bar"><span class="school-name">Boulder Journey School</span><span class="school-loc">Boulder, CO</span></div>
+<div class="shaded-para fill-navy"><strong>SCHOOL OVERVIEW</strong></div>
+<p>Boulder Journey School (BJS) is a private preschool and early childhood education institution founded in Boulder, Colorado in 1984 by Dr. Ellen Hall, Ed.D. What began as a single-room playgroup grew into one of the most internationally recognized early childhood schools in the United States. BJS is guided by the Reggio Emilia philosophy and has formal research and educational partnerships with the University of Colorado Denver — including a co-designed Master&#x27;s degree and Teaching Licensure program. Educators from 26+ countries have participated in BJS&#x27;s consulting programs, study tours, and professional development conferences.</p>
+<p>BJS was selected as a benchmark because it is the most complete example of what Spark Academy is building toward: a founder-led, philosophy-forward preschool that has successfully extended its authority into a parallel consulting and educator education enterprise. Dr. Hall built exactly the dual-funnel architecture we are designing for Spark — and did it at world-class scale.</p>
+<div class="shaded-para fill-navy"><strong>NARRATIVE SUMMARY</strong></div>
+<p>What makes BJS exceptional is how seriously it treats philosophy. Most preschool websites mention &#x27;play-based learning&#x27; as a tagline. BJS names its intellectual lineage, coins its own curriculum terminology (&#x27;contextual curriculum&#x27;), and explains with precision how beliefs translate into daily classroom practice. The site reads like scholarship — which is exactly the point. It signals to prospective families that this is not a place where &#x27;play&#x27; means unsupervised free time. It is a place where play is a rigorously designed vehicle for development.</p>
+<p>The second thing BJS does that almost no other preschool does: it built a fully developed educator-facing side of the business — and gave it equal weight in the navigation. &#x27;Teacher Education&#x27; and &#x27;Professional Development&#x27; sit alongside &#x27;Families&#x27; as top-level navigation items. This design decision tells educators they are a primary audience, not an afterthought. It also tells parents something powerful: this school is led by people that other educators pay to learn from.</p>
+<p>Dr. Hall&#x27;s Ed.D. was woven so deeply into the school&#x27;s identity that it survived her passing in 2018. Her published book, her named relationships with international ECE leaders, and her research contributions to the Reggio Children foundation created a credentialing legacy that the institution still benefits from today. That is the power of building authority correctly from the beginning.</p>
+<div class="got-right-header">What This Site Does Well</div>
+<div class="two-col-table"><div class="two-col-row "><div class="two-col-cell">Philosophy so specific it reads like scholarship — not marketing</div><div class="two-col-cell">Founder&#x27;s published book acts as a permanent credentialing artifact</div></div><div class="two-col-row row-alt"><div class="two-col-cell">Founder&#x27;s Ed.D. prominently woven throughout school identity</div><div class="two-col-cell">Parent and educator sections share philosophical DNA but never compete in navigation</div></div><div class="two-col-row "><div class="two-col-cell">Navigation explicitly separates Families from Teacher Education</div><div class="two-col-cell">21st-century skills framework gives parents concrete language for outcomes</div></div><div class="two-col-row row-alt"><div class="two-col-cell">Four distinct educator revenue lines: MA program, study tours, consulting, workshops</div><div class="two-col-cell">CU Denver university partnership lends academic legitimacy to teacher preparation</div></div><div class="two-col-row "><div class="two-col-cell">Coined its own curriculum term: &#x27;contextual curriculum&#x27;</div><div class="two-col-cell">International reach (26+ countries) used as social proof of quality</div></div><div class="two-col-row row-alt"><div class="two-col-cell">Named real intellectual mentors (Rinaldi, Malaguzzi) — signals research-grade authority</div><div class="two-col-cell">Learning experiences page shows real classroom documentation — curriculum becomes visible</div></div></div>
+<div class="shaded-para fill-gold"><strong>KEY TAKEAWAYS FOR GREAT PRESCHOOL WEBSITES</strong></div>
+<div class="takeaway-box"><div class="takeaway-item"><span class="takeaway-num">1</span><span class="takeaway-text">A founder&#x27;s doctorate belongs on the front page — not buried in an &#x27;About&#x27; sub-section. BJS made Dr. Hall&#x27;s Ed.D. central to the school&#x27;s identity, and that credential did conversion work for 30+ years.</span></div><div class="takeaway-item"><span class="takeaway-num">2</span><span class="takeaway-text">Coining your own curriculum name is one of the most powerful differentiation moves a preschool can make. &#x27;Contextual curriculum&#x27; immediately separates BJS from every other play-based school. Spark should do the same.</span></div><div class="takeaway-item"><span class="takeaway-num">3</span><span class="takeaway-text">The dual-funnel architecture — a fully developed educator section sitting alongside the parent enrollment section — is not theoretical. BJS built it and ran it at world scale for decades. It works.</span></div><div class="takeaway-item"><span class="takeaway-num">4</span><span class="takeaway-text">Philosophy should be specific enough to cite. Vague language like &#x27;holistic learning&#x27; means nothing. BJS named its sources, cited its intellectual lineage, and explained exactly how beliefs translate into daily classroom practice.</span></div><div class="takeaway-item"><span class="takeaway-num">5</span><span class="takeaway-text">A founder who writes and publishes creates authority that outlives any single conversation. Books, articles, and research output are permanent credentialing artifacts that search engines and prospective parents both respond to.</span></div></div>
+<div class="school-name-bar"><span class="school-name">Hilltop Children&#x27;s Center</span><span class="school-loc">Seattle, WA</span></div>
+<div class="shaded-para fill-navy"><strong>SCHOOL OVERVIEW</strong></div>
+<p>Hilltop Children&#x27;s Center is a Reggio-inspired private preschool founded in Seattle in 1971. Its registered legal name — the Seattle Institute for Early Child Development — signals from the outset that education services and thought leadership were always core to its identity. In 2013, Hilltop formalized this by launching its Outreach Institute, which now offers parent and educator workshops, organizational trainings, study tours, and inquiry visits as distinct, bookable products. Hilltop operates two campuses (Fremont and Queen Anne) with a licensed capacity of 117 children, and its tuition ($2,815–$3,620/month) places it at the premium tier for Seattle childcare.</p>
+<p>Hilltop was selected because it provides the most immediately replicable model for what Spark is building. Unlike Boulder Journey School — which represents the gold standard at world scale — Hilltop shows how a community-rooted school with no named doctoral founder built a real, functioning consulting institute and made it a central part of its public identity.</p>
+<div class="shaded-para fill-navy"><strong>NARRATIVE SUMMARY</strong></div>
+<p>Hilltop&#x27;s most important strategic move is also its simplest: it decided that the consulting institute deserved the same respect in the navigation as the enrollment section. Not a footer link. Not a sub-page buried under &#x27;About.&#x27; A top-level navigation item that any parent or educator sees the moment they land on the site. That architectural decision changes everything about how both audiences perceive the school.</p>
+<p>The Learning Stories documentation framework is Hilltop&#x27;s clearest competitive differentiator — and a masterclass in how to communicate curriculum. Rather than describing the approach in abstract terms, Learning Stories is a branded, named practice with a clear origin (the New Zealand Te Whariki ECE framework), a defined methodology, and enough specificity that educators from across the country pay to come and learn it. When a school names its practices, those practices become assets. When they stay unnamed, they stay invisible.</p>
+<p>Hilltop also solves an architecture problem that Boulder Journey School never fully cracked: it serves both parents and educators from the same content engine. Some of its Institute workshops are open to both audiences simultaneously. That blended approach acknowledges the reality that the line between &#x27;curious parent&#x27; and &#x27;professional educator&#x27; is often thinner than a website architecture assumes.</p>
+<div class="got-right-header">What This Site Does Well</div>
+<div class="two-col-table"><div class="two-col-row "><div class="two-col-cell">Outreach Institute is a top-level navigation item — architecturally equal to Enrollment</div><div class="two-col-cell">Parent-facing workshops offered alongside educator trainings — serves both audiences</div></div><div class="two-col-row row-alt"><div class="two-col-cell">Institute has five distinct product lines with dedicated pages for each</div><div class="two-col-cell">Curriculum tied to measurable kindergarten readiness standards (TSG-GOLD, WaKIDS)</div></div><div class="two-col-row "><div class="two-col-cell">Four named core values with written definitions — more structured than most schools</div><div class="two-col-cell">Teachers-as-researchers framing elevates everyday documentation into scholarship</div></div><div class="two-col-row row-alt"><div class="two-col-cell">&#x27;Learning Stories&#x27; is a branded, deeply explained documentation practice</div><div class="two-col-cell">50+ years of operation cited as a trust signal — longevity is hard to fake</div></div><div class="two-col-row "><div class="two-col-cell">Registered legal name signals consulting was always part of the identity</div><div class="two-col-cell">Tuition publicly listed — radical transparency that builds trust with discerning parents</div></div><div class="two-col-row row-alt"><div class="two-col-cell">Washington Early Achievers participation = external quality verification</div><div class="two-col-cell">&#x27;Master Teacher&#x27; all-teacher model with paid weekly planning time is a genuine structural differentiator</div></div></div>
+<div class="shaded-para fill-gold"><strong>KEY TAKEAWAYS FOR GREAT PRESCHOOL WEBSITES</strong></div>
+<div class="takeaway-box"><div class="takeaway-item"><span class="takeaway-num">1</span><span class="takeaway-text">Where you put something in the navigation tells visitors how important it is. Hilltop put its Outreach Institute at the top level of navigation — the same level as Enrollment and Programs. That single design decision communicates that consulting is a primary offering, not a footnote.</span></div><div class="takeaway-item"><span class="takeaway-num">2</span><span class="takeaway-text">A consulting section does not require a named doctoral founder to work. Hilltop has no individual founder with credentials. It built its Institute on institutional depth, named practices, and consistent publishing. The architecture matters as much as the credentials.</span></div><div class="takeaway-item"><span class="takeaway-num">3</span><span class="takeaway-text">Named, documented practices beat vague philosophy claims every time. &#x27;Learning Stories&#x27; is a specific, explained, branded methodology. Parents can picture what it means for their child. Educators can see exactly what they would learn at a Hilltop workshop. Specificity is credibility.</span></div><div class="takeaway-item"><span class="takeaway-num">4</span><span class="takeaway-text">Serving both parents and educators from the same content engine — workshops that parents and educators can both attend — is an elegant solution to the dual-audience challenge. The two audiences don&#x27;t have to be fully separated. Some content serves both.</span></div><div class="takeaway-item"><span class="takeaway-num">5</span><span class="takeaway-text">Listing tuition publicly is a trust move, not a liability. Parents who self-qualify on price before contacting the school are better leads — they&#x27;ve already decided the price is acceptable. Transparency reduces friction and signals confidence in the value you deliver.</span></div></div>
+<div class="school-name-bar"><span class="school-name">Resurrection Episcopal Day School (REDS)</span><span class="school-loc">New York, NY</span></div>
+<div class="shaded-para fill-navy"><strong>SCHOOL OVERVIEW</strong></div>
+<p>Resurrection Episcopal Day School (REDS) is a private Montessori preschool operating on the Upper East Side of Manhattan — one of the most competitive early childhood education markets in the United States. REDS holds the distinction of being the only AMI (Association Montessori Internationale) recognized school in New York City, a credential established by Dr. Maria Montessori herself in 1929. The school serves children from 18 months through kindergarten, holds memberships in seven national and regional accreditation organizations (including ISAAGNY, NAIS, and NYSAIS), and maintains a waitlisted admissions process for the 2026–27 school year.</p>
+<p>REDS was selected as the benchmark for premium trust-signal architecture and visual design. It operates without a named founder narrative, without a blog, and without a consulting section — and yet it commands elite positioning in the most demanding preschool market in the country. The lesson REDS teaches is that credentialing, scarcity, and visual quality can do the work that copy and personality do at other schools.</p>
+<div class="shaded-para fill-navy"><strong>NARRATIVE SUMMARY</strong></div>
+<p>REDS makes a bet that almost no other school in this audit makes: it lets a single credential do most of the positioning work. &#x27;NYC&#x27;s only AMI-recognized school&#x27; is seven words. Those seven words communicate that the school is rare (only one in the entire city), rigorous (recognized by the organization Dr. Montessori herself founded), and in demand (if you want authentic Montessori in NYC, there is no alternative). No competitor can make the same claim.</p>
+<p>The visual design matches the claim. REDS credits its photographer by name in the footer — a small detail that signals intentionality throughout. The homepage is organized around three child-centered concepts: Growing, Living, Learning. The copy is warm without being vague. The overall effect is a site that feels like it was designed with the same care the school applies to its classrooms.</p>
+<p>The accreditation architecture is worth studying closely. Seven logos in the footer, visible on every page. Each one is a third-party organization vouching for the school&#x27;s quality. Collectively they communicate: this school has been evaluated, certified, and recognized by every credible body in private early childhood education. Parents who don&#x27;t know what AMI means may not be able to read those logos individually — but they can feel the weight of institutional validation even without understanding every acronym.</p>
+<div class="got-right-header">What This Site Does Well</div>
+<div class="two-col-table"><div class="two-col-row "><div class="two-col-cell">Single sentence does all the positioning work: &#x27;NYC&#x27;s only AMI-recognized school&#x27;</div><div class="two-col-cell">Curriculum page names all five Montessori learning areas with developmental rationale — not just activity lists</div></div><div class="two-col-row row-alt"><div class="two-col-cell">Seven accreditation logos in the footer — the most comprehensive credentialing display in the audit</div><div class="two-col-cell">3-hour uninterrupted work cycle is explained as a structural commitment, not just a scheduling detail</div></div><div class="two-col-row "><div class="two-col-cell">Closed admissions / waitlist displayed matter-of-factly — authentic scarcity, not a tactic</div><div class="two-col-cell">ISAAGNY membership signals elite gatekeeper recognition — carries enormous weight in the NYC market</div></div><div class="two-col-row row-alt"><div class="two-col-cell">Homepage structure (Growing / Living / Learning) is the most child-centered architecture in the audit</div><div class="two-col-cell">Annual Lecture Series featuring nationally recognized ECE authors positions the school as a thought-leader community</div></div><div class="two-col-row "><div class="two-col-cell">Professional photography by a named photographer — visual tone matches the aspirational copy</div><div class="two-col-cell">Exmissions service (Head of School personally guides kindergarten placements) is a premium value differentiator</div></div><div class="two-col-row row-alt"><div class="two-col-cell">All-AMI-certified faculty stated plainly — the credential claim is immediately substantiated</div><div class="two-col-cell">&#x27;Growing Together. Learning Together.&#x27; — &#x27;together&#x27; signals belonging, not just instruction</div></div></div>
+<div class="shaded-para fill-gold"><strong>KEY TAKEAWAYS FOR GREAT PRESCHOOL WEBSITES</strong></div>
+<div class="takeaway-box"><div class="takeaway-item"><span class="takeaway-num">1</span><span class="takeaway-text">One powerful, exclusive credential can do more positioning work than three pages of copy. &#x27;NYC&#x27;s only AMI-recognized school&#x27; is seven words that communicate rarity, rigor, and demand. Every premium school should identify its own version of this statement.</span></div><div class="takeaway-item"><span class="takeaway-num">2</span><span class="takeaway-text">Accreditation logos are trust signals, not decoration. REDS displays seven in its footer — visible on every page. Third-party validation (national organizations, state boards, professional associations) tells parents that someone other than the school itself has verified its quality.</span></div><div class="takeaway-item"><span class="takeaway-num">3</span><span class="takeaway-text">Scarcity is a legitimate and powerful trust signal when it is real. A waitlist or closed enrollment displayed plainly — without urgency language or sales pressure — communicates that the school is in demand. Parents read that as quality confirmation.</span></div><div class="takeaway-item"><span class="takeaway-num">4</span><span class="takeaway-text">The homepage architecture should be child-centered, not school-centered. REDS&#x27;s &#x27;Growing / Living / Learning&#x27; structure organizes the entire homepage around the child&#x27;s experience — not the school&#x27;s offerings. That reframe is the difference between a brochure and a conversion page.</span></div><div class="takeaway-item"><span class="takeaway-num">5</span><span class="takeaway-text">Design investment is visible and it communicates something. REDS credits its photographer by name in its footer. That level of intentionality in visual presentation signals to parents that every detail of their child&#x27;s experience will be treated with the same care.</span></div></div>
+<div class="school-name-bar"><span class="school-name">Playgarden Prep</span><span class="school-loc">New York, NY</span></div>
+<div class="shaded-para fill-navy"><strong>SCHOOL OVERVIEW</strong></div>
+<p>Playgarden Prep is a private preschool and pre-K program founded in 2007 by Amanda Vierheller in Tribeca, Manhattan. What began as a response to a gap in downtown NYC&#x27;s early learning landscape — a lack of structured, play-to-learning environments for under-fives — has grown into a four-location operation serving 200+ families, with an 8,000 sq ft flagship facility that includes NYC&#x27;s largest indoor playground for children under 5. Playgarden takes a &#x27;Montessori-inspired&#x27; approach that intentionally synthesizes elements of Reggio Emilia, Waldorf, High Scope, and play-based learning across six specialized rooms. The school has also launched Playgarden Online, a direct-to-consumer virtual preschool platform serving families in 40+ states.</p>
+<p>Playgarden was selected because it demonstrates two capabilities no other school in the audit matches: parent testimonial architecture as a conversion tool, and founder media presence as an authority-building strategy. Amanda Vierheller has been featured in 17 publications and appeared on multiple national podcasts — demonstrating what a non-doctoral founder can build in terms of external credibility through consistent content and media engagement.</p>
+<div class="shaded-para fill-navy"><strong>NARRATIVE SUMMARY</strong></div>
+<p>The homepage of Playgarden Prep does something simple that most preschool websites get completely wrong: it leads with nine parent testimonials, each one substantive enough to answer a specific parent objection. Not pull quotes. Not star ratings. Paragraph-length narratives from real parents describing specific outcomes, specific teachers, specific moments. One parent says their child &#x27;knew letters, numbers, continents and planets before she even turned 3.&#x27; Another notes their child cried when she had to miss a school day. Those are not testimonials — they are conversion arguments in a parent&#x27;s own voice.</p>
+<p>Equally impressive is the curriculum transparency. Playgarden documents its daily schedule in full: one hour of core curriculum, one hour of enrichment, one hour of focused play. It names the subjects (language, phonetics, reading, STEAM, Spanish, music, art, theater, movement, yoga, dance, nutrition). It maps each subject to one of the six physical rooms. Parents can picture the day before they ever set foot in the building — and that ability to picture it is what turns curiosity into a scheduled tour.</p>
+<p>Amanda Vierheller&#x27;s founder story is another model worth studying. She identified a specific gap (downtown Manhattan had no structured play-to-learning spaces for under-fives), built a solution in a converted Tribeca warehouse, and has since turned her expertise into a media presence that spans national publications and podcasts. That external presence doesn&#x27;t just build her personal brand — it makes Playgarden findable to parents who search for early childhood experts before they search for local schools.</p>
+<div class="got-right-header">What This Site Does Well</div>
+<div class="two-col-table"><div class="two-col-row "><div class="two-col-cell">Nine substantive homepage testimonials — the most detailed of any school in the audit</div><div class="two-col-cell">Daily schedule fully documented: 1 hr core curriculum + 1 hr enrichment + 1 hr focused play</div></div><div class="two-col-row row-alt"><div class="two-col-cell">Testimonials address the full parent objection matrix: academic prep, social growth, teacher quality, transition ease</div><div class="two-col-cell">Kindergarten Readiness Standards guarantee — the boldest outcome claim in the audit</div></div><div class="two-col-row "><div class="two-col-cell">Founder has been featured in 17 publications and multiple podcast appearances</div><div class="two-col-cell">Named bilingual partner (Arenales) adds institutional credibility to the Spanish immersion offering</div></div><div class="two-col-row row-alt"><div class="two-col-cell">Free baby classes (3–9 months) create a path-to-enrollment from the earliest possible age</div><div class="two-col-cell">Two-layer parent communication system (Brightwheel + Modern Classroom) named and explained</div></div><div class="two-col-row "><div class="two-col-cell">Six named specialized rooms — each room translates a philosophical claim into physical evidence</div><div class="two-col-cell">Founder origin story is specific and believable: saw a gap in downtown Manhattan, built the solution</div></div><div class="two-col-row row-alt"><div class="two-col-cell">&#x27;Because 85% of brain growth occurs by age five&#x27; — neuroscience used to justify the school&#x27;s entire focus</div><div class="two-col-cell">Community language throughout: &#x27;We become a family at each location&#x27; — frames school as a relationship</div></div></div>
+<div class="shaded-para fill-gold"><strong>KEY TAKEAWAYS FOR GREAT PRESCHOOL WEBSITES</strong></div>
+<div class="takeaway-box"><div class="takeaway-item"><span class="takeaway-num">1</span><span class="takeaway-text">Testimonials are your strongest conversion tool — but only if they are specific. Playgarden&#x27;s nine homepage testimonials name outcomes (&#x27;knew letters, numbers, continents and planets before she turned 3&#x27;), name qualities (&#x27;the teachers genuinely love these kids&#x27;), and span the full range of parent anxieties. Generic testimonials (&#x27;We love Playgarden!&#x27;) do almost nothing. Outcome-specific testimonials answer objections before parents even think to ask them.</span></div><div class="takeaway-item"><span class="takeaway-num">2</span><span class="takeaway-text">Showing what a school day actually looks like — in concrete terms — removes one of the biggest conversion barriers. Parents can&#x27;t picture their child thriving somewhere they can&#x27;t picture at all. Playgarden&#x27;s fully documented daily schedule (subjects, timing, room-by-room breakdown) lets parents imagine the day before they ever visit.</span></div><div class="takeaway-item"><span class="takeaway-num">3</span><span class="takeaway-text">Founder media presence is authority that lives outside the school&#x27;s own website. Every podcast appearance, magazine feature, and expert quote makes the founder findable and credible to parents who discover her before they discover the school. A founder who shows up in searches for &#x27;NYC preschool expert&#x27; is doing marketing the school doesn&#x27;t have to pay for.</span></div><div class="takeaway-item"><span class="takeaway-num">4</span><span class="takeaway-text">A bold outcome guarantee is rare in preschool marketing — and memorable because of that rarity. &#x27;Students who graduate from Playgarden are guaranteed to meet or surpass their Kindergarten Readiness Standards&#x27; is a claim that answers the parent&#x27;s deepest anxiety about investment. A school confident enough to guarantee outcomes signals it has the results to back up the claim.</span></div><div class="takeaway-item"><span class="takeaway-num">5</span><span class="takeaway-text">Free entry-point programming (baby classes, open houses, trial visits) is a conversion strategy disguised as generosity. Families who visit Playgarden with a 6-month-old often enroll their child at 2. The earlier the relationship starts, the more natural enrollment feels when the time comes.</span></div></div>
+<div class="school-name-bar"><span class="school-name">The International Preschools (IPS)</span><span class="school-loc">New York, NY</span></div>
+<div class="shaded-para fill-navy"><strong>SCHOOL OVERVIEW</strong></div>
+<p>The International Preschools (IPS) is a private preschool serving children from 2 to 5 years old across multiple Manhattan locations. Founded in 1963 in response to the isolation experienced by young consular wives navigating life in a foreign city, IPS built its identity around cultural diversity as a curriculum medium rather than a background value. The school&#x27;s guiding philosophy — &#x27;research-driven, play-based learning through a lens of cultural diversity and global citizenship&#x27; — is one of the most precisely worded educational positions in early childhood education. After 62 years of operation, IPS enrolls children from families whose parents and grandparents also attended the school.</p>
+<p>IPS was selected for two reasons that create opposite lessons. First, it has genuinely exceptional assets: the most emotionally compelling founding story in the audit, faculty where all head teachers hold Master&#x27;s degrees, a 62-year operating history, and parent testimonials that are among the most powerful in the audit. Second — and this is the more important reason — it consistently fails to put those assets where prospective families can find them. IPS is the clearest available illustration of what happens when a school with real authority never assembles that authority into a conversion architecture.</p>
+<div class="shaded-para fill-navy"><strong>NARRATIVE SUMMARY</strong></div>
+<p>In 1963, a young woman arrived in New York City as the wife of a foreign consular official. She knew no one. She had no community. Out of that experience of isolation, she and a group of women in similar circumstances created a school where children of all nationalities could learn together — and where their parents could find belonging. Sixty-two years later, families are enrolling the grandchildren of IPS&#x27;s founding families. Broadcast journalist Tom Brokaw — himself an IPS grandparent — narrated the school&#x27;s 50th anniversary film. The current director has worked at IPS since 1988.</p>
+<p>That is one of the most remarkable institutional stories in private education. It is buried on a History sub-page with no link from the homepage, no pull quote in the hero section, and no emotional prominence anywhere on the site. A first-time visitor can spend ten minutes on the IPS website and never encounter the founding story. This is not a design oversight — it is a strategic failure that costs the school conversions every single day.</p>
+<p>The same pattern repeats across the site. Eight substantive parent testimonials — including one from a parent who is herself an IPS alumna, and one describing a child who cries on weekends because she cannot attend school — are housed on a dedicated /testimonials/ page. Parents who are making enrollment decisions on the homepage and program pages will never read them. The director&#x27;s 37 years of institutional knowledge, her Master&#x27;s degree, and her professional philosophy are summarized in a three-sentence biography. The academic faculty credential (&#x27;all head teachers hold Master&#x27;s degrees&#x27;) appears in a homepage bullet point — not a headline.</p>
+<p>IPS teaches us the single most important lesson in this entire research project: having great assets is not the same as using them. The gap between what IPS has and what it shows is the opportunity we are building Spark&#x27;s website to capture.</p>
+<div class="got-right-header">What This Site Does Well</div>
+<div class="two-col-table"><div class="two-col-row "><div class="two-col-cell">&#x27;Research-driven, play-based pedagogy&#x27; — the most E-E-A-T precise philosophy language in the audit</div><div class="two-col-cell">8+ substantive parent testimonials including one from an IPS alumnus parent and one from a child who says &#x27;I don&#x27;t like weekends because I can&#x27;t go to school&#x27;</div></div><div class="two-col-row row-alt"><div class="two-col-cell">Diversity is woven into the curriculum mechanics, not appended as a value statement</div><div class="two-col-cell">NYSAIS accreditation + ISAAGNY membership displayed in footer on every page</div></div><div class="two-col-row "><div class="two-col-cell">&#x27;A Window to the World&#x27; — the most emotionally resonant tagline in the audit</div><div class="two-col-cell">Multicultural curriculum explained with genuine specificity: self-portraits, family graphs, national flags as simultaneous math, art, and cultural learning tools</div></div><div class="two-col-row row-alt"><div class="two-col-cell">Three-generation enrollment (grandchildren of original families) cited as a trust signal</div><div class="two-col-cell">62 years of operating history used explicitly as a longevity trust signal</div></div><div class="two-col-row "><div class="two-col-cell">All head teachers hold Master&#x27;s degrees — the strongest faculty credential claim in the audit</div><div class="two-col-cell">Founding story (1963, response to a consular wife&#x27;s isolation in NYC) is the most emotionally compelling origin narrative in the audit</div></div><div class="two-col-row row-alt"><div class="two-col-cell">Exmission placement service is sophisticated enough to be a standalone consulting product</div><div class="two-col-cell">Three developmentally differentiated programs (2s, 3s, 4/5s) signal calibrated curriculum design</div></div></div>
+<div class="shaded-para fill-gold"><strong>KEY TAKEAWAYS FOR GREAT PRESCHOOL WEBSITES</strong></div>
+<div class="takeaway-box"><div class="takeaway-item"><span class="takeaway-num">1</span><span class="takeaway-text">The most important lesson IPS teaches has nothing to do with what it does right — it is what it does wrong. IPS has 62 years of history, an extraordinary founding story narrated on film by Tom Brokaw, a director with 37 years of institutional knowledge, and parent testimonials that would move anyone to call immediately. Almost none of it is on the homepage. Great assets buried on sub-pages don&#x27;t convert. Your best material has to be front and center.</span></div><div class="takeaway-item"><span class="takeaway-num">2</span><span class="takeaway-text">An origin story is one of the most powerful conversion tools a founder-led school has — but only if people can find it. IPS&#x27;s founding story (a young woman isolated in a foreign city creates a community of belonging that becomes a 62-year institution) is remarkable. It is confined to a single History sub-page with no link from the homepage. The story that could make a parent feel something is the story almost no parent ever sees.</span></div><div class="takeaway-item"><span class="takeaway-num">3</span><span class="takeaway-text">Adding the word &#x27;research-driven&#x27; to &#x27;play-based learning&#x27; changes the entire meaning of the claim. &#x27;Play-based learning&#x27; is what every preschool says. &#x27;Research-driven, play-based learning&#x27; says that the curriculum choices are grounded in evidence, not intuition. That single word transforms a generic category claim into a credibility statement.</span></div><div class="takeaway-item"><span class="takeaway-num">4</span><span class="takeaway-text">Testimonials belong on the homepage — not on a /testimonials/ page one click away from where decisions are made. IPS&#x27;s most powerful parent quotes (including one about a child who cries when she can&#x27;t attend school) are on a dedicated testimonials page. The parents who most need to read those quotes will never find them because conversion decisions happen on the homepage and program pages.</span></div><div class="takeaway-item"><span class="takeaway-num">5</span><span class="takeaway-text">Celebrity endorsements and extraordinary proof points don&#x27;t do conversion work when they are buried. Tom Brokaw narrated a 50th anniversary video for IPS as a school grandparent. That asset appears on a single sub-page. The lesson: inventory your most powerful proof points and ask whether they are positioned where prospective families can actually find them.</span></div></div>
+<h1><span style="color:var(--navy)"><strong>So What for Spark?</strong></span></h1>
+<p><span style="color:var(--mid)"><em>Six Principles Every Great Preschool Website Gets Right</em></span></p>
+<p>Five schools. Five cities. Five different approaches to the same fundamental challenge: how do you convince a discerning parent — in the minutes they spend on your website before they ever call — that your school is the right place for their child? The schools in this audit that do it best share six principles in common. These are the principles that will govern every decision we make building the new Spark Academy website.</p>
+<div class="section-label fill-navy">Principle 1:  Make your authority unmissable.</div>
+<p>Every school in this audit had authority assets. The ones that converted were the ones that put those assets where prospective families could find them — on the homepage, above the fold, in the hero section. BJS led with Dr. Hall&#x27;s Ed.D. and published work. REDS led with its AMI monopoly claim. IPS buried its founding story on a sub-page and paid for it in lost conversions. Dr. Peterson&#x27;s doctorate, research background, and &#x27;educator who other educators hire&#x27; positioning belongs at the top of the homepage — not on an About page few parents click through to.</p>
+<div class="section-label fill-navy">Principle 2:  Name everything — your philosophy, your curriculum, your approach.</div>
+<p>BJS coined &#x27;contextual curriculum.&#x27; Hilltop built &#x27;Learning Stories.&#x27; Playgarden developed &#x27;Playgarden Pathways.&#x27; REDS leads with &#x27;AMI-recognized.&#x27; Generic descriptions (&#x27;play-based learning,&#x27; &#x27;whole child development&#x27;) are shared by every competitor. Named, defined, owned frameworks are assets that competitors cannot copy. Spark&#x27;s philosophy and curriculum approach need a name.</p>
+<div class="section-label fill-navy">Principle 3:  Testimonials are conversion tools — use them as such.</div>
+<p>Playgarden&#x27;s nine homepage testimonials are not decoration. Each one addresses a specific parent objection in a real parent&#x27;s voice. The most powerful testimonials in the audit — IPS&#x27;s child who cries on weekends, Playgarden&#x27;s parent describing academic milestones — are extraordinary conversion moments. Spark&#x27;s testimonials need to be on the homepage, specific, and organized to address the objections parents actually have.</p>
+<div class="section-label fill-navy">Principle 4:  Give the consulting section the same architectural weight as enrollment.</div>
+<p>BJS and Hilltop both made this decision, and both built real consulting revenue as a result. The educator-facing section must be a top-level navigation item — not a footer link, not a sub-page under About. When educators can find the consulting section easily, it builds the school&#x27;s authority with parent audiences simultaneously. Parents who see &#x27;For Educators&#x27; in the navigation understand something important: the person running their child&#x27;s school is someone other professionals pay to learn from.</p>
+<div class="section-label fill-navy">Principle 5:  Let parents picture the day.</div>
+<p>Playgarden&#x27;s fully documented daily schedule is one of the most effective conversion tools in the audit. Parents who cannot picture what their child&#x27;s day looks like cannot decide if it is right for their child. The new Spark website should describe a typical day in enough concrete detail that a parent reading it can close their eyes and imagine their specific child in that environment.</p>
+<div class="section-label fill-navy">Principle 6:  Your origin story is a conversion tool — tell it where people can find it.</div>
+<p>IPS has the most compelling founding story in the audit and virtually no parent ever reads it. BJS built an entire school identity around Dr. Hall&#x27;s founding vision. The story of why Spark Academy exists — why Dr. Peterson chose to build this specific school in Morton, Illinois, what she was trying to create that didn&#x27;t exist — is one of the most powerful things we can put on this website. It needs to be on the homepage, not on a sub-page.</p>
+    </div>
+  </div>
+</div>
+<footer class="site-footer">
+  Spark Academy Website Project &nbsp;&middot;&nbsp; For internal use only
+</footer>
+</body>
+</html>
