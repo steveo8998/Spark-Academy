@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research Findings &amp; Website Development Brief — Spark Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:   #1E3A5F;
+  --blue:   #2E6DA4;
+  --green:  #1A7A4A;
+  --gold:   #C8960C;
+  --sky:    #D6E4F0;
+  --ink:    #1A1A2E;
+  --mid:    #6B7A8D;
+  --mist:   #F5F7FA;
+  --border: #DDE3EC;
+  --white:  #FFFFFF;
+  --serif:  'DM Serif Display', Georgia, serif;
+  --sans:   'DM Sans', system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--sans);
+  background: var(--mist);
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+/* ── Header ── */
+.site-header {
+  background: var(--navy);
+  padding: 16px 24px;
+  border-bottom: 3px solid var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.logo-mark {
+  width: 34px; height: 34px;
+  background: var(--gold);
+  border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif);
+  font-size: 18px;
+  color: var(--navy);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.header-text h1 {
+  font-family: var(--serif);
+  font-size: 16px;
+  color: #fff;
+  line-height: 1.2;
+}
+.header-text p { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 1px; }
+
+/* ── Layout ── */
+.doc-wrapper {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 32px 20px 80px;
+}
+.doc-card {
+  background: var(--white);
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.doc-title-bar {
+  background: var(--navy);
+  padding: 28px 32px;
+  border-bottom: 4px solid var(--gold);
+}
+.doc-title-bar h2 {
+  font-family: var(--serif);
+  font-size: clamp(20px, 4vw, 28px);
+  color: #fff;
+  line-height: 1.2;
+}
+.doc-title-bar p { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 6px; }
+.doc-body { padding: 36px 32px 56px; }
+
+/* ── Typography ── */
+h1 {
+  font-family: var(--serif);
+  font-size: clamp(20px, 4vw, 26px);
+  color: var(--navy);
+  margin: 40px 0 10px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--sky);
+  line-height: 1.25;
+}
+h1:first-child { margin-top: 0; }
+h2 {
+  font-family: var(--serif);
+  font-size: clamp(17px, 3vw, 21px);
+  color: var(--blue);
+  margin: 30px 0 8px;
+  line-height: 1.3;
+}
+h3 {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--navy);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin: 24px 0 6px;
+}
+p { margin: 0 0 14px; }
+p:last-child { margin-bottom: 0; }
+strong { font-weight: 600; color: var(--navy); }
+em { font-style: italic; color: var(--mid); }
+ul { padding-left: 22px; margin: 0 0 16px; }
+li { margin-bottom: 6px; }
+
+/* ── Section label (colored header bar) ── */
+.section-label {
+  padding: 10px 16px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 28px 0 12px;
+  border-radius: 4px;
+  color: var(--white);
+}
+
+/* ── School name bar ── */
+.school-name-bar {
+  display: flex;
+  align-items: stretch;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 28px 0 20px;
+}
+.school-name {
+  background: var(--blue);
+  color: #fff;
+  font-family: var(--serif);
+  font-size: clamp(16px, 3vw, 20px);
+  padding: 14px 20px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+.school-loc {
+  background: var(--navy);
+  color: rgba(255,255,255,0.7);
+  font-size: 12px;
+  font-style: italic;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+/* ── What They Got Right header ── */
+.got-right-header {
+  background: var(--green);
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 11px 16px;
+  border-radius: 4px 4px 0 0;
+  margin-top: 24px;
+  margin-bottom: 0;
+}
+
+/* ── Two-column content table ── */
+.two-col-table {
+  border: 1px solid var(--border);
+  border-radius: 0 0 6px 6px;
+  overflow: hidden;
+  margin-bottom: 24px;
+  font-size: 14px;
+}
+.two-col-row {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+}
+.two-col-row:last-child { border-bottom: none; }
+.two-col-row.row-alt { background: var(--mist); }
+.two-col-cell {
+  flex: 1;
+  padding: 10px 14px;
+  line-height: 1.55;
+  border-right: 1px solid var(--border);
+}
+.two-col-cell:last-child { border-right: none; }
+
+/* ── Takeaway box ── */
+.takeaway-box {
+  border: 1px solid #E8D98A;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 12px 0 24px;
+}
+.takeaway-item {
+  display: flex;
+  gap: 14px;
+  padding: 14px 16px;
+  border-bottom: 1px solid #E8D98A;
+  line-height: 1.6;
+  font-size: 14px;
+}
+.takeaway-item:nth-child(even) { background: #FFFDF4; }
+.takeaway-item:nth-child(odd)  { background: #FEF9EC; }
+.takeaway-item:last-child { border-bottom: none; }
+.takeaway-num {
+  width: 26px; height: 26px;
+  background: var(--gold);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--navy);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.takeaway-text { flex: 1; color: var(--ink); }
+
+/* ── Info grid (school index) ── */
+.info-grid { margin: 16px 0 24px; display: flex; flex-direction: column; gap: 4px; }
+.info-row  { display: flex; gap: 4px; }
+.info-cell {
+  flex: 1;
+  padding: 10px 14px;
+  font-size: 14px;
+  border-radius: 4px;
+  line-height: 1.5;
+}
+
+/* ── Principle headers (synthesis page) ── */
+.principle-header {
+  background: var(--navy);
+  color: #fff;
+  padding: 13px 20px;
+  border-radius: 4px;
+  font-size: 15px;
+  font-weight: 600;
+  border-left: 5px solid var(--gold);
+  margin: 28px 0 8px;
+}
+.principle-label {
+  color: var(--gold);
+  font-weight: 700;
+  margin-right: 4px;
+}
+
+/* ── Shaded paragraph ── */
+.shaded-para {
+  padding: 10px 16px;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 24px 0 10px;
+}
+
+/* ── Score table (audit docs) ── */
+.table-wrap { overflow-x: auto; margin: 16px 0 20px; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 400px; }
+th, td { border: 1px solid var(--border); padding: 9px 12px; vertical-align: top; line-height: 1.5; }
+th { background: var(--navy); color: #fff; font-weight: 600; font-size: 13px; }
+tr:nth-child(even) td:not([class]) { background: var(--mist); }
+
+/* ── Score legend ── */
+.score-legend {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin: 12px 0 20px;
+}
+.legend-cell {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid var(--border);
+}
+
+/* ── Fill color classes ── */
+.fill-navy       { background: #1E3A5F; color: #fff; }
+.fill-blue       { background: #2E6DA4; color: #fff; }
+.fill-green      { background: #1A7A4A; color: #fff; }
+.fill-gold       { background: #C8960C; color: #fff; }
+.fill-sky        { background: #D6E4F0; color: var(--ink); }
+.fill-lightgray  { background: #F4F6F8; color: var(--ink); }
+.fill-goldtint-a { background: #FEF9EC; color: var(--ink); }
+.fill-goldtint-b { background: #FFFDF4; color: var(--ink); }
+.fill-white      { background: #FFFFFF; color: var(--ink); }
+.fill-green-light{ background: #C8E6C9; color: #1A4A1E; }
+.fill-green-pale { background: #DCEDC8; color: #1A4A1E; }
+.fill-yellow     { background: #FFF9C4; color: #5A4A00; }
+.fill-red-light  { background: #FFCDD2; color: #7A1A1A; }
+.fill-purple-light{ background: #EDE7F6; color: #3A1A6A; }
+.fill-sky-pale   { background: #EEF4FF; color: var(--ink); }
+
+/* ── Footer ── */
+.site-footer {
+  text-align: center;
+  padding: 16px;
+  font-size: 12px;
+  color: var(--mid);
+  border-top: 1px solid var(--border);
+  background: var(--white);
+}
+
+/* ── Mobile ── */
+@media (max-width: 600px) {
+  .doc-body { padding: 22px 18px 40px; }
+  .doc-title-bar { padding: 20px 20px; }
+  .two-col-row { flex-direction: column; }
+  .two-col-cell { border-right: none; border-bottom: 1px solid var(--border); }
+  .two-col-cell:last-child { border-bottom: none; }
+  .school-name-bar { flex-direction: column; }
+  .school-loc { justify-content: flex-start; }
+  .info-row { flex-direction: column; }
+  .score-legend { gap: 4px; }
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="logo-mark">S</div>
+  <div class="header-text">
+    <h1>Spark Docs</h1>
+    <p>Spark Academy Website Project</p>
+  </div>
+</header>
+<div class="doc-wrapper">
+  <div class="doc-card">
+    <div class="doc-title-bar">
+      <h2>Research Findings &amp; Website Development Brief</h2>
+      <p>Spark Academy &middot; Internal Document</p>
+    </div>
+    <div class="doc-body">
+<div class="principle-header">SPARK ACADEMY  ·  WEBSITE STRATEGY
+Research Findings &amp;
+Website Development Brief
+Prepared for Dr. Michelle Peterson  ·  February 2026</div>
+<p><span style="color:#2e5fa3"><strong>SECTION 1</strong></span></p>
+<p><span style="color:#1b2a4a"><strong>What We Researched</strong></span></p>
+<p>We ran two separate research tracks — each one asking a different question about what makes a preschool website work.</p>
+<div class="table-wrap"><table><tr><th class="">Research Track A
+Philosophy &amp; Authority Leaders
+5 schools — NYC, Seattle, Boulder
+We asked: What do the best schools communicate — and why does a parent trust them? We evaluated philosophy clarity, founder authority, emotional storytelling, curriculum depth, social proof, and thought leadership.</th><th class="">Research Track B
+Conversion &amp; SEO Craft Leaders
+6 schools — NYC, Chicago
+We asked: How do the best sites actually work as lead generation machines? We evaluated SEO structure, URL architecture, CTA placement, local keyword strategy, visual design, and conversion funnel design.</th></tr></table></div>
+<p><span style="color:#1b2a4a"><strong>All 11 Schools at a Glance</strong></span></p>
+<div class="table-wrap"><table class="score-table"><tr><th class="fill-navy">School</th><th class="fill-navy">Market</th><th class="fill-navy">Score</th><th class="fill-navy">Single Best Lesson for Spark</th></tr><tr><td class="">TRACK A — Philosophy &amp; Authority Leaders</td><td class="">TRACK A — Philosophy &amp; Authority Leaders</td><td class="">TRACK A — Philosophy &amp; Authority Leaders</td><td class="">TRACK A — Philosophy &amp; Authority Leaders</td></tr><tr><td class="">Boulder Journey School</td><td class="">Boulder, CO</td><td class="">41 / 50</td><td class="">A consulting program built on real research expertise creates a self-reinforcing authority loop — the school becomes more trustworthy because other educators pay for Dr. Peterson&#x27;s knowledge.</td></tr><tr><td class="fill-white">Playgarden Prep</td><td class="fill-white">New York City</td><td class="fill-white">36 / 50</td><td class="fill-white">Testimonials are the conversion mechanism. Nine detailed homepage testimonials organized by parent concern type convert more families than any credential display.</td></tr><tr><td class="">Resurrection Episcopal (REDS)</td><td class="">New York City</td><td class="">33 / 50</td><td class="">One ruthlessly precise sentence does all the positioning work. &#x27;NYC&#x27;s only AMI-recognized school&#x27; — Spark needs its equivalent.</td></tr><tr><td class="fill-white">Hilltop Children&#x27;s Center</td><td class="fill-white">Seattle, WA</td><td class="fill-white">33 / 50</td><td class="fill-white">Naming your methodology creates ownership. Hilltop&#x27;s &#x27;Learning Stories&#x27; is just careful observation — but naming it made it a differentiator.</td></tr><tr><td class="">The International Preschools</td><td class="">New York City</td><td class="">26 / 50</td><td class="">Authority without architecture converts nothing. IPS has a Tom Brokaw video and 62-year history — buried on sub-pages where no parent ever finds them.</td></tr><tr><td class="">TRACK B — Conversion &amp; SEO Craft Leaders</td><td class="">TRACK B — Conversion &amp; SEO Craft Leaders</td><td class="">TRACK B — Conversion &amp; SEO Craft Leaders</td><td class="">TRACK B — Conversion &amp; SEO Craft Leaders</td></tr><tr><td class="">The International Preschools</td><td class="">New York City</td><td class="">76 / 100</td><td class="">Deep program sub-page architecture — every age group and program has its own SEO page.</td></tr><tr><td class="fill-white">Playgarden NYC</td><td class="fill-white">New York City</td><td class="fill-white">77 / 100</td><td class="fill-white">&#x27;Now enrolling for 2026–2027&#x27; urgency banner + location-specific landing pages for local SEO.</td></tr><tr><td class="">Resurrection Episcopal (REDS)</td><td class="">New York City</td><td class="">77 / 100</td><td class=""></td></tr><tr><td class="fill-white">Near North Montessori</td><td class="fill-white">Chicago, IL</td><td class="fill-white">73 / 100</td><td class="fill-white">Full-screen video hero is the single highest-impact above-the-fold move available on a preschool site.</td></tr><tr><td class="">Bubbles Academy</td><td class="">Chicago, IL</td><td class="">69 / 100</td><td class="">&#x27;Find Your Class&#x27; as a low-friction primary CTA outperforms &#x27;Apply Now&#x27; for families in discovery mode.</td></tr><tr><td class="fill-white">Bucktown Academy</td><td class="fill-white">Chicago, IL</td><td class="fill-white">51 / 100</td><td class="fill-white">The school with the best credentials and worst website. A cautionary tale Spark must not repeat.</td></tr></table></div>
+<p><span style="color:#2e5fa3"><strong>SECTION 2</strong></span></p>
+<p><span style="color:#1b2a4a"><strong>The Six Rules That Will Govern the New Website</strong></span></p>
+<p><span style="color:#444444">These aren&#x27;t opinions or preferences. Every one of these rules appeared as a gap in at least 8 of the 11 schools we studied. They are the patterns that separate sites that generate leads from sites that just exist.</span></p>
+<div class="table-wrap"><table><tr><th class="fill-navy">1</th><th class="">Make it easy to visit before you ask them to apply.
+Every single school we studied pushed parents straight to an application — high commitment, high friction. Not one offered a simple, above-the-fold &#x27;Schedule a Tour&#x27; as the primary CTA. That white space belongs to Spark. A 3-field tour booking form above the fold is the single biggest conversion advantage available in this market.</th></tr></table></div>
+<div class="table-wrap"><table><tr><th class="fill-navy">2</th><th class="">Authority only converts when it&#x27;s visible.
+The International Preschools has a Tom Brokaw-narrated video, 62 years of history, and three-generation families — and buries all of it on sub-pages. Dr. Peterson&#x27;s Ed.D., founding story, and research background must appear on the homepage, near every CTA, and on every page where a parent is deciding. Credentials in a drawer convert nobody.</th></tr></table></div>
+<div class="table-wrap"><table><tr><th class="fill-navy">3</th><th class="">One precise sentence beats a page of philosophy.
+REDS positions their entire school in six words: &#x27;NYC&#x27;s only AMI-recognized school.&#x27; It answers who they are, why they&#x27;re different, and why it matters simultaneously. Spark needs its equivalent — a single sentence only this school could say. Not &#x27;play-based preschool in Morton.&#x27; Something no one else can claim.</th></tr></table></div>
+<div class="table-wrap"><table><tr><th class="fill-navy">4</th><th class="">Testimonials are the conversion mechanism, not the decoration.
+Playgarden&#x27;s homepage leads with nine detailed parent narratives organized by concern type — academic preparation, social growth, teacher warmth, kindergarten transition. These testimonials do more conversion work than every credential and accreditation on the site combined. Parents don&#x27;t trust institutions. They trust other parents.</th></tr></table></div>
+<div class="table-wrap"><table><tr><th class="fill-navy">5</th><th class="">The blog is the engine that powers everything else.
+Of 11 schools studied, not one is publishing keyword-targeted, authority-building blog content authored by a credentialed researcher. In the entire greater Peoria market, no competitor is doing this at all. When Dr. Peterson publishes 2–4 articles per month on topics she has literally researched at the doctoral level, Spark builds a search position that no local competitor can challenge — or buy.</th></tr></table></div>
+<div class="table-wrap"><table><tr><th class="fill-navy">6</th><th class="">Local pages win local searches.
+Both Playgarden (NYC) and Bubbles Academy (Chicago) use location-specific landing pages targeting neighborhood-level searches. For Spark, this means dedicated pages for Morton, Washington, Peoria, East Peoria, Germantown Hills, and Metamora — each one targeting the search queries families in that community are actually typing. &#x27;Best preschool Morton IL&#x27; is a high-value search with essentially zero competition right now.</th></tr></table></div>
+<p><span style="color:#2e5fa3"><strong>SECTION 3</strong></span></p>
+<p><span style="color:#1b2a4a"><strong>Where Dr. Peterson Already Wins</strong></span></p>
+<p><span style="color:#444444">Before a single page is designed or a single word is written, Spark Academy&#x27;s competitive position is already stronger than every school we studied. Here&#x27;s why.</span></p>
+<div class="table-wrap"><table><tr><th class="fill-navy">Dimension</th><th class="fill-navy">Dr. Peterson&#x27;s Built-In Advantage</th></tr><tr><td class="">Founder Credentials</td><td class="">An Ed.D. with specific doctoral research in peer engagement. No school in the entire 11-site audit — including those in NYC and Chicago — has a credentialed researcher as founder. In the Peoria market, this credential is completely unmatched.</td></tr><tr><td class="fill-white">Market Competition</td><td class="">All 11 schools compete in NYC, Seattle, or Chicago — saturated markets full of AMI-certified, NAEYC-accredited, decades-old institutions. In greater Peoria, there is no published doctoral early childhood education researcher running a preschool. Dr. Peterson cannot be outflanked on credentials.</td></tr><tr><td class="">SEO Content Authority</td><td class="">Every blog post Dr. Peterson writes is authored by a credentialed doctoral researcher. Google&#x27;s E-E-A-T framework — the standard that determines search rankings — rewards exactly this: a named expert creating original content in their area of demonstrated research. No local competitor can replicate this.</td></tr><tr><td class="fill-white">Community Rootedness</td><td class="">All 11 schools serve transient urban populations where families move in and out of neighborhoods. Spark is rooted in Morton — a community where reputation compounds over years and decades, where word-of-mouth travels through tight networks, and where a trusted local presence is a durable competitive advantage.</td></tr><tr><td class="">The Origin Story</td><td class="">The most powerful preschool origin story we found in 11 schools — IPS&#x27;s 1963 founding in response to a woman&#x27;s isolation — is told poorly by an institution. Dr. Peterson&#x27;s story is personal, recent, and can be told in her own voice. A real founder telling her own story will always outperform a 60-year-old institution&#x27;s brochure.</td></tr></table></div>
+<p><span style="color:#2e5fa3"><strong>SECTION 4</strong></span></p>
+<p><span style="color:#1b2a4a"><strong>The New Spark Academy Website</strong></span></p>
+<p><span style="color:#444444">What we&#x27;re building is not just a website — it&#x27;s a lead generation system with two distinct conversion paths running on the same platform. Every page has a specific job, a specific audience, and a specific keyword it&#x27;s designed to rank for.</span></p>
+<p><span style="color:var(--mid)">The URL slugs below are the actual web addresses we&#x27;ll use. Clean, keyword-rich URLs are one of the most important technical signals Google uses to determine what a page is about and when to show it in search results. Compare &#x27;/preschool-morton-il/&#x27; to the current site&#x27;s &#x27;/menu/&#x27; — the difference in search value is enormous.</span></p>
+<div class="table-wrap"><table class="score-table"><tr><th class="fill-navy">URL Slug</th><th class="fill-navy">Page Name</th><th class="fill-navy">Strategic Purpose</th><th class="fill-navy">Primary Keyword Target</th></tr><tr><td class="fill-navy">ZONE 1 — Parent Funnel  (Primary)    The pages prospective families use to discover, consider, and enroll</td><td class="fill-navy">ZONE 1 — Parent Funnel  (Primary)    The pages prospective families use to discover, consider, and enroll</td><td class="fill-navy">ZONE 1 — Parent Funnel  (Primary)    The pages prospective families use to discover, consider, and enroll</td><td class="fill-navy">ZONE 1 — Parent Funnel  (Primary)    The pages prospective families use to discover, consider, and enroll</td></tr><tr><td class="">/</td><td class="">Homepage</td><td class="">First impression, philosophy summary, trust signals, and the primary tour booking CTA. The hub everything else connects to.</td><td class="">preschool Morton IL</td></tr><tr><td class="fill-white">/why-spark/</td><td class="fill-white">Why Spark Academy</td><td class="fill-white">Answers &#x27;what makes this different from daycare?&#x27; — directly and confidently. Built around Dr. Peterson&#x27;s philosophy and the research behind it.</td><td class="fill-white">play-based preschool Peoria IL</td></tr><tr><td class="">/dr-michelle-peterson/</td><td class="">About Dr. Peterson</td><td class="">Full authority page — Ed.D., research focus, founding story, credentials. The credentialing anchor for the entire site.</td><td class="">early childhood educator Morton IL</td></tr><tr><td class="fill-white">/preschool-morton-il/</td><td class="fill-white">Preschool Program</td><td class="fill-white">Primary program page targeting the highest-value local search query. Age range, curriculum, daily rhythm, outcomes.</td><td class="fill-white">preschool Morton IL</td></tr><tr><td class="">/kinder-prep/</td><td class="">Kinder Prep</td><td class="">Dedicated page for kindergarten preparation program — its own keyword target and its own conversion path.</td><td class="">kindergarten prep Morton IL</td></tr><tr><td class="fill-white">/summer-camp-peoria-il/</td><td class="fill-white">Summer Camp</td><td class="fill-white">Seasonal landing page active spring through summer. Separate keyword target from preschool pages.</td><td class="fill-white">summer camp Peoria IL children</td></tr><tr><td class="">/programs/</td><td class="">All Programs</td><td class="">Overview page linking to all program sub-pages. Helps Google understand site structure and helps parents navigate.</td><td class="">preschool programs Morton IL</td></tr><tr><td class="fill-white">/schedule-a-tour/</td><td class="fill-white">Schedule a Tour</td><td class="fill-white">Dedicated conversion page — low-friction 3-field form, what to expect, Dr. Peterson&#x27;s welcoming message. Every CTA on the site points here.</td><td class="fill-white">preschool tour Morton IL</td></tr><tr><td class="">/testimonials/</td><td class="">Parent Testimonials</td><td class="">Named, attributed parent stories organized by concern type. Integrated throughout the site; also a standalone page.</td><td class="">Spark Academy reviews Morton IL</td></tr><tr><td class="">ZONE 2 — Local SEO Landing Pages    Each page targets one community&#x27;s search queries and funnels to the same tour booking form</td><td class="">ZONE 2 — Local SEO Landing Pages    Each page targets one community&#x27;s search queries and funnels to the same tour booking form</td><td class="">ZONE 2 — Local SEO Landing Pages    Each page targets one community&#x27;s search queries and funnels to the same tour booking form</td><td class="">ZONE 2 — Local SEO Landing Pages    Each page targets one community&#x27;s search queries and funnels to the same tour booking form</td></tr><tr><td class="fill-white">/preschool-peoria-il/</td><td class="fill-white">Serving Peoria Families</td><td class="fill-white">Targets parents searching from Peoria proper. Local references, community language, same tour CTA.</td><td class="fill-white">preschool Peoria IL</td></tr><tr><td class="">/preschool-washington-il/</td><td class="">Serving Washington Families</td><td class="">Targets Washington, IL families. Short drive from Morton — significant feeder community.</td><td class="">preschool Washington IL</td></tr><tr><td class="fill-white">/preschool-east-peoria-il/</td><td class="fill-white">Serving East Peoria Families</td><td class="fill-white">Targets East Peoria. Dedicated page converts better than a generic homepage for a Peoria parent.</td><td class="fill-white">preschool East Peoria IL</td></tr><tr><td class="">/preschool-germantown-hills/</td><td class="">Serving Germantown Hills</td><td class="">Targets Germantown Hills, Metamora corridor — families willing to commute for quality.</td><td class="">preschool Germantown Hills IL</td></tr><tr><td class="fill-navy">ZONE 3 — Educator &amp; Consulting Funnel  (Secondary)    Separate conversion path for professionals seeking Dr. Peterson&#x27;s expertise</td><td class="fill-navy">ZONE 3 — Educator &amp; Consulting Funnel  (Secondary)    Separate conversion path for professionals seeking Dr. Peterson&#x27;s expertise</td><td class="fill-navy">ZONE 3 — Educator &amp; Consulting Funnel  (Secondary)    Separate conversion path for professionals seeking Dr. Peterson&#x27;s expertise</td><td class="fill-navy">ZONE 3 — Educator &amp; Consulting Funnel  (Secondary)    Separate conversion path for professionals seeking Dr. Peterson&#x27;s expertise</td></tr><tr><td class="fill-white">/consulting/</td><td class="fill-white">Consulting Services</td><td class="fill-white">Dr. Peterson&#x27;s consulting page — what she offers, who it&#x27;s for, why she&#x27;s uniquely qualified. Separate inquiry form from parent funnel.</td><td class="fill-white">early childhood education consultant Illinois</td></tr><tr><td class="">/consulting/inquiry/</td><td class="">Consulting Inquiry Form</td><td class="">Dedicated form page for consulting leads. Tracked separately from tour bookings so both funnels are measured independently.</td><td class="">hire ECE consultant Illinois</td></tr><tr><td class="">ZONE 4 — Blog / Resources    The SEO engine that powers both funnels. Every post is a new entry point into either the parent or educator path.</td><td class="">ZONE 4 — Blog / Resources    The SEO engine that powers both funnels. Every post is a new entry point into either the parent or educator path.</td><td class="">ZONE 4 — Blog / Resources    The SEO engine that powers both funnels. Every post is a new entry point into either the parent or educator path.</td><td class="">ZONE 4 — Blog / Resources    The SEO engine that powers both funnels. Every post is a new entry point into either the parent or educator path.</td></tr><tr><td class="fill-white">/blog/</td><td class="fill-white">Blog Hub</td><td class="fill-white">Category-filtered hub: &#x27;For Parents&#x27; and &#x27;For Educators.&#x27; Author attribution shows Dr. Peterson&#x27;s name and credentials on every post.</td><td class="fill-white">early childhood education blog</td></tr><tr><td class="">/blog/[parent-post]/</td><td class="">Parent-Facing Posts</td><td class="">Target Peoria-area parent search queries. Each post ends with a tour CTA. Examples: &#x27;Is My 3-Year-Old Ready for Preschool?&#x27; — &#x27;What to Look for in a Preschool Visit.&#x27;</td><td class="">preschool readiness Peoria IL</td></tr><tr><td class="fill-white">/blog/[educator-post]/</td><td class="fill-white">Educator-Facing Posts</td><td class="fill-white">Draw on Dr. Peterson&#x27;s doctoral research. Build consulting authority. Each post ends with a consulting CTA. Examples: &#x27;Peer Engagement Strategies in Inclusive Classrooms.&#x27;</td><td class="fill-white">play-based learning professional development</td></tr></table></div>
+<div class="table-wrap"><table><tr><th class="">Why Two Separate Funnels?
+The parent funnel and the consulting funnel share the same website and the same blog — but they have completely separate conversion paths, separate forms, and separate tracking. This matters for two reasons.
+First, a parent visiting the site should never stumble into consulting content and wonder if they&#x27;re in the right place. The navigation keeps them in their lane. Second, Stephen needs to know whether a new inquiry came from a parent searching for preschool or an educator searching for consulting — because those two people need completely different follow-up. Separate funnels make that measurement possible.
+And here&#x27;s the bonus: a consulting page does double authority duty. Every parent who sees that other educators hire Dr. Peterson for her expertise becomes more confident in their own enrollment decision.</th></tr></table></div>
+<p><span style="color:#2e5fa3"><strong>SECTION 5</strong></span></p>
+<p><span style="color:#1b2a4a"><strong>How a Visitor Becomes a Family</strong></span></p>
+<p><span style="color:#444444">This is the journey we&#x27;re engineering for every parent who finds the Spark Academy website. Every page, every CTA, and every piece of content plays a specific role in moving a family from &#x27;just browsing&#x27; to &#x27;ready to visit.&#x27;</span></p>
+<div class="section-label fill-navy"></div>
+<div class="table-wrap"><table class="score-table"><tr><th class="fill-navy">1</th><th class="">Discovery
+(Google Search)</th><th class="fill-white">A Morton or Peoria parent searches &#x27;preschool near me,&#x27; &#x27;play-based preschool Peoria,&#x27; or &#x27;is my 3-year-old ready for school.&#x27; A blog post or local landing page is the first result they find.</th><th class="">Organic search</th></tr></table></div>
+<div class="table-wrap"><table class="score-table"><tr><th class="fill-navy">2</th><th class="">First Impression
+(Homepage)</th><th class="fill-white">The homepage makes a strong above-the-fold impression in under 3 seconds. Dr. Peterson&#x27;s name and credential are visible. The primary CTA — &#x27;Schedule a Tour&#x27; — is front and center.</th><th class="">3-second impression</th></tr></table></div>
+<div class="table-wrap"><table class="score-table"><tr><th class="fill-navy">3</th><th class="">Consideration
+(Program + About Pages)</th><th class="fill-white">The parent explores. They read Dr. Peterson&#x27;s story. They read the program page for their child&#x27;s age. They read two or three parent testimonials. Each page answers a concern and deepens confidence.</th><th class="">Building trust</th></tr></table></div>
+<div class="table-wrap"><table class="score-table"><tr><th class="fill-navy">4</th><th class="">Conversion
+(Tour Booking)</th><th class="fill-white">The parent clicks &#x27;Schedule a Tour.&#x27; A dedicated page with a 3-field form (name, child&#x27;s age, preferred date). Low friction. Dr. Peterson&#x27;s welcome message. One click to submit.</th><th class="">Form submission</th></tr></table></div>
+<div class="table-wrap"><table class="score-table"><tr><th class="fill-navy">5</th><th class="">Confirmation
+(Thank-You Page)</th><th class="fill-white">A personalized thank-you page confirms the request, sets expectations (&#x27;we&#x27;ll call within 24 hours&#x27;), and offers a next step (&#x27;while you wait, read this&#x27;). Provide common questions a parent needs to ask to discover if their kid is ready for preschool.</th><th class="">Nurture begins</th></tr></table></div>
+<div class="table-wrap"><table class="score-table"><tr><th class="fill-navy">6</th><th class="">Enrollment
+(The Visit)</th><th class="fill-white">The family visits. They meet Dr. Peterson. They see the classroom. The website did its job — now the school takes over.</th><th class="">Spark converts</th></tr></table></div>
+<div class="table-wrap"><table><tr><th class=""></th></tr></table></div>
+<div class="table-wrap"><table class="score-table"><tr><th class="fill-navy">1</th><th class="">Discovery
+(Blog or Search)</th><th class="fill-white">An educator, school director, or administrator searches &#x27;play-based learning consultant Illinois&#x27; or reads a blog post Dr. Peterson published on peer engagement strategy.</th><th class="">Organic search</th></tr></table></div>
+<div class="table-wrap"><table class="score-table"><tr><th class="fill-navy">2</th><th class="">Authority Review(About + Consulting Pages)</th><th class="fill-white">The educator reviews Dr. Peterson&#x27;s credentials page, reads her research background, and visits the consulting services page — which outlines what she offers and who she works with.</th><th class="">Credentials validated</th></tr></table></div>
+<div class="table-wrap"><table class="score-table"><tr><th class="fill-navy">3</th><th class="">Inquiry
+(Consulting Form)</th><th class="fill-white">A dedicated consulting inquiry form — separate from the tour form — captures the lead. Fields: name, organization, what they need help with, timeline. Tracked independently from parent conversions.</th><th class="">Inquiry submitted</th></tr></table></div>
+<p><span style="color:#2e5fa3"><strong>SECTION 6</strong></span></p>
+<p><span style="color:#1b2a4a"><strong>What Happens Next</strong></span></p>
+<p><span style="color:#444444">The research is done. The strategy is defined. Here&#x27;s what we build from here — in order.</span></p>
+<div class="table-wrap"><table><tr><th class="">1</th><th class="">Michelle Completes the Content Brief
+Stephen has prepared a separate document with guided writing assignments for every major page. Michelle works through those prompts — in any format, at any pace — and her answers become the foundation for all copy. Nothing gets written without her voice in it.</th></tr></table></div>
+<div class="table-wrap"><table><tr><th class="">2</th><th class="">Brand Voice &amp; Messaging Guide
+Before any page copy is written, Stephen and Claude develop a Brand Voice Guide — the document that governs how Spark Academy sounds across every page, every blog post, and every CTA. Dr. Peterson reviews and approves it before anything else is written.</th></tr></table></div>
+<div class="table-wrap"><table><tr><th class="">3</th><th class="">Keyword Research &amp; SEO Map
+A full keyword research report assigns specific search terms to every page in the sitemap above, along with search volume and competition data for the Peoria market. This confirms the URL structure and content priorities before build begins.</th></tr></table></div>
+<div class="table-wrap"><table><tr><th class="">4</th><th class="">Content Creation
+Page copy is written for every section of the site — starting with Homepage, About Dr. Peterson, and the Tour page. Each draft is sent to Michelle for review with clear explanation of the strategy behind every choice.</th></tr></table></div>
+<div class="table-wrap"><table><tr><th class="">5</th><th class="">Design &amp; Build
+With content in place, the site is designed and built on a platform that Stephen can update seasonally — new programs, summer camp schedules, blog posts — using Claude to assist. Analytics, call tracking, and form tracking are configured from day one so every lead can be measured.</th></tr></table></div>
+<div class="section-label fill-navy">The goal is simple.
+When a family in Morton, Washington, Peoria, or East Peoria searches for a preschool — the first result they find should be Spark Academy. When they arrive, the site should make them feel like they&#x27;ve already found the right place. And when they submit a tour request, it should feel effortless.
+That&#x27;s what we&#x27;re building.</div>
+<p><span style="color:var(--mid)">Spark Academy Website Project  ·  Research Findings &amp; Strategy Brief  ·  Prepared February 2026</span></p>
+    </div>
+  </div>
+</div>
+<footer class="site-footer">
+  Spark Academy Website Project &nbsp;&middot;&nbsp; For internal use only
+</footer>
+</body>
+</html>
