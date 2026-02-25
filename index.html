@@ -2131,7 +2131,7 @@
                 <a href="tel:3092913292" class="btn btn--secondary">Call 309-291-3292</a>
             </div>
             <p class="tour-cta__phone">
-                Or email us at <a href="/cdn-cgi/l/email-protection#1d6e6d7c6f767c7e7c7978706470726f6972735d7a707c7471337e7270"><span class="__cf_email__" data-cfemail="aad9dacbd8c1cbc9cbcecfc7d3c7c5d8dec5c4eacdc7cbc3c684c9c5c7">[email&#160;protected]</span></a>
+                Or email us at <a href="mailto:sparkacademymorton@gmail.com">sparkacademymorton@gmail.com</a>
             </p>
         </div>
     </section>
@@ -2276,7 +2276,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                     </svg>
-                    <a href="/cdn-cgi/l/email-protection#16656677647d77757772737b6f7b796462797856717b777f7a3875797b" style="color: rgba(255,255,255,0.7);"><span class="__cf_email__" data-cfemail="44373425362f2527252021293d292b36302b2a042329252d286a272b29">[email&#160;protected]</span></a>
+                    <a href="mailto:sparkacademymorton@gmail.com" style="color: rgba(255,255,255,0.7);">sparkacademymorton@gmail.com</a>
                 </div>
                 <div class="footer__contact-item">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -2306,7 +2306,7 @@
     <!-- ============================================================
          JAVASCRIPT — Nav scroll, animations, mobile menu
          ============================================================ -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // Sticky nav background on scroll
         const nav = document.getElementById('nav');
         window.addEventListener('scroll', () => {
@@ -2354,4 +2354,16 @@
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
-                const target = document.que
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    const offset = 80; // account for fixed nav
+                    const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
