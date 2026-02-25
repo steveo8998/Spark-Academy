@@ -1357,15 +1357,16 @@
             }
         }
 
-        .animate-in {
+        /* Content visible by default. JS adds .will-animate to enable transitions. */
+        .animate-in.will-animate {
             opacity: 0;
             transform: translateY(24px);
             transition: opacity 0.7s ease, transform 0.7s ease;
         }
 
         .animate-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+            opacity: 1 !important;
+            transform: translateY(0) !important;
         }
 
         /* Stagger children */
@@ -1383,10 +1384,10 @@
         .animate-in.visible .testimonial-card:nth-child(3) { transition-delay: 0.2s; }
         .animate-in.visible .program-card:nth-child(4) { transition-delay: 0.3s; }
 
-        .philosophy__card,
-        .program-card,
-        .blog-card,
-        .testimonial-card {
+        .will-animate .philosophy__card,
+        .will-animate .program-card,
+        .will-animate .blog-card,
+        .will-animate .testimonial-card {
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
@@ -1629,7 +1630,8 @@
     <nav class="nav" id="nav">
         <div class="nav__inner">
             <a href="#" class="nav__logo">
-                <span class="logo-text">[Spark Academy Logo]</span>
+                <img src="images/Spark_primary_logo_full_color_white.png" alt="Spark Academy" class="logo-desktop">
+                <img src="images/Spark_wordmark_full_color_white.png" alt="Spark Academy" class="logo-mobile">
             </a>
             <ul class="nav__links">
                 <li><a href="#philosophy">Why Spark</a></li>
@@ -2243,7 +2245,7 @@
     <footer class="footer">
         <div class="footer__grid">
             <div class="footer__brand">
-                <span class="logo-text">[Spark Academy Logo]</span>
+                <img src="images/Spark_primary_logo_full_color_white.png" alt="Spark Academy">
                 <p>
                     Purposeful play. Exceptional beginnings. The only preschool in Central Illinois founded by a doctoral
                     researcher in early childhood education.
@@ -2340,7 +2342,10 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.animate-in').forEach(el => observer.observe(el));
+        document.querySelectorAll('.animate-in').forEach(el => {
+            el.classList.add('will-animate');
+            observer.observe(el);
+        });
 
         // Mobile nav
         const mobileToggle = document.getElementById('mobileToggle');
