@@ -1442,12 +1442,11 @@
             }
 
             .philosophy__grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: 1fr;
             }
 
-            /* Fix: Community & Belonging card shouldn't span 2 on single-col */
             .philosophy__card[style*="grid-column"] {
-                grid-column: span 2;
+                grid-column: span 1;
             }
 
             .programs__grid {
