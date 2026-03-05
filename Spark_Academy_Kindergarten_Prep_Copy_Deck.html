@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spark Academy — Kindergarten Prep Copy Deck</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --mist-teal: #3D6B62;
+    --antique-gold: #C49826;
+    --cloud-white: #FBFAF8;
+    --whisper-sage: #EFF5F2;
+    --misty-sage: #9BB8AD;
+    --body-text: #2E2E2E;
+    --light-gold: #FBF5E6;
+    --deep-teal: #2C4F48;
+    --warm-gray: #8A8A8A;
+    --border-light: #E2E8E5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cloud-white);
+    color: var(--body-text);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: linear-gradient(165deg, var(--mist-teal) 0%, var(--deep-teal) 100%);
+    color: white;
+    padding: 3rem 1.5rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: -20%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(196,152,38,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--antique-gold);
+    margin-bottom: 0.75rem;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.85rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    position: relative;
+  }
+  .hero-subtitle {
+    font-size: 0.95rem;
+    color: var(--misty-sage);
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .hero-tag {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 0.3rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.85);
+  }
+  .hero-tag.gold {
+    background: rgba(196,152,38,0.15);
+    border-color: rgba(196,152,38,0.3);
+    color: var(--antique-gold);
+  }
+
+  /* ─── STICKY NAV ─── */
+  .sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: white;
+    border-bottom: 1px solid var(--border-light);
+    padding: 0.6rem 1rem;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .sticky-nav::-webkit-scrollbar { display: none; }
+  .nav-pills {
+    display: inline-flex;
+    gap: 0.4rem;
+  }
+  .nav-pill {
+    display: inline-block;
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--mist-teal);
+    background: var(--whisper-sage);
+    text-decoration: none;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .nav-pill:hover, .nav-pill:active {
+    background: var(--mist-teal);
+    color: white;
+  }
+
+  /* ─── CONTENT CONTAINER ─── */
+  .content {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+  }
+
+  /* ─── SECTIONS ─── */
+  .section {
+    padding: 2.5rem 0 2rem;
+    border-bottom: 1px solid var(--border-light);
+  }
+  .section:last-of-type {
+    border-bottom: none;
+  }
+
+  .section-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--antique-gold);
+    margin-bottom: 0.5rem;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--mist-teal);
+    line-height: 1.25;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--deep-teal);
+    margin-bottom: 0.6rem;
+    margin-top: 1.5rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+  }
+
+  strong {
+    font-weight: 600;
+    color: var(--body-text);
+  }
+
+  /* ─── COPY BLOCK (actual website copy) ─── */
+  .copy-block {
+    background: white;
+    border: 1px solid var(--border-light);
+    border-left: 3px solid var(--mist-teal);
+    border-radius: 0 8px 8px 0;
+    padding: 1.25rem 1.25rem;
+    margin: 1rem 0;
+  }
+  .copy-block p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ─── H1 DISPLAY ─── */
+  .h1-display {
+    background: var(--whisper-sage);
+    border-radius: 10px;
+    padding: 1.5rem 1.25rem;
+    margin: 1rem 0;
+    text-align: center;
+  }
+  .h1-display h2 {
+    font-size: 1.35rem;
+    color: var(--deep-teal);
+    margin-bottom: 0.5rem;
+  }
+  .h1-display p {
+    font-size: 0.9rem;
+    color: var(--mist-teal);
+    margin-bottom: 0;
+    font-style: italic;
+  }
+
+  /* ─── CTA DISPLAY ─── */
+  .cta-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 1.25rem 0;
+  }
+  .cta-primary {
+    background: var(--antique-gold);
+    color: white;
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 0.75rem 2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    display: inline-block;
+    letter-spacing: 0.02em;
+  }
+  .cta-secondary {
+    font-size: 0.82rem;
+    color: var(--mist-teal);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .cta-trust-line {
+    font-size: 0.72rem;
+    color: var(--warm-gray);
+    text-align: center;
+    margin-top: 0.25rem;
+  }
+
+  /* ─── STRATEGIC NOTE ─── */
+  .strategic-note {
+    background: var(--light-gold);
+    border: 1px solid rgba(196,152,38,0.25);
+    border-radius: 8px;
+    padding: 1rem 1.15rem;
+    margin: 1.25rem 0;
+    font-size: 0.82rem;
+    line-height: 1.55;
+  }
+  .strategic-note::before {
+    content: '🎯 Strategic Note';
+    display: block;
+    font-weight: 700;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--antique-gold);
+    margin-bottom: 0.4rem;
+  }
+  .strategic-note p {
+    font-size: 0.82rem;
+    margin-bottom: 0.5rem;
+  }
+  .strategic-note p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ─── PHOTO DIRECTION ─── */
+  .photo-note {
+    background: #F3F0EB;
+    border: 1px solid #E0DCD5;
+    border-radius: 8px;
+    padding: 1rem 1.15rem;
+    margin: 1rem 0;
+    font-size: 0.82rem;
+    line-height: 1.55;
+  }
+  .photo-note::before {
+    content: '📷 Photo Direction';
+    display: block;
+    font-weight: 700;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #8A7B6B;
+    margin-bottom: 0.4rem;
+  }
+
+  /* ─── TABLES ─── */
+  .table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 1rem 0;
+    border-radius: 8px;
+    border: 1px solid var(--border-light);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+    min-width: 480px;
+  }
+  thead th {
+    background: var(--mist-teal);
+    color: white;
+    font-weight: 600;
+    text-align: left;
+    padding: 0.65rem 0.75rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 0.6rem 0.75rem;
+    border-bottom: 1px solid var(--border-light);
+    vertical-align: top;
+  }
+  tbody tr:nth-child(even) {
+    background: var(--whisper-sage);
+  }
+  tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  /* ─── TUITION TABLE (special) ─── */
+  .tuition-table {
+    min-width: 360px;
+  }
+  .tuition-table td:nth-child(3) {
+    font-weight: 700;
+    color: var(--mist-teal);
+    white-space: nowrap;
+  }
+
+  /* ─── BULLET LIST ─── */
+  .check-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+  }
+  .check-list li {
+    padding: 0.4rem 0 0.4rem 1.75rem;
+    position: relative;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  .check-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+    color: var(--mist-teal);
+    font-size: 0.95rem;
+  }
+
+  /* ─── SPEC TABLE (page specs) ─── */
+  .spec-table {
+    min-width: 340px;
+  }
+  .spec-table td:first-child {
+    font-weight: 600;
+    color: var(--mist-teal);
+    white-space: nowrap;
+    width: 40%;
+  }
+
+  /* ─── FAQ ─── */
+  .faq-item {
+    border-bottom: 1px solid var(--border-light);
+    padding: 1rem 0;
+  }
+  .faq-item:last-child {
+    border-bottom: none;
+  }
+  .faq-q {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--deep-teal);
+    margin-bottom: 0.4rem;
+  }
+  .faq-a {
+    font-size: 0.9rem;
+    color: var(--body-text);
+    line-height: 1.6;
+  }
+
+  /* ─── INTERNAL LINKS ─── */
+  .link-map {
+    min-width: 440px;
+  }
+  .link-map td:first-child {
+    font-weight: 600;
+  }
+  .link-map td:nth-child(2) {
+    font-family: monospace;
+    font-size: 0.78rem;
+    color: var(--mist-teal);
+  }
+
+  /* ─── INFO BOX ─── */
+  .info-box {
+    background: var(--whisper-sage);
+    border-radius: 8px;
+    padding: 1rem 1.15rem;
+    margin: 1rem 0;
+    font-size: 0.88rem;
+  }
+  .info-box p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ─── DIVIDER ─── */
+  .section-divider {
+    text-align: center;
+    padding: 0.5rem 0;
+    color: var(--misty-sage);
+    font-size: 1.2rem;
+    letter-spacing: 0.5em;
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    background: var(--deep-teal);
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 2rem 1.5rem;
+    font-size: 0.78rem;
+    line-height: 1.6;
+    margin-top: 2rem;
+  }
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.35rem;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (min-width: 768px) {
+    .hero { padding: 4rem 2rem 3rem; }
+    .hero h1 { font-size: 2.2rem; }
+    .content { padding: 0 2rem; }
+    h2 { font-size: 1.6rem; }
+    table { min-width: unset; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+<header class="hero">
+  <div class="hero-label">Phase 3A · Copy Deck · Draft</div>
+  <h1>Kindergarten Prep</h1>
+  <p class="hero-subtitle">Complete page copy for /kindergarten-prep/ — ready for Dr. Peterson's review</p>
+  <div class="hero-meta">
+    <span class="hero-tag gold">Hybrid Lens · 70/30</span>
+    <span class="hero-tag">Mid-to-Bottom Funnel</span>
+    <span class="hero-tag">Primary KW: kindergarten prep Morton IL</span>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════ NAV ═══════════════════════════════ -->
+<nav class="sticky-nav">
+  <div class="nav-pills">
+    <a href="#specs" class="nav-pill">Specs</a>
+    <a href="#s1" class="nav-pill">Hero</a>
+    <a href="#s2" class="nav-pill">Cutoff</a>
+    <a href="#s3" class="nav-pill">Schedule</a>
+    <a href="#s4" class="nav-pill">Readiness</a>
+    <a href="#s5" class="nav-pill">Tuition</a>
+    <a href="#s6" class="nav-pill">Next Steps</a>
+    <a href="#s7" class="nav-pill">Testimonials</a>
+    <a href="#s8" class="nav-pill">CTA</a>
+    <a href="#s9" class="nav-pill">FAQ</a>
+    <a href="#links" class="nav-pill">Links</a>
+    <a href="#photos" class="nav-pill">Photos</a>
+  </div>
+</nav>
+
+<div class="content">
+
+<!-- ═══════════════════════════════ PAGE SPECS ═══════════════════════════════ -->
+<section class="section" id="specs">
+  <div class="section-label">Page Specifications</div>
+  <h2>Technical & SEO Details</h2>
+
+  <div class="table-wrap">
+    <table class="spec-table">
+      <tbody>
+        <tr><td>Page</td><td>Kindergarten Prep</td></tr>
+        <tr><td>URL</td><td>/kindergarten-prep/</td></tr>
+        <tr><td>Primary Keyword</td><td>kindergarten prep Morton IL</td></tr>
+        <tr><td>Secondary Keywords</td><td>kindergarten readiness program Peoria IL; kindergarten prep program Illinois; pre-K kindergarten prep near me</td></tr>
+        <tr><td>Long-Tail Variations</td><td>my child missed kindergarten cutoff Illinois; kindergarten readiness program Central Illinois; private kindergarten prep Peoria</td></tr>
+        <tr><td>Search Intent</td><td>High-intent Commercial — parent specifically seeking kindergarten preparation; often triggered by a birthday that misses the public school cutoff</td></tr>
+        <tr><td>Funnel Stage</td><td>Mid-to-Bottom Funnel — parent has a specific, urgent need</td></tr>
+        <tr><td>Messaging Lens</td><td>Hybrid — 70% child-centric / 30% school-centric</td></tr>
+        <tr><td>Primary CTA</td><td>Schedule a Tour</td></tr>
+        <tr><td>Secondary CTA</td><td>Have a Question? We'd love to hear from you.</td></tr>
+        <tr><td>Meta Title</td><td>Kindergarten Prep Morton IL | Spark Academy</td></tr>
+        <tr><td>Meta Description</td><td>Kindergarten prep program for 5-year-olds in Morton, IL. November 30 cutoff. 2.5-hr academic play, doctoral-led. 5:1 ratio. Schedule a tour at Spark Academy.</td></tr>
+        <tr><td>Schema Markup</td><td>EducationalOccupationalProgram + FAQPage + BreadcrumbList</td></tr>
+        <tr><td>Word Count Target</td><td>1,500–2,000 words</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="strategic-note">
+    <p>This page has two distinct parent audiences arriving with different urgencies. The first is a parent whose child turns 5 between September 2 and November 30 — they've discovered their child misses the public school cutoff and they need options. This parent is stressed and time-sensitive.</p>
+    <p>The second is a parent who wants more for their child before kindergarten regardless of birthday — they're outcome-focused and comparing rigorously.</p>
+    <p>The November 30 birthday cutoff differentiator must be in the first 100 words. The school-centric proof layer is heavier here than on the 3's and 4's pages because this audience demands it — they're making an academically consequential decision.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ S1: HERO ═══════════════════════════════ -->
+<section class="section" id="s1">
+  <div class="section-label">Section 1</div>
+  <h2>Hero — Above the Fold</h2>
+
+  <div class="h1-display">
+    <h2>Give Your Child the Kindergarten Readiness They Deserve — Starting Now</h2>
+    <p>H1 · Primary page heading</p>
+  </div>
+
+  <div class="strategic-note">
+    <p>Outcome-focused and urgency-aware. "Starting now" answers the implicit anxiety of the parent whose child is approaching kindergarten age: <em>there's still time, and this is where to start.</em> This H1 passes the Flip Test — the child is the subject and the beneficiary. The school is implied but not named.</p>
+  </div>
+
+  <h3>Hero Subheadline</h3>
+  <div class="copy-block">
+    <p><em>Kindergarten Prep at Spark Academy is a full-day morning program designed to build the academic, social-emotional, and developmental foundation your child needs to walk into kindergarten confidently — not just ready, but ahead.</em></p>
+  </div>
+
+  <h3>Hero CTA Block</h3>
+  <div class="cta-block">
+    <span class="cta-primary">Schedule a Tour</span>
+    <span class="cta-secondary">Have a Question? We'd love to hear from you.</span>
+    <span class="cta-trust-line">November 30 Birthday Cutoff · 5:1 Ratio · 2.5-Hour Academic Play · Led by Dr. Michelle Peterson, Ed.D.</span>
+  </div>
+
+  <div class="photo-note">
+    A 5-year-old engaged in a focused, intentional activity — writing, a STEM experiment, or a small-group discussion with a teacher. The child should look purposeful and confident, not just playing. The image communicates forward motion and readiness. Natural light, homelike environment.
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ S2: CUTOFF ═══════════════════════════════ -->
+<section class="section" id="s2">
+  <div class="section-label">Section 2</div>
+  <h2>The Birthday Cutoff No One Tells You About</h2>
+
+  <h3>H2: Your Child's Birthday Doesn't Have to Be a Setback</h3>
+
+  <div class="copy-block">
+    <p>Here's a situation more families face than you might think:</p>
+    <p>Your child turns 5 in October. They're bright, curious, and completely ready to start school. But the public school system's kindergarten cutoff is September 1 — which means they won't be eligible for public kindergarten until the following year. That's a full year of waiting for a child who's already ready.</p>
+    <p>At Spark Academy, Kindergarten Prep uses a <strong>November 30 birthday cutoff</strong>.</p>
+    <p>If your child turns 5 by November 30, they are eligible for Kindergarten Prep — regardless of the public school timeline. You don't have to wait another year. Your child doesn't have to spend 12 months in a program that's academically beneath them.</p>
+    <p>Kindergarten Prep fills that gap with exactly what your child needs: a rigorous, research-driven morning program that meets them where they are and gets them fully ready for everything that comes next.</p>
+  </div>
+
+  <div class="strategic-note">
+    <p>This is the most differentiating section on the page from an SEO standpoint. Parents searching "my child missed kindergarten cutoff Illinois" are in urgent, high-intent mode — and Spark's November 30 cutoff is a concrete, immediate solution.</p>
+    <p>The section is written with empathy (the stress of the situation) before pivoting to relief (the solution). This is the BAB framework (Before → After → Bridge) applied to a single program differentiator.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ S3: SCHEDULE ═══════════════════════════════ -->
+<section class="section" id="s3">
+  <div class="section-label">Section 3</div>
+  <h2>What Kindergarten Prep Looks Like</h2>
+
+  <h3>H2: A Morning Designed for Children on the Edge of Kindergarten</h3>
+
+  <div class="copy-block">
+    <p>Kindergarten Prep runs from 8:00 AM to 12:00 PM — a full morning that prepares five-year-olds for the longer school days ahead. The schedule includes an expanded Academic Play block that reflects your child's growing capacity for sustained, focused learning.</p>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Time Block</th>
+          <th>Activity</th>
+          <th>What Your Child Is Building</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>2.5 Hours</strong></td>
+          <td>Academic Play</td>
+          <td>Advanced literacy, numeracy, critical thinking, and pre-academic skills through teacher-guided purposeful play — the longest academic block of any Spark program</td>
+        </tr>
+        <tr>
+          <td><strong>30 Minutes</strong></td>
+          <td>Developmental Playroom</td>
+          <td>Complex collaboration, creative initiative, and independent problem-solving in a monthly-rotating student-directed environment</td>
+        </tr>
+        <tr>
+          <td><strong>30 Minutes</strong></td>
+          <td>Daily Enrichment</td>
+          <td>Spanish, STEM, Art, Communication, and Music & Movement — at a five-year-old depth</td>
+        </tr>
+        <tr>
+          <td><strong>15 Minutes</strong></td>
+          <td>Outdoor Play</td>
+          <td>Physical development, peer relationships, and gross motor confidence</td>
+        </tr>
+        <tr>
+          <td><strong>15 Minutes</strong></td>
+          <td>Snack & Bathroom Break</td>
+          <td>Community, independence, and self-regulation practice</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="info-box">
+    <p><strong>Hours:</strong> 8:00 AM–12:00 PM</p>
+  </div>
+
+  <div class="strategic-note">
+    <p>The 2.5-hour Academic Play block is the structural differentiator between K-Prep and the 3's/4's programs. It needs to be called out as meaningful — not just listed. "The longest academic block of any Spark program" frames it as a step up, not just a schedule detail. This tells the outcome-focused parent exactly what they need to hear.</p>
+  </div>
+
+  <h3>Why the Longer Academic Block Matters</h3>
+
+  <div class="copy-block">
+    <p>At three and four, children build their capacity for focused learning in 90-minute blocks. By five, that capacity has grown — and Kindergarten Prep respects that growth by expanding Academic Play to two and a half hours.</p>
+    <p>This isn't busywork. Dr. Peterson's doctoral research in early childhood education confirms that children at this developmental stage are ready for more sustained engagement with academic concepts — letters, sounds, numbers, writing, and the early logic skills that underpin everything from reading comprehension to mathematical reasoning.</p>
+    <p>The Purposeful Play Framework structures that engagement through play-based activities specifically scaffolded for kindergarten-readiness skills. Your child isn't sitting at a desk drilling worksheets. They're building, creating, experimenting, and problem-solving their way toward the exact competencies that kindergarten teachers look for on day one.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ S4: READINESS ═══════════════════════════════ -->
+<section class="section" id="s4">
+  <div class="section-label">Section 4</div>
+  <h2>What "Kindergarten Ready" Actually Means</h2>
+
+  <h3>H2: It's Not Just About Letters and Numbers</h3>
+
+  <div class="copy-block">
+    <p>Many parents assume kindergarten readiness is primarily academic — recognizing letters, counting to 20, maybe writing their name. And while those skills matter, the kindergarten teachers we work with will tell you the same thing Dr. Peterson's research shows: the children who thrive in kindergarten are the ones who are socially and emotionally ready, not just academically prepared.</p>
+
+    <p><strong>A kindergarten-ready child can:</strong></p>
+
+    <ul class="check-list">
+      <li>Separate from a parent without significant distress</li>
+      <li>Follow multi-step instructions from an unfamiliar adult</li>
+      <li>Navigate peer conflict with some independence</li>
+      <li>Sustain focused attention for 20–30 minute blocks</li>
+      <li>Communicate needs, feelings, and questions clearly</li>
+      <li>Participate in group activities and take turns</li>
+      <li>Manage their own bathroom routines and belongings</li>
+    </ul>
+
+    <p>Every single one of these competencies is developed, practiced, and built into the Kindergarten Prep daily schedule — not as a separate "social-emotional curriculum," but as the natural by-product of a well-structured day in a small, intentional learning community.</p>
+    <p>At Spark, we track each child's development in all of these areas using the individualized assessment tools built into the Purposeful Play Framework. When your child completes Kindergarten Prep, you won't just hope they're ready. You'll know.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ S5: TUITION ═══════════════════════════════ -->
+<section class="section" id="s5">
+  <div class="section-label">Section 5</div>
+  <h2>Flexible Scheduling for Busy Families</h2>
+
+  <h3>H2: Choose the Schedule That Fits Your Family's Life</h3>
+
+  <div class="table-wrap">
+    <table class="tuition-table">
+      <thead>
+        <tr>
+          <th>Schedule</th>
+          <th>Days</th>
+          <th>Monthly Tuition</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Tuesday/Thursday</td>
+          <td>2 days/week</td>
+          <td>$400/month</td>
+        </tr>
+        <tr>
+          <td>Monday/Wednesday/Friday</td>
+          <td>3 days/week</td>
+          <td>$500/month</td>
+        </tr>
+        <tr>
+          <td>Monday–Friday</td>
+          <td>5 days/week</td>
+          <td>$650/month</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="info-box">
+    <p><strong>Hours:</strong> 8:00 AM–12:00 PM · <strong>Age:</strong> Must be 5 by November 30 · <strong>Potty Training:</strong> Required</p>
+  </div>
+
+  <div class="copy-block">
+    <p><strong>What's included:</strong> All programming, curriculum materials, enrichment, developmental playroom, and outdoor play. No supply lists. No hidden fees. No additional costs. Tuition covers everything.</p>
+    <p><strong>Payment Terms:</strong> Tuition is billed over 10 months. A 10% discount is available for families who pay the full year's tuition by August 15. A $100 non-refundable deposit holds your enrollment spot.</p>
+  </div>
+
+  <h3>Which Schedule Is Right?</h3>
+
+  <div class="copy-block">
+    <p>For children who are new to structured schooling or who are easing into a longer day, two or three days a week provides a meaningful, complete experience. For children who are academically energized and whose families are preparing for a five-day-a-week kindergarten schedule, five days a week is the most natural preparation.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ S6: NEXT STEPS ═══════════════════════════════ -->
+<section class="section" id="s6">
+  <div class="section-label">Section 6</div>
+  <h2>What Comes After Kindergarten Prep?</h2>
+
+  <h3>H2: Two Paths Forward — Both Well-Prepared</h3>
+
+  <div class="copy-block">
+    <p>Children who complete Kindergarten Prep at Spark leave with strong academic and social-emotional foundations. From there, most families choose one of two paths:</p>
+    <p><strong>Enroll in Spark's Private Kindergarten</strong> — For families who want to continue in a small, doctoral-led environment with a 5:1 ratio and the Purposeful Play Framework. Spark's Kindergarten program (M–F, 8:00–12:00) is a natural continuation of everything built in K-Prep.</p>
+    <p><strong>Enter Public Kindergarten Fully Prepared</strong> — Children who complete Kindergarten Prep consistently arrive in public kindergarten academically and socially ahead of grade-level expectations. They know how to be students.</p>
+  </div>
+
+  <div class="info-box">
+    <p><strong>Internal Link:</strong> Learn about Spark's Kindergarten → /kindergarten/</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ S7: TESTIMONIALS ═══════════════════════════════ -->
+<section class="section" id="s7">
+  <div class="section-label">Section 7</div>
+  <h2>What Parents Are Saying</h2>
+
+  <h3>H2: From K-Prep Families</h3>
+
+  <div class="info-box" style="border: 2px dashed var(--misty-sage); background: white; text-align: center; padding: 2rem 1.25rem;">
+    <p style="font-weight: 600; color: var(--mist-teal); margin-bottom: 0.5rem;">Testimonials Coming Soon</p>
+    <p style="font-size: 0.82rem; color: var(--warm-gray); margin-bottom: 0;">This section will feature 2–3 parent quotes specific to the K-Prep experience — ideally addressing the birthday cutoff situation, kindergarten readiness outcomes, or the transition to kindergarten.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ S8: FINAL CTA ═══════════════════════════════ -->
+<section class="section" id="s8">
+  <div class="section-label">Section 8</div>
+  <h2>Ready to Talk?</h2>
+
+  <h3>H2: Your Child's Kindergarten Year Starts Here</h3>
+
+  <div class="copy-block">
+    <p>Whether your child missed the public school cutoff or you're simply looking for the strongest possible kindergarten preparation available in Central Illinois — we'd love to show you what Kindergarten Prep looks like in person.</p>
+    <p>Schedule a tour to meet our teachers, see the program, and ask every question you have.</p>
+    <p><em>The only preschool in Central Illinois founded and led by a doctoral researcher in early childhood education.</em></p>
+  </div>
+
+  <div class="cta-block">
+    <span class="cta-primary">Schedule a Tour</span>
+    <span class="cta-secondary">Have a Question? We'd love to hear from you.</span>
+    <span class="cta-trust-line">📞 309-291-3292</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ S9: FAQ ═══════════════════════════════ -->
+<section class="section" id="s9">
+  <div class="section-label">Section 9</div>
+  <h2>Frequently Asked Questions</h2>
+
+  <h3>H2: Questions About Kindergarten Prep</h3>
+
+  <div class="faq-item">
+    <div class="faq-q">What is the age requirement for Kindergarten Prep?</div>
+    <div class="faq-a">Your child must be five years old by November 30 and must be fully potty trained. This cutoff is specifically designed to serve children who turn 5 between September 2 and November 30 — the group that falls between public school cutoffs.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">What if my child turns 5 after November 30?</div>
+    <div class="faq-a">Children who turn 5 after November 30 should consider our 4's Preschool program, which is designed for four-year-olds and children not yet eligible for kindergarten prep. Contact us and we'll help you figure out the right fit.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">How is Kindergarten Prep different from the 4's Preschool?</div>
+    <div class="faq-a">Kindergarten Prep includes a 2.5-hour Academic Play block (versus 1.5 hours in the 4's program), runs from 8:00 AM to 12:00 PM (versus 8:30–11:30 AM), and is specifically designed for children who are developmentally ready for the intensified preparation that kindergarten demands. The curriculum expectations, peer interactions, and academic scaffolding are calibrated for five-year-olds, not four-year-olds.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">How will I know if my child is ready for kindergarten after completing this program?</div>
+    <div class="faq-a">Dr. Peterson uses individualized developmental assessment tools throughout the year to track each child's progress. Parents receive ongoing communication about their child's development, and the picture of kindergarten readiness is built over the course of the program — not delivered as a single year-end evaluation.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Can my child go to Spark's Kindergarten after Kindergarten Prep?</div>
+    <div class="faq-a">Yes. Kindergarten Prep and Spark's Kindergarten program are designed as a natural progression. Many K-Prep families continue into Kindergarten at Spark — their child already knows the teachers, the environment, and the Purposeful Play Framework.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Is there a difference between two, three, and five days a week?</div>
+    <div class="faq-a">All schedule options cover the full Purposeful Play curriculum. More days means more time with peers, more repetition across the enrichment cycle, and more practice sustaining the longer school day. Families preparing for a five-day-a-week kindergarten schedule often benefit from the five-day option.</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ LINKS ═══════════════════════════════ -->
+<section class="section" id="links">
+  <div class="section-label">Reference</div>
+  <h2>Internal Linking Map</h2>
+
+  <div class="table-wrap">
+    <table class="link-map">
+      <thead>
+        <tr>
+          <th>Link Target</th>
+          <th>URL</th>
+          <th>Where on Page</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Schedule a Tour</td>
+          <td>/schedule-a-tour/</td>
+          <td>Hero CTA, Section 8 CTA, bottom of page</td>
+        </tr>
+        <tr>
+          <td>Kindergarten</td>
+          <td>/kindergarten/</td>
+          <td>Section 6 (what comes after)</td>
+        </tr>
+        <tr>
+          <td>4's Preschool</td>
+          <td>/preschool-4s/</td>
+          <td>FAQ (age requirement clarification)</td>
+        </tr>
+        <tr>
+          <td>Programs Overview</td>
+          <td>/programs/</td>
+          <td>Breadcrumb navigation</td>
+        </tr>
+        <tr>
+          <td>Purposeful Play Framework</td>
+          <td>/purposeful-play-framework/</td>
+          <td>Section 3 (framework mention)</td>
+        </tr>
+        <tr>
+          <td>Dr. Michelle Peterson</td>
+          <td>/dr-michelle-peterson/</td>
+          <td>Trust line under CTA</td>
+        </tr>
+        <tr>
+          <td>Phone CTA</td>
+          <td>tel:3092913292</td>
+          <td>Section 8</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ PHOTOS ═══════════════════════════════ -->
+<section class="section" id="photos">
+  <div class="section-label">Reference</div>
+  <h2>Photo Direction Summary</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Section</th>
+          <th>Shot Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Hero</strong></td>
+          <td>5-year-old in focused, purposeful activity — writing, STEM, or small-group discussion. Confident, not just playing.</td>
+        </tr>
+        <tr>
+          <td><strong>Birthday Cutoff</strong></td>
+          <td>Optional: A child arriving at a school door with a backpack — fresh start energy</td>
+        </tr>
+        <tr>
+          <td><strong>Schedule Table</strong></td>
+          <td>No photo needed — clean table layout</td>
+        </tr>
+        <tr>
+          <td><strong>Kindergarten Ready</strong></td>
+          <td>A child in a group listening activity — demonstrating the social-emotional readiness skills named in the copy</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+</div><!-- .content -->
+
+<!-- ═══════════════════════════════ FOOTER ═══════════════════════════════ -->
+<div class="footer">
+  <div class="footer-brand">Spark Academy</div>
+  <p>Kindergarten Prep Copy Deck · Phase 3A Deliverable<br>
+  Prepared for Dr. Michelle Peterson, Ed.D.<br>
+  March 2026</p>
+</div>
+
+</body>
+</html>

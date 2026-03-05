@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spark Academy — Homepage Copy Deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --mist-teal: #3D6B62;
+    --misty-sage: #9BB8AD;
+    --antique-gold: #C49826;
+    --cloud-white: #FBFAF8;
+    --whisper-sage: #EFF5F2;
+    --body-text: #2E2E2E;
+    --light-sage: #D8E8DE;
+    --warm-gold-bg: #FBF6EC;
+    --flag-red: #C44;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--body-text);
+    background: var(--cloud-white);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── Cover ─── */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 3rem 1.5rem;
+    background: linear-gradient(165deg, var(--whisper-sage) 0%, var(--cloud-white) 40%, var(--cloud-white) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: var(--misty-sage);
+    opacity: 0.12;
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -40px;
+    left: -40px;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: var(--antique-gold);
+    opacity: 0.08;
+  }
+  .cover-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--antique-gold);
+    border: 1.5px solid var(--antique-gold);
+    border-radius: 100px;
+    padding: 0.35rem 1.1rem;
+    margin-bottom: 2rem;
+  }
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--mist-teal);
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+  }
+  .cover .subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    color: var(--misty-sage);
+    font-weight: 400;
+    margin-bottom: 2rem;
+  }
+  .cover-meta {
+    font-size: 0.85rem;
+    color: #888;
+    line-height: 1.8;
+  }
+  .cover-meta strong { color: var(--body-text); }
+  .cover-status {
+    display: inline-block;
+    margin-top: 1.5rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--antique-gold);
+    background: var(--warm-gold-bg);
+    border-radius: 6px;
+    padding: 0.45rem 1rem;
+  }
+
+  /* ─── Navigation ─── */
+  .toc {
+    padding: 2rem 1.5rem;
+    background: var(--whisper-sage);
+    border-bottom: 2px solid var(--light-sage);
+  }
+  .toc h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--mist-teal);
+    margin-bottom: 1rem;
+  }
+  .toc-list {
+    list-style: none;
+    counter-reset: toc-counter;
+  }
+  .toc-list li {
+    counter-increment: toc-counter;
+    margin-bottom: 0.5rem;
+  }
+  .toc-list li a {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    text-decoration: none;
+    font-size: 0.9rem;
+    color: var(--mist-teal);
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(61,107,98,0.1);
+    transition: color 0.2s;
+  }
+  .toc-list li a::before {
+    content: counter(toc-counter, decimal-leading-zero);
+    font-weight: 700;
+    font-size: 0.75rem;
+    color: var(--antique-gold);
+    min-width: 1.5rem;
+  }
+  .toc-list li a:hover { color: var(--antique-gold); }
+
+  /* ─── Page Specs ─── */
+  .specs {
+    padding: 2rem 1.5rem;
+    background: var(--cloud-white);
+    border-bottom: 2px solid var(--whisper-sage);
+  }
+  .specs h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    color: var(--mist-teal);
+    margin-bottom: 1.25rem;
+  }
+  .spec-grid {
+    display: grid;
+    gap: 0.6rem;
+  }
+  .spec-row {
+    display: flex;
+    flex-direction: column;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(155,184,173,0.25);
+  }
+  .spec-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--misty-sage);
+    margin-bottom: 0.2rem;
+  }
+  .spec-value {
+    font-size: 0.9rem;
+    color: var(--body-text);
+  }
+
+  /* ─── Sections ─── */
+  .section {
+    padding: 2.5rem 1.5rem;
+    border-bottom: 3px solid var(--whisper-sage);
+  }
+  .section:nth-child(even) {
+    background: var(--cloud-white);
+  }
+  .section:nth-child(odd) {
+    background: linear-gradient(180deg, var(--cloud-white) 0%, var(--whisper-sage) 100%);
+  }
+  .section-number {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--antique-gold);
+    margin-bottom: 0.5rem;
+  }
+  .section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--mist-teal);
+    line-height: 1.25;
+    margin-bottom: 1.25rem;
+  }
+  .section h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--mist-teal);
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* ─── Copy Blocks ─── */
+  .copy-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--mist-teal);
+    line-height: 1.25;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--antique-gold);
+  }
+  .copy-tagline {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--antique-gold);
+    margin-bottom: 0.75rem;
+  }
+  .copy-positioning {
+    font-size: 0.95rem;
+    color: var(--body-text);
+    padding: 0.75rem 1rem;
+    background: var(--whisper-sage);
+    border-radius: 8px;
+    border-left: 3px solid var(--mist-teal);
+    margin-bottom: 1rem;
+    line-height: 1.55;
+  }
+  .copy-body {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    margin-bottom: 1rem;
+    color: var(--body-text);
+  }
+
+  /* ─── Strategic Notes ─── */
+  .note {
+    border-left: 3px solid var(--antique-gold);
+    background: var(--warm-gold-bg);
+    padding: 0.85rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: #555;
+  }
+  .note-label {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--antique-gold);
+    margin-bottom: 0.35rem;
+  }
+
+  /* ─── Photo Directions ─── */
+  .photo-dir {
+    border-left: 3px solid var(--mist-teal);
+    background: var(--whisper-sage);
+    padding: 0.85rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: #444;
+  }
+  .photo-dir-label {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--mist-teal);
+    margin-bottom: 0.35rem;
+  }
+  .photo-dir .alt-text {
+    display: block;
+    margin-top: 0.5rem;
+    font-style: italic;
+    font-size: 0.78rem;
+    color: #666;
+  }
+
+  /* ─── Flags for Michelle ─── */
+  .flag {
+    border-left: 3px solid var(--flag-red);
+    background: #FFF0F0;
+    padding: 0.85rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: #555;
+  }
+  .flag-label {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--flag-red);
+    margin-bottom: 0.35rem;
+  }
+
+  /* ─── CTA Blocks ─── */
+  .cta-block {
+    margin: 1.25rem 0;
+    padding: 1rem;
+    background: linear-gradient(135deg, var(--whisper-sage) 0%, var(--cloud-white) 100%);
+    border-radius: 10px;
+    border: 1.5px solid var(--light-sage);
+  }
+  .cta-primary {
+    display: inline-block;
+    background: var(--antique-gold);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 0.6rem 1.5rem;
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.02em;
+  }
+  .cta-secondary {
+    display: block;
+    font-size: 0.82rem;
+    color: var(--mist-teal);
+    font-weight: 500;
+    margin-top: 0.35rem;
+  }
+  .cta-note {
+    font-size: 0.75rem;
+    color: #888;
+    font-style: italic;
+    margin-top: 0.5rem;
+    line-height: 1.5;
+  }
+
+  /* ─── Internal Links ─── */
+  .int-link {
+    font-size: 0.82rem;
+    color: var(--antique-gold);
+    font-weight: 500;
+    margin: 0.5rem 0;
+  }
+  .int-link::before {
+    content: '→ ';
+    font-weight: 700;
+  }
+
+  /* ─── Proof Points ─── */
+  .proof-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin: 1rem 0;
+  }
+  .proof-item {
+    text-align: center;
+    padding: 1rem 0.5rem;
+    background: #fff;
+    border-radius: 10px;
+    border: 1.5px solid var(--light-sage);
+  }
+  .proof-item:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+  .proof-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--mist-teal);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+  .proof-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: #666;
+    line-height: 1.35;
+  }
+
+  /* ─── Program Cards ─── */
+  .program-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin: 1rem 0;
+  }
+  .program-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 1rem;
+    border: 1.5px solid var(--light-sage);
+    transition: border-color 0.2s;
+  }
+  .program-card-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--mist-teal);
+    margin-bottom: 0.35rem;
+  }
+  .program-card-detail {
+    font-size: 0.75rem;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 0.15rem;
+  }
+  .program-card-price {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--antique-gold);
+    margin-top: 0.4rem;
+  }
+  .program-card-link {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--mist-teal);
+    margin-top: 0.5rem;
+  }
+
+  /* ─── Testimonial ─── */
+  .testimonial {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin: 1rem 0;
+    border: 1.5px solid var(--light-sage);
+    position: relative;
+  }
+  .testimonial::before {
+    content: '\201C';
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    color: var(--misty-sage);
+    opacity: 0.3;
+    position: absolute;
+    top: 0;
+    left: 0.75rem;
+    line-height: 1;
+  }
+  .testimonial-text {
+    font-size: 0.9rem;
+    font-style: italic;
+    line-height: 1.7;
+    color: var(--body-text);
+    padding-top: 1rem;
+  }
+  .testimonial-author {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--mist-teal);
+    margin-top: 0.75rem;
+  }
+
+  /* ─── Trust Bar ─── */
+  .trust-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0.75rem 0;
+  }
+  .trust-badge {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--mist-teal);
+    background: var(--whisper-sage);
+    padding: 0.35rem 0.75rem;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+
+  /* ─── Shot List ─── */
+  .shot-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 1rem;
+    margin: 0.75rem 0;
+    border: 1.5px solid var(--light-sage);
+  }
+  .shot-card-number {
+    display: inline-block;
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #fff;
+    background: var(--mist-teal);
+    border-radius: 4px;
+    padding: 0.2rem 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .shot-card-critical {
+    background: var(--antique-gold);
+  }
+  .shot-card h4 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--mist-teal);
+    margin-bottom: 0.4rem;
+  }
+  .shot-card p {
+    font-size: 0.8rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 0.35rem;
+  }
+  .shot-spec {
+    font-size: 0.72rem;
+    color: var(--misty-sage);
+    font-weight: 600;
+  }
+
+  /* ─── Footer ─── */
+  .doc-footer {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    background: var(--mist-teal);
+    color: rgba(255,255,255,0.7);
+    font-size: 0.75rem;
+    line-height: 1.7;
+  }
+  .doc-footer strong { color: #fff; }
+
+  /* ─── Responsive tweaks ─── */
+  @media (min-width: 600px) {
+    .cover h1 { font-size: 2.8rem; }
+    .section { padding: 3rem 2.5rem; }
+    .specs { padding: 2rem 2.5rem; }
+    .toc { padding: 2rem 2.5rem; }
+    .copy-headline { font-size: 2rem; }
+    .program-cards { grid-template-columns: repeat(4, 1fr); }
+    .proof-grid { grid-template-columns: repeat(5, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════ COVER ════════════ -->
+<div class="cover">
+  <div class="cover-badge">Phase 3A Deliverable</div>
+  <h1>Homepage Copy Deck</h1>
+  <div class="subtitle">Spark Academy Website Rebuild</div>
+  <div class="cover-meta">
+    Prepared for <strong>Dr. Michelle Peterson, Ed.D.</strong><br>
+    Founder &amp; Executive Director, Spark Academy<br><br>
+    Prepared by <strong>Stephen Odanovich</strong><br>
+    Internet Marketing Specialist<br><br>
+    March 2026
+  </div>
+  <div class="cover-status">Draft — Pending Dr. Peterson's Review</div>
+</div>
+
+<!-- ════════════ TABLE OF CONTENTS ════════════ -->
+<div class="toc">
+  <h2>What's Inside</h2>
+  <ol class="toc-list">
+    <li><a href="#specs">Page Specifications</a></li>
+    <li><a href="#s1">Hero (Above the Fold)</a></li>
+    <li><a href="#s2">Proof Bar</a></li>
+    <li><a href="#s3">Programs at a Glance</a></li>
+    <li><a href="#s4">The Purposeful Play Framework</a></li>
+    <li><a href="#s5">Meet Dr. Michelle Peterson</a></li>
+    <li><a href="#s6">Testimonial Spotlight</a></li>
+    <li><a href="#s7">Community &amp; Location</a></li>
+    <li><a href="#s8">Final CTA Block</a></li>
+    <li><a href="#shots">Photography Shot List</a></li>
+  </ol>
+</div>
+
+<!-- ════════════ PAGE SPECIFICATIONS ════════════ -->
+<div class="specs" id="specs">
+  <h2>Page Specifications</h2>
+  <div class="spec-grid">
+    <div class="spec-row"><div class="spec-label">Page</div><div class="spec-value">Homepage</div></div>
+    <div class="spec-row"><div class="spec-label">URL</div><div class="spec-value">/</div></div>
+    <div class="spec-row"><div class="spec-label">Primary Keyword</div><div class="spec-value">preschool Morton IL (&lt;50/mo, KD 0)</div></div>
+    <div class="spec-row"><div class="spec-label">Secondary Keywords</div><div class="spec-value">preschool near me; Morton IL preschool; Spark Academy Morton</div></div>
+    <div class="spec-row"><div class="spec-label">Messaging Lens</div><div class="spec-value">Hybrid — 70% child-centric / 30% school-centric</div></div>
+    <div class="spec-row"><div class="spec-label">Primary CTA</div><div class="spec-value">Schedule a Tour</div></div>
+    <div class="spec-row"><div class="spec-label">Secondary CTA</div><div class="spec-value">Have a Question? We'd love to hear from you</div></div>
+    <div class="spec-row"><div class="spec-label">Meta Title (≤60)</div><div class="spec-value">Spark Academy | Play-Based Preschool in Morton, IL</div></div>
+    <div class="spec-row"><div class="spec-label">Meta Description (≤155)</div><div class="spec-value">Spark Academy is Morton's premier play-based preschool. Founded by Dr. Michelle Peterson, Ed.D. Schedule a tour today.</div></div>
+    <div class="spec-row"><div class="spec-label">Schema</div><div class="spec-value">LocalBusiness + EducationalOrganization + BreadcrumbList</div></div>
+  </div>
+</div>
+
+<!-- ════════════ SECTION 1: HERO ════════════ -->
+<div class="section" id="s1">
+  <div class="section-number">Section 01</div>
+  <h2>Hero (Above the Fold)</h2>
+
+  <h3>H1 — Page Title</h3>
+  <div class="copy-headline">Where Curious Minds Become Confident Learners</div>
+
+  <h3>Tagline</h3>
+  <div class="copy-tagline">Purposeful Play. Exceptional Beginnings.</div>
+
+  <h3>Positioning Statement</h3>
+  <div class="copy-positioning">The only preschool in Central Illinois founded and led by a doctoral researcher in early childhood education.</div>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    The hero must accomplish three things within the first viewport: (1) child-centric emotional hook that mirrors the parent's aspiration, (2) Dr. Peterson's Ed.D. credential visible as the positioning statement, and (3) a clear, inviting primary CTA. Parents decide within 10 seconds whether to stay. The headline bank provides "Where curious minds become confident learners" — it activates the aspiration trigger (Kindergarten Confidence pillar) while keeping the child as the protagonist.
+  </div>
+
+  <h3>Hero Body Copy</h3>
+  <p class="copy-body">Your child's first school experience shapes everything that follows — how they see themselves as learners, how they build friendships, how they walk into kindergarten. At Spark Academy, every part of their day is designed with that in mind.</p>
+  <p class="copy-body">Founded by Dr. Michelle Peterson, Ed.D., Spark Academy brings doctoral-level expertise to a warm, homelike setting where your child is known by name and nurtured by design.</p>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    Hybrid lens. Opens child-centric (the child's trajectory), transitions to school-centric (Dr. Peterson's credential). The phrase "known by name and nurtured by design" echoes the Known & Nurtured pillar and maps directly to Megan's (Persona 3) need for individualized attention.
+  </div>
+
+  <div class="cta-block">
+    <div class="cta-primary">Schedule a Tour</div>
+    <div class="cta-secondary">Have a Question? We'd Love to Hear From You</div>
+    <div class="cta-note">Primary CTA: Antique Gold button, white text. Both visible without scrolling. On mobile, primary CTA full-width, thumb-accessible.</div>
+  </div>
+
+  <div class="photo-dir">
+    <div class="photo-dir-label">📸 Photo Direction — Hero Image</div>
+    Wide-angle shot of 2–3 children actively engaged in a hands-on learning activity at a table or on the floor. Natural light from windows. Homelike interior visible — warm tones, not institutional fluorescents. At least one child smiling or showing focused concentration. A teacher visible in background or at child-level, engaged but not center-stage. Children are the protagonists. No posed group shots. No looking at camera. Capture a real moment of purposeful play. Diversity in children is important. Horizontal, minimum 2400px wide for full-bleed hero. <strong>This is the single most important photo on the entire website.</strong>
+    <span class="alt-text">Alt: "Children engaged in hands-on learning activities at Spark Academy preschool in Morton, Illinois"</span>
+  </div>
+</div>
+
+<!-- ════════════ SECTION 2: PROOF BAR ════════════ -->
+<div class="section" id="s2">
+  <div class="section-number">Section 02</div>
+  <h2>Proof Bar</h2>
+
+  <div class="proof-grid">
+    <div class="proof-item">
+      <div class="proof-number">5:1</div>
+      <div class="proof-label">Student-to-Teacher Ratio</div>
+    </div>
+    <div class="proof-item">
+      <div class="proof-number">Ed.D.</div>
+      <div class="proof-label">Doctoral-Led Curriculum</div>
+    </div>
+    <div class="proof-item">
+      <div class="proof-number">DCFS</div>
+      <div class="proof-label">Licensed</div>
+    </div>
+    <div class="proof-item">
+      <div class="proof-number">100%</div>
+      <div class="proof-label">Degreed & Credentialed Teachers</div>
+    </div>
+    <div class="proof-item">
+      <div class="proof-number">3–K</div>
+      <div class="proof-label">Ages 3 Through Kindergarten</div>
+    </div>
+  </div>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    Michelle leads with the 5:1 ratio in every parent conversation — it's her #1 selling point because no local competitor matches it. "Degreed & Credentialed Teachers" addresses the staffing objection: "A lot of people just have people who like kids." DCFS licensing eliminates the safety objection. These are the same proof points she uses in person — the website mirrors her natural sales flow.
+  </div>
+</div>
+
+<!-- ════════════ SECTION 3: PROGRAMS ════════════ -->
+<div class="section" id="s3">
+  <div class="section-number">Section 03</div>
+  <h2>Programs at a Glance</h2>
+
+  <h3>Section Headline (H2)</h3>
+  <div class="copy-headline" style="font-size:1.3rem">A Program Designed for Every Stage</div>
+  <p class="copy-body">From first friendships in our 3's program to kindergarten readiness and beyond — your child grows with Spark every step of the way.</p>
+
+  <div class="program-cards">
+    <div class="program-card">
+      <div class="program-card-name">3's Preschool</div>
+      <div class="program-card-detail">Age 3+ by first day</div>
+      <div class="program-card-detail">T/Th or M/W • 8:30–11:30</div>
+      <div class="program-card-price">From $350/mo</div>
+      <div class="program-card-link">Explore the 3's Program →</div>
+    </div>
+    <div class="program-card">
+      <div class="program-card-name">4's Preschool</div>
+      <div class="program-card-detail">Age 4+ by first day</div>
+      <div class="program-card-detail">2, 3, or 5 day options</div>
+      <div class="program-card-price">From $350/mo</div>
+      <div class="program-card-link">Explore the 4's Program →</div>
+    </div>
+    <div class="program-card">
+      <div class="program-card-name">Kinder Prep</div>
+      <div class="program-card-detail">Age 5 by Nov 30</div>
+      <div class="program-card-detail">2, 3, or 5 day options</div>
+      <div class="program-card-price">From $400/mo</div>
+      <div class="program-card-link">Explore Kinder Prep →</div>
+    </div>
+    <div class="program-card">
+      <div class="program-card-name">Kindergarten</div>
+      <div class="program-card-detail">Age 5 by Sep 30</div>
+      <div class="program-card-detail">M–F • 8:00–12:00</div>
+      <div class="program-card-price">$700/mo</div>
+      <div class="program-card-link">Explore Kindergarten →</div>
+    </div>
+  </div>
+
+  <div class="int-link">Not sure which program fits? "Find the perfect fit" links to /programs/</div>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    Tuition displayed on the homepage is a confirmed decision. Hiding prices forces parents to call — and research-driven parents won't. They'll move to the next tab. Showing starting prices builds trust and pre-qualifies leads.
+  </div>
+
+  <div class="photo-dir">
+    <div class="photo-dir-label">📸 Photo Direction — Program Cards</div>
+    Each card needs a small square photo (~300×300px) of children in the corresponding age group. 3's: sensory play with wide-eyed engagement. 4's: two children collaborating on a STEM or building project. K-Prep: child writing letters or pre-reading with teacher nearby. Kindergarten: small group instruction or circle time. All: natural light, warm tones, homelike setting.
+  </div>
+</div>
+
+<!-- ════════════ SECTION 4: PURPOSEFUL PLAY ════════════ -->
+<div class="section" id="s4">
+  <div class="section-number">Section 04</div>
+  <h2>The Purposeful Play Framework</h2>
+
+  <h3>Section Headline (H2)</h3>
+  <div class="copy-headline" style="font-size:1.3rem">Every Moment Is Designed with Purpose</div>
+
+  <p class="copy-body">At Spark, play isn't recess. It's the research-proven method through which young children build the neural pathways for language, problem-solving, and self-regulation.</p>
+  <p class="copy-body">The Purposeful Play Framework — developed by Dr. Michelle Peterson and built on the Experience Early Learning curriculum — structures every part of your child's day around intentional, play-based learning experiences. From the Developmental Play Room that transforms monthly to daily enrichment in Spanish, STEM, art, communication, and music — nothing at Spark is accidental.</p>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    The "neural pathways" argument comes directly from Dr. Peterson's video call. It transforms play from "soft" to "neuroscience." Naming the framework signals methodology, not just philosophy. Listing five specific enrichment subjects makes value tangible — every competitor says "enrichment"; none list five subjects delivered five days a week.
+  </div>
+
+  <div class="int-link">"Learn more about our approach →" links to /purposeful-play-framework/</div>
+
+  <div class="photo-dir">
+    <div class="photo-dir-label">📸 Photo Direction — Purposeful Play</div>
+    Split layout: text left, photo right. Photo of a child deeply engaged in a Developmental Play Room activity — ideally something showing both joy and intentional design (building, water/measurement tools, themed dramatic play). The space should look designed, not random. Vertical or square. Natural light.
+    <span class="alt-text">Alt: "Child exploring the Developmental Play Room at Spark Academy, a monthly rotating play-based learning environment"</span>
+  </div>
+</div>
+
+<!-- ════════════ SECTION 5: DR. PETERSON ════════════ -->
+<div class="section" id="s5">
+  <div class="section-number">Section 05</div>
+  <h2>Meet Dr. Michelle Peterson</h2>
+
+  <h3>Section Headline (H2)</h3>
+  <div class="copy-headline" style="font-size:1.3rem">Led by a Researcher. Built by a Mother.</div>
+
+  <p class="copy-body">Dr. Michelle Peterson didn't just study early childhood education — she built a school around what the research says works.</p>
+  <p class="copy-body">With a doctorate in education from Illinois State University, 20 years in the classroom and school administration, and four Illinois teaching certifications, Dr. Peterson founded Spark Academy to close the gap between what research proves about how young children learn and what most preschools actually do.</p>
+  <p class="copy-body">When you visit Spark, you won't find worksheets from 1987. You'll find a learning environment that's been reimagined from the ground up — where every enrichment, every classroom setup, and every interaction is grounded in evidence and delivered with care.</p>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    The "worksheets from 1987" reference comes directly from Dr. Peterson's origin story. It's specific, visual, slightly humorous, and immediately communicates why Spark exists. The credential stack (doctorate + 20 years + 4 certifications) follows the funnel wireframe's trust signal placement.
+  </div>
+
+  <div class="flag">
+    <div class="flag-label">⚠️ Needs Dr. Peterson's Input</div>
+    Does Dr. Peterson approve the "worksheets from 1987" reference on the homepage? Confirm comfort level for homepage use vs. reserving it for the About page only.
+  </div>
+
+  <div class="int-link">"Meet Dr. Peterson →" links to /dr-michelle-peterson/</div>
+
+  <div class="photo-dir">
+    <div class="photo-dir-label">📸 Photo Direction — Dr. Peterson Portrait</div>
+    Professional but warm headshot or environmental portrait. NOT a stiff corporate headshot — smiling naturally, approachable, in the Spark environment (classroom, at child-level, or near learning materials). Business casual. Natural light. Must communicate: "This is someone I'd trust with my child." Vertical or square. Reused on Founder Hub, blog byline, and consulting page.
+    <span class="alt-text">Alt: "Dr. Michelle Peterson, Ed.D., founder and executive director of Spark Academy preschool in Morton, Illinois"</span>
+  </div>
+</div>
+
+<!-- ════════════ SECTION 6: TESTIMONIAL ════════════ -->
+<div class="section" id="s6">
+  <div class="section-number">Section 06</div>
+  <h2>Testimonial Spotlight</h2>
+
+  <h3>Section Headline (H2)</h3>
+  <div class="copy-headline" style="font-size:1.3rem">What Spark Families Are Saying</div>
+
+  <div class="testimonial">
+    <div class="testimonial-text">One thing my husband and I strive to teach and instill in him is curiosity, and Spark is the perfect place for this, along with an excellent academic curriculum! Since beginning at Spark, our son has begun to notice and identify letters while we are out and about and has become more interested in them and their meaning. He has also made friends there and is learning awesome social and emotional skills that we are encouraging at home. Spark is a wonderful partner with us as we seek together to spur on our son's love of learning and exploration.</div>
+    <div class="testimonial-author">— Holly, Spark Academy Parent</div>
+  </div>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    Holly's testimonial was selected for the homepage for three reasons: (1) It mentions curiosity — mirroring the H1's "curious minds" for thematic coherence. (2) It cites a specific, observable outcome (letter recognition). (3) It positions Spark as a "partner" in the family's goals. April's testimonial is reserved for the Why Spark page. Ms. Brenna's professional endorsement is reserved for the Founder Hub.
+  </div>
+
+  <div class="flag">
+    <div class="flag-label">⚠️ Needs Dr. Peterson's Input</div>
+    Does Holly's testimonial have written permission for website use? Confirm all testimonials have opt-in consent.
+  </div>
+
+  <div class="int-link">"Read more from Spark families →" links to /testimonials/</div>
+</div>
+
+<!-- ════════════ SECTION 7: COMMUNITY ════════════ -->
+<div class="section" id="s7">
+  <div class="section-number">Section 07</div>
+  <h2>Community &amp; Location</h2>
+
+  <h3>Section Headline (H2)</h3>
+  <div class="copy-headline" style="font-size:1.3rem">A Homelike School in the Heart of Morton</div>
+
+  <p class="copy-body">Spark Academy is located at 1989 North Morton Avenue in Morton, Illinois — a warm, intentionally designed space that feels more like a second home than a school.</p>
+  <p class="copy-body">Serving families from Morton, Washington, East Peoria, Peoria, Germantown Hills, and across Central Illinois, Spark is a short drive from communities throughout the greater Peoria metro. Small class sizes, a 5:1 student-to-teacher ratio, and a building designed for young learners make Spark a place where your child will feel safe, known, and excited to return.</p>
+
+  <div style="background:#fff; border-radius:10px; padding:1rem; margin:1rem 0; border:1.5px solid var(--light-sage);">
+    <div style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--misty-sage); margin-bottom:0.5rem;">Contact</div>
+    <div style="font-size:0.9rem; margin-bottom:0.25rem;"><strong>Address:</strong> 1989 North Morton Avenue, Morton, IL 61550</div>
+    <div style="font-size:0.9rem; margin-bottom:0.25rem;"><strong>Phone:</strong> 309-291-3292</div>
+    <div style="font-size:0.9rem;"><strong>Email:</strong> sparkacademymorton@gmail.com</div>
+  </div>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    Listing six communities by name serves dual purpose: (1) parents from Washington or Germantown Hills see their town named and feel included, (2) geographic terms create on-page relevance signals supporting pSEO location pages.
+  </div>
+
+  <div class="photo-dir">
+    <div class="photo-dir-label">📸 Photo Direction — Building / Community</div>
+    Exterior shot of Spark Academy building — warm, inviting, showing homelike quality. Good weather, landscaping visible. Not a cold institutional facade. Alternatively: interior common area or entrance showing warm tones, child-sized furniture, welcoming environment. Horizontal orientation.
+    <span class="alt-text">Alt: "Spark Academy preschool building located at 1989 North Morton Avenue in Morton, Illinois"</span>
+  </div>
+</div>
+
+<!-- ════════════ SECTION 8: FINAL CTA ════════════ -->
+<div class="section" id="s8">
+  <div class="section-number">Section 08</div>
+  <h2>Final CTA Block</h2>
+
+  <h3>Section Headline (H2)</h3>
+  <div class="copy-headline" style="font-size:1.3rem">See What a Day at Spark Looks Like</div>
+
+  <p class="copy-body">The best way to experience Spark is in person. Schedule a tour and see the classrooms, meet Dr. Peterson, and find out how your child's learning path would be designed around who they are.</p>
+
+  <div class="cta-block">
+    <div class="cta-primary">Schedule a Tour</div>
+    <div class="cta-secondary">Have a Question? We'd Love to Hear From You</div>
+    <div class="cta-secondary" style="color:#888; font-size:0.8rem; margin-top:0.35rem;">Prefer to call? 309-291-3292</div>
+  </div>
+
+  <h3>Trust Signals Adjacent to CTA</h3>
+  <div class="trust-bar">
+    <div class="trust-badge">Dr. Michelle Peterson, Ed.D.</div>
+    <div class="trust-badge">5:1 Ratio</div>
+    <div class="trust-badge">DCFS Licensed • Morton, IL</div>
+  </div>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    Child-centric close. "Learning path designed around who they are" echoes the Known & Nurtured pillar. Trust signals adjacent to CTA per Baymard Institute placement rules: credibility elements within visual proximity of conversion buttons increase click-through by up to 12%.
+  </div>
+</div>
+
+<!-- ════════════ PHOTOGRAPHY SHOT LIST ════════════ -->
+<div class="section" id="shots" style="background:var(--whisper-sage);">
+  <div class="section-number">Photography Reference</div>
+  <h2>Homepage Shot List</h2>
+  <p class="copy-body" style="font-size:0.85rem;">The following shots are needed for the homepage. Each description is written as a brief for the photographer during a full-day shoot at Spark. All photos: natural light, warm tones, authentic moments — not posed.</p>
+
+  <div class="shot-card">
+    <div class="shot-card-number shot-card-critical">Shot 1 — Critical / Highest Priority</div>
+    <h4>Hero Image</h4>
+    <p>Wide-angle horizontal of 2–3 children actively engaged in hands-on learning. Natural light from windows. Homelike interior. At least one child smiling or showing deep concentration. Teacher present but not center-stage. Children are protagonists. No posed shots, no looking at camera. Capture a real moment of purposeful play: building, painting, exploring materials. Diversity in children important.</p>
+    <div class="shot-spec">Horizontal • Min 2400px wide • Mood: Warm, joyful, alive with learning</div>
+  </div>
+
+  <div class="shot-card">
+    <div class="shot-card-number">Shot 2</div>
+    <h4>Program Card — 3's Preschool</h4>
+    <p>Close/medium shot of a 3-year-old in sensory play, painting, or simple construction. Wide-eyed wonder and engagement. Age-appropriate and tactile.</p>
+    <div class="shot-spec">Square or vertical • ~300×300px final display</div>
+  </div>
+
+  <div class="shot-card">
+    <div class="shot-card-number">Shot 3</div>
+    <h4>Program Card — 4's Preschool</h4>
+    <p>Two children collaborating on a building project, STEM activity, or creative construction. Interaction between children is key — showing social learning.</p>
+    <div class="shot-spec">Square or vertical</div>
+  </div>
+
+  <div class="shot-card">
+    <div class="shot-card-number">Shot 4</div>
+    <h4>Program Card — Kindergarten Prep</h4>
+    <p>A child writing letters, pre-reading, or in a small-group instructional moment with teacher nearby. Should communicate "readiness" and "purpose."</p>
+    <div class="shot-spec">Square or vertical</div>
+  </div>
+
+  <div class="shot-card">
+    <div class="shot-card-number">Shot 5</div>
+    <h4>Program Card — Kindergarten</h4>
+    <p>Children in a structured learning moment: small group instruction, circle time, or academic activity. Slightly more structured feel than preschool shots.</p>
+    <div class="shot-spec">Square or vertical</div>
+  </div>
+
+  <div class="shot-card">
+    <div class="shot-card-number">Shot 6</div>
+    <h4>Purposeful Play / Developmental Play Room</h4>
+    <p>A child deeply engaged in a Developmental Play Room activity. Show both the joy and the intentional design of the space. The room should look designed, not random. If monthly theme is visible, even better.</p>
+    <div class="shot-spec">Vertical or square • Natural light</div>
+  </div>
+
+  <div class="shot-card">
+    <div class="shot-card-number shot-card-critical">Shot 7 — Multi-Use / High Priority</div>
+    <h4>Dr. Peterson Portrait</h4>
+    <p>Professional but warm portrait in the Spark environment — classroom, at child-level, or near learning materials. NOT a stiff corporate headshot. Smiling naturally, approachable. Business casual. This photo serves homepage, Founder Hub, blog byline, and consulting page.</p>
+    <div class="shot-spec">Vertical or square • Min 1200px wide</div>
+  </div>
+
+  <div class="shot-card">
+    <div class="shot-card-number">Shot 8</div>
+    <h4>Exterior / Building</h4>
+    <p>Spark Academy building exterior. Warm, inviting, homelike quality. Good weather, landscaping visible. Parents should think: "My child would feel comfortable here."</p>
+    <div class="shot-spec">Horizontal • Wide enough for section background</div>
+  </div>
+
+  <div class="shot-card">
+    <div class="shot-card-number">Shot 9 — Bonus</div>
+    <h4>Daily Enrichment (Spanish, STEM, Art, Music)</h4>
+    <p>2–3 shots of enrichment activities in progress. Spanish instruction, STEM experiment, art creation, or music and movement. One strong enrichment shot adds depth to the Purposeful Play section.</p>
+    <div class="shot-spec">Any orientation • Horizontal preferred</div>
+  </div>
+</div>
+
+<!-- ════════════ FOOTER ════════════ -->
+<div class="doc-footer">
+  <strong>Spark Academy</strong> — Website Rebuild Project<br>
+  Phase 3A: Homepage Copy Deck • March 2026<br>
+  Confidential — For Internal Review Only<br><br>
+  Prepared by <strong>Stephen Odanovich</strong>, Internet Marketing Specialist
+</div>
+
+</body>
+</html>

@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spark Academy — Kindergarten Copy Deck</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --mist-teal: #3D6B62;
+    --antique-gold: #C49826;
+    --cloud-white: #FBFAF8;
+    --whisper-sage: #EFF5F2;
+    --misty-sage: #9BB8AD;
+    --body-text: #2E2E2E;
+    --deep-teal: #2C4F48;
+    --light-gold: #FBF4E0;
+    --warm-gray: #7A7A7A;
+    --border-light: #E2EBE7;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cloud-white);
+    color: var(--body-text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+  }
+
+  /* ═══════════════════════════════════════════════════
+     HERO / HEADER
+     ═══════════════════════════════════════════════════ */
+  .hero {
+    background: linear-gradient(165deg, var(--mist-teal) 0%, var(--deep-teal) 100%);
+    color: white;
+    padding: 3.5rem 1.5rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -30%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(196,152,38,0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -20%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(155,184,173,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .hero-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--antique-gold);
+    margin-bottom: 0.75rem;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.1rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    position: relative;
+  }
+  .hero-subtitle {
+    font-size: 0.95rem;
+    color: var(--misty-sage);
+    font-weight: 400;
+    max-width: 520px;
+    margin: 0 auto 1.75rem;
+    line-height: 1.5;
+  }
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 100px;
+    padding: 0.3rem 0.85rem;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: rgba(255,255,255,0.85);
+  }
+
+  /* ═══════════════════════════════════════════════════
+     STICKY NAV
+     ═══════════════════════════════════════════════════ */
+  .sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: white;
+    border-bottom: 1px solid var(--border-light);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .sticky-nav::-webkit-scrollbar { display: none; }
+  .nav-inner {
+    display: flex;
+    gap: 0;
+    padding: 0 0.75rem;
+    min-width: max-content;
+  }
+  .nav-pill {
+    display: inline-block;
+    padding: 0.7rem 0.85rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--warm-gray);
+    text-decoration: none;
+    white-space: nowrap;
+    letter-spacing: 0.02em;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+  }
+  .nav-pill:hover, .nav-pill:active {
+    color: var(--mist-teal);
+    border-bottom-color: var(--mist-teal);
+  }
+
+  /* ═══════════════════════════════════════════════════
+     SPEC TABLE (Page Specs)
+     ═══════════════════════════════════════════════════ */
+  .specs-section {
+    padding: 2rem 1.25rem;
+    background: var(--whisper-sage);
+  }
+  .specs-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--mist-teal);
+    margin-bottom: 1.25rem;
+    text-align: center;
+  }
+  .spec-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .spec-item {
+    display: flex;
+    gap: 0.75rem;
+    background: white;
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-light);
+  }
+  .spec-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--mist-teal);
+    min-width: 90px;
+    flex-shrink: 0;
+    padding-top: 0.1rem;
+  }
+  .spec-value {
+    font-size: 0.85rem;
+    color: var(--body-text);
+    line-height: 1.5;
+  }
+  .spec-value code {
+    background: var(--whisper-sage);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.78rem;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--mist-teal);
+  }
+
+  /* ═══════════════════════════════════════════════════
+     CONTENT SECTIONS
+     ═══════════════════════════════════════════════════ */
+  .content-section {
+    padding: 2.5rem 1.25rem;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .content-section.alt-bg {
+    background: var(--whisper-sage);
+    max-width: 100%;
+  }
+  .content-section.alt-bg .section-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--antique-gold);
+    margin-bottom: 0.5rem;
+  }
+  .section-h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--mist-teal);
+    line-height: 1.25;
+    margin-bottom: 1rem;
+  }
+  .section-h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--deep-teal);
+    margin: 1.75rem 0 0.75rem;
+  }
+  .copy-block {
+    margin-bottom: 1.25rem;
+    font-size: 0.95rem;
+    line-height: 1.75;
+  }
+  .copy-block p {
+    margin-bottom: 0.85rem;
+  }
+  .copy-block strong {
+    color: var(--deep-teal);
+  }
+  .copy-block em {
+    color: var(--warm-gray);
+    font-style: italic;
+  }
+
+  /* Highlighted H1 display */
+  .h1-display {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--mist-teal);
+    text-align: center;
+    padding: 1.5rem 1.25rem;
+    background: white;
+    border-left: 4px solid var(--antique-gold);
+    border-radius: 0 12px 12px 0;
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+  }
+  .h1-tag {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--antique-gold);
+    margin-bottom: 0.4rem;
+  }
+
+  /* Subheadline display */
+  .subheadline-display {
+    background: white;
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 1.25rem 1.25rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--body-text);
+    font-style: italic;
+  }
+
+  /* CTA Display Block */
+  .cta-display {
+    background: linear-gradient(135deg, var(--mist-teal), var(--deep-teal));
+    border-radius: 14px;
+    padding: 1.5rem 1.25rem;
+    text-align: center;
+    margin: 1.5rem 0;
+  }
+  .cta-btn-primary {
+    display: inline-block;
+    background: var(--antique-gold);
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 0.65rem 1.75rem;
+    border-radius: 100px;
+    margin-bottom: 0.6rem;
+    letter-spacing: 0.03em;
+  }
+  .cta-secondary {
+    display: block;
+    color: var(--misty-sage);
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+  }
+  .cta-trust {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.04em;
+  }
+
+  /* ═══════════════════════════════════════════════════
+     STRATEGIC NOTE CALLOUTS
+     ═══════════════════════════════════════════════════ */
+  .strategic-note {
+    background: var(--light-gold);
+    border-left: 3px solid var(--antique-gold);
+    border-radius: 0 10px 10px 0;
+    padding: 1rem 1.15rem;
+    margin: 1.25rem 0;
+    font-size: 0.82rem;
+    line-height: 1.65;
+    color: #5A4A1F;
+  }
+  .strategic-note-label {
+    font-weight: 700;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--antique-gold);
+    margin-bottom: 0.35rem;
+  }
+
+  /* ═══════════════════════════════════════════════════
+     TABLES
+     ═══════════════════════════════════════════════════ */
+  .table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 1.25rem 0;
+    border-radius: 12px;
+    border: 1px solid var(--border-light);
+    background: white;
+  }
+  .table-wrap table {
+    width: 100%;
+    min-width: 480px;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+  }
+  .table-wrap thead {
+    background: var(--mist-teal);
+    color: white;
+  }
+  .table-wrap th {
+    padding: 0.7rem 0.85rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .table-wrap td {
+    padding: 0.65rem 0.85rem;
+    border-bottom: 1px solid var(--border-light);
+    vertical-align: top;
+    line-height: 1.55;
+  }
+  .table-wrap tr:last-child td {
+    border-bottom: none;
+  }
+  .table-wrap tbody tr:nth-child(even) {
+    background: var(--whisper-sage);
+  }
+
+  /* Tuition table special */
+  .tuition-table {
+    min-width: 320px;
+  }
+  .tuition-table td:last-child,
+  .tuition-table th:last-child {
+    text-align: right;
+    font-weight: 600;
+  }
+
+  /* ═══════════════════════════════════════════════════
+     FAQ
+     ═══════════════════════════════════════════════════ */
+  .faq-item {
+    background: white;
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 1.15rem 1.15rem;
+    margin-bottom: 0.75rem;
+  }
+  .faq-q {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--deep-teal);
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+  }
+  .faq-a {
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: var(--body-text);
+  }
+
+  /* ═══════════════════════════════════════════════════
+     PLACEHOLDER BLOCK
+     ═══════════════════════════════════════════════════ */
+  .placeholder-block {
+    background: #FFF8EE;
+    border: 1px dashed var(--antique-gold);
+    border-radius: 10px;
+    padding: 1rem 1.15rem;
+    font-size: 0.82rem;
+    color: #8B6914;
+    margin: 1rem 0;
+    line-height: 1.6;
+  }
+  .placeholder-label {
+    font-weight: 700;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+  }
+
+  /* ═══════════════════════════════════════════════════
+     INTERNAL LINKING MAP
+     ═══════════════════════════════════════════════════ */
+  .link-map-item {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-start;
+    background: white;
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.82rem;
+  }
+  .link-target {
+    font-weight: 700;
+    color: var(--mist-teal);
+    min-width: 120px;
+    flex-shrink: 0;
+  }
+  .link-url {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--warm-gray);
+    font-size: 0.78rem;
+  }
+
+  /* ═══════════════════════════════════════════════════
+     PHOTO DIRECTION
+     ═══════════════════════════════════════════════════ */
+  .photo-card {
+    background: white;
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+  }
+  .photo-card-header {
+    background: var(--mist-teal);
+    color: white;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+  }
+  .photo-card-body {
+    padding: 0.85rem 1rem;
+    font-size: 0.82rem;
+    line-height: 1.6;
+  }
+
+  /* ═══════════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════════ */
+  .footer {
+    background: var(--deep-teal);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 2rem 1.25rem;
+    font-size: 0.75rem;
+    line-height: 1.7;
+  }
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.35rem;
+  }
+
+  /* ═══════════════════════════════════════════════════
+     RESPONSIVE
+     ═══════════════════════════════════════════════════ */
+  @media (min-width: 600px) {
+    .hero { padding: 4rem 2rem 3rem; }
+    .hero h1 { font-size: 2.5rem; }
+    .content-section { padding: 3rem 2rem; }
+    .specs-section { padding: 2.5rem 2rem; }
+    .h1-display { font-size: 1.9rem; }
+    .section-h2 { font-size: 1.65rem; }
+    .spec-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (min-width: 768px) {
+    .hero h1 { font-size: 2.8rem; }
+    .section-h2 { font-size: 1.75rem; }
+    .h1-display { font-size: 2.1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════ HERO ═══════════════════════════════════ -->
+<div class="hero">
+  <div class="hero-label">Phase 3A Copy Deck · Draft</div>
+  <h1>Kindergarten</h1>
+  <div class="hero-subtitle">Complete page copy for /kindergarten/ — ready for Dr.&nbsp;Peterson's review</div>
+  <div class="hero-meta">
+    <span class="hero-tag">Hybrid Lens · 65/35</span>
+    <span class="hero-tag">Bottom Funnel</span>
+    <span class="hero-tag">1,600–2,000 Words</span>
+    <span class="hero-tag">Draft</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ NAV ═══════════════════════════════════ -->
+<nav class="sticky-nav">
+  <div class="nav-inner">
+    <a href="#specs" class="nav-pill">Specs</a>
+    <a href="#s1" class="nav-pill">Hero</a>
+    <a href="#s2" class="nav-pill">Why Private</a>
+    <a href="#s3" class="nav-pill">Daily Schedule</a>
+    <a href="#s4" class="nav-pill">Academics</a>
+    <a href="#s5" class="nav-pill">5:1 Ratio</a>
+    <a href="#s6" class="nav-pill">Tuition</a>
+    <a href="#s7" class="nav-pill">Testimonials</a>
+    <a href="#s8" class="nav-pill">Tour CTA</a>
+    <a href="#s9" class="nav-pill">FAQ</a>
+    <a href="#links" class="nav-pill">Links</a>
+    <a href="#photos" class="nav-pill">Photos</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════ SPECS ═══════════════════════════════════ -->
+<div class="specs-section" id="specs">
+  <div class="specs-title">Page Specifications</div>
+  <div class="spec-grid">
+    <div class="spec-item">
+      <div class="spec-label">URL</div>
+      <div class="spec-value"><code>/kindergarten/</code></div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-label">Primary KW</div>
+      <div class="spec-value">private kindergarten Morton IL</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-label">Secondary</div>
+      <div class="spec-value">private kindergarten Peoria IL · kindergarten program Morton Illinois · kindergarten alternative public school</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-label">Long-Tail</div>
+      <div class="spec-value">is private kindergarten worth it · private vs public kindergarten Illinois · small class kindergarten Peoria area</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-label">Intent</div>
+      <div class="spec-value">High-intent Commercial — parent who has already considered or rejected public kindergarten</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-label">Funnel</div>
+      <div class="spec-value">Bottom Funnel — parent is close to a decision</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-label">Audience</div>
+      <div class="spec-value">Parents of 5-year-olds seeking a private kindergarten alternative; parents who completed K-Prep at Spark; parents dissatisfied with public kindergarten model</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-label">Lens</div>
+      <div class="spec-value">Hybrid — 65% child-centric / 35% school-centric</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-label">Primary CTA</div>
+      <div class="spec-value">Schedule a Tour</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-label">Secondary CTA</div>
+      <div class="spec-value">Have a Question? We'd love to hear from you.</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-label">Meta Title</div>
+      <div class="spec-value"><code>Private Kindergarten Morton IL | Spark Academy</code></div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-label">Meta Desc</div>
+      <div class="spec-value">Private kindergarten in Morton, IL. Monday–Friday, 8:00–12:00. 5:1 ratio, doctoral-led, all-inclusive. Why families choose Spark over public kindergarten.</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-label">Schema</div>
+      <div class="spec-value">EducationalOccupationalProgram + FAQPage + BreadcrumbList</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-label">Data Layer</div>
+      <div class="spec-value"><code>page_type: program | funnel: parent | content_category: program | has_form: false | page_template: program-page</code></div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-label">Word Count</div>
+      <div class="spec-value">1,600–2,000 words</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-label">Links From</div>
+      <div class="spec-value">Homepage program tile, /programs/, /kindergarten-prep/</div>
+    </div>
+  </div>
+
+  <div class="strategic-note" style="max-width:700px; margin: 1.25rem auto 0;">
+    <div class="strategic-note-label">Strategic Note</div>
+    This is the most school-centric of all the program pages — not because child outcomes matter less, but because the parent decision to choose private kindergarten over free public school is an institutional one. They're not just choosing a classroom; they're choosing a philosophy, a community, and a financial investment. The "Why would I pay for kindergarten when it's free?" objection must be answered directly and without apology. Dr.&nbsp;Peterson's M–F only rule is framed as a developmental philosophy decision, not a policy restriction — because that's what it is.
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ SECTION 1: HERO ═══════════════════════════════════ -->
+<div class="content-section" id="s1">
+  <div class="section-label">Section 1 · Hero (Above the Fold)</div>
+
+  <div class="h1-display">
+    <span class="h1-tag">H1 — Page Title</span>
+    Kindergarten the Way It Was Always Supposed to Be
+  </div>
+
+  <div class="strategic-note">
+    <div class="strategic-note-label">Strategic Note</div>
+    This H1 is deliberately provocative and confident. It implies that the standard kindergarten model — large classrooms, rigid pacing, limited individual attention — isn't what kindergarten is supposed to be. It invites the parent who's already questioning the public school option to lean in. It's not an attack on public schools; it's a positioning statement for a different vision. Passes the Flip Test: the child is the implied subject.
+  </div>
+
+  <div class="section-h3">Hero Subheadline</div>
+  <div class="subheadline-display">
+    Spark Academy's Kindergarten program combines the rigor your five-year-old is ready for with the intimacy, play-based learning, and individualized attention that research shows produces the best long-term outcomes. Monday through Friday. Small class. Big beginning.
+  </div>
+
+  <div class="section-h3">Hero CTA Block</div>
+  <div class="cta-display">
+    <div class="cta-btn-primary">Schedule a Tour</div>
+    <div class="cta-secondary">Have a Question? We'd love to hear from you.</div>
+    <div class="cta-trust">Monday–Friday Only · 5:1 Ratio · Doctoral-Led Curriculum · Morton, IL</div>
+  </div>
+
+  <div class="placeholder-block">
+    <div class="placeholder-label">Photo Direction — Hero</div>
+    A small group of kindergarteners in an engaged learning moment — a teacher-led discussion, a collaborative activity, or a hands-on investigation. The scale should be visually apparent: this is not a room of 25&nbsp;children. The intimacy of the 5:1 ratio should be visible in the frame. Natural light, purposeful energy.
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ SECTION 2: WHY PRIVATE ═══════════════════════════════════ -->
+<div class="content-section alt-bg" id="s2">
+  <div class="section-inner">
+    <div class="section-label">Section 2 · Why Some Families Choose Private Kindergarten</div>
+    <div class="section-h2">"Why Would I Pay When Kindergarten Is Free?"</div>
+
+    <div class="copy-block">
+      <p>It's the most honest question a parent can ask. We'll give you the most honest answer we can.</p>
+
+      <p>Public kindergarten is a good option for many families. We don't believe otherwise. But for some families — and some children — the public school model has real limitations that private kindergarten is specifically designed to address.</p>
+
+      <p><strong>Class size.</strong> The average public kindergarten classroom in Illinois has 20–25 students with a single teacher. In Spark's Kindergarten, your child is one of ten to twelve in a classroom, with a 5:1 student-to-teacher ratio. That difference isn't cosmetic. It determines how often your child's individual needs are noticed, addressed, and planned for.</p>
+
+      <p><strong>Pacing.</strong> Public kindergarten moves at a curriculum pacing guide designed for the average student. Some children are ready to move faster. Others need more time to internalize a concept before moving on. At Spark, Dr.&nbsp;Peterson's individualized assessment approach means your child's learning path is calibrated to them — not to a district-wide standard.</p>
+
+      <p><strong>Philosophy.</strong> Public kindergarten increasingly resembles first grade — more seat time, more formal instruction, less play. The research on early childhood development does not support this shift for five-year-olds. At Spark, the Kindergarten program is built on the Purposeful Play Framework — a doctoral-research-informed model that integrates structured academic play with the social-emotional development that determines long-term success.</p>
+
+      <p><strong>Continuity.</strong> For families who completed Kindergarten Prep at Spark, this is a natural continuation of a community, a framework, and a set of relationships your child already knows and loves.</p>
+
+      <p>The question isn't whether private kindergarten is inherently better. The question is whether what Spark offers is worth the investment for your family and your child. We think visiting and seeing it for yourself is the best way to answer that.</p>
+    </div>
+
+    <div class="strategic-note">
+      <div class="strategic-note-label">Strategic Note</div>
+      This section addresses the objection head-on, without defensiveness or overselling. It acknowledges public school is fine for many families — which actually builds trust — while clearly articulating where the private model serves children differently. The specificity (20–25 students, 5:1 ratio, pacing guide language) signals credibility. This is the most school-centric section of the page and is appropriate here precisely because the decision the parent is making is institutional.
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ SECTION 3: DAILY SCHEDULE ═══════════════════════════════════ -->
+<div class="content-section" id="s3">
+  <div class="section-label">Section 3 · A Day in Kindergarten at Spark</div>
+  <div class="section-h2">More Time. More Depth. The Same Purposeful Play Foundation.</div>
+
+  <div class="copy-block">
+    <p>Spark's Kindergarten shares its daily structure with Kindergarten Prep — but with five full days a week and the depth of engagement appropriate for children who have built a strong foundation.</p>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Time Block</th>
+          <th>Activity</th>
+          <th>What Your Child Is Building</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>2.5 Hours</strong></td>
+          <td>Academic Play</td>
+          <td>Advanced literacy, numeracy, writing, early critical thinking, and complex problem-solving through teacher-guided purposeful play</td>
+        </tr>
+        <tr>
+          <td><strong>30 Minutes</strong></td>
+          <td>Developmental Playroom</td>
+          <td>Independent thinking, leadership in collaborative play, and creative initiative in a monthly-rotating student-directed environment</td>
+        </tr>
+        <tr>
+          <td><strong>30 Minutes</strong></td>
+          <td>Daily Enrichment</td>
+          <td>Spanish, STEM, Art, Communication, and Music &amp; Movement — at kindergarten depth and complexity</td>
+        </tr>
+        <tr>
+          <td><strong>15 Minutes</strong></td>
+          <td>Outdoor Play</td>
+          <td>Physical development, peer relationship skills, and gross motor confidence</td>
+        </tr>
+        <tr>
+          <td><strong>15 Minutes</strong></td>
+          <td>Snack &amp; Bathroom Break</td>
+          <td>Community, self-regulation, and independence routines</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="copy-block">
+    <p><strong>Hours:</strong> 8:00 AM–12:00 PM &nbsp;·&nbsp; <strong>Schedule:</strong> Monday–Friday only</p>
+  </div>
+
+  <div class="section-h3">Why Monday–Friday Only</div>
+
+  <div class="copy-block">
+    <p>Spark's Kindergarten is a Monday-through-Friday program. There is no part-time option.</p>
+
+    <p>This isn't a logistical convenience — it's a developmental decision. Kindergarten is the year that sets the rhythms children will rely on through elementary school and beyond. Learning to show up, engage, focus, and participate every single day is itself a skill — and it's one that requires practice every single day to build.</p>
+
+    <p>For children who will transition to first grade in a public or private school, the ability to sustain a five-day-a-week schedule without disruption is one of the most practical forms of kindergarten readiness there is. Spark's Kindergarten students don't just learn kindergarten content — they develop the stamina, the routine, and the identity of being a full-time student.</p>
+  </div>
+
+  <div class="strategic-note">
+    <div class="strategic-note-label">Strategic Note</div>
+    Dr.&nbsp;Peterson said it clearly: "I don't let people do partial." The copy transforms that philosophy into a benefit for the child — which is exactly what it is. Writing that directly would feel restrictive; writing the developmental rationale feels like expertise. The latter is more persuasive and more aligned with the brand voice (confident, intentional, expert-led).
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ SECTION 4: ACADEMICS ═══════════════════════════════════ -->
+<div class="content-section alt-bg" id="s4">
+  <div class="section-inner">
+    <div class="section-label">Section 4 · The Academic Foundation Your Child Will Build</div>
+    <div class="section-h2">What a Kindergartener Builds at Spark — Month by Month</div>
+
+    <div class="copy-block">
+      <p>Kindergarten at Spark doesn't skip academic rigor in the name of play — it achieves rigor through purposeful play. Over the course of the year, your child will build:</p>
+
+      <p><strong>Early Literacy:</strong> Phonemic awareness, letter-sound relationships, early reading foundations, and the love of stories and language that makes reading feel like discovery rather than work.</p>
+
+      <p><strong>Mathematical Thinking:</strong> Number sense, counting, early operations, pattern recognition, measurement, and the spatial reasoning that underlies mathematical confidence for years to come.</p>
+
+      <p><strong>Scientific Inquiry:</strong> Observation, hypothesis-building, experimentation, and the language of science — developed through hands-on STEM enrichment every Tuesday.</p>
+
+      <p><strong>Communication:</strong> Vocabulary, oral expression, storytelling, listening, and the ability to participate in structured conversations — built through dedicated Communication enrichment every Thursday.</p>
+
+      <p><strong>Social-Emotional Competence:</strong> Self-regulation, empathy, conflict resolution, and collaborative skills — developed not as a separate subject but as the natural outcome of a well-structured community of ten children learning together every day.</p>
+
+      <p><strong>Spanish:</strong> Beginning language exposure and the neural pathways for language acquisition that will serve your child for the rest of their life — developed through weekly Spanish enrichment every Monday.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ SECTION 5: 5:1 RATIO ═══════════════════════════════════ -->
+<div class="content-section" id="s5">
+  <div class="section-label">Section 5 · A School That Knows Your Child</div>
+  <div class="section-h2">What 5:1 Actually Means for Your Kindergartener</div>
+
+  <div class="copy-block">
+    <p>In a classroom of 25, a teacher spends an average of less than two minutes per student per hour in direct one-on-one interaction. In a Spark classroom of ten with a 5:1 ratio, that number is entirely different.</p>
+
+    <p>Your child's Kindergarten teacher at Spark will know your child's specific strengths and challenges. They'll know what excites them and what frustrates them. They'll know when your child is on the edge of a breakthrough — and they'll have the bandwidth to push them through it.</p>
+
+    <p>Dr.&nbsp;Peterson's individualized assessment approach means your child's learning path is built around who they are — not the average benchmark. The curriculum themes, activity choices, and skill scaffolding are calibrated to each child's developmental stage, not just their calendar age.</p>
+
+    <p>This is what it means to be known. Not as a seat number. Not as a standardized score. As a child.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ SECTION 6: TUITION ═══════════════════════════════════ -->
+<div class="content-section alt-bg" id="s6">
+  <div class="section-inner">
+    <div class="section-label">Section 6 · Tuition</div>
+    <div class="section-h2">Transparent Pricing. All-Inclusive.</div>
+
+    <div class="table-wrap">
+      <table class="tuition-table">
+        <thead>
+          <tr>
+            <th>Schedule</th>
+            <th>Days</th>
+            <th>Monthly Tuition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Monday–Friday</td>
+            <td>5 days/week (only option)</td>
+            <td>$700/month</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="copy-block">
+      <p><strong>Hours:</strong> 8:00 AM–12:00 PM &nbsp;·&nbsp; <strong>Age:</strong> Must be 5 by September 30 &nbsp;·&nbsp; <strong>Potty Training:</strong> Required</p>
+
+      <p><strong>What's included:</strong> All programming, curriculum materials, enrichment, developmental playroom, and outdoor play. No supply lists. No hidden fees. No additional costs. Tuition covers everything.</p>
+
+      <p><strong>Payment Terms:</strong> Tuition is billed over 10 months. A 10% discount is available for families who pay the full year's tuition by August 15. A $100 non-refundable deposit holds your enrollment spot.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ SECTION 7: TESTIMONIALS ═══════════════════════════════════ -->
+<div class="content-section" id="s7">
+  <div class="section-label">Section 7 · What Parents Are Saying</div>
+  <div class="section-h2">From Spark Kindergarten Families</div>
+
+  <div class="placeholder-block">
+    <div class="placeholder-label">Placeholder — Testimonials Coming Soon</div>
+    This section will feature 2–3 parent quotes specific to the Kindergarten experience — ideally addressing the public vs. private decision, academic outcomes, or the transition to first grade. Until testimonials are available, this section should be noted as "Testimonials Coming Soon."
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ SECTION 8: TOUR CTA ═══════════════════════════════════ -->
+<div class="content-section alt-bg" id="s8">
+  <div class="section-inner">
+    <div class="section-label">Section 8 · Come See What Kindergarten Looks Like at Spark</div>
+    <div class="section-h2">A Tour Is Worth a Thousand Words</div>
+
+    <div class="copy-block">
+      <p>The best way to understand what Spark's Kindergarten offers is to stand in the classroom, meet the teachers, and watch what happens when ten five-year-olds show up ready to learn.</p>
+
+      <p>Schedule a tour and we'll show you everything — the daily rhythm, the Developmental Playroom, the enrichment setup, and the culture that makes this one of the most intentional kindergarten programs in Central Illinois.</p>
+
+      <p><em>The only preschool in Central Illinois founded and led by a doctoral researcher in early childhood education.</em></p>
+    </div>
+
+    <div class="cta-display">
+      <div class="cta-btn-primary">Schedule a Tour</div>
+      <div class="cta-secondary">Have a Question? We'd love to hear from you.</div>
+      <div class="cta-trust">309-291-3292</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ SECTION 9: FAQ ═══════════════════════════════════ -->
+<div class="content-section" id="s9">
+  <div class="section-label">Section 9 · Frequently Asked Questions</div>
+  <div class="section-h2">Questions About Spark's Kindergarten Program</div>
+
+  <div class="faq-item">
+    <div class="faq-q">What is the age requirement for Kindergarten?</div>
+    <div class="faq-a">Your child must be five years old by September 30 and must be fully potty trained. Children who turn 5 between October 1 and November 30 should consider our Kindergarten Prep program.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Why is there no part-time option for Kindergarten?</div>
+    <div class="faq-a">Kindergarten at Spark is a Monday–Friday program only. Consistency is a core component of what makes the Kindergarten year effective — daily attendance builds the academic stamina, social routines, and self-regulation skills that research shows are among the strongest predictors of long-term school success. A partial schedule doesn't allow those patterns to develop fully.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">How does Spark's Kindergarten compare to public kindergarten?</div>
+    <div class="faq-a">The most significant differences are class size (10–12 vs. 20–25), student-to-teacher ratio (5:1 vs. typically 25:1), curriculum philosophy (play-based vs. increasingly formal), and individualization (assessment-driven learning paths vs. pacing-guide instruction). Spark's program is not longer in the day — it is smaller, more intentional, and more personalized.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">What comes after Spark's Kindergarten?</div>
+    <div class="faq-a">Most Spark Kindergarten graduates transition to first grade in public or private elementary school. They consistently arrive academically prepared, socially confident, and experienced in the daily routines of full-time school. Several families have reported that their children tested into advanced reading or math groupings in first grade.</div>
+  </div>
+
+  <div class="placeholder-block">
+    <div class="placeholder-label">Awaiting Dr.&nbsp;Peterson's Input</div>
+    Does Dr.&nbsp;Peterson have any specific outcomes data from Kindergarten graduates she'd like to add or confirm here?
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">What if we did Kindergarten Prep at Spark last year?</div>
+    <div class="faq-a">Spark's Kindergarten is a natural continuation for K-Prep families. Your child will already know their teachers, the school's rhythms, and the Purposeful Play Framework. The transition is seamless.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Is there a waitlist?</div>
+    <div class="faq-a">Spark Kindergarten is capped at 10–12 students. If you're interested, we recommend scheduling a tour early to discuss availability.</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ INTERNAL LINKING MAP ═══════════════════════════════════ -->
+<div class="content-section alt-bg" id="links">
+  <div class="section-inner">
+    <div class="section-label">Internal Linking Map</div>
+    <div class="section-h2">Cross-Page Links</div>
+
+    <div class="link-map-item">
+      <div class="link-target">Schedule a Tour</div>
+      <div class="link-url">/schedule-a-tour/ — Hero CTA, Section 8 CTA, bottom of page</div>
+    </div>
+    <div class="link-map-item">
+      <div class="link-target">Kindergarten Prep</div>
+      <div class="link-url">/kindergarten-prep/ — Hero trust line, FAQ (age note)</div>
+    </div>
+    <div class="link-map-item">
+      <div class="link-target">Programs Overview</div>
+      <div class="link-url">/programs/ — Breadcrumb navigation</div>
+    </div>
+    <div class="link-map-item">
+      <div class="link-target">Purposeful Play</div>
+      <div class="link-url">/purposeful-play-framework/ — Section 2 and Section 3</div>
+    </div>
+    <div class="link-map-item">
+      <div class="link-target">Dr.&nbsp;Michelle Peterson</div>
+      <div class="link-url">/dr-michelle-peterson/ — Trust line, Section 6 assessment mention</div>
+    </div>
+    <div class="link-map-item">
+      <div class="link-target">Phone CTA</div>
+      <div class="link-url">tel:3092913292 — Section 8</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ PHOTO DIRECTION ═══════════════════════════════════ -->
+<div class="content-section" id="photos">
+  <div class="section-label">Photo Direction Summary</div>
+  <div class="section-h2">Photography Notes</div>
+
+  <div class="photo-card">
+    <div class="photo-card-header">Hero</div>
+    <div class="photo-card-body">Small group of kindergarteners in engaged learning moment, scale of intimacy visible — not 25&nbsp;children, 10.</div>
+  </div>
+
+  <div class="photo-card">
+    <div class="photo-card-header">Why Private Section</div>
+    <div class="photo-card-body">Teacher in one-on-one interaction with a single child — the contrast with a large classroom implied.</div>
+  </div>
+
+  <div class="photo-card">
+    <div class="photo-card-header">Academic Foundation</div>
+    <div class="photo-card-body">Child writing or working through a structured activity independently — confidence visible.</div>
+  </div>
+
+  <div class="photo-card">
+    <div class="photo-card-header">5:1 Ratio Section</div>
+    <div class="photo-card-body">Overhead or wide-angle showing the entire class — the smallness of the group should read immediately.</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ FOOTER ═══════════════════════════════════ -->
+<div class="footer">
+  <div class="footer-brand">Spark Academy</div>
+  <p>Kindergarten Copy Deck · Phase 3A Deliverable<br>
+  Prepared for Dr.&nbsp;Michelle Peterson, Ed.D.<br>
+  March 2026</p>
+</div>
+
+</body>
+</html>

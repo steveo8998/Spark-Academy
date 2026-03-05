@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spark Academy — Why Spark Academy Copy Deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --mist-teal: #3D6B62;
+    --misty-sage: #9BB8AD;
+    --antique-gold: #C49826;
+    --cloud-white: #FBFAF8;
+    --whisper-sage: #EFF5F2;
+    --body-text: #2E2E2E;
+    --light-sage: #D8E8DE;
+    --warm-gold-bg: #FBF6EC;
+    --flag-red: #C44;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--body-text);
+    background: var(--cloud-white);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── Cover ─── */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 3rem 1.5rem;
+    background: linear-gradient(165deg, var(--whisper-sage) 0%, var(--cloud-white) 40%, var(--cloud-white) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: var(--misty-sage);
+    opacity: 0.12;
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -40px;
+    left: -40px;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: var(--antique-gold);
+    opacity: 0.08;
+  }
+  .cover-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--antique-gold);
+    border: 1.5px solid var(--antique-gold);
+    border-radius: 100px;
+    padding: 0.35rem 1.1rem;
+    margin-bottom: 2rem;
+  }
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--mist-teal);
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+  }
+  .cover .subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    color: var(--misty-sage);
+    font-weight: 400;
+    margin-bottom: 0.35rem;
+  }
+  .cover .url-slug {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--antique-gold);
+    font-weight: 500;
+    margin-bottom: 2rem;
+  }
+  .cover-meta {
+    font-size: 0.85rem;
+    color: #888;
+    line-height: 1.8;
+  }
+  .cover-meta strong { color: var(--body-text); }
+  .cover-status {
+    display: inline-block;
+    margin-top: 1.5rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--antique-gold);
+    background: var(--warm-gold-bg);
+    border-radius: 6px;
+    padding: 0.45rem 1rem;
+  }
+
+  /* ─── Navigation ─── */
+  .toc {
+    padding: 2rem 1.5rem;
+    background: var(--whisper-sage);
+    border-bottom: 2px solid var(--light-sage);
+  }
+  .toc h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--mist-teal);
+    margin-bottom: 1rem;
+  }
+  .toc-list {
+    list-style: none;
+    counter-reset: toc-counter;
+  }
+  .toc-list li {
+    counter-increment: toc-counter;
+    margin-bottom: 0.5rem;
+  }
+  .toc-list li a {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    text-decoration: none;
+    font-size: 0.9rem;
+    color: var(--mist-teal);
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(61,107,98,0.1);
+    transition: color 0.2s;
+  }
+  .toc-list li a::before {
+    content: counter(toc-counter, decimal-leading-zero);
+    font-weight: 700;
+    font-size: 0.75rem;
+    color: var(--antique-gold);
+    min-width: 1.5rem;
+  }
+  .toc-list li a:hover { color: var(--antique-gold); }
+
+  /* ─── Page Specs ─── */
+  .specs {
+    padding: 2rem 1.5rem;
+    background: var(--cloud-white);
+    border-bottom: 2px solid var(--whisper-sage);
+  }
+  .specs h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    color: var(--mist-teal);
+    margin-bottom: 1.25rem;
+  }
+  .spec-grid {
+    display: grid;
+    gap: 0.6rem;
+  }
+  .spec-row {
+    display: flex;
+    flex-direction: column;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(155,184,173,0.25);
+  }
+  .spec-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--misty-sage);
+    margin-bottom: 0.2rem;
+  }
+  .spec-value {
+    font-size: 0.9rem;
+    color: var(--body-text);
+  }
+
+  /* ─── Sections ─── */
+  .section {
+    padding: 2.5rem 1.5rem;
+    border-bottom: 3px solid var(--whisper-sage);
+  }
+  .section:nth-child(even) {
+    background: var(--cloud-white);
+  }
+  .section:nth-child(odd) {
+    background: linear-gradient(180deg, var(--cloud-white) 0%, var(--whisper-sage) 100%);
+  }
+  .section-number {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--antique-gold);
+    margin-bottom: 0.5rem;
+  }
+  .section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--mist-teal);
+    line-height: 1.25;
+    margin-bottom: 1.25rem;
+  }
+  .section h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--mist-teal);
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* ─── Copy Blocks ─── */
+  .copy-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--mist-teal);
+    line-height: 1.25;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--antique-gold);
+  }
+  .copy-subheadline {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--body-text);
+    margin-bottom: 0.75rem;
+    line-height: 1.55;
+  }
+  .copy-body {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    margin-bottom: 1rem;
+    color: var(--body-text);
+  }
+
+  /* ─── Differentiator Cards ─── */
+  .diff-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin: 1.25rem 0;
+    border: 1.5px solid var(--light-sage);
+    border-top: 3px solid var(--mist-teal);
+  }
+  .diff-card-number {
+    display: inline-block;
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #fff;
+    background: var(--mist-teal);
+    border-radius: 4px;
+    padding: 0.2rem 0.6rem;
+    margin-bottom: 0.65rem;
+  }
+  .diff-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--mist-teal);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+  .diff-card-sub {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--mist-teal);
+    margin-bottom: 0.6rem;
+    line-height: 1.4;
+  }
+  .diff-card p {
+    font-size: 0.9rem;
+    color: var(--body-text);
+    line-height: 1.65;
+    margin-bottom: 0.75rem;
+  }
+
+  /* ─── Daily Schedule ─── */
+  .schedule-item {
+    padding: 0.85rem 0;
+    border-bottom: 1px solid rgba(155,184,173,0.3);
+  }
+  .schedule-item:last-child { border-bottom: none; }
+  .schedule-name {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--mist-teal);
+    margin-bottom: 0.25rem;
+  }
+  .schedule-desc {
+    font-size: 0.85rem;
+    color: #555;
+    line-height: 1.6;
+  }
+
+  /* ─── Values ─── */
+  .value-item {
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(155,184,173,0.25);
+  }
+  .value-item:last-child { border-bottom: none; }
+  .value-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--mist-teal);
+    margin-bottom: 0.35rem;
+  }
+  .value-desc {
+    font-size: 0.9rem;
+    color: var(--body-text);
+    line-height: 1.65;
+  }
+
+  /* ─── Strategic Notes ─── */
+  .note {
+    border-left: 3px solid var(--antique-gold);
+    background: var(--warm-gold-bg);
+    padding: 0.85rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: #555;
+  }
+  .note-label {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--antique-gold);
+    margin-bottom: 0.35rem;
+  }
+
+  /* ─── Photo Directions ─── */
+  .photo-dir {
+    border-left: 3px solid var(--mist-teal);
+    background: var(--whisper-sage);
+    padding: 0.85rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: #444;
+  }
+  .photo-dir-label {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--mist-teal);
+    margin-bottom: 0.35rem;
+  }
+  .photo-dir .alt-text {
+    display: block;
+    margin-top: 0.5rem;
+    font-style: italic;
+    font-size: 0.78rem;
+    color: #666;
+  }
+
+  /* ─── Flags ─── */
+  .flag {
+    border-left: 3px solid var(--flag-red);
+    background: #FFF0F0;
+    padding: 0.85rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: #555;
+  }
+  .flag-label {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--flag-red);
+    margin-bottom: 0.35rem;
+  }
+
+  /* ─── CTA Blocks ─── */
+  .cta-block {
+    margin: 1.25rem 0;
+    padding: 1rem;
+    background: linear-gradient(135deg, var(--whisper-sage) 0%, var(--cloud-white) 100%);
+    border-radius: 10px;
+    border: 1.5px solid var(--light-sage);
+  }
+  .cta-primary {
+    display: inline-block;
+    background: var(--antique-gold);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 0.6rem 1.5rem;
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.02em;
+  }
+  .cta-secondary {
+    display: block;
+    font-size: 0.82rem;
+    color: var(--mist-teal);
+    font-weight: 500;
+    margin-top: 0.35rem;
+  }
+  .cta-note {
+    font-size: 0.75rem;
+    color: #888;
+    font-style: italic;
+    margin-top: 0.5rem;
+    line-height: 1.5;
+  }
+
+  /* ─── Internal Links ─── */
+  .int-link {
+    font-size: 0.82rem;
+    color: var(--antique-gold);
+    font-weight: 500;
+    margin: 0.5rem 0;
+  }
+  .int-link::before {
+    content: '→ ';
+    font-weight: 700;
+  }
+
+  /* ─── Trust Bar ─── */
+  .trust-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0.75rem 0;
+  }
+  .trust-badge {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--mist-teal);
+    background: var(--whisper-sage);
+    padding: 0.35rem 0.75rem;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+
+  /* ─── Testimonial ─── */
+  .testimonial {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin: 1rem 0;
+    border: 1.5px solid var(--light-sage);
+    position: relative;
+  }
+  .testimonial::before {
+    content: '\201C';
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    color: var(--misty-sage);
+    opacity: 0.3;
+    position: absolute;
+    top: 0;
+    left: 0.75rem;
+    line-height: 1;
+  }
+  .testimonial-text {
+    font-size: 0.9rem;
+    font-style: italic;
+    line-height: 1.7;
+    color: var(--body-text);
+    padding-top: 1rem;
+  }
+  .testimonial-author {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--mist-teal);
+    margin-top: 0.75rem;
+  }
+
+  /* ─── Shot List ─── */
+  .shot-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 1rem;
+    margin: 0.75rem 0;
+    border: 1.5px solid var(--light-sage);
+  }
+  .shot-card-number {
+    display: inline-block;
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #fff;
+    background: var(--mist-teal);
+    border-radius: 4px;
+    padding: 0.2rem 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .shot-card h4 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--mist-teal);
+    margin-bottom: 0.4rem;
+  }
+  .shot-card p {
+    font-size: 0.8rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 0.35rem;
+  }
+  .shot-spec {
+    font-size: 0.72rem;
+    color: var(--misty-sage);
+    font-weight: 600;
+  }
+
+  /* ─── Footer ─── */
+  .doc-footer {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    background: var(--mist-teal);
+    color: rgba(255,255,255,0.7);
+    font-size: 0.75rem;
+    line-height: 1.7;
+  }
+  .doc-footer strong { color: #fff; }
+
+  @media (min-width: 600px) {
+    .cover h1 { font-size: 2.8rem; }
+    .section { padding: 3rem 2.5rem; }
+    .specs { padding: 2rem 2.5rem; }
+    .toc { padding: 2rem 2.5rem; }
+    .copy-headline { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════ COVER ════════════ -->
+<div class="cover">
+  <div class="cover-badge">Phase 3A Deliverable</div>
+  <h1>Why Spark Academy</h1>
+  <div class="subtitle">Copy Deck</div>
+  <div class="url-slug">/why-spark/</div>
+  <div class="cover-meta">
+    Prepared for <strong>Dr. Michelle Peterson, Ed.D.</strong><br>
+    Founder &amp; Executive Director, Spark Academy<br><br>
+    Prepared by <strong>Stephen Odanovich</strong><br>
+    Internet Marketing Specialist<br><br>
+    March 2026
+  </div>
+  <div class="cover-status">Draft — Pending Dr. Peterson's Review</div>
+</div>
+
+<!-- ════════════ TABLE OF CONTENTS ════════════ -->
+<div class="toc">
+  <h2>What's Inside</h2>
+  <ol class="toc-list">
+    <li><a href="#specs">Page Specifications</a></li>
+    <li><a href="#s1">Hero (Above the Fold)</a></li>
+    <li><a href="#s2">What Makes Spark Different</a></li>
+    <li><a href="#s3">A Day at Spark</a></li>
+    <li><a href="#s4">You'll See Their Day — Every Day</a></li>
+    <li><a href="#s5">What We Believe</a></li>
+    <li><a href="#s6">Testimonial</a></li>
+    <li><a href="#s7">Final CTA Block</a></li>
+    <li><a href="#shots">Photography Shot List</a></li>
+  </ol>
+</div>
+
+<!-- ════════════ PAGE SPECIFICATIONS ════════════ -->
+<div class="specs" id="specs">
+  <h2>Page Specifications</h2>
+  <div class="spec-grid">
+    <div class="spec-row"><div class="spec-label">Page</div><div class="spec-value">Why Spark Academy</div></div>
+    <div class="spec-row"><div class="spec-label">URL</div><div class="spec-value">/why-spark/</div></div>
+    <div class="spec-row"><div class="spec-label">Primary Keyword</div><div class="spec-value">play-based preschool Peoria IL (90/mo, KD 7 — Real Ahrefs Data)</div></div>
+    <div class="spec-row"><div class="spec-label">Secondary Keywords</div><div class="spec-value">play-based learning preschool; play-based preschool Morton; best preschool Peoria IL</div></div>
+    <div class="spec-row"><div class="spec-label">Search Intent</div><div class="spec-value">Informational / Commercial</div></div>
+    <div class="spec-row"><div class="spec-label">Funnel Stage</div><div class="spec-value">Mid Funnel — Parent is actively evaluating</div></div>
+    <div class="spec-row"><div class="spec-label">Messaging Lens</div><div class="spec-value">Child-Centric — 80% child-centric / 20% school-centric</div></div>
+    <div class="spec-row"><div class="spec-label">Primary CTA</div><div class="spec-value">Schedule a Tour</div></div>
+    <div class="spec-row"><div class="spec-label">Secondary CTA</div><div class="spec-value">Explore Our Programs</div></div>
+    <div class="spec-row"><div class="spec-label">Meta Title (≤60)</div><div class="spec-value">Why Spark Academy | Play-Based Preschool Peoria IL</div></div>
+    <div class="spec-row"><div class="spec-label">Meta Description (≤155)</div><div class="spec-value">Discover why families across Central IL choose Spark Academy's purposeful play approach. Led by Dr. Michelle Peterson, Ed.D.</div></div>
+    <div class="spec-row"><div class="spec-label">Word Count Target</div><div class="spec-value">1,200–1,800 words</div></div>
+  </div>
+
+  <div class="note" style="margin-top:1.25rem;">
+    <div class="note-label">Strategic Note</div>
+    This page does the heaviest lifting on philosophy differentiation. A parent who reaches /why-spark/ is past casual browsing — they're actively comparing Spark against other options. The page must answer "Why should I choose this school over the one that's closer, cheaper, or more familiar?" Per the Decision Matrix: child-centric leads at 80%, school-centric supports at 20%.
+  </div>
+</div>
+
+<!-- ════════════ SECTION 1: HERO ════════════ -->
+<div class="section" id="s1">
+  <div class="section-number">Section 01</div>
+  <h2>Hero (Above the Fold)</h2>
+
+  <h3>H1 — Page Title</h3>
+  <div class="copy-headline">Why Families Across Central Illinois Choose Spark Academy</div>
+
+  <h3>Subheadline</h3>
+  <div class="copy-subheadline">A play-based preschool where every child is known, every moment is intentional, and every beginning is exceptional.</div>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    The H1 includes "Central Illinois" to support the primary keyword target while keeping parent-first framing. "Families choose" positions the decision as something other families have already validated — social proof in the headline itself. The three-part subheadline compresses three core differentiators into a single memorable sentence: individualization ("known"), methodology ("intentional"), and outcome quality ("exceptional").
+  </div>
+
+  <h3>Hero Body Copy</h3>
+  <p class="copy-body">You're not looking for just any preschool. You're looking for the right one — a place where your child is more than a name on a roster. Where the teachers have real credentials. Where the learning is backed by research, not just tradition.</p>
+  <p class="copy-body">That's Spark Academy.</p>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    This opening mirrors Sarah's (Persona 1) internal monologue: "I'm not looking for daycare. I'm looking for the right foundation." Starting with "You're not looking for just any preschool" validates the parent's higher standard and immediately separates Spark from the market. The short standalone sentence "That's Spark Academy" is a confidence signal — no hedging, no qualifiers.
+  </div>
+
+  <div class="cta-block">
+    <div class="cta-primary">Schedule a Tour</div>
+    <div class="cta-secondary">Explore Our Programs</div>
+    <div class="cta-note">Primary CTA visible above the fold on desktop. On mobile, primary CTA full-width below hero text.</div>
+  </div>
+
+  <div class="photo-dir">
+    <div class="photo-dir-label">📸 Photo Direction — Hero Image</div>
+    Different from homepage hero to avoid repetition. Option A: A teacher and child together at a table, both focused on a learning activity — showing individualized attention and the ratio in action. Option B: A small group (3–4 children) working on a collaborative project with visible joy. Either way: natural light, warm tones, homelike setting. Horizontal, minimum 2000px wide.
+    <span class="alt-text">Alt: "Children engaged in play-based learning at Spark Academy preschool serving families across Central Illinois"</span>
+  </div>
+</div>
+
+<!-- ════════════ SECTION 2: DIFFERENTIATORS ════════════ -->
+<div class="section" id="s2">
+  <div class="section-number">Section 02</div>
+  <h2>What Makes Spark Different</h2>
+
+  <h3>Section Headline (H2)</h3>
+  <div class="copy-headline" style="font-size:1.3rem">Built on Research. Delivered with Heart.</div>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    Hybrid lens. "Research" = school-centric credential signal. "Heart" = child-centric warmth. This section presents four pillars that differentiate Spark from every competitor. Each differentiator is framed as a child outcome first, then supported with institutional proof. This is where David & Priya's (Persona 2) comparison rubric gets answered.
+  </div>
+
+  <!-- Differentiator 1 -->
+  <div class="diff-card">
+    <div class="diff-card-number">Differentiator 1</div>
+    <h4>Doctoral-Led Curriculum</h4>
+    <div class="diff-card-sub">Your Child's Learning Is Designed by a Researcher Who Knows Them by Name</div>
+    <p>Dr. Michelle Peterson, Ed.D., didn't just earn a doctorate in education — she founded Spark Academy to put that research into practice. Her doctoral work at Illinois State University focused on how young children develop social skills through purposeful play, and that research is embedded in every classroom at Spark.</p>
+    <p>With 20 years of experience spanning the classroom, school administration, and doctoral research — plus four Illinois teaching certifications — Dr. Peterson leads a school where curriculum decisions are made by someone who has studied how young children actually learn. Not a corporate office. Not a franchise manual. A researcher and educator who walks the hallways every day.</p>
+    <div class="note">
+      <div class="note-label">Strategic Note</div>
+      The copy intentionally contrasts "a researcher who walks the hallways" against corporate chains like Cadence Academy, whose Morton page uses generic, centrally written content. This is the competitive moat: Cadence cannot replicate doctoral-level, personally present leadership.
+    </div>
+  </div>
+
+  <!-- Differentiator 2 -->
+  <div class="diff-card">
+    <div class="diff-card-number">Differentiator 2</div>
+    <h4>The Purposeful Play Framework</h4>
+    <div class="diff-card-sub">Play That Builds Neural Pathways — Not Just Passes the Time</div>
+    <p>Research shows that young children build the neural pathways for language, problem-solving, executive function, and self-regulation through play — not through worksheets or rote memorization. But not all play is created equal.</p>
+    <p>The Purposeful Play Framework, developed by Dr. Peterson and built on the Experience Early Learning curriculum, structures every part of your child's day around intentional, research-based learning experiences. Academic play sessions, a Developmental Play Room that transforms monthly around new themes, and daily enrichment in Spanish, STEM, art, communication, and music — all designed to meet your child exactly where they are.</p>
+    <div class="note">
+      <div class="note-label">Strategic Note</div>
+      The "neural pathways" argument is Dr. Peterson's most powerful reframe from the video call. It transforms play from "soft" to "neuroscience." This paragraph defends play-based learning against the academic-preschool objection without ever naming the objection directly.
+    </div>
+    <div class="int-link">"Explore the Purposeful Play Framework in depth →" links to /purposeful-play-framework/</div>
+  </div>
+
+  <!-- Differentiator 3 -->
+  <div class="diff-card">
+    <div class="diff-card-number">Differentiator 3</div>
+    <h4>A 5:1 Ratio That Means Something</h4>
+    <div class="diff-card-sub">Small Enough to Know Your Child. Structured Enough to Challenge Them.</div>
+    <p>At Spark, your child isn't one of twenty-five. Classes are capped at 10–12 students with a 5:1 student-to-teacher ratio — a number that no other preschool in the area matches.</p>
+    <p>That ratio isn't a marketing number. It's what makes individualization possible. It means teachers can notice when your daughter is ready for a bigger challenge in literacy. It means they catch the moment your son needs support with a social interaction. It means the learning plan adapts to who your child is — not just how old they are.</p>
+    <div class="note">
+      <div class="note-label">Strategic Note</div>
+      The "daughter" and "son" examples help every persona picture their own child in the narrative. "We plan for your child, not age bands" was identified in the Brand Voice Guide as one of the strongest single sentences for conveying premium quality. This section translates that principle into concrete parent scenarios.
+    </div>
+  </div>
+
+  <!-- Differentiator 4 -->
+  <div class="diff-card">
+    <div class="diff-card-number">Differentiator 4</div>
+    <h4>Degreed Teachers Who Stay</h4>
+    <div class="diff-card-sub">Credentialed Educators — Not Just People Who Like Kids</div>
+    <p>Every teacher at Spark Academy holds a degree or professional credential in education. That's not standard in this industry — and it matters more than most parents realize.</p>
+    <p>Credentialed teachers don't just supervise. They observe developmental patterns. They know when a child's behavior is communication, not defiance. They design activities that stretch each child's abilities without overwhelming them. And because Spark is a small, intentional community, these teachers know your family — not just your child's name on a check-in sheet.</p>
+    <div class="note">
+      <div class="note-label">Strategic Note</div>
+      Comes directly from Dr. Peterson's elevator pitch: "A lot of people just have people who like kids." The phrase "behavior is communication, not defiance" signals inclusive philosophy to Megan (Persona 3) without creating a separate "special needs" section — it's woven in naturally.
+    </div>
+    <div class="flag">
+      <div class="flag-label">⚠️ Needs Dr. Peterson's Input</div>
+      Confirm that "Every teacher at Spark holds a degree or professional credential in education" is accurate as stated. If some staff are working toward credentials, adjust to "degreed or actively pursuing credentials."
+    </div>
+  </div>
+
+  <div class="photo-dir">
+    <div class="photo-dir-label">📸 Photo Direction — Differentiators</div>
+    2–3 photos interspersed between the four blocks. (1) Teacher at child-level, one-on-one engagement — showing ratio and individualized attention. Should feel intimate, not posed. (2) Developmental Play Room in current monthly theme — showing intentional space design. (3) A child transitioning between activities or working independently with focused engagement. All: natural light, warm interior, authentic moments.
+  </div>
+</div>
+
+<!-- ════════════ SECTION 3: A DAY AT SPARK ════════════ -->
+<div class="section" id="s3">
+  <div class="section-number">Section 03</div>
+  <h2>A Day at Spark</h2>
+
+  <h3>Section Headline (H2)</h3>
+  <div class="copy-headline" style="font-size:1.3rem">What Your Child's Day Actually Looks Like</div>
+
+  <p class="copy-body">Every day at Spark follows a rhythm your child can count on — a balance of academic play, creative enrichment, physical activity, and the kind of purposeful exploration that builds real skills.</p>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    Sarah (Persona 1) specifically evaluates on the daily schedule. She wants to picture her daughter's day. This section makes the abstract ("purposeful play") concrete by showing exactly how time is structured. It also preempts the "is this just play all day?" objection.
+  </div>
+
+  <div style="background:#fff; border-radius:10px; padding:1rem; margin:1rem 0; border:1.5px solid var(--light-sage);">
+    <div class="schedule-item">
+      <div class="schedule-name">Academic Play (1.5–2.5 hours)</div>
+      <div class="schedule-desc">Guided learning experiences in literacy, math, science, and social-emotional development — all delivered through play-based methods. Activities are differentiated based on each child's readiness, not one-size-fits-all worksheets.</div>
+    </div>
+    <div class="schedule-item">
+      <div class="schedule-name">Developmental Play Room (30 minutes)</div>
+      <div class="schedule-desc">Spark's signature: a dedicated space that transforms monthly around a new theme. Children engage in hands-on exploration, dramatic play, and creative building in an environment designed to spark curiosity and independent problem-solving.</div>
+    </div>
+    <div class="schedule-item">
+      <div class="schedule-name">Daily Enrichment (30 minutes)</div>
+      <div class="schedule-desc">A rotating schedule of specialist-led activities: Spanish on Monday, STEM on Tuesday, art on Wednesday, communication on Thursday, and music and movement on Friday. Every child, every program, every day.</div>
+    </div>
+    <div class="schedule-item">
+      <div class="schedule-name">Outdoor Play (15 minutes)</div>
+      <div class="schedule-desc">Weather-appropriate outdoor time for physical development, gross motor skills, and unstructured social interaction.</div>
+    </div>
+    <div class="schedule-item">
+      <div class="schedule-name">Snack &amp; Community Time (15 minutes)</div>
+      <div class="schedule-desc">A moment to practice manners, conversation, and the simple art of sitting together.</div>
+    </div>
+  </div>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    The enrichment rotation is listed with specific days and subjects because specificity builds credibility. "Spanish on Monday, STEM on Tuesday" is infinitely more convincing than "enrichment activities." Every competitor says "enrichment." None list five specific subjects delivered five days a week.
+  </div>
+
+  <div class="int-link">Each program name links to its dedicated program page</div>
+
+  <div class="photo-dir">
+    <div class="photo-dir-label">📸 Photo Direction — Daily Schedule</div>
+    3–4 smaller photos showing different parts of the daily rhythm: (1) Children in an academic play activity — small group, engaged, teacher guiding. (2) A child in the Developmental Play Room, absorbed in exploration. (3) An enrichment moment — Spanish or music works well visually. (4) Outdoor play — running, climbing, or playing together naturally. Should feel like a visual timeline of the day.
+  </div>
+</div>
+
+<!-- ════════════ SECTION 4: BRIGHTWHEEL ════════════ -->
+<div class="section" id="s4">
+  <div class="section-number">Section 04</div>
+  <h2>You'll See Their Day — Every Day</h2>
+
+  <h3>Section Headline (H2)</h3>
+  <div class="copy-headline" style="font-size:1.3rem">A Window Into Your Child's World</div>
+
+  <p class="copy-body">Every day, your child's teachers post photos and updates through Brightwheel — a dedicated parent communication platform — so you can see exactly what your child experienced.</p>
+  <p class="copy-body">You'll go from asking "What did you do at school today?" and hearing "I played" to opening your phone and seeing a photo of your daughter building the Leaning Tower of Pisa out of blocks. Now you have something real to talk about at dinner.</p>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    The Leaning Tower of Pisa blocks story comes directly from Dr. Peterson's video call. It's specific, vivid, and immediately communicates the value of daily photo documentation. This addresses a latent parent anxiety: "What actually happens when I drop my child off?"
+  </div>
+
+  <div class="photo-dir">
+    <div class="photo-dir-label">📸 Photo Direction — Brightwheel / Communication</div>
+    Screenshot mockup of the Brightwheel app showing a parent notification with a child's activity photo. Alternatively: a teacher taking a photo of children at work with a phone or tablet. Or a parent's-perspective shot — phone screen showing a Brightwheel notification. Key message: this school communicates proactively.
+  </div>
+</div>
+
+<!-- ════════════ SECTION 5: VALUES ════════════ -->
+<div class="section" id="s5">
+  <div class="section-number">Section 05</div>
+  <h2>What We Believe</h2>
+
+  <h3>Section Headline (H2)</h3>
+  <div class="copy-headline" style="font-size:1.3rem">Five Principles That Guide Everything We Do</div>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    School-centric lean (the 20% allocation for this page). Each value is stated as a principle and then grounded in what it means for the parent's child. Megan (Persona 3) connects deeply with values-driven messaging — she reads how the school talks about children, not just what programs are offered.
+  </div>
+
+  <div style="background:#fff; border-radius:10px; padding:1rem; margin:1rem 0; border:1.5px solid var(--light-sage);">
+    <div class="value-item">
+      <div class="value-name">Play with Purpose</div>
+      <div class="value-desc">Play is how young children learn. But purposeful play — guided by research and structured by intention — is how they build the foundations for everything that comes next. Every activity at Spark is designed to develop specific skills through the most powerful learning method available to a young mind.</div>
+    </div>
+    <div class="value-item">
+      <div class="value-name">Relationships First</div>
+      <div class="value-desc">Children learn best when they feel safe, known, and genuinely cared for. That's why we keep classes small, hire teachers who stay, and build a community where every family is part of something bigger than a roster.</div>
+    </div>
+    <div class="value-item">
+      <div class="value-name">Whole-Child Growth</div>
+      <div class="value-desc">Academic readiness is important. So is emotional regulation, social confidence, creative expression, and the ability to navigate a world that doesn't come with instructions. Spark develops the whole child — not just the parts that show up on a progress report.</div>
+    </div>
+    <div class="value-item">
+      <div class="value-name">Excellence in Environment</div>
+      <div class="value-desc">The space where your child learns matters. From the Developmental Play Room that transforms monthly to the homelike classrooms filled with natural light and intentionally chosen materials — every physical detail at Spark is designed to support learning and spark curiosity.</div>
+    </div>
+    <div class="value-item">
+      <div class="value-name">Leadership Through Integrity</div>
+      <div class="value-desc">We lead with honesty, transparency, and the courage to do what research says is best for children — even when it's harder. Tuition is published. Credentials are verified. Promises are kept.</div>
+    </div>
+  </div>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    Value 5 embeds the tuition transparency decision as a values-driven choice. "Tuition is published" isn't just a feature — it's positioned as an integrity commitment. This also reinforces the David & Priya persona: they evaluate transparency as a trust signal.
+  </div>
+</div>
+
+<!-- ════════════ SECTION 6: TESTIMONIAL ════════════ -->
+<div class="section" id="s6">
+  <div class="section-number">Section 06</div>
+  <h2>Testimonial</h2>
+
+  <div class="testimonial">
+    <div class="testimonial-text">Enrolling my son at Spark Academy has been the best decision I've made. Michelle and her entire team truly meet each child at their level and begin to foster a love of learning. I appreciate their use of developmental play and enrichment activities such as art and music/movement to augment traditional classroom education. The experience and expertise they offer are top-notch! But most importantly, my son absolutely loves his school and all of his teachers. I look forward to continuing to watch him learn and grow with the help of Spark Academy!</div>
+    <div class="testimonial-author">— April, Spark Academy Parent</div>
+  </div>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    April's testimonial is placed here (not homepage) because her language directly mirrors this page's content: developmental play, enrichment activities, meeting each child at their level, and the team's experience and expertise. This creates a narrative echo — the page makes promises, and April's words confirm them. The persona doc maps April to Megan (Persona 3) — her "meet each child at their level" language is exactly the inclusivity signal Megan searches for.
+  </div>
+
+  <div class="flag">
+    <div class="flag-label">⚠️ Needs Dr. Peterson's Input</div>
+    Confirm April has given written permission for website use of this testimonial.
+  </div>
+
+  <div class="int-link">"Read more from Spark families →" links to /testimonials/</div>
+</div>
+
+<!-- ════════════ SECTION 7: FINAL CTA ════════════ -->
+<div class="section" id="s7">
+  <div class="section-number">Section 07</div>
+  <h2>Final CTA Block</h2>
+
+  <h3>Section Headline (H2)</h3>
+  <div class="copy-headline" style="font-size:1.3rem">The Best Way to Know Spark Is to See It</div>
+
+  <p class="copy-body">Everything on this page becomes real the moment you walk through our doors. Schedule a tour and see the classrooms, meet the teachers, and discover why families across Central Illinois trust Spark Academy with the most important years of their child's life.</p>
+  <p class="copy-body">Or, if you'd prefer to explore further first, take a closer look at our programs and find the right fit for your child.</p>
+
+  <div class="cta-block">
+    <div class="cta-primary">Schedule a Tour</div>
+    <div class="cta-secondary">Explore Our Programs</div>
+    <div class="cta-secondary" style="color:#888; font-size:0.8rem; margin-top:0.35rem;">Prefer to call? 309-291-3292</div>
+  </div>
+
+  <h3>Trust Signals Adjacent to CTA</h3>
+  <div class="trust-bar">
+    <div class="trust-badge">Dr. Michelle Peterson, Ed.D.</div>
+    <div class="trust-badge">5:1 Ratio</div>
+    <div class="trust-badge">DCFS Licensed • Central IL</div>
+  </div>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    Same CTA pattern as hero but at page bottom. Trust signals adjacent to CTA per Baymard Institute placement rules. Phone number as tertiary path for parents who prefer direct contact.
+  </div>
+</div>
+
+<!-- ════════════ PHOTOGRAPHY SHOT LIST ════════════ -->
+<div class="section" id="shots" style="background:var(--whisper-sage);">
+  <div class="section-number">Photography Reference</div>
+  <h2>Why Spark — Shot List</h2>
+  <p class="copy-body" style="font-size:0.85rem;">Shots needed for this page. Some overlap with homepage — shared shots are noted. All photos: natural light, warm tones, authentic moments.</p>
+
+  <div class="shot-card">
+    <div class="shot-card-number">Shot 1</div>
+    <h4>Hero Image (Different from Homepage)</h4>
+    <p>Teacher and child together at a table, both focused on a learning activity — showing individualized attention and the 5:1 ratio. Or: small group (3–4 children) collaborating with visible joy. Key difference from homepage hero: emphasis on relationship and intentionality, not just joyful activity.</p>
+    <div class="shot-spec">Horizontal • Min 2000px wide</div>
+  </div>
+
+  <div class="shot-card">
+    <div class="shot-card-number">Shot 2</div>
+    <h4>Teacher at Child-Level (One-on-One)</h4>
+    <p>Teacher kneeling or sitting at child's level, engaged in a one-on-one interaction — reading together, examining something the child made, or having a conversation. Posture should communicate genuine interest and presence. Illustrates ratio and "known by name" promise.</p>
+    <div class="shot-spec">Vertical or square</div>
+  </div>
+
+  <div class="shot-card">
+    <div class="shot-card-number">Shot 3</div>
+    <h4>Developmental Play Room (Monthly Theme)</h4>
+    <p>Wide shot showing current monthly theme setup. Should demonstrate designed environment, not random toys. Include a child or two engaged in the space if possible.</p>
+    <div class="shot-spec">Horizontal preferred • Can share with Homepage Shot 6</div>
+  </div>
+
+  <div class="shot-card">
+    <div class="shot-card-number">Shot 4</div>
+    <h4>Enrichment in Action</h4>
+    <p>Specialist or teacher leading one of the five daily enrichment activities. STEM or Spanish photograph well — unique materials and interactions. Children actively participating, not passively watching.</p>
+    <div class="shot-spec">Horizontal or square • Can share with Homepage Shot 9</div>
+  </div>
+
+  <div class="shot-card">
+    <div class="shot-card-number">Shot 5</div>
+    <h4>Daily Schedule Sequence (3–4 photos)</h4>
+    <p>Mini-series showing the rhythm of a Spark day: (1) academic play moment, (2) play room exploration, (3) enrichment activity, (4) outdoor play. Each should feel distinct in activity while sharing visual warmth and authenticity.</p>
+    <div class="shot-spec">Mix — squares or small horizontals</div>
+  </div>
+
+  <div class="shot-card">
+    <div class="shot-card-number">Shot 6</div>
+    <h4>Interior Environment (Warm, Homelike)</h4>
+    <p>Wide/medium shot of classroom or common area emphasizing warm, homelike quality. Natural light, child-sized furniture, organized learning materials. No institutional fluorescent lighting. Parent should feel: "My child would be comfortable here."</p>
+    <div class="shot-spec">Horizontal • Can share with Homepage community section</div>
+  </div>
+
+  <div class="shot-card">
+    <div class="shot-card-number">Shot 7</div>
+    <h4>Small Group Collaboration</h4>
+    <p>Two or three children working together — building, creating, problem-solving. Emphasis on peer interaction and social learning. Teacher nearby but not directing. Illustrates social-emotional development and "relationships first" value.</p>
+    <div class="shot-spec">Horizontal or square</div>
+  </div>
+</div>
+
+<!-- ════════════ FOOTER ════════════ -->
+<div class="doc-footer">
+  <strong>Spark Academy</strong> — Website Rebuild Project<br>
+  Phase 3A: Why Spark Academy Copy Deck • March 2026<br>
+  Confidential — For Internal Review Only<br><br>
+  Prepared by <strong>Stephen Odanovich</strong>, Internet Marketing Specialist
+</div>
+
+</body>
+</html>

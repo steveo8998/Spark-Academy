@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spark Academy — Fresh 3's Fridays Copy Deck</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --mist-teal: #3D6B62;
+    --antique-gold: #C49826;
+    --cloud-white: #FBFAF8;
+    --whisper-sage: #EFF5F2;
+    --misty-sage: #9BB8AD;
+    --body-text: #2E2E2E;
+    --deep-teal: #2C4F48;
+    --light-gold: #FBF5E6;
+    --warm-gray: #8A8A8A;
+    --border-light: #E2EBE7;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cloud-white);
+    color: var(--body-text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: linear-gradient(165deg, var(--mist-teal) 0%, var(--deep-teal) 100%);
+    color: white;
+    padding: 3rem 1.5rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: -20%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(196,152,38,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -15%;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(155,184,173,0.1) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--antique-gold);
+    margin-bottom: 0.75rem;
+    position: relative;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    position: relative;
+  }
+  .hero-subtitle {
+    font-size: 1rem;
+    color: var(--misty-sage);
+    font-weight: 400;
+    margin-bottom: 1.75rem;
+    position: relative;
+  }
+  .hero-meta {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    position: relative;
+  }
+  .hero-tag {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.75rem;
+    border-radius: 100px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.8);
+  }
+  .hero-tag.gold {
+    background: rgba(196,152,38,0.15);
+    border-color: rgba(196,152,38,0.3);
+    color: var(--antique-gold);
+  }
+
+  /* ─── STICKY NAV ─── */
+  .sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--cloud-white);
+    border-bottom: 1px solid var(--border-light);
+    padding: 0.75rem 1rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    scrollbar-width: none;
+  }
+  .sticky-nav::-webkit-scrollbar { display: none; }
+  .nav-pills {
+    display: inline-flex;
+    gap: 0.4rem;
+  }
+  .nav-pill {
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.35rem 0.8rem;
+    border-radius: 100px;
+    background: var(--whisper-sage);
+    color: var(--mist-teal);
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+  }
+  .nav-pill:hover, .nav-pill:active {
+    background: var(--mist-teal);
+    color: white;
+  }
+
+  /* ─── PAGE SPECS CARD ─── */
+  .specs-section {
+    padding: 1.5rem;
+  }
+  .specs-card {
+    background: white;
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    overflow: hidden;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .specs-header {
+    background: var(--whisper-sage);
+    padding: 0.75rem 1.25rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mist-teal);
+  }
+  .specs-grid {
+    padding: 0.5rem 0;
+  }
+  .spec-row {
+    display: flex;
+    padding: 0.6rem 1.25rem;
+    border-bottom: 1px solid #f0f4f2;
+    gap: 1rem;
+    align-items: baseline;
+  }
+  .spec-row:last-child { border-bottom: none; }
+  .spec-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--mist-teal);
+    min-width: 110px;
+    flex-shrink: 0;
+  }
+  .spec-value {
+    font-size: 0.82rem;
+    color: var(--body-text);
+    line-height: 1.5;
+  }
+
+  /* ─── STRATEGIC NOTES ─── */
+  .strategic-note {
+    background: var(--light-gold);
+    border-left: 3px solid var(--antique-gold);
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.25rem;
+    margin: 1.25rem 0;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .strategic-note-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--antique-gold);
+    margin-bottom: 0.4rem;
+  }
+  .strategic-note p {
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: #5C4A1A;
+  }
+
+  /* ─── PHOTO DIRECTION ─── */
+  .photo-note {
+    background: #F3F0F8;
+    border-left: 3px solid #8B7DBB;
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.25rem;
+    margin: 1.25rem auto;
+    max-width: 700px;
+  }
+  .photo-note-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #8B7DBB;
+    margin-bottom: 0.4rem;
+  }
+  .photo-note p {
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: #4A4260;
+  }
+
+  /* ─── CONTENT SECTIONS ─── */
+  .content-section {
+    padding: 2rem 1.5rem;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .content-section + .content-section {
+    border-top: 1px solid var(--border-light);
+  }
+  .section-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--misty-sage);
+    margin-bottom: 0.5rem;
+  }
+  .section-h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--mist-teal);
+    line-height: 1.25;
+    margin-bottom: 1rem;
+  }
+  .section-h1-display {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--deep-teal);
+    line-height: 1.25;
+    margin-bottom: 0.75rem;
+    padding: 1rem 1.25rem;
+    background: var(--whisper-sage);
+    border-radius: 8px;
+    text-align: center;
+  }
+  .subheadline-display {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--body-text);
+    line-height: 1.7;
+    padding: 1rem 1.25rem;
+    background: white;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+  .copy-block {
+    font-size: 0.92rem;
+    line-height: 1.8;
+    color: var(--body-text);
+    margin-bottom: 1rem;
+  }
+  .copy-block p {
+    margin-bottom: 1rem;
+  }
+  .copy-block p:last-child {
+    margin-bottom: 0;
+  }
+  .copy-block strong {
+    color: var(--deep-teal);
+  }
+
+  /* ─── CTA BLOCK ─── */
+  .cta-block {
+    background: white;
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin: 1.25rem 0;
+    text-align: center;
+  }
+  .cta-primary {
+    display: inline-block;
+    background: var(--antique-gold);
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 0.65rem 1.75rem;
+    border-radius: 6px;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+  }
+  .cta-secondary {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--mist-teal);
+    font-weight: 500;
+    margin-top: 0.4rem;
+  }
+  .trust-line {
+    font-size: 0.75rem;
+    color: var(--warm-gray);
+    margin-top: 0.75rem;
+    line-height: 1.5;
+  }
+
+  /* ─── SCHEDULE TABLE ─── */
+  .schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border-light);
+  }
+  .schedule-table thead th {
+    background: var(--mist-teal);
+    color: white;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.7rem 1rem;
+    text-align: left;
+  }
+  .schedule-table tbody td {
+    padding: 0.75rem 1rem;
+    font-size: 0.84rem;
+    border-bottom: 1px solid #f0f4f2;
+    vertical-align: top;
+  }
+  .schedule-table tbody tr:last-child td { border-bottom: none; }
+  .schedule-table tbody tr:nth-child(even) { background: var(--whisper-sage); }
+  .time-col {
+    font-weight: 600;
+    color: var(--mist-teal);
+    white-space: nowrap;
+    min-width: 80px;
+  }
+
+  /* ─── TUITION TABLE ─── */
+  .tuition-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border-light);
+  }
+  .tuition-table td {
+    padding: 0.7rem 1rem;
+    font-size: 0.84rem;
+    border-bottom: 1px solid #f0f4f2;
+    vertical-align: top;
+  }
+  .tuition-table tr:last-child td { border-bottom: none; }
+  .tuition-table tr:nth-child(even) { background: var(--whisper-sage); }
+  .tuition-table .t-label {
+    font-weight: 600;
+    color: var(--mist-teal);
+    min-width: 110px;
+    white-space: nowrap;
+  }
+
+  /* ─── FAQ ─── */
+  .faq-item {
+    margin-bottom: 1.25rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border-light);
+  }
+  .faq-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  .faq-q {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--deep-teal);
+    margin-bottom: 0.4rem;
+    line-height: 1.4;
+  }
+  .faq-a {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: var(--body-text);
+  }
+
+  /* ─── QUOTE BLOCK ─── */
+  .quote-block {
+    background: var(--whisper-sage);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    text-align: center;
+    position: relative;
+  }
+  .quote-mark {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: var(--misty-sage);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+  .quote-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--deep-teal);
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+  }
+  .quote-attr {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--mist-teal);
+  }
+
+  /* ─── INTERNAL LINKS ─── */
+  .links-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border-light);
+    font-size: 0.82rem;
+  }
+  .links-table thead th {
+    background: var(--mist-teal);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.6rem 0.75rem;
+    text-align: left;
+  }
+  .links-table tbody td {
+    padding: 0.6rem 0.75rem;
+    border-bottom: 1px solid #f0f4f2;
+    vertical-align: top;
+  }
+  .links-table tbody tr:nth-child(even) { background: var(--whisper-sage); }
+  .links-table tbody tr:last-child td { border-bottom: none; }
+
+  /* ─── PHOTO SUMMARY TABLE ─── */
+  .photo-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #D8D0E8;
+    font-size: 0.82rem;
+  }
+  .photo-table thead th {
+    background: #8B7DBB;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.6rem 0.75rem;
+    text-align: left;
+  }
+  .photo-table tbody td {
+    padding: 0.6rem 0.75rem;
+    border-bottom: 1px solid #E8E4F0;
+    vertical-align: top;
+  }
+  .photo-table tbody tr:nth-child(even) { background: #F3F0F8; }
+  .photo-table tbody tr:last-child td { border-bottom: none; }
+
+  /* ─── DIVIDER ─── */
+  .section-divider {
+    height: 4px;
+    background: linear-gradient(90deg, var(--mist-teal), var(--misty-sage), transparent);
+    border: none;
+    margin: 0;
+    opacity: 0.3;
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    background: var(--deep-teal);
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    padding: 2rem 1.5rem;
+    font-size: 0.78rem;
+    line-height: 1.7;
+  }
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.35rem;
+  }
+  .footer .draft-badge {
+    display: inline-block;
+    margin-top: 0.75rem;
+    padding: 0.3rem 1rem;
+    border: 1px solid rgba(196,152,38,0.4);
+    border-radius: 100px;
+    color: var(--antique-gold);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (min-width: 600px) {
+    .hero { padding: 4rem 2rem 3rem; }
+    .hero h1 { font-size: 2.4rem; }
+    .content-section { padding: 2.5rem 2rem; }
+    .section-h2 { font-size: 1.65rem; }
+  }
+  @media (min-width: 800px) {
+    .hero h1 { font-size: 2.75rem; }
+    .section-h2 { font-size: 1.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<div class="hero">
+  <div class="hero-label">Phase 3A Copy Deck · Draft</div>
+  <h1>Fresh 3's Fridays</h1>
+  <div class="hero-subtitle">Page Copy Deck — /fresh-3s-fridays/</div>
+  <div class="hero-meta">
+    <span class="hero-tag">Child-Centric 85/15</span>
+    <span class="hero-tag gold">Top-to-Mid Funnel</span>
+    <span class="hero-tag">1,200–1,600 Words</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════ STICKY NAV ═══════════════════════ -->
+<nav class="sticky-nav">
+  <div class="nav-pills">
+    <a href="#specs" class="nav-pill">Specs</a>
+    <a href="#s1" class="nav-pill">Hero</a>
+    <a href="#s2" class="nav-pill">What It Is</a>
+    <a href="#s3" class="nav-pill">Birthday Enrollment</a>
+    <a href="#s4" class="nav-pill">Upgrade Path</a>
+    <a href="#s5" class="nav-pill">Testimonials</a>
+    <a href="#s6" class="nav-pill">Tuition</a>
+    <a href="#s7" class="nav-pill">FAQ</a>
+    <a href="#links" class="nav-pill">Links & Photos</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════ PAGE SPECS ═══════════════════════ -->
+<section class="specs-section" id="specs">
+  <div class="specs-card">
+    <div class="specs-header">Page Specifications</div>
+    <div class="specs-grid">
+      <div class="spec-row">
+        <span class="spec-label">URL</span>
+        <span class="spec-value">/fresh-3s-fridays/</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Primary KW</span>
+        <span class="spec-value">preschool Morton IL <em style="color:var(--warm-gray);font-size:0.78rem;">(local intent — intercepts parents researching entry-level options)</em></span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Secondary KWs</span>
+        <span class="spec-value">preschool for 3 year olds Morton IL · part-time preschool Morton · preschool starting at 3 Morton IL</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Long-Tail</span>
+        <span class="spec-value">when can my child start preschool Morton · preschool one day a week Illinois · part time preschool Peoria area</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Intent</span>
+        <span class="spec-value">Informational / Commercial — parent researching whether their child is ready</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Funnel Stage</span>
+        <span class="spec-value">Top-to-Mid — hesitant parent, low commitment, exploring options</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Audience</span>
+        <span class="spec-value">Parents of newly turned or soon-to-be 3-year-olds</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Messaging</span>
+        <span class="spec-value">Child-Centric — 85% child / 15% school</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Primary CTA</span>
+        <span class="spec-value">Schedule a Tour</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Secondary CTA</span>
+        <span class="spec-value">Reserve Your Spot <em style="color:var(--warm-gray);font-size:0.78rem;">(registration interest form — name, child's birthday, phone, email)</em></span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Meta Title</span>
+        <span class="spec-value">Fresh 3's Fridays | Part-Time Preschool | Spark Academy</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Meta Desc</span>
+        <span class="spec-value">One day a week. Full Spark experience. Enroll the day your child turns 3 — no waiting. Schedule a tour at Spark Academy in Morton, IL.</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Schema</span>
+        <span class="spec-value">EducationalOccupationalProgram + FAQPage + BreadcrumbList</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Data Layer</span>
+        <span class="spec-value" style="font-family:monospace;font-size:0.78rem;">page_type: program | funnel: parent | content_category: program | has_form: true | page_template: program-page</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Word Count</span>
+        <span class="spec-value">1,200–1,600 words</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Links From</span>
+        <span class="spec-value">Homepage program tile · /preschool-3s/ upgrade path section · /programs/ overview</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="strategic-note" style="margin-top:1.5rem;">
+    <div class="strategic-note-label">Strategic Context</div>
+    <p>This is the most emotionally delicate page on the site. The parent reading it is not sure — about the program, about the school, about whether their child is ready. The copy never pushes. It reassures, clarifies, and invites. Every sentence passes the Flip Test: is this about the child, or about Spark? The tour CTA remains primary because enrollment requires paperwork and a personal conversation — but the registration interest form serves as a lower-barrier secondary conversion for parents not yet ready to commit to a visit.</p>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════ SECTION 1: HERO ═══════════════════════ -->
+<section class="content-section" id="s1">
+  <div class="section-label">Section 1 · Hero (Above the Fold)</div>
+  
+  <div class="section-h1-display">One Day a Week. The Full Spark Experience.</div>
+  
+  <div class="strategic-note">
+    <div class="strategic-note-label">H1 Strategy</div>
+    <p>"One day a week" is the relief statement — it immediately tells the hesitant parent this is manageable. "The full Spark experience" is the credibility statement — it tells them this isn't a lite version or a babysitting arrangement. Both land in five words each. The tension between them IS the page's argument.</p>
+  </div>
+
+  <div class="subheadline-display">
+    Not sure if your child is ready for preschool? Fresh 3's Fridays is a low-stress, one-day-a-week introduction to everything Spark has to offer — and your child can start the day they turn three.
+  </div>
+
+  <div class="strategic-note">
+    <div class="strategic-note-label">Subheadline Strategy</div>
+    <p>The phrase "low-stress" comes directly from Dr. Peterson's words. Using her language here is intentional — it's authentic and it's exactly what this audience needs to hear. The birthday enrollment hook lands at the end of the subheadline, not the beginning — because the parent needs the emotional reassurance before they're ready to receive the practical differentiator.</p>
+  </div>
+
+  <div class="cta-block">
+    <div class="cta-primary">Schedule a Tour</div>
+    <div class="cta-secondary">Reserve Your Spot → <em style="font-size:0.75rem;color:var(--warm-gray);">(scrolls to registration interest form)</em></div>
+    <div class="trust-line">12 spots available · 8:30–11:30 AM every Friday · $100/month · Enrolling ages 3+</div>
+  </div>
+
+  <div class="photo-note">
+    <div class="photo-note-label">Photo Direction — Hero</div>
+    <p>A single child, around age 3, engaged in a hands-on activity — painting, building, or sensory play. The child should look absorbed and at ease, not posed. Natural light. The image communicates: <em>this child is happy here.</em> No adults in frame for the hero — make this entirely about the child's experience.</p>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════ SECTION 2: WHAT IT IS ═══════════════════════ -->
+<section class="content-section" id="s2">
+  <div class="section-label">Section 2 · What Fresh 3's Fridays Is</div>
+  <div class="section-h2">Full Spark. One Day a Week.</div>
+  
+  <div class="copy-block">
+    <p>Fresh 3's Fridays isn't a watered-down version of preschool. It's the same research-driven Purposeful Play Framework, the same credentialed teachers, the same individualized approach — delivered in a single Friday session each week.</p>
+    <p>Your child will move through the same daily rhythm as our full-time 3's students: Academic Play, the Developmental Playroom, daily enrichment, outdoor time, and snack. Every moment is intentional. Every activity is designed by a doctoral researcher in early childhood education who knows exactly what a three-year-old's brain needs.</p>
+    <p>The only difference is the days. One Friday. The whole Spark.</p>
+  </div>
+
+  <div style="margin-top:1.5rem;">
+    <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--mist-teal);margin-bottom:0.6rem;">The Friday Schedule</div>
+    <table class="schedule-table">
+      <thead>
+        <tr>
+          <th>Time Block</th>
+          <th>Activity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="time-col">1.5 Hours</td>
+          <td><strong>Academic Play</strong> — teacher-guided, purposeful play aligned to curriculum themes and your child's individual learning goals</td>
+        </tr>
+        <tr>
+          <td class="time-col">30 Minutes</td>
+          <td><strong>Developmental Playroom</strong> — student-driven exploration in a monthly-rotating environment that changes with our curriculum themes</td>
+        </tr>
+        <tr>
+          <td class="time-col">30 Minutes</td>
+          <td><strong>Daily Enrichment</strong> — Friday is Music & Movement, one of the most joyful parts of the Spark week</td>
+        </tr>
+        <tr>
+          <td class="time-col">15 Minutes</td>
+          <td><strong>Outdoor Play</strong> — fresh air, gross motor development, and unstructured time to just be a kid</td>
+        </tr>
+        <tr>
+          <td class="time-col">15 Minutes</td>
+          <td><strong>Snack & Bathroom Break</strong> — a calm, community moment that builds independence and self-care routines</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="photo-note">
+    <div class="photo-note-label">Photo Direction — Schedule Section</div>
+    <p>A collage or sequence of three images showing different parts of the Friday rhythm. Ideal: (1) a small group gathered around a table for Academic Play, (2) a child in the Developmental Playroom exploring independently, (3) children outside on the playground — joyful, natural, unposed.</p>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════ SECTION 3: BIRTHDAY ENROLLMENT ═══════════════════════ -->
+<section class="content-section" id="s3">
+  <div class="section-label">Section 3 · Start the Day They Turn Three</div>
+  <div class="section-h2">No Waiting. No Cutoffs. Your Child Starts When They're Ready.</div>
+
+  <div class="copy-block">
+    <p>Most preschools operate on a fixed calendar. If your child's birthday falls after the enrollment cutoff, you wait — sometimes an entire year — before they can begin.</p>
+    <p>At Spark, we do it differently.</p>
+    <p>Your child is eligible for Fresh 3's Fridays starting on the day they turn three. Mid-October birthday? They can join in October. January birthday? January it is. There is no "you'll have to wait until next fall."</p>
+    <p>This matters because three-year-olds are ready to learn when they're ready — not when the calendar says so. The research on early childhood brain development is clear: the preschool years are the most critical window for building the neural pathways children will rely on for language, math, social skills, and problem-solving for the rest of their lives. Every month counts.</p>
+    <p>Fresh 3's Fridays exists so that no child has to wait.</p>
+  </div>
+
+  <div class="strategic-note">
+    <div class="strategic-note-label">Strategic Note</div>
+    <p>This section is the strongest SEO-differentiated content on the page. No local or regional competitor offers rolling birthday enrollment. This is a verifiable, concrete advantage and should be written with quiet confidence — not as a marketing claim, but as a simple fact. The neural pathways argument comes from Dr. Peterson's own language from the video call and belongs here because it answers the implicit parent question: "Does one day a week even matter?" Yes. Here is the science.</p>
+  </div>
+
+  <div style="margin-top:1.5rem;">
+    <div style="font-size:0.92rem;font-weight:700;color:var(--deep-teal);margin-bottom:0.5rem;">Are There Any Age Requirements?</div>
+    <div class="copy-block">
+      <p>Your child must be three years old by their first day and must be fully potty trained before they begin. That's it. No testing. No evaluation. Just a family ready to take that first step.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════ SECTION 4: UPGRADE PATH ═══════════════════════ -->
+<section class="content-section" id="s4">
+  <div class="section-label">Section 4 · The Upgrade Path</div>
+  <div class="section-h2">Start with Fridays. Add Days Whenever You're Ready.</div>
+
+  <div class="copy-block">
+    <p>Many families begin with Fresh 3's Fridays and, once their child is settled and thriving, choose to add days. It happens organically — often because the child starts asking to go to school on the days they're home.</p>
+    <p>When your family is ready, Friday students can transition directly into the Monday/Wednesday 3's Preschool at any point during the school year. There's no waiting list, no re-enrollment process, and no disruption — your child simply joins a program they already know and love.</p>
+    <p>The $100/month Friday rate is equivalent to the per-day cost of our two-day program. If you ever add M/W, you'll find the investment scales naturally alongside the days.</p>
+  </div>
+
+  <div class="strategic-note">
+    <div class="strategic-note-label">Strategic Note</div>
+    <p>This section must be written carefully. The goal is to plant the seed of the upgrade without making the parent feel like Friday is just a sales funnel. The framing is: "when <em>your family</em> is ready" — not "we'll talk to you about adding days." The organic conversion story is accurate per Michelle's account, and that authenticity comes through in the copy.</p>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════ SECTION 5: TESTIMONIALS ═══════════════════════ -->
+<section class="content-section" id="s5">
+  <div class="section-label">Section 5 · What Parents Are Saying</div>
+  <div class="section-h2">From Families Who Started Here</div>
+
+  <div style="background:var(--whisper-sage);border-radius:8px;padding:1rem 1.25rem;margin-bottom:1.25rem;font-size:0.82rem;color:var(--mist-teal);text-align:center;">
+    <strong>PLACEHOLDER — Testimonials Coming Soon</strong><br>
+    <span style="font-size:0.78rem;color:var(--warm-gray);">This section will feature 2–3 attributed parent quotes specific to Fresh 3's Fridays or the transition to a fuller schedule.</span>
+  </div>
+
+  <div class="quote-block">
+    <div class="quote-mark">"</div>
+    <div class="quote-text">It's a low-stress way to see how your child handles the transition. We have so much fun they won't want to leave.</div>
+    <div class="quote-attr">— Dr. Michelle Peterson, Ed.D., Founder</div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════ SECTION 6: TUITION ═══════════════════════ -->
+<section class="content-section" id="s6">
+  <div class="section-label">Section 6 · Tuition & Enrollment Details</div>
+  <div class="section-h2">Simple. Transparent. No Surprises.</div>
+
+  <table class="tuition-table">
+    <tr>
+      <td class="t-label">Tuition</td>
+      <td>$100/month</td>
+    </tr>
+    <tr>
+      <td class="t-label">Schedule</td>
+      <td>Every Friday, 8:30–11:30 AM</td>
+    </tr>
+    <tr>
+      <td class="t-label">Enrollment Period</td>
+      <td>Runs alongside the traditional public school year calendar</td>
+    </tr>
+    <tr>
+      <td class="t-label">Rolling Enrollment</td>
+      <td>Your child may enroll starting on their third birthday</td>
+    </tr>
+    <tr>
+      <td class="t-label">Class Size</td>
+      <td>Maximum 12 students</td>
+    </tr>
+    <tr>
+      <td class="t-label">Deposit</td>
+      <td>$100 non-refundable deposit holds your child's spot</td>
+    </tr>
+    <tr>
+      <td class="t-label">Full-Year Discount</td>
+      <td>10% discount available for full-year tuition paid by August 15</td>
+    </tr>
+    <tr>
+      <td class="t-label">All-Inclusive</td>
+      <td>No supply lists, no hidden fees, no additional costs — tuition covers everything</td>
+    </tr>
+  </table>
+
+  <div class="copy-block" style="margin-top:1rem;">
+    <p>Tuition is billed over 10 months, making the annual investment manageable from the very first Friday.</p>
+  </div>
+
+  <div class="strategic-note">
+    <div class="strategic-note-label">Strategic Note</div>
+    <p>The all-inclusive line is a conversion asset. Parents researching preschool are often surprised by supply lists and additional fees at other schools. Naming it explicitly removes a hidden objection before it's raised.</p>
+  </div>
+
+  <div style="margin-top:1.75rem;">
+    <div style="font-size:0.92rem;font-weight:700;color:var(--deep-teal);margin-bottom:0.5rem;">How to Enroll</div>
+    <div class="copy-block">
+      <p>Getting started begins with a tour. Before any child attends Spark — including Fresh 3's Fridays — we ask every family to schedule a tour so we can meet you, show you our space, answer your questions, and complete enrollment paperwork together.</p>
+      <p>The tour is a 20–30 minute visit that gives your child a chance to see the classroom, meet the teachers, and get comfortable before day one.</p>
+      <p><strong>To schedule your tour:</strong> Call us at <strong style="color:var(--mist-teal);">309-291-3292</strong> or use the form below.</p>
+    </div>
+  </div>
+
+  <div class="cta-block">
+    <div class="cta-primary">Schedule a Tour</div>
+    <div class="cta-secondary">Have a Question? We'd love to hear from you.</div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════ SECTION 7: FAQ ═══════════════════════ -->
+<section class="content-section" id="s7">
+  <div class="section-label">Section 7 · Frequently Asked Questions</div>
+  <div class="section-h2">Questions About Fresh 3's Fridays</div>
+
+  <div class="faq-item">
+    <div class="faq-q">Does my child need to be potty trained?</div>
+    <div class="faq-a">Yes. All students at Spark Academy — across every program — must be fully potty trained before their first day. If your child is still working on potty training, we recommend waiting until they've achieved independence before enrolling.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Can my child enroll in Fresh 3's Fridays if they've never been to preschool before?</div>
+    <div class="faq-a">Absolutely. This program is designed specifically as a first school experience for families who want to take that first step gently. Many of our Friday families have children who have never been in a classroom setting before.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">What if my child's birthday is mid-year — can they really start then?</div>
+    <div class="faq-a">Yes. Unlike most preschools that hold a fixed enrollment cutoff at the start of the school year, Spark welcomes Fresh 3's Friday students starting on their third birthday, whenever that falls during the school year. Call us and we'll get you set up.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Is Fresh 3's Fridays the same quality as the full 3's program?</div>
+    <div class="faq-a">It is the same program. Same teachers. Same Purposeful Play Framework. Same individualized approach. Same enrichment, developmental playroom, and daily schedule structure. The only variable is the number of days per week.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">What happens if we want to add more days later?</div>
+    <div class="faq-a">Friday students can join the Monday/Wednesday 3's Preschool at any point during the school year. Just let us know when you're ready and we'll walk you through the transition.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Is there a waitlist?</div>
+    <div class="faq-a">Fresh 3's Fridays is capped at 12 students. If you're interested, we recommend scheduling a tour soon to check on availability.</div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════ INTERNAL LINKS & PHOTO DIRECTION ═══════════════════════ -->
+<section class="content-section" id="links">
+  <div class="section-label">Internal Linking Map</div>
+
+  <table class="links-table">
+    <thead>
+      <tr>
+        <th>Link Target</th>
+        <th>URL</th>
+        <th>Where on Page</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Schedule a Tour</strong></td>
+        <td>/schedule-a-tour/</td>
+        <td>Hero CTA, enrollment section, bottom CTA</td>
+      </tr>
+      <tr>
+        <td><strong>3's Preschool</strong></td>
+        <td>/preschool-3s/</td>
+        <td>Upgrade path section</td>
+      </tr>
+      <tr>
+        <td><strong>Programs Overview</strong></td>
+        <td>/programs/</td>
+        <td>Footer nav reference</td>
+      </tr>
+      <tr>
+        <td><strong>Purposeful Play Framework</strong></td>
+        <td>/purposeful-play-framework/</td>
+        <td>Section 2 (framework mention)</td>
+      </tr>
+      <tr>
+        <td><strong>Dr. Michelle Peterson</strong></td>
+        <td>/dr-michelle-peterson/</td>
+        <td>Founder quote attribution</td>
+      </tr>
+      <tr>
+        <td><strong>Phone CTA</strong></td>
+        <td>tel:3092913292</td>
+        <td>Enrollment section</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top:2rem;">
+    <div class="section-label" style="color:#8B7DBB;">Photo Direction Summary</div>
+    <table class="photo-table">
+      <thead>
+        <tr>
+          <th>Section</th>
+          <th>Shot Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Hero</strong></td>
+          <td>Single 3-year-old absorbed in hands-on activity. Natural light. No adults in frame.</td>
+        </tr>
+        <tr>
+          <td><strong>Schedule</strong></td>
+          <td>Three-image sequence: Academic Play table activity, Developmental Playroom solo exploration, outdoor play moment</td>
+        </tr>
+        <tr>
+          <td><strong>Birthday Enrollment</strong></td>
+          <td>Optional: A child arriving at the door for their first day — warm, welcoming, homelike entry</td>
+        </tr>
+        <tr>
+          <td><strong>Tuition Section</strong></td>
+          <td>No photo needed — clean table layout sufficient</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<div class="footer">
+  <div class="footer-brand">Spark Academy</div>
+  <p>Fresh 3's Fridays Copy Deck · Phase 3A Deliverable<br>
+  Prepared for Dr. Michelle Peterson, Ed.D.<br>
+  Prepared by Stephen Odanovich · March 2026</p>
+  <div class="draft-badge">Draft — Pending Dr. Peterson's Review</div>
+</div>
+
+</body>
+</html>

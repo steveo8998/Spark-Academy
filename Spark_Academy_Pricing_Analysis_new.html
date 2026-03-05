@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spark Academy — Pricing Analysis</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --evergreen: #2D4A3E;
+    --evergreen-light: #3a6154;
+    --mustard: #FFC716;
+    --mustard-soft: #FFD54F;
+    --cream: #F9F6F2;
+    --cream-dark: #EDE8E0;
+    --body-text: #1A1A1A;
+    --muted: #6B7B75;
+    --red-soft: #C0392B;
+    --red-bg: #FDEDEC;
+    --green-soft: #27AE60;
+    --green-bg: #EAFAF1;
+    --blue-soft: #2980B9;
+    --blue-bg: #EBF5FB;
+    --orange-soft: #E67E22;
+    --orange-bg: #FEF5E7;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+    --shadow-lg: 0 8px 30px rgba(0,0,0,0.1);
+    --radius: 10px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--body-text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--evergreen);
+    color: white;
+    padding: 40px 32px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--mustard), var(--mustard-soft), var(--mustard));
+  }
+  .header-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .header-badge {
+    display: inline-block;
+    background: rgba(255,199,22,0.15);
+    color: var(--mustard);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 4px;
+    margin-bottom: 14px;
+  }
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 4vw, 34px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  .header p {
+    font-size: 15px;
+    opacity: 0.8;
+    max-width: 600px;
+  }
+
+
+
+  /* MAIN */
+  .main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 28px 24px 60px;
+  }
+
+  .section { margin-bottom: 48px; padding-bottom: 40px; border-bottom: 1px solid var(--cream-dark); }
+  .section:last-child { border-bottom: none; }
+
+  /* CARDS */
+  .card {
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    padding: 28px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .card-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--evergreen);
+  }
+  .card p { font-size: 14.5px; color: #444; }
+
+  /* VERDICT BOX */
+  .verdict {
+    background: var(--evergreen);
+    color: white;
+    border-radius: var(--radius);
+    padding: 28px;
+    margin-bottom: 24px;
+  }
+  .verdict h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+  .verdict p { font-size: 15px; opacity: 0.92; line-height: 1.7; }
+  .verdict .highlight {
+    color: var(--mustard);
+    font-weight: 700;
+  }
+
+  /* KPI STRIP */
+  .kpi-strip {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .kpi-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 20px 22px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0,0,0,0.04);
+    text-align: center;
+  }
+  .kpi-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .kpi-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--evergreen);
+  }
+  .kpi-context {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* TABLES */
+  .table-wrap {
+    overflow-x: auto;
+    margin: 16px 0;
+    border-radius: 8px;
+    border: 1px solid var(--cream-dark);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+  }
+  thead {
+    background: var(--evergreen);
+    color: white;
+  }
+  th {
+    padding: 12px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  td {
+    padding: 11px 14px;
+    border-bottom: 1px solid #f0ede8;
+    vertical-align: top;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:nth-child(even) { background: #FDFCFA; }
+  .spark-row { background: rgba(255,199,22,0.08) !important; font-weight: 600; }
+  .spark-row td { border-bottom-color: rgba(255,199,22,0.2); }
+
+  /* SWOT */
+  .swot-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 16px 0;
+  }
+  @media (max-width: 600px) { .swot-grid { grid-template-columns: 1fr; } }
+  .swot-box {
+    border-radius: var(--radius);
+    padding: 22px;
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+  .swot-box h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .swot-box ul {
+    list-style: none;
+    padding: 0;
+  }
+  .swot-box li {
+    font-size: 13.5px;
+    padding: 5px 0;
+    padding-left: 18px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .swot-box li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 11px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+  }
+  .swot-s { background: var(--green-bg); }
+  .swot-s h4 { color: #1E8449; }
+  .swot-s li::before { background: var(--green-soft); }
+  .swot-w { background: var(--red-bg); }
+  .swot-w h4 { color: #A93226; }
+  .swot-w li::before { background: var(--red-soft); }
+  .swot-o { background: var(--blue-bg); }
+  .swot-o h4 { color: #1F618D; }
+  .swot-o li::before { background: var(--blue-soft); }
+  .swot-t { background: var(--orange-bg); }
+  .swot-t h4 { color: #AF601A; }
+  .swot-t li::before { background: var(--orange-soft); }
+
+  /* RECOMMENDATION CARDS */
+  .rec-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 16px;
+    border-left: 4px solid var(--mustard);
+    box-shadow: var(--shadow-sm);
+  }
+  .rec-card.high-impact { border-left-color: var(--red-soft); }
+  .rec-card.medium-impact { border-left-color: var(--blue-soft); }
+  .rec-card.low-impact { border-left-color: var(--green-soft); }
+  .rec-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .rec-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: var(--evergreen);
+  }
+  .impact-badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+    flex-shrink: 0;
+  }
+  .impact-high { background: var(--red-bg); color: var(--red-soft); }
+  .impact-medium { background: var(--blue-bg); color: var(--blue-soft); }
+  .impact-low { background: var(--green-bg); color: var(--green-soft); }
+  .rec-card p { font-size: 14px; color: #555; line-height: 1.65; }
+  .rec-numbers {
+    margin-top: 12px;
+    padding: 12px 16px;
+    background: var(--cream);
+    border-radius: 6px;
+    font-size: 13px;
+    color: #555;
+  }
+  .rec-numbers strong { color: var(--evergreen); }
+
+  /* BAR CHARTS */
+  .bar-chart { margin: 16px 0; }
+  .bar-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 12px;
+  }
+  .bar-label {
+    width: 160px;
+    flex-shrink: 0;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: right;
+  }
+  .bar-track {
+    flex: 1;
+    background: var(--cream-dark);
+    height: 28px;
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    font-size: 12px;
+    font-weight: 700;
+    color: white;
+    transition: width 0.8s ease;
+    min-width: fit-content;
+  }
+  .bar-fill.spark { background: var(--evergreen); }
+  .bar-fill.competitor { background: #9DB5AB; }
+  .bar-fill.market { background: #C5D1CC; }
+
+  /* CALLOUT */
+  .callout {
+    background: rgba(255,199,22,0.1);
+    border: 1px solid rgba(255,199,22,0.3);
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin: 16px 0;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .callout strong { color: var(--evergreen); }
+
+  /* SECTION HEADERS */
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--evergreen);
+    margin-bottom: 6px;
+  }
+  .section-subtitle {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+
+  /* FOOTER NOTE */
+  .footer-note {
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid var(--cream-dark);
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* GAP ITEM */
+  .gap-item {
+    display: flex;
+    gap: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid #f0ede8;
+  }
+  .gap-item:last-child { border-bottom: none; }
+  .gap-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .gap-icon.money { background: var(--green-bg); }
+  .gap-icon.warning { background: var(--orange-bg); }
+  .gap-icon.idea { background: var(--blue-bg); }
+  .gap-content h5 { font-size: 14px; font-weight: 700; color: var(--evergreen); margin-bottom: 3px; }
+  .gap-content p { font-size: 13.5px; color: #555; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="header-badge">Confidential Analysis</div>
+    <h1>Spark Academy — Competitive Pricing Analysis</h1>
+    <p>An independent review of pricing strategy, market positioning, and revenue optimization opportunities. March 2026.</p>
+  </div>
+</div>
+
+
+
+<div class="main">
+
+  <!-- ==================== EXECUTIVE SUMMARY ==================== -->
+  <div id="exec" class="section">
+    <h2 class="section-title">Executive Summary</h2>
+    <p class="section-subtitle">The bottom line on Spark's pricing in the Peoria metro market</p>
+
+    <div class="verdict">
+      <h2>The Verdict: She's Underpriced for What She Offers</h2>
+      <p>Dr. Peterson has built a <span class="highlight">genuinely premium product</span> — doctoral-led, 5:1 ratios, proprietary curriculum, daily enrichment rotation — and is pricing it in the <span class="highlight">low-to-middle of the local market</span>. Her M–F Kindergarten program at $7,000/year sits below the Illinois private preschool average of $11,275/year. The biggest gap isn't what she charges — it's the <span class="highlight">revenue she's not capturing</span> through missing fee structures, no sibling discounts, no extended care, and a half-day-only model that excludes working parents entirely.</p>
+    </div>
+
+    <div class="kpi-strip">
+      <div class="kpi-card">
+        <div class="kpi-label">Spark Range</div>
+        <div class="kpi-value">$350–$700/mo</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Peoria Metro Avg</div>
+        <div class="kpi-value">$900–$950/mo</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">IL Private Pre-K Avg</div>
+        <div class="kpi-value">$11,275/yr</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Spark Max Tuition</div>
+        <div class="kpi-value">$7,000/yr</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Key Findings at a Glance</h3>
+      <div style="margin-top: 14px;">
+        <div class="gap-item">
+          <div class="gap-icon money">💰</div>
+          <div class="gap-content">
+            <h5>Premium product, mid-market pricing</h5>
+            <p>Spark's enrichment stack (Spanish, STEM, Art, Communication, Music & Movement daily), 5:1 ratio, and doctoral leadership are objectively superior to every local competitor. Yet her 2-day programs start at just $350/mo — only $13.46/hr — which is competitive with, not premium above, the market.</p>
+          </div>
+        </div>
+        <div class="gap-item">
+          <div class="gap-icon warning">⚠️</div>
+          <div class="gap-content">
+            <h5>Half-day model limits addressable market</h5>
+            <p>Every major local competitor (Cadence Academy, Apple Tree Academy, Faithful Heart, Childtime) offers full-day or extended care. Working parents who love Spark's philosophy still can't enroll if they need coverage past noon. This is the single biggest revenue constraint.</p>
+          </div>
+        </div>
+        <div class="gap-item">
+          <div class="gap-icon idea">💡</div>
+          <div class="gap-content">
+            <h5>Missing fee structures leave money on the table</h5>
+            <p>No annual materials fee, no registration fee beyond $100 deposit, no sibling discount to capture multi-child families, and no extended care add-on. These are standard across competitors and represent low-risk revenue adds.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== PRICE COMPARISON ==================== -->
+  <div id="compare" class="section">
+    <h2 class="section-title">Competitive Price Comparison</h2>
+    <p class="section-subtitle">How Spark's tuition stacks up against local and regional options</p>
+
+    <div class="card">
+      <h3>Full-Day / Full-Time Programs (Broader Market)</h3>
+      <p style="margin-bottom: 14px;">For families needing more coverage, these are the alternatives — not direct competitors but they define the market ceiling.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Provider</th>
+              <th>Type</th>
+              <th>Hours</th>
+              <th>Weekly</th>
+              <th>Monthly Est.</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Cadence Academy (Morton)</td>
+              <td>Corporate chain</td>
+              <td>Full-day</td>
+              <td>$200–$280*</td>
+              <td>$870–$1,215</td>
+            </tr>
+            <tr>
+              <td>Apple Tree Academy (Peoria)</td>
+              <td>Owner-operated</td>
+              <td>6:30–6:00</td>
+              <td>Est. $280–$340</td>
+              <td>Est. $1,215–$1,475</td>
+            </tr>
+            <tr>
+              <td>Faithful Heart (Morton)</td>
+              <td>Christian center</td>
+              <td>6:30–5:30</td>
+              <td>Est. $175–$225</td>
+              <td>Est. $760–$975</td>
+            </tr>
+            <tr>
+              <td>Childtime (Washington)</td>
+              <td>National chain</td>
+              <td>Full-day</td>
+              <td>$200–$300*</td>
+              <td>$870–$1,300</td>
+            </tr>
+            <tr>
+              <td>Peoria Metro Average</td>
+              <td>Market avg</td>
+              <td>Full-time</td>
+              <td>~$225</td>
+              <td>$900–$950</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size: 12px; color: var(--muted); margin-top: 8px;">*None of the competitors above publish rates online. Apple Tree estimates based on 2018 parent review adjusted for inflation. Cadence and Childtime estimates based on national rate survey data. Faithful Heart estimate based on regional market range.</p>
+    </div>
+
+    <div class="card">
+      <h3>Annual Cost Comparison</h3>
+      <p style="margin-bottom: 16px;">Spark's annual tuition vs. broader market benchmarks</p>
+      <div class="bar-chart">
+        <div class="bar-row">
+          <div class="bar-label">Spark 3's (T/Th)</div>
+          <div class="bar-track"><div class="bar-fill spark" style="width: 23%;">$3,500</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Spark 4's (M–F)</div>
+          <div class="bar-track"><div class="bar-fill spark" style="width: 40%;">$6,000</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Spark K-Prep (M–F)</div>
+          <div class="bar-track"><div class="bar-fill spark" style="width: 43%;">$6,500</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Spark Kindergarten</div>
+          <div class="bar-track"><div class="bar-fill spark" style="width: 47%;">$7,000</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Peoria FT Daycare</div>
+          <div class="bar-track"><div class="bar-fill competitor" style="width: 63%;">$10,800–$11,400</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">IL Priv. Preschool Avg</div>
+          <div class="bar-track"><div class="bar-fill market" style="width: 75%;">$11,275</div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Natl. Priv. Pre-K Ceiling</div>
+          <div class="bar-track"><div class="bar-fill market" style="width: 87%;">$13,000</div></div>
+        </div>
+      </div>
+      <div class="callout">
+        <strong>Key insight:</strong> Even Spark's most expensive program (Kindergarten at $7,000/year) is 38% below the Illinois private preschool average. For a doctoral-led, enrichment-intensive program with a 5:1 ratio, this positions Spark as a high-value option — but it also means there's significant pricing headroom before reaching market ceilings.
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SWOT ANALYSIS ==================== -->
+  <div id="swot" class="section">
+    <h2 class="section-title">SWOT Analysis — Pricing Lens</h2>
+    <p class="section-subtitle">Evaluating Spark's pricing power through strategic factors</p>
+
+    <div class="swot-grid">
+      <div class="swot-box swot-s">
+        <h4>🟢 Strengths</h4>
+        <ul>
+          <li><strong>Unmatched credentials:</strong> Only Ed.D.-led preschool in Central IL. No competitor can replicate this.</li>
+          <li><strong>5:1 ratio:</strong> IL minimum for preschool is 1:10. Spark doubles the standard — a concrete, marketable differentiator.</li>
+          <li><strong>Daily enrichment rotation:</strong> Spanish, STEM, Art, Communication, Music & Movement built into every day at no extra charge. Competitors charge separately for these or don't offer them at all.</li>
+          <li><strong>Tuition transparency:</strong> Publishing prices builds trust and pre-qualifies serious families. Most competitors hide pricing behind "call for rates."</li>
+          <li><strong>Proprietary curriculum (Ignite Learning Model):</strong> Named, documented methodology creates perceived value competitors can't match.</li>
+          <li><strong>Multiple schedule tiers:</strong> T/Th, M/W/F, and M–F options let families scale commitment and cost. Smart pricing ladder.</li>
+          <li><strong>Early-pay discount (10%):</strong> Incentivizes cash flow predictability for the business.</li>
+        </ul>
+      </div>
+
+      <div class="swot-box swot-w">
+        <h4>🔴 Weaknesses</h4>
+        <ul>
+          <li><strong>Half-day only:</strong> 3-hour (3's/4's) and 4-hour (K-Prep/K) windows exclude dual-income families who need 8+ hours of coverage. This is the #1 market limitation.</li>
+          <li><strong>No infant/toddler pipeline:</strong> Competitors like Cadence, Faithful Heart, and Apple Tree Academy capture families at 6 weeks–2 years. By the time those kids hit age 3, parents already have loyalty.</li>
+          <li><strong>No sibling discount:</strong> Apple Tree Academy offers a 5% auto-pay discount. Cadence offers 10% off the eldest. Families with 2+ children are price-sensitive to total cost, not per-child cost.</li>
+          <li><strong>No materials/activity fee:</strong> The $100 deposit is reasonable, but most competitors also charge $70–$300/year for supplies and curriculum materials.</li>
+          <li><strong>Small capacity (~40–48 students):</strong> Limited revenue ceiling regardless of pricing. Every empty seat costs more.</li>
+          <li><strong>New school (est. 2023):</strong> Limited track record. Zero Google reviews currently. Price premium requires trust that hasn't been fully established yet.</li>
+        </ul>
+      </div>
+
+      <div class="swot-box swot-o">
+        <h4>🔵 Opportunities</h4>
+        <ul>
+          <li><strong>Extended care add-on ($150–$250/mo):</strong> Even 2 hours of afternoon care (noon–2pm) would capture working parents who can stagger shifts or pair with a sitter for the remaining hours.</li>
+          <li><strong>Annual materials fee ($150–$200):</strong> Standard in the industry. Covers art supplies, curriculum materials, Developmental Play Room inventory. Pure margin.</li>
+          <li><strong>Sibling discount (10% off 2nd child):</strong> Net revenue positive — capturing a 2-child family at 90% is better than losing them entirely to a competitor with a discount.</li>
+          <li><strong>Camp Play (Confirmed for 2026):</strong> Fills the 2-month tuition gap (June–August), provides an entry point for families to "try" Spark before committing to fall enrollment, and generates an estimated $21,000 in summer revenue.</li>
+          <li><strong>Moderate price increase (5–8% for 2027–28):</strong> Spark's current rates have headroom. A $25–$50/mo increase across programs with 60 days' notice is well within market tolerance, especially paired with a new website and expanded visibility.</li>
+          <li><strong>Premium pricing tier:</strong> If extended care is added, a "full experience" bundle (AM program + PM extended care + Fresh 3's Fridays) could command $600–$800/mo for 3's, approaching what parents already pay for full-time daycare.</li>
+        </ul>
+      </div>
+
+      <div class="swot-box swot-t">
+        <h4>🟠 Threats</h4>
+        <ul>
+          <li><strong>Free public preschool:</strong> Morton CUSD 709 offers free preschool for at-risk and IEP-identified children. Illinois Preschool for All may expand eligibility. This creates a free alternative for some families.</li>
+          <li><strong>Full-day competitors:</strong> Cadence Academy (165-child capacity), Faithful Heart, and Childtime offer wrap-around care that Spark can't match. They compete on convenience, not quality.</li>
+          <li><strong>Owner-operated premium competitors:</strong> Apple Tree Academy in Peoria offers full-day care with Creative Curriculum, soccer, and enrichment programs — at rates estimated around $1,200–$1,475/mo. Parents who want premium plus full-day coverage have alternatives.</li>
+          <li><strong>Corporate chain marketing:</strong> Cadence and Childtime have national marketing budgets, live-streaming apps (SproutAbout), and employer partnership discounts. Hard to compete on visibility.</li>
+          <li><strong>Economic sensitivity:</strong> Preschool is discretionary spending. A recession or significant cost-of-living increase could push families toward cheaper or free options.</li>
+          <li><strong>Church-subsidized programs:</strong> Several area churches (including St. Mark's in Washington) offer preschool programs at significantly below-market rates — some as low as $110–$130/mo. These aren't direct competitors on quality, but they capture price-first families who might otherwise consider Spark.</li>
+          <li><strong>Teacher labor costs:</strong> Maintaining 5:1 ratios means higher payroll-to-revenue ratio. If labor costs rise, margins compress faster at Spark than at competitors with 1:8 or 1:10 ratios.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>SWOT Summary Assessment</h3>
+      <p style="margin-top: 8px;">Spark's strengths (credentials, curriculum, ratio) create genuine pricing power that isn't being fully exercised. The weaknesses (half-day only, no pipeline, small capacity) are structural and constrain revenue more than any pricing decision. The opportunities are actionable and low-risk — most could be implemented for the 2027–28 school year. The threats are real but largely affect different market segments: families who prioritize full-day convenience over educational quality will default to Cadence or Apple Tree regardless of Spark's price. Spark's real competitive set is premium-seeking parents who value Dr. Peterson's doctoral expertise and intimate class sizes but currently have to compromise on hours.</p>
+    </div>
+  </div>
+
+  <!-- ==================== GAP ANALYSIS ==================== -->
+  <div id="gaps" class="section">
+    <h2 class="section-title">Gap Analysis</h2>
+    <p class="section-subtitle">What she got right, what's missing, and where the money is</p>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background: var(--green-bg);">✅</div>
+        <h3>What Dr. Peterson Got Right</h3>
+      </div>
+      <div class="gap-item">
+        <div class="gap-content">
+          <h5>Tiered scheduling creates a natural price ladder</h5>
+          <p>The T/Th → M/W/F → M–F progression lets families self-select based on budget and commitment. This is textbook pricing architecture — it captures both price-sensitive families ($350) and invested families ($600–$700) without discounting the premium tier.</p>
+        </div>
+      </div>
+      <div class="gap-item">
+        <div class="gap-content">
+          <h5>Tuition transparency is a conversion advantage</h5>
+          <p>Research from the keyword analysis confirms "how much does preschool cost" and "preschool cost" are high-volume search terms (2,500+/mo combined). Publishing prices filters out unqualified leads and builds immediate trust with serious prospects — especially the "David & Priya" persona who will leave a site that hides pricing.</p>
+        </div>
+      </div>
+      <div class="gap-item">
+        <div class="gap-content">
+          <h5>10% early-pay discount is well-calibrated</h5>
+          <p>Industry standard is 3–5% for lump-sum payment. Spark's 10% is generous enough to motivate action (a $350–$840 savings depending on program) while securing predictable cash flow before the school year starts. The Aug 15 deadline is smart — it's before school starts but after enrollment decisions are made.</p>
+        </div>
+      </div>
+      <div class="gap-item">
+        <div class="gap-content">
+          <h5>The enrichment stack is built in, not billed separately</h5>
+          <p>Spanish, STEM, Art, Communication, Music & Movement every day, included in tuition. Many competitors charge $50–$150/mo extra for even one enrichment activity. This is a massive value proposition that should be prominently marketed on the website as "What's Included" rather than buried in program descriptions.</p>
+        </div>
+      </div>
+      <div class="gap-item" style="border-bottom: none;">
+        <div class="gap-content">
+          <h5>Kindergarten pricing creates a clear premium tier</h5>
+          <p>At $700/mo (M–F only), the Kindergarten program signals seriousness and selectivity. The Sept 30 birthday cutoff and 4-hour day differentiate it from public kindergarten. Parents paying $700/mo for private kindergarten are buying confidence that their child is academically and socially ready — a powerful value proposition.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background: var(--orange-bg);">🔍</div>
+        <h3>Where the Gaps Are</h3>
+      </div>
+      <div class="gap-item">
+        <div class="gap-icon money">💰</div>
+        <div class="gap-content">
+          <h5>No annual materials or curriculum fee</h5>
+          <p>The Developmental Play Room changes monthly. Daily enrichment requires supplies. Art projects need materials. Every competitor charges $70–$300/year for this. At even $150/year across 40 students, that's $6,000 in margin Spark isn't capturing.</p>
+        </div>
+      </div>
+      <div class="gap-item">
+        <div class="gap-icon money">💰</div>
+        <div class="gap-content">
+          <h5>No sibling discount</h5>
+          <p>Apple Tree Academy offers a 5% auto-pay discount. Cadence offers 10% off the oldest child. A family with a 3-year-old and 4-year-old at Spark pays $700–$1,050/mo total. Even 10% off the 2nd child ($35–$60/mo discount) would make Spark more competitive for multi-child families — and it's net revenue positive vs. losing the family entirely.</p>
+        </div>
+      </div>
+      <div class="gap-item">
+        <div class="gap-icon warning">⚠️</div>
+        <div class="gap-content">
+          <h5>No extended care option (the biggest structural gap)</h5>
+          <p>A 3-hour program ending at 11:30am serves a narrow market: stay-at-home parents and part-time workers. In 2026, 72% of mothers with children under 6 participate in the labor force. Extended care to 2pm or 3pm — even just 3 days/week — would open Spark to a fundamentally larger addressable market. This doesn't require becoming a daycare; it's an enrichment extension.</p>
+        </div>
+      </div>
+      <div class="gap-item">
+        <div class="gap-icon warning">⚠️</div>
+        <div class="gap-content">
+          <h5>No family pipeline (infants/toddlers)</h5>
+          <p>Families choose childcare at birth and build loyalty by age 3. Cadence captures them at 6 weeks. Faithful Heart at 6 weeks. Spark has no touchpoint until age 3 — by which time families are already committed elsewhere. A parent-and-me class, mommy-and-me morning, or toddler open gym could create early relationships without adding full infant care.</p>
+        </div>
+      </div>
+      <div class="gap-item" style="border-bottom: none;">
+        <div class="gap-icon idea">💡</div>
+        <div class="gap-content">
+          <h5>Fresh 3's Fridays pricing may be too low</h5>
+          <p>At $100/mo for a Friday enrichment day, Fresh 3's Fridays is priced lower per-session ($23.08/session) than the base 3's program ($40.38/session for T/Th). If it's the same enrichment quality with the same ratio, it should be priced closer to $125–$150/mo. At $100, it reads as an afterthought rather than a premium add-on.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== RECOMMENDATIONS ==================== -->
+  <div id="recs" class="section">
+    <h2 class="section-title">Pricing Recommendations</h2>
+    <p class="section-subtitle">Specific, actionable changes ordered by impact and feasibility</p>
+
+    <div class="rec-card high-impact">
+      <div class="rec-header">
+        <h4>1. Add Extended Care — The Biggest Revenue Unlock</h4>
+        <span class="impact-badge impact-high">High Impact</span>
+      </div>
+      <p>Offer an optional afternoon extension (11:30am–2:00pm for 3's/4's, 12:00–2:00pm for K-Prep/K) on enrolled days. Position it as "Afternoon Enrichment" — not daycare. Include lunch, outdoor play, and quiet activities. Price at $200–$275/mo for M–F, $125–$175 for 2–3 day schedules.</p>
+      <div class="rec-numbers">
+        <strong>Revenue impact:</strong> If 50% of families (≈20 students) add extended care at an average of $200/mo, that's $4,000/mo or <strong>$40,000/year</strong> in new revenue. This single change could increase total revenue by 15–25%.
+      </div>
+    </div>
+
+    <div class="rec-card high-impact">
+      <div class="rec-header">
+        <h4>2. Implement an Annual Curriculum & Materials Fee</h4>
+        <span class="impact-badge impact-high">High Impact</span>
+      </div>
+      <p>Charge a one-time annual fee of $175–$225 per student to cover the Developmental Play Room materials (which change monthly), enrichment supplies, art materials, and curriculum resources. This is industry standard — Cadence charges $70–$300/year in curriculum fees, and parents expect it. Frame it as "Your child's Ignite Learning Kit" on the enrollment form.</p>
+      <div class="rec-numbers">
+        <strong>Revenue impact:</strong> $200 × 40 students = <strong>$8,000/year</strong> in nearly pure margin. No operational change required.
+      </div>
+    </div>
+
+    <div class="rec-card medium-impact">
+      <div class="rec-header">
+        <h4>3. Introduce a Sibling Discount (10% off 2nd child)</h4>
+        <span class="impact-badge impact-medium">Medium Impact</span>
+      </div>
+      <p>Offer 10% off the younger child's tuition when two or more siblings are enrolled simultaneously. This matches the market standard (Apple Tree offers auto-pay discounts, Cadence offers 10% off the oldest child, and most local competitors offer some form of multi-child pricing). The math works in Spark's favor: capturing a 2-child family at 90% on the second child generates more revenue than losing them to a competitor that offers the discount.</p>
+      <div class="rec-numbers">
+        <strong>Revenue impact:</strong> Net positive. Example: A family with a 3-year-old (T/Th at $350) and 4-year-old (M/W/F at $450) currently pays $800/mo. With 10% off the 3-year-old, they'd pay $765/mo. Without the discount, they might choose Cadence or Faithful Heart. Capturing the family at $765 vs. losing them entirely is a no-brainer.
+      </div>
+    </div>
+
+    <div class="rec-card medium-impact">
+      <div class="rec-header">
+        <h4>4. Raise Fresh 3's Fridays to $125–$150/mo</h4>
+        <span class="impact-badge impact-medium">Medium Impact</span>
+      </div>
+      <p>The current $100/mo price undervalues the offering. At $23/session vs. the base program's $40/session, it signals "extra" rather than "enrichment." Increase to $125–$150/mo to align per-session value with the core program and reflect the enrichment quality. If bundled with T/Th enrollment, consider $125. As a standalone Friday add-on, $150 is justified.</p>
+      <div class="rec-numbers">
+        <strong>Revenue impact:</strong> If 10 students participate, a $25–$50/mo increase = <strong>$2,500–$5,000/year</strong> in additional revenue.
+      </div>
+    </div>
+
+    <div class="rec-card medium-impact">
+      <div class="rec-header">
+        <h4>5. Plan a 5–8% Tuition Increase for 2027–28</h4>
+        <span class="impact-badge impact-medium">Medium Impact</span>
+      </div>
+      <p>With the new website, stronger online presence, Google reviews, and a documented proprietary curriculum, Spark will have significantly more brand equity by early 2027. A modest across-the-board increase communicated 90 days in advance is market-appropriate and won't trigger attrition at this level. This means the 3's T/Th goes from $350 to $370–$380, K-Prep M–F from $650 to $685–$700, etc.</p>
+      <div class="rec-numbers">
+        <strong>Revenue impact:</strong> A 6.5% average increase across 40 students at an average tuition of $475/mo = approximately <strong>$12,350/year</strong> in additional revenue.
+      </div>
+    </div>
+
+    <div class="rec-card low-impact">
+      <div class="rec-header">
+        <h4>6. Create an Early-Bird / Loyalty Re-Enrollment Incentive</h4>
+        <span class="impact-badge impact-low">Low Impact</span>
+      </div>
+      <p>Offer returning families a small incentive to re-enroll by a specific date (e.g., February 1): waived registration deposit, locked-in current-year rate for one more year, or priority scheduling. This reduces enrollment uncertainty, improves cash flow forecasting, and strengthens retention. The cost is minimal since returning families were likely to re-enroll anyway — the incentive just accelerates the decision and reduces administrative churn.</p>
+    </div>
+
+    <div class="card" style="margin-top: 24px;">
+      <h3>Combined Revenue Impact Summary</h3>
+      <p style="margin: 12px 0;">If all recommendations were implemented over the next 12–18 months:</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Initiative</th>
+              <th>Est. Annual Revenue Add</th>
+              <th>Implementation Complexity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Extended Care Add-On</td>
+              <td>$40,000</td>
+              <td>High (staffing, licensing, space)</td>
+            </tr>
+            <tr>
+              <td>Curriculum & Materials Fee</td>
+              <td>$8,000</td>
+              <td>Low (enrollment form update)</td>
+            </tr>
+            <tr>
+              <td>Fresh 3's Fridays Increase</td>
+              <td>$2,500–$5,000</td>
+              <td>Low (price change only)</td>
+            </tr>
+            <tr>
+              <td>2027–28 Tuition Increase (6.5%)</td>
+              <td>$12,350</td>
+              <td>Low (with 90-day notice)</td>
+            </tr>
+            <tr style="background: rgba(255,199,22,0.1); font-weight: 700;">
+              <td>Total Potential</td>
+              <td>$62,850–$65,350</td>
+              <td>Phased over 12–18 months</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout">
+        <strong>Bottom line:</strong> Dr. Peterson built a genuinely premium product and priced it modestly. She didn't get anything dramatically wrong — the pricing tiers are well-structured and the early-pay discount is smart. But she's leaving an estimated <strong>$62K–$65K in annual revenue</strong> on the table through missing fee structures, a half-day-only model, and below-market rates for the quality she delivers. The two biggest levers are extended care (requires operational investment) and the materials fee + tuition increase (require only a pricing decision).
+      </div>
+    </div>
+
+    <div class="footer-note">
+      <strong>Methodology note:</strong> This analysis is based on publicly available competitor pricing data (web research conducted March 2026), regional market averages from Wonderschool, CareLuLu, Winnie, and TrustedCare, Illinois DCFS licensing data, and national private preschool benchmarking from PrivateSchoolReview.com. Cadence Academy and Childtime do not publish location-specific rates; estimates use national range data and regional cost-of-living adjustments. Revenue projections assume ~40 enrolled students and should be validated against actual enrollment data. This analysis is not financial advice — pricing changes should be reviewed with Dr. Peterson's accountant or business advisor.
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>

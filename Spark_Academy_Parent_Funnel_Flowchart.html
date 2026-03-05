@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spark Academy — Parent Funnel Conversion Flowchart</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #fdf8f0;
+    color: #333;
+    padding: 40px 20px;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .header .brand {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #2D5A3D;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 6px;
+  }
+
+  .header .subtitle {
+    font-size: 16px;
+    color: #666;
+    font-weight: 400;
+  }
+
+  .legend {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #555;
+    font-weight: 500;
+  }
+
+  .legend-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .legend-dot.discovery { background: #6B9BD2; }
+  .legend-dot.consideration { background: #E8A838; }
+  .legend-dot.conversion { background: #2D5A3D; }
+  .legend-dot.post { background: #8B6BAE; }
+
+  /* ── Flowchart Stages ── */
+  .stage {
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .stage-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff;
+    padding: 6px 16px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 16px;
+  }
+
+  .stage-label.discovery { background: #6B9BD2; }
+  .stage-label.consideration { background: #E8A838; }
+  .stage-label.conversion { background: #2D5A3D; }
+  .stage-label.post { background: #8B6BAE; }
+
+  .flow-row {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+    align-items: stretch;
+  }
+
+  .flow-card {
+    flex: 1;
+    min-width: 180px;
+    max-width: 260px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 18px 16px;
+    border: 2px solid #e8e0d5;
+    position: relative;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+
+  .flow-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  }
+
+  .flow-card.highlight {
+    border-color: #2D5A3D;
+    background: #f0f7f2;
+  }
+
+  .flow-card .card-title {
+    font-weight: 700;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+
+  .flow-card .card-url {
+    font-size: 11px;
+    color: #2D5A3D;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-family: 'DM Sans', monospace;
+  }
+
+  .flow-card .card-desc {
+    font-size: 12.5px;
+    color: #555;
+    line-height: 1.5;
+  }
+
+  .flow-card .card-cta {
+    margin-top: 10px;
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+    background: #2D5A3D;
+    padding: 4px 10px;
+    border-radius: 4px;
+  }
+
+  .flow-card .card-cta.secondary {
+    background: transparent;
+    color: #2D5A3D;
+    border: 1.5px solid #2D5A3D;
+  }
+
+  /* ── Connector Arrows ── */
+  .connector {
+    display: flex;
+    justify-content: center;
+    padding: 8px 0;
+  }
+
+  .connector svg {
+    width: 100%;
+    max-width: 900px;
+    height: 36px;
+  }
+
+  .arrow-down {
+    display: flex;
+    justify-content: center;
+    padding: 4px 0 8px;
+  }
+
+  .arrow-down svg {
+    width: 24px;
+    height: 28px;
+  }
+
+  /* ── Commitment Ladder ── */
+  .ladder-section {
+    margin: 60px 0 40px;
+    background: #fff;
+    border-radius: 14px;
+    padding: 32px;
+    border: 2px solid #e8e0d5;
+  }
+
+  .ladder-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  .ladder {
+    display: flex;
+    gap: 0;
+    align-items: stretch;
+  }
+
+  .ladder-step {
+    flex: 1;
+    position: relative;
+    text-align: center;
+    padding: 24px 16px 20px;
+    border-radius: 10px;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .ladder-step:nth-child(1) { background: #f0f4f8; }
+  .ladder-step:nth-child(2) { background: #e8f0e8; }
+  .ladder-step:nth-child(3) { background: #2D5A3D; color: #fff; }
+  .ladder-step:nth-child(4) { background: #f5f0f8; }
+
+  .ladder-step .step-level {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 6px;
+  }
+
+  .ladder-step .step-action {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .ladder-step .step-commit {
+    font-size: 12px;
+    opacity: 0.8;
+  }
+
+  .ladder-arrow {
+    display: flex;
+    align-items: center;
+    padding: 0 4px;
+    font-size: 24px;
+    color: #aaa;
+  }
+
+  /* ── CTA Pairing Visual ── */
+  .cta-pairing {
+    margin: 50px 0;
+    background: #fff;
+    border-radius: 14px;
+    padding: 32px;
+    border: 2px solid #e8e0d5;
+  }
+
+  .cta-pairing h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .cta-pairing .pairing-subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 28px;
+  }
+
+  .pairing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+  }
+
+  .pairing-card {
+    background: #fdf8f0;
+    border-radius: 10px;
+    padding: 18px;
+    border: 1px solid #e8e0d5;
+  }
+
+  .pairing-card .page-name {
+    font-weight: 700;
+    font-size: 13px;
+    color: #333;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e8e0d5;
+  }
+
+  .pairing-card .cta-primary {
+    display: block;
+    background: #2D5A3D;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 7px 12px;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  .pairing-card .cta-secondary {
+    display: block;
+    background: transparent;
+    color: #2D5A3D;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 5px;
+    text-align: center;
+    border: 1.5px solid #2D5A3D;
+  }
+
+  /* ── Footer ── */
+  .footer-note {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 2px solid #2D5A3D;
+    font-size: 13px;
+    color: #888;
+  }
+
+  @media (max-width: 700px) {
+    .ladder { flex-direction: column; gap: 8px; }
+    .ladder-arrow { transform: rotate(90deg); justify-content: center; padding: 4px 0; }
+    .flow-card { max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="brand">Spark Academy</div>
+    <h1>Parent Funnel Conversion Flowchart</h1>
+    <div class="subtitle">Phase 2C — How a Visitor Becomes a Family</div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot discovery"></div> Discovery (Top of Funnel)</div>
+    <div class="legend-item"><div class="legend-dot consideration"></div> Consideration (Middle)</div>
+    <div class="legend-item"><div class="legend-dot conversion"></div> Conversion (Bottom)</div>
+    <div class="legend-item"><div class="legend-dot post"></div> Post-Conversion (Nurture)</div>
+  </div>
+
+  <!-- ═══ STAGE 1: DISCOVERY ═══ -->
+  <div class="stage">
+    <span class="stage-label discovery">Stage 1 — Discovery</span>
+    <div class="flow-row">
+      <div class="flow-card">
+        <div class="card-title">Google Search</div>
+        <div class="card-desc">Parent searches "preschool Morton IL," "play-based preschool Peoria," or "is my 3 year old ready for preschool"</div>
+      </div>
+      <div class="flow-card">
+        <div class="card-title">Google Business Profile</div>
+        <div class="card-desc">Spark appears in Maps / local pack. Parent sees reviews, photos, hours. Clicks to website or calls directly.</div>
+      </div>
+      <div class="flow-card">
+        <div class="card-title">Parent Referral</div>
+        <div class="card-desc">A current Spark family recommends the school. Parent types sparkacademymorton.com directly.</div>
+      </div>
+      <div class="flow-card">
+        <div class="card-title">Blog Post</div>
+        <div class="card-url">/blog/[post-slug]/</div>
+        <div class="card-desc">Parent finds a Spark blog post via search. Authored by Dr. Peterson with credentials visible.</div>
+      </div>
+      <div class="flow-card">
+        <div class="card-title">Social Media</div>
+        <div class="card-url">Facebook + Instagram</div>
+        <div class="card-desc">Parents discover Spark through posts, photos of the school in action, and community engagement. Bio links drive traffic to the website.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="arrow-down">
+    <svg viewBox="0 0 24 28"><path d="M12 0 L12 22 M6 16 L12 24 L18 16" stroke="#6B9BD2" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+
+  <!-- ═══ STAGE 2: FIRST IMPRESSION ═══ -->
+  <div class="stage">
+    <span class="stage-label consideration">Stage 2 — First Impression & Consideration</span>
+    <div class="flow-row">
+      <div class="flow-card">
+        <div class="card-title">Homepage</div>
+        <div class="card-url">/</div>
+        <div class="card-desc">3-second impression. Positioning statement, Dr. Peterson's credential, hero image. Routes parent to the right next step.</div>
+        <div class="card-cta">Schedule a Tour</div>
+      </div>
+      <div class="flow-card">
+        <div class="card-title">Why Spark Academy</div>
+        <div class="card-url">/why-spark/</div>
+        <div class="card-desc">Philosophy, play-based approach, what makes Spark different from daycare. Addresses play vs. academics objection.</div>
+        <div class="card-cta">Schedule a Tour</div>
+      </div>
+      <div class="flow-card">
+        <div class="card-title">Program Pages</div>
+        <div class="card-url">/preschool-morton-il/</div>
+        <div class="card-desc">Age-specific details: curriculum, daily schedule, tuition with value framing. Addresses cost & readiness objections.</div>
+        <div class="card-cta">Schedule a Tour</div>
+        <div class="card-cta secondary" style="margin-top:6px">Have a Question?</div>
+      </div>
+      <div class="flow-card">
+        <div class="card-title">About Dr. Peterson</div>
+        <div class="card-url">/dr-michelle-peterson/</div>
+        <div class="card-desc">Full authority page. Ed.D., research, founding story. Tips parents from "interested" to "convinced."</div>
+        <div class="card-cta">Schedule a Tour</div>
+      </div>
+    </div>
+    <div class="flow-row" style="margin-top: 10px;">
+      <div class="flow-card">
+        <div class="card-title">Testimonials</div>
+        <div class="card-url">/testimonials/</div>
+        <div class="card-desc">Named parent stories organized by concern type. Social proof for all five objections.</div>
+        <div class="card-cta">Schedule a Tour</div>
+      </div>
+      <div class="flow-card">
+        <div class="card-title">FAQ</div>
+        <div class="card-url">/faq/</div>
+        <div class="card-desc">Direct answers to real parent questions. Removes friction by eliminating the need to call or email for basics.</div>
+        <div class="card-cta">Schedule a Tour</div>
+        <div class="card-cta secondary" style="margin-top:6px">Have a Question?</div>
+      </div>
+      <div class="flow-card">
+        <div class="card-title">Local Landing Pages</div>
+        <div class="card-url">/preschool-peoria-il/</div>
+        <div class="card-desc">Community-specific pages for Peoria, Washington, East Peoria, Germantown Hills. Same tour CTA, local language.</div>
+        <div class="card-cta">Schedule a Tour</div>
+        <div class="card-cta secondary" style="margin-top:6px">Explore Our Programs</div>
+      </div>
+      <div class="flow-card">
+        <div class="card-title">Kinder Prep</div>
+        <div class="card-url">/kinder-prep/</div>
+        <div class="card-desc">Dedicated kindergarten readiness page. Addresses "fear of falling behind" objection specifically.</div>
+        <div class="card-cta">Schedule a Tour</div>
+        <div class="card-cta secondary" style="margin-top:6px">Have a Question?</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="arrow-down">
+    <svg viewBox="0 0 24 28"><path d="M12 0 L12 22 M6 16 L12 24 L18 16" stroke="#E8A838" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+
+  <!-- ═══ STAGE 3: CONVERSION ═══ -->
+  <div class="stage">
+    <span class="stage-label conversion">Stage 3 — Conversion</span>
+    <div class="flow-row" style="justify-content: center;">
+      <div class="flow-card highlight">
+        <div class="card-title">📋 Schedule a Tour</div>
+        <div class="card-url">/schedule-a-tour/</div>
+        <div class="card-desc">Primary conversion. 4 required fields + 2 optional. Trust signals adjacent to form. Dr. Peterson's welcome message. Single focus: get the form submitted.</div>
+        <div class="card-cta" style="background:#1a3d26;">Book Your Visit →</div>
+      </div>
+      <div class="flow-card" style="border-color: #2D5A3D;">
+        <div class="card-title">💬 Have a Question?</div>
+        <div class="card-url">Embedded on multiple pages</div>
+        <div class="card-desc">Secondary conversion. 3 fields: name, email, question. Captures leads not ready for a tour. Creates personal conversation opportunity.</div>
+        <div class="card-cta secondary">Send Your Question →</div>
+      </div>
+      <div class="flow-card" style="border-color: #2D5A3D;">
+        <div class="card-title">📞 Phone Call</div>
+        <div class="card-url">309-291-3292</div>
+        <div class="card-desc">Parallel path. Click-to-call on mobile. Displayed in header, footer, and near CTAs. Tracked as conversion event.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="arrow-down">
+    <svg viewBox="0 0 24 28"><path d="M12 0 L12 22 M6 16 L12 24 L18 16" stroke="#2D5A3D" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+
+  <!-- ═══ STAGE 4: POST-CONVERSION ═══ -->
+  <div class="stage">
+    <span class="stage-label post">Stage 4 — Post-Conversion</span>
+    <div class="flow-row" style="justify-content: center;">
+      <div class="flow-card">
+        <div class="card-title">Thank-You Page (Tour)</div>
+        <div class="card-url">/tour-confirmed/</div>
+        <div class="card-desc">Confirms booking. "What to expect" section. Embedded survey: "What made you reach out?" Links to Dr. Peterson's page or testimonials.</div>
+      </div>
+      <div class="flow-card">
+        <div class="card-title">Auto-Confirmation Email</div>
+        <div class="card-desc">Immediate. Warm greeting from Dr. Peterson. Tour logistics. What to bring. Reply instructions. Keeps Spark in the inbox and top of mind.</div>
+      </div>
+      <div class="flow-card">
+        <div class="card-title">Personal Follow-Up</div>
+        <div class="card-desc">Dr. Peterson or team member confirms date/time. Personal touch = competitive advantage. Builds relationship before the visit.</div>
+      </div>
+      <div class="flow-card">
+        <div class="card-title">The Tour Visit</div>
+        <div class="card-desc" style="font-weight:600;color:#2D5A3D;">The website's job is done. The school experience takes over. → Enrollment.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ COMMITMENT LADDER ═══ -->
+  <div class="ladder-section">
+    <h2>The Commitment Ladder</h2>
+    <div class="ladder">
+      <div class="ladder-step">
+        <div class="step-level">Level 1</div>
+        <div class="step-action">Passive Browsing</div>
+        <div class="step-commit">Zero commitment · Content does the work</div>
+      </div>
+      <div class="ladder-arrow">→</div>
+      <div class="ladder-step">
+        <div class="step-level">Level 2</div>
+        <div class="step-action">Have a Question?</div>
+        <div class="step-commit">Low commitment · 3-field form</div>
+      </div>
+      <div class="ladder-arrow">→</div>
+      <div class="ladder-step">
+        <div class="step-level">Level 3</div>
+        <div class="step-action">Schedule a Tour</div>
+        <div class="step-commit">Medium commitment · Primary conversion goal</div>
+      </div>
+      <div class="ladder-arrow">→</div>
+      <div class="ladder-step">
+        <div class="step-level">Level 4</div>
+        <div class="step-action">Enrollment</div>
+        <div class="step-commit">High commitment · Happens after the tour</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ CTA PAIRING VISUAL ═══ -->
+  <div class="cta-pairing">
+    <h2>CTA Pairings by Page</h2>
+    <div class="pairing-subtitle">Every page carries a primary and secondary CTA</div>
+    <div class="pairing-grid">
+      <div class="pairing-card">
+        <div class="page-name">Homepage</div>
+        <span class="cta-primary">Schedule a Tour</span>
+        <span class="cta-secondary">Have a Question?</span>
+      </div>
+      <div class="pairing-card">
+        <div class="page-name">Why Spark Academy</div>
+        <span class="cta-primary">Schedule a Tour</span>
+        <span class="cta-secondary">Explore Our Programs</span>
+      </div>
+      <div class="pairing-card">
+        <div class="page-name">Program Pages</div>
+        <span class="cta-primary">Schedule a Tour</span>
+        <span class="cta-secondary">Have a Question?</span>
+      </div>
+      <div class="pairing-card">
+        <div class="page-name">About Dr. Peterson</div>
+        <span class="cta-primary">Schedule a Tour</span>
+        <span class="cta-secondary">Have a Question?</span>
+      </div>
+      <div class="pairing-card">
+        <div class="page-name">Testimonials</div>
+        <span class="cta-primary">Schedule a Tour</span>
+        <span class="cta-secondary">Explore Our Programs</span>
+      </div>
+      <div class="pairing-card">
+        <div class="page-name">FAQ</div>
+        <span class="cta-primary">Schedule a Tour</span>
+        <span class="cta-secondary">Have a Question?</span>
+      </div>
+      <div class="pairing-card">
+        <div class="page-name">Blog Posts (Parent)</div>
+        <span class="cta-primary">Explore [Relevant Program]</span>
+        <span class="cta-secondary">Have a Question?</span>
+      </div>
+      <div class="pairing-card">
+        <div class="page-name">Local Landing Pages</div>
+        <span class="cta-primary">Schedule a Tour</span>
+        <span class="cta-secondary">Explore Our Programs</span>
+      </div>
+      <div class="pairing-card">
+        <div class="page-name">Tour Page</div>
+        <span class="cta-primary" style="background:#1a3d26;">Book Your Visit (Form)</span>
+        <span class="cta-secondary">Call Us: 309-291-3292</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    Spark Academy · Phase 2C: Lead Funnel Wireframe & Conversion Logic · Parent Funnel · February 2026
+  </div>
+
+</div>
+</body>
+</html>

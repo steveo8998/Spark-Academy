@@ -1,0 +1,1789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spark Academy — Blog Content Roadmap</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --mist-teal: #3D6B62;
+    --antique-gold: #C49826;
+    --cloud-white: #FBFAF8;
+    --whisper-sage: #EFF5F2;
+    --misty-sage: #9BB8AD;
+    --body-text: #2E2E2E;
+    --light-gold: #F5EDD4;
+    --deep-teal: #2C4F48;
+    --warm-gray: #8A8A8A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cloud-white);
+    color: var(--body-text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── HEADER ─── */
+  .hero {
+    background: linear-gradient(165deg, var(--mist-teal) 0%, var(--deep-teal) 100%);
+    color: white;
+    padding: 3rem 1.5rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: -20%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(196,152,38,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--antique-gold);
+    margin-bottom: 0.75rem;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+  }
+  .hero-subtitle {
+    font-size: 1rem;
+    color: var(--misty-sage);
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+  }
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+  .stat {
+    text-align: center;
+  }
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--antique-gold);
+    display: block;
+    line-height: 1.1;
+  }
+  .stat-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--misty-sage);
+    font-weight: 500;
+  }
+
+  /* ─── EXECUTIVE SUMMARY ─── */
+  .exec-summary {
+    padding: 2rem 1.5rem;
+    background: var(--whisper-sage);
+    border-bottom: 1px solid var(--misty-sage);
+  }
+  .exec-summary h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    color: var(--mist-teal);
+    margin-bottom: 1rem;
+  }
+  .exec-summary p {
+    font-size: 0.925rem;
+    margin-bottom: 0.75rem;
+    color: var(--body-text);
+  }
+  .callout-box {
+    background: white;
+    border-left: 3px solid var(--antique-gold);
+    padding: 1rem 1.25rem;
+    margin: 1.25rem 0;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+  .callout-box strong { color: var(--mist-teal); }
+
+  /* ─── PHASE HEADERS ─── */
+  .phase-header {
+    padding: 2rem 1.5rem 1rem;
+    text-align: center;
+  }
+  .phase-badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.9rem;
+    border-radius: 100px;
+    margin-bottom: 0.75rem;
+  }
+  .badge-phase1 { background: var(--mist-teal); color: white; }
+  .badge-phase2 { background: var(--antique-gold); color: white; }
+  .badge-phase3 { background: var(--deep-teal); color: white; }
+  .badge-seasonal { background: #D4763B; color: white; }
+  .badge-series { background: var(--misty-sage); color: var(--deep-teal); }
+  .badge-future { background: var(--warm-gray); color: white; }
+
+  .phase-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--mist-teal);
+    margin-bottom: 0.35rem;
+  }
+  .phase-header .phase-desc {
+    font-size: 0.85rem;
+    color: var(--warm-gray);
+  }
+
+  /* ─── MONTH DIVIDERS ─── */
+  .month-label {
+    padding: 0.6rem 1.5rem;
+    background: var(--whisper-sage);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mist-teal);
+    border-top: 1px solid var(--misty-sage);
+    border-bottom: 1px solid var(--misty-sage);
+  }
+
+  /* ─── ARTICLE CARDS ─── */
+  .card-container {
+    padding: 0 1rem;
+  }
+  .article-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin: 0.75rem 0;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    border: 1px solid #E8EDE9;
+    position: relative;
+    transition: box-shadow 0.2s;
+  }
+  .article-card:active {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+    gap: 0.5rem;
+  }
+  .article-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--misty-sage);
+    flex-shrink: 0;
+  }
+  .audience-tag {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.55rem;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+  .tag-parents { background: #E8F4EF; color: var(--mist-teal); }
+  .tag-educators { background: var(--light-gold); color: #8B6914; }
+  .tag-dual { background: #EDE4F0; color: #6B4C7A; }
+
+  .article-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--body-text);
+    line-height: 1.35;
+    margin-bottom: 0.65rem;
+  }
+
+  .card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  .meta-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.7rem;
+    color: var(--warm-gray);
+    background: var(--cloud-white);
+    border: 1px solid #E8EDE9;
+    padding: 0.2rem 0.5rem;
+    border-radius: 100px;
+  }
+  .meta-pill .icon {
+    font-size: 0.75rem;
+  }
+  .kd-easy { color: var(--mist-teal); font-weight: 600; }
+  .kd-medium { color: var(--antique-gold); font-weight: 600; }
+  .kd-hard { color: #C45D3E; font-weight: 600; }
+
+  .card-description {
+    font-size: 0.82rem;
+    color: #666;
+    line-height: 1.55;
+    margin-top: 0.65rem;
+    padding-top: 0.65rem;
+    border-top: 1px solid #F0F0F0;
+  }
+
+  /* ─── DECISION CALLOUT ─── */
+  .decision-card {
+    background: var(--light-gold);
+    border: 1px solid var(--antique-gold);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin: 0.75rem 1rem;
+    font-size: 0.85rem;
+  }
+  .decision-card .decision-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--antique-gold);
+    margin-bottom: 0.35rem;
+  }
+
+  /* ─── SEASONAL TABLE ─── */
+  .seasonal-grid {
+    padding: 0 1rem;
+  }
+  .seasonal-item {
+    background: white;
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin: 0.6rem 0;
+    border: 1px solid #E8EDE9;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .seasonal-timing {
+    flex-shrink: 0;
+    width: 52px;
+    text-align: center;
+  }
+  .seasonal-month {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--mist-teal);
+    text-transform: uppercase;
+    line-height: 1.3;
+  }
+  .seasonal-body h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    color: var(--body-text);
+    margin-bottom: 0.3rem;
+    line-height: 1.3;
+  }
+  .seasonal-body p {
+    font-size: 0.78rem;
+    color: #666;
+    line-height: 1.45;
+  }
+
+  /* ─── SERIES SECTION ─── */
+  .series-section {
+    padding: 0 1rem;
+  }
+  .series-group {
+    margin-bottom: 1.5rem;
+  }
+  .series-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--mist-teal);
+    margin: 1rem 0 0.25rem;
+    padding-left: 0.25rem;
+  }
+  .series-desc {
+    font-size: 0.8rem;
+    color: var(--warm-gray);
+    margin-bottom: 0.75rem;
+    padding-left: 0.25rem;
+  }
+  .series-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1rem 1.15rem;
+    margin: 0.5rem 0;
+    border: 1px solid #E8EDE9;
+  }
+  .series-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    color: var(--body-text);
+    margin-bottom: 0.35rem;
+    line-height: 1.3;
+  }
+  .series-card p {
+    font-size: 0.8rem;
+    color: #666;
+    line-height: 1.5;
+  }
+
+  /* ─── TOPIC BANK ─── */
+  .topic-cluster-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: var(--mist-teal);
+    margin: 1.25rem 0 0.5rem;
+    padding-left: 1.5rem;
+  }
+  .topic-bank-item {
+    background: white;
+    border-radius: 10px;
+    padding: 0.9rem 1.15rem;
+    margin: 0.5rem 1rem;
+    border: 1px solid #E8EDE9;
+  }
+  .topic-bank-item h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.92rem;
+    color: var(--body-text);
+    margin-bottom: 0.3rem;
+    line-height: 1.3;
+  }
+  .topic-bank-item p {
+    font-size: 0.78rem;
+    color: #666;
+    line-height: 1.45;
+  }
+
+  /* ─── REPURPOSING ─── */
+  .repurpose-item {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    background: white;
+    border-radius: 10px;
+    padding: 0.9rem 1.15rem;
+    margin: 0.5rem 1rem;
+    border: 1px solid #E8EDE9;
+  }
+  .repurpose-icon {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    background: var(--whisper-sage);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+  }
+  .repurpose-body h4 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--body-text);
+    margin-bottom: 0.15rem;
+  }
+  .repurpose-body p {
+    font-size: 0.75rem;
+    color: #666;
+  }
+
+  /* ─── LINKING STRATEGY ─── */
+  .link-map-item {
+    background: white;
+    border-radius: 10px;
+    padding: 0.9rem 1.15rem;
+    margin: 0.5rem 1rem;
+    border: 1px solid #E8EDE9;
+  }
+  .link-page {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--mist-teal);
+    margin-bottom: 0.2rem;
+  }
+  .link-articles {
+    font-size: 0.75rem;
+    color: #666;
+  }
+
+  /* ─── DECISIONS ─── */
+  .decisions-section {
+    padding: 0 1rem;
+  }
+  .decision-item {
+    background: white;
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin: 0.75rem 0;
+    border: 1px solid var(--antique-gold);
+    border-left: 4px solid var(--antique-gold);
+  }
+  .decision-item .q-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.75rem;
+    color: var(--antique-gold);
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+  .decision-item h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--body-text);
+    margin-bottom: 0.5rem;
+  }
+  .decision-item .context {
+    font-size: 0.82rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+  }
+  .decision-item .options {
+    font-size: 0.82rem;
+    color: var(--body-text);
+    background: var(--light-gold);
+    padding: 0.75rem;
+    border-radius: 6px;
+    line-height: 1.6;
+  }
+
+  /* ─── MASTER INDEX ─── */
+  .master-index {
+    padding: 0 1rem;
+  }
+  .index-row {
+    display: flex;
+    align-items: baseline;
+    padding: 0.55rem 0;
+    border-bottom: 1px solid #F0F0F0;
+    gap: 0.5rem;
+  }
+  .index-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.75rem;
+    color: var(--misty-sage);
+    width: 24px;
+    flex-shrink: 0;
+    text-align: right;
+  }
+  .index-title {
+    font-size: 0.82rem;
+    color: var(--body-text);
+    flex: 1;
+    line-height: 1.35;
+  }
+  .index-meta-right {
+    flex-shrink: 0;
+    text-align: right;
+  }
+  .index-vol {
+    font-size: 0.65rem;
+    color: var(--warm-gray);
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    background: var(--deep-teal);
+    color: var(--misty-sage);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    margin-top: 2rem;
+  }
+  .footer p {
+    font-size: 0.75rem;
+    line-height: 1.6;
+  }
+  .footer .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: white;
+    margin-bottom: 0.5rem;
+  }
+
+  /* ─── SECTION DIVIDER ─── */
+  .section-divider {
+    height: 3px;
+    background: linear-gradient(90deg, var(--misty-sage) 0%, var(--antique-gold) 50%, var(--misty-sage) 100%);
+    margin: 0;
+    opacity: 0.4;
+  }
+
+  /* ─── TOGGLE / EXPAND ─── */
+  .expand-toggle {
+    display: block;
+    width: calc(100% - 2rem);
+    margin: 0.5rem auto;
+    padding: 0.6rem;
+    background: var(--whisper-sage);
+    border: 1px solid var(--misty-sage);
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--mist-teal);
+    cursor: pointer;
+    text-align: center;
+  }
+  .expand-toggle:active {
+    background: var(--misty-sage);
+    color: white;
+  }
+
+  .details-content {
+    display: none;
+  }
+  .details-content.open {
+    display: block;
+  }
+
+  /* ─── NAV PILLS ─── */
+  .nav-pills {
+    display: flex;
+    gap: 0.4rem;
+    overflow-x: auto;
+    padding: 1rem 1rem 0.5rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .nav-pills::-webkit-scrollbar { display: none; }
+  .nav-pill {
+    flex-shrink: 0;
+    padding: 0.4rem 0.75rem;
+    border-radius: 100px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    border: 1px solid var(--misty-sage);
+    color: var(--mist-teal);
+    background: white;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .nav-pill:active, .nav-pill.active {
+    background: var(--mist-teal);
+    color: white;
+    border-color: var(--mist-teal);
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════ HERO ═══════════════════════════════════════ -->
+<div class="hero">
+  <div class="hero-label">Phase 3C Deliverable · March 2026</div>
+  <h1>Blog Content<br>Roadmap</h1>
+  <div class="hero-subtitle">18-Month Publishing Strategy</div>
+  <div class="hero-stats">
+    <div class="stat">
+      <span class="stat-number">99</span>
+      <span class="stat-label">Topics</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">120K+</span>
+      <span class="stat-label">Monthly Searches</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">18</span>
+      <span class="stat-label">Months</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">2</span>
+      <span class="stat-label">Funnels</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ NAV ═══════════════════════════════════════ -->
+<nav class="nav-pills">
+  <a class="nav-pill" href="#summary">Summary</a>
+  <a class="nav-pill" href="#phase1">Phase 1</a>
+  <a class="nav-pill" href="#phase2">Phase 2</a>
+  <a class="nav-pill" href="#phase3">Phase 3</a>
+  <a class="nav-pill" href="#seasonal">Seasonal</a>
+  <a class="nav-pill" href="#series">Series</a>
+  <a class="nav-pill" href="#future">Future Ideas</a>
+  <a class="nav-pill" href="#repurpose">Repurposing</a>
+  <a class="nav-pill" href="#decisions">Decisions</a>
+  <a class="nav-pill" href="#master">Master Index</a>
+</nav>
+
+<!-- ═══════════════════════════════════ EXECUTIVE SUMMARY ═══════════════════════════════════ -->
+<section class="exec-summary" id="summary">
+  <h2>What This Roadmap Covers</h2>
+  <p>Every blog topic Spark Academy should publish over the next 18 months — organized into three phases and two parallel content tracks. Every topic is grounded in real keyword data, aligned with our dual-funnel conversion architecture, and written in your voice.</p>
+
+  <div class="callout-box">
+    <strong>75 blog topics</strong> targeting over <strong>120,000 monthly searches</strong> in aggregate. <strong>57 parent-facing articles</strong> driving tour bookings. <strong>18 educator-facing articles</strong> building your consulting pipeline. Every post is a new entry point into the funnel and a new reason for Google to consider Spark Academy <em>the</em> authority on early childhood education in Central Illinois.
+  </div>
+
+  <p><strong>Phase 1 (Months 1–6):</strong> 12 priority articles. Highest volume, lowest difficulty, greatest strategic impact. These launch the blog and establish topical authority.</p>
+  <p><strong>Phase 2 (Months 7–12):</strong> 21 expansion articles. Deeper dives into parent concerns, enrichment topics, and the first wave of dedicated consulting-track posts.</p>
+  <p><strong>Phase 3 (Months 13–18):</strong> 18 evergreen library articles. Long-tail topics, community content, and advanced educator thought leadership that compounds the authority built in Phases 1–2.</p>
+  <p><strong>Seasonal Layer:</strong> 12 time-sensitive posts tied to enrollment windows, Camp Play registration, back-to-school, and year-end tax planning — republished annually.</p>
+  <p><strong>Special Series:</strong> 12 posts across three branded series — "Inside the Classroom," "Ask Dr. Peterson," and "The Homeschool Hub" — designed for social sharing and email nurture campaigns.</p>
+  <p><strong>Future Expansion:</strong> 24 additional topic ideas in the backlog, ready when capacity allows.</p>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════ PHASE 1 ═══════════════════════════════════ -->
+<section id="phase1">
+  <div class="phase-header">
+    <span class="phase-badge badge-phase1">Phase 1</span>
+    <h2>Priority Articles</h2>
+    <p class="phase-desc">Months 1–6 · 12 Articles · ~76,500 monthly searches</p>
+  </div>
+
+  <!-- Month 1 -->
+  <div class="month-label">Month 1</div>
+  <div class="card-container">
+    <div class="article-card">
+      <div class="card-top">
+        <span class="article-number">#1</span>
+        <span class="audience-tag tag-parents">Parents</span>
+      </div>
+      <div class="article-title">Is Preschool Tax Deductible? What Illinois Parents Need to Know</div>
+      <div class="card-meta">
+        <span class="meta-pill"><span class="icon">🔍</span> 800/mo</span>
+        <span class="meta-pill">KD <span class="kd-easy">3</span></span>
+        <span class="meta-pill"><span class="icon">📋</span> Draft exists</span>
+      </div>
+      <div class="card-description">Quick win — already drafted. Illinois-specific tax answer from a doctoral-level educator. Steals ranking from a local competitor. Update annually with current tax year info.</div>
+    </div>
+
+    <div class="article-card">
+      <div class="card-top">
+        <span class="article-number">#2</span>
+        <span class="audience-tag tag-parents">Parents</span>
+      </div>
+      <div class="article-title">Daycare vs. Preschool: What's the Real Difference?</div>
+      <div class="card-meta">
+        <span class="meta-pill"><span class="icon">🔍</span> 1,300/mo</span>
+        <span class="meta-pill">KD <span class="kd-easy">1</span></span>
+        <span class="meta-pill"><span class="icon">⭐</span> Cornerstone</span>
+      </div>
+      <div class="card-description">Cornerstone article. Intercepts massive daycare search volume — parents searching "daycare" are actually seeking childcare. This educates them on why preschool is the better investment. ~9,000/mo addressable volume across keyword variants.</div>
+    </div>
+  </div>
+
+  <!-- Month 2 -->
+  <div class="month-label">Month 2</div>
+  <div class="card-container">
+    <div class="article-card">
+      <div class="card-top">
+        <span class="article-number">#3</span>
+        <span class="audience-tag tag-parents">Parents</span>
+      </div>
+      <div class="article-title">When Should Your Child Start Preschool? A Developmental Guide by Age</div>
+      <div class="card-meta">
+        <span class="meta-pill"><span class="icon">🔍</span> 7,500/mo</span>
+        <span class="meta-pill">KD <span class="kd-easy">3</span></span>
+        <span class="meta-pill"><span class="icon">🔥</span> Highest volume</span>
+      </div>
+      <div class="card-description">Highest volume article in the entire roadmap (~20,000/mo addressable). Readiness by age 2–5 through your developmental lens. Spark's flexible birthday cutoff is a selling point.</div>
+    </div>
+
+    <div class="article-card">
+      <div class="card-top">
+        <span class="article-number">#4</span>
+        <span class="audience-tag tag-parents">Parents</span>
+      </div>
+      <div class="article-title">How to Prepare Your Child for Their First Day of Preschool</div>
+      <div class="card-meta">
+        <span class="meta-pill"><span class="icon">🔍</span> 2,600/mo</span>
+        <span class="meta-pill">KD <span class="kd-easy">0</span></span>
+      </div>
+      <div class="card-description">KD 0 across all targets = free traffic. Emotionally resonant. Spark's 5:1 ratio and homelike environment address separation anxiety naturally. The "kids kick off their shoes" image belongs here.</div>
+    </div>
+  </div>
+
+  <!-- Month 3 -->
+  <div class="month-label">Month 3</div>
+  <div class="card-container">
+    <div class="article-card">
+      <div class="card-top">
+        <span class="article-number">#5</span>
+        <span class="audience-tag tag-parents">Parents</span>
+      </div>
+      <div class="article-title">Is Your Child Ready for Kindergarten? The Complete Readiness Checklist</div>
+      <div class="card-meta">
+        <span class="meta-pill"><span class="icon">🔍</span> 3,800/mo</span>
+        <span class="meta-pill">KD <span class="kd-easy">3</span></span>
+        <span class="meta-pill"><span class="icon">📥</span> Lead magnet</span>
+      </div>
+      <div class="card-description">Lead magnet opportunity — downloadable PDF checklist. Directly funnels into K-Prep ($500–$650/mo) and Kindergarten ($700/mo). ~8,500/mo addressable volume.</div>
+    </div>
+
+    <div class="decision-card">
+      <div class="decision-label">Decision for Michelle</div>
+      Would you be willing to create a downloadable PDF version of the kindergarten readiness checklist as a lead magnet? This could be gated behind an email capture form — the first step toward building a parent email list.
+    </div>
+
+    <div class="article-card">
+      <div class="card-top">
+        <span class="article-number">#6</span>
+        <span class="audience-tag tag-parents">Parents</span>
+      </div>
+      <div class="article-title">How Much Does Preschool Cost in Central Illinois?</div>
+      <div class="card-meta">
+        <span class="meta-pill"><span class="icon">🔍</span> 700/mo</span>
+        <span class="meta-pill">KD <span class="kd-easy">1</span></span>
+      </div>
+      <div class="card-description">Cost objection content. Key reframe: Spark $350–$700/mo (part-time, educational, doctoral-led) vs. typical daycare $800–$1,200/mo (full-time, custodial). ~7,000/mo addressable volume.</div>
+    </div>
+  </div>
+
+  <!-- Month 4 -->
+  <div class="month-label">Month 4</div>
+  <div class="card-container">
+    <div class="article-card">
+      <div class="card-top">
+        <span class="article-number">#7</span>
+        <span class="audience-tag tag-parents">Parents</span>
+      </div>
+      <div class="article-title">Part-Time Preschool: Is 2–3 Days a Week Enough?</div>
+      <div class="card-meta">
+        <span class="meta-pill"><span class="icon">🔍</span> 3,300/mo</span>
+        <span class="meta-pill">KD <span class="kd-medium">7</span></span>
+      </div>
+      <div class="card-description">Maps directly to Spark's T/Th and M/W/F options. Reframes "part-time daycare" as "intentional scheduling." Converts fence-sitters who think they need full-time care.</div>
+    </div>
+
+    <div class="article-card">
+      <div class="card-top">
+        <span class="article-number">#8</span>
+        <span class="audience-tag tag-parents">Parents</span>
+      </div>
+      <div class="article-title">What Should a Child Learn in Preschool? (It's More Than ABCs)</div>
+      <div class="card-meta">
+        <span class="meta-pill"><span class="icon">🔍</span> 1,400/mo</span>
+        <span class="meta-pill">KD <span class="kd-easy">5</span></span>
+      </div>
+      <div class="card-description">Purposeful Play Framework showcase. Cognitive, social-emotional, physical, and creative domains. The neural pathways argument. Specific examples from Spark's daily schedule and enrichment rotation.</div>
+    </div>
+  </div>
+
+  <!-- Month 5 -->
+  <div class="month-label">Month 5</div>
+  <div class="card-container">
+    <div class="article-card">
+      <div class="card-top">
+        <span class="article-number">#9</span>
+        <span class="audience-tag tag-parents">Parents</span>
+      </div>
+      <div class="article-title">Montessori vs. Play-Based Preschool: Which Approach Is Right for Your Child?</div>
+      <div class="card-meta">
+        <span class="meta-pill"><span class="icon">🔍</span> 1,500/mo</span>
+        <span class="meta-pill">KD <span class="kd-easy">1</span></span>
+      </div>
+      <div class="card-description">Captures philosophy-comparison traffic. Fairly explains Montessori and Waldorf, then positions The Purposeful Play Framework as a research-backed third option. ~5,000/mo addressable volume.</div>
+    </div>
+
+    <div class="article-card">
+      <div class="card-top">
+        <span class="article-number">#10</span>
+        <span class="audience-tag tag-parents">Parents</span>
+      </div>
+      <div class="article-title">Does My Child Need to Be Potty Trained for Preschool?</div>
+      <div class="card-meta">
+        <span class="meta-pill"><span class="icon">🔍</span> 100/mo</span>
+        <span class="meta-pill">KD <span class="kd-easy">0</span></span>
+      </div>
+      <div class="card-description">Low volume but zero competition. Addresses a genuine enrollment barrier. Turns a potential objection into a positive with helpful, empathetic content and practical tips.</div>
+    </div>
+  </div>
+
+  <!-- Month 6 -->
+  <div class="month-label">Month 6</div>
+  <div class="card-container">
+    <div class="article-card">
+      <div class="card-top">
+        <span class="article-number">#11</span>
+        <span class="audience-tag tag-dual">Dual Audience</span>
+      </div>
+      <div class="article-title">Play-Based Learning: Why Your Child's Brain Needs It</div>
+      <div class="card-meta">
+        <span class="meta-pill"><span class="icon">🔍</span> 2,000/mo</span>
+        <span class="meta-pill">KD <span class="kd-hard">31</span></span>
+        <span class="meta-pill"><span class="icon">⭐</span> Thought leadership</span>
+      </div>
+      <div class="card-description">Higher difficulty but your doctoral research = unmatched authority for Google. First dual-audience post — tagged "For Parents" but with consulting CTA for educators who discover it. Flagship thought leadership piece.</div>
+    </div>
+
+    <div class="decision-card">
+      <div class="decision-label">Decision for Michelle</div>
+      Can you provide 2–3 specific research citations or studies that informed the Purposeful Play Framework? (e.g., names of researchers, journal names, key findings). This will dramatically strengthen the authority signal for Google and AI search tools.
+    </div>
+
+    <div class="article-card">
+      <div class="card-top">
+        <span class="article-number">#12</span>
+        <span class="audience-tag tag-parents">Parents</span>
+      </div>
+      <div class="article-title">3-Year-Old Sleep Schedule: How Much Sleep Does Your Preschooler Need?</div>
+      <div class="card-meta">
+        <span class="meta-pill"><span class="icon">🔍</span> 3,000/mo</span>
+        <span class="meta-pill">KD <span class="kd-medium">18</span></span>
+      </div>
+      <div class="card-description">Top-of-funnel brand awareness play. Connection to preschool: well-rested children thrive in morning programs. Positions you as a whole-child development authority. ~4,400/mo addressable volume.</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════ PHASE 2 ═══════════════════════════════════ -->
+<section id="phase2">
+  <div class="phase-header">
+    <span class="phase-badge badge-phase2">Phase 2</span>
+    <h2>Expansion Articles</h2>
+    <p class="phase-desc">Months 7–12 · 18 Articles · Parent Track + Educator Track</p>
+  </div>
+
+  <!-- Parent Track header -->
+  <div class="month-label">Parent Track · Months 7–12</div>
+  <div class="card-container">
+    <div class="article-card">
+      <div class="card-top"><span class="article-number">#13</span><span class="audience-tag tag-parents">Parents</span></div>
+      <div class="article-title">5 Signs Your Child Is Ready for Preschool</div>
+      <div class="card-meta">
+        <span class="meta-pill"><span class="icon">🔍</span> 200/mo</span>
+        <span class="meta-pill">KD <span class="kd-easy">5</span></span>
+        <span class="meta-pill">Month 7</span>
+      </div>
+      <div class="card-description">Evergreen readiness content with developmental milestones. Complements Article 3 (When to Start) — "signs" vs. "age guide."</div>
+    </div>
+
+    <div class="article-card">
+      <div class="card-top"><span class="article-number">#14</span><span class="audience-tag tag-parents">Parents</span></div>
+      <div class="article-title">What Kindergarten Teachers Wish Parents Knew</div>
+      <div class="card-meta">
+        <span class="meta-pill"><span class="icon">🔍</span> 200/mo</span>
+        <span class="meta-pill">KD <span class="kd-easy">5</span></span>
+        <span class="meta-pill">Month 7</span>
+      </div>
+      <div class="card-description">Seasonal push before enrollment period. Teacher perspective adds expertise depth. Funnels into K-Prep program.</div>
+    </div>
+
+    <div class="article-card">
+      <div class="card-top"><span class="article-number">#15</span><span class="audience-tag tag-parents">Parents</span></div>
+      <div class="article-title">How to Help Your Child with Preschool Drop-Off</div>
+      <div class="card-meta">
+        <span class="meta-pill"><span class="icon">🔍</span> 100/mo</span>
+        <span class="meta-pill">KD <span class="kd-easy">0</span></span>
+        <span class="meta-pill">Month 8</span>
+      </div>
+      <div class="card-description">Trust/fear objection content. Ongoing issue vs. first-day prep. KD 0 = free ranking.</div>
+    </div>
+
+    <div class="article-card">
+      <div class="card-top"><span class="article-number">#16</span><span class="audience-tag tag-parents">Parents</span></div>
+      <div class="article-title">10 Questions to Ask on a Preschool Tour</div>
+      <div class="card-meta">
+        <span class="meta-pill"><span class="icon">🔍</span> 200/mo</span>
+        <span class="meta-pill">KD <span class="kd-easy">0</span></span>
+        <span class="meta-pill">Month 8</span>
+      </div>
+      <div class="card-description">High conversion value. Structured so every question maps to what Spark does well. The answers pre-sell Spark before the parent even visits.</div>
+    </div>
+
+    <div class="article-card">
+      <div class="card-top"><span class="article-number">#17</span><span class="audience-tag tag-parents">Parents</span></div>
+      <div class="article-title">Why Preschool Spanish Classes Matter More Than You Think</div>
+      <div class="card-meta">
+        <span class="meta-pill"><span class="icon">🔍</span> 50/mo</span>
+        <span class="meta-pill">KD <span class="kd-easy">~5</span></span>
+        <span class="meta-pill">Month 9</span>
+      </div>
+      <div class="card-description">Ties to Spark's Monday Spanish enrichment. Neural pathways argument. Most local competitors charge extra for enrichment — Spark includes it.</div>
+    </div>
+
+    <div class="article-card">
+      <div class="card-top"><span class="article-number">#18</span><span class="audience-tag tag-parents">Parents</span></div>
+      <div class="article-title">The Benefits of Small Class Sizes in Preschool</div>
+      <div class="card-meta">
+        <span class="meta-pill"><span class="icon">🔍</span> 50/mo</span>
+        <span class="meta-pill">KD <span class="kd-easy">5</span></span>
+        <span class="meta-pill">Month 9</span>
+      </div>
+      <div class="card-description">5:1 ratio differentiator vs. chains. Low volume but high conversion value — parents reading this are deep in evaluation mode.</div>
+    </div>
+
+    <div class="article-card">
+      <div class="card-top"><span class="article-number">#19</span><span class="audience-tag tag-parents">Parents</span></div>
+      <div class="article-title">How Outdoor Play Builds Stronger Learners</div>
+      <div class="card-meta">
+        <span class="meta-pill"><span class="icon">🔍</span> 100/mo</span>
+        <span class="meta-pill">KD <span class="kd-medium">10</span></span>
+        <span class="meta-pill">Month 10</span>
+      </div>
+      <div class="card-description">Maps to Spark's outdoor play emphasis and daily schedule. Growing search trend.</div>
+    </div>
+
+    <div class="article-card">
+      <div class="card-top"><span class="article-number">#20</span><span class="audience-tag tag-parents">Parents</span></div>
+      <div class="article-title">Summer Learning Loss: How to Keep Your Preschooler Engaged</div>
+      <div class="card-meta">
+        <span class="meta-pill"><span class="icon">🔍</span> 100/mo</span>
+        <span class="meta-pill">KD <span class="kd-easy">5</span></span>
+        <span class="meta-pill">Month 10</span>
+      </div>
+      <div class="card-description">Seasonal content. Ties with Camp Play enrollment push. Republish annually with updated Camp Play details.</div>
+    </div>
+
+    <div class="article-card">
+      <div class="card-top"><span class="article-number">#21</span><span class="audience-tag tag-parents">Parents</span></div>
+      <div class="article-title">Why Your Child's Preschool Teacher Matters More Than the Curriculum</div>
+      <div class="card-meta">
+        <span class="meta-pill"><span class="icon">🔍</span> 80/mo</span>
+        <span class="meta-pill">KD <span class="kd-easy">~3</span></span>
+        <span class="meta-pill">Month 11</span>
+      </div>
+      <div class="card-description">Teacher quality angle. Highlights credentialed staff, degreed teachers, and doctoral leadership. Trust-building content.</div>
+    </div>
+
+    <div class="article-card">
+      <div class="card-top"><span class="article-number">#22</span><span class="audience-tag tag-parents">Parents</span></div>
+      <div class="article-title">Screen Time and Preschoolers: What the Research Actually Says</div>
+      <div class="card-meta">
+        <span class="meta-pill"><span class="icon">🔍</span> 500/mo</span>
+        <span class="meta-pill">KD <span class="kd-medium">~15</span></span>
+        <span class="meta-pill">Month 11</span>
+      </div>
+      <div class="card-description">High-volume parenting topic. Position Spark's screen-free, hands-on environment as the antidote. Top-of-funnel brand awareness.</div>
+    </div>
+
+    <div class="article-card">
+      <div class="card-top"><span class="article-number">#23</span><span class="audience-tag tag-parents">Parents</span></div>
+      <div class="article-title">What Does a Typical Preschool Day Look Like at Spark Academy?</div>
+      <div class="card-meta">
+        <span class="meta-pill"><span class="icon">🔍</span> 200/mo</span>
+        <span class="meta-pill">KD <span class="kd-easy">0</span></span>
+        <span class="meta-pill">Month 12</span>
+      </div>
+      <div class="card-description">Walk through the actual daily schedule with photos. Addresses "What will my child actually do?" No competitor can replicate this content.</div>
+    </div>
+
+    <div class="article-card">
+      <div class="card-top"><span class="article-number">#24</span><span class="audience-tag tag-parents">Parents</span></div>
+      <div class="article-title">How to Choose the Right Preschool: A Parent's Checklist</div>
+      <div class="card-meta">
+        <span class="meta-pill"><span class="icon">🔍</span> 50/mo</span>
+        <span class="meta-pill">KD <span class="kd-easy">0</span></span>
+        <span class="meta-pill">Month 12</span>
+      </div>
+      <div class="card-description">Structured so Spark wins every evaluation criteria. Every checkpoint maps to Spark's strengths: credentials, ratio, enrichment, environment.</div>
+    </div>
+  </div>
+
+  <!-- Educator Track -->
+  <div class="month-label">Educator / Consulting Track · Months 7–12</div>
+  <div class="card-container">
+    <div class="article-card">
+      <div class="card-top"><span class="article-number">#25</span><span class="audience-tag tag-educators">Educators</span></div>
+      <div class="article-title">Peer Engagement Strategies for Mixed-Age Classrooms</div>
+      <div class="card-meta">
+        <span class="meta-pill"><span class="icon">🔍</span> 50/mo</span>
+        <span class="meta-pill">KD <span class="kd-easy">~5</span></span>
+        <span class="meta-pill">Month 7</span>
+      </div>
+      <div class="card-description">Your doctoral research topic. Unique expertise content no competitor can produce. Cite dissertation findings.</div>
+    </div>
+
+    <div class="article-card">
+      <div class="card-top"><span class="article-number">#26</span><span class="audience-tag tag-educators">Educators</span></div>
+      <div class="article-title">Building a Play-Based Curriculum That Meets State Standards</div>
+      <div class="card-meta">
+        <span class="meta-pill"><span class="icon">🔍</span> 50/mo</span>
+        <span class="meta-pill">KD <span class="kd-easy">5</span></span>
+        <span class="meta-pill">Month 8</span>
+      </div>
+      <div class="card-description">Address the tension between play-based philosophy and state accountability. Practical educator content.</div>
+    </div>
+
+    <div class="article-card">
+      <div class="card-top"><span class="article-number">#27</span><span class="audience-tag tag-educators">Educators</span></div>
+      <div class="article-title">Creating Inclusive Preschool Environments</div>
+      <div class="card-meta">
+        <span class="meta-pill"><span class="icon">🔍</span> 50/mo</span>
+        <span class="meta-pill">KD <span class="kd-easy">5</span></span>
+        <span class="meta-pill">Month 9</span>
+      </div>
+      <div class="card-description">Your autism research background and inclusion expertise. Practical strategies for educators.</div>
+    </div>
+
+    <div class="article-card">
+      <div class="card-top"><span class="article-number">#28</span><span class="audience-tag tag-educators">Educators</span></div>
+      <div class="article-title">What Does an Early Childhood Education Consultant Actually Do?</div>
+      <div class="card-meta">
+        <span class="meta-pill"><span class="icon">🔍</span> 90/mo</span>
+        <span class="meta-pill">KD <span class="kd-medium">7</span></span>
+        <span class="meta-pill">Month 10</span>
+      </div>
+      <div class="card-description">Top-of-funnel consulting content. Educates potential clients on what consulting looks like. Natural path to "Work with Dr. Peterson."</div>
+    </div>
+
+    <div class="article-card">
+      <div class="card-top"><span class="article-number">#29</span><span class="audience-tag tag-educators">Educators</span></div>
+      <div class="article-title">PBIS in Preschool: A Practical Implementation Guide</div>
+      <div class="card-meta">
+        <span class="meta-pill"><span class="icon">🔍</span> ~30/mo</span>
+        <span class="meta-pill">KD <span class="kd-easy">~5</span></span>
+        <span class="meta-pill">Month 11</span>
+      </div>
+      <div class="card-description">You led PBIS implementation for a decade. "Behavior is communication" philosophy explained at professional depth.</div>
+    </div>
+
+    <div class="article-card">
+      <div class="card-top"><span class="article-number">#30</span><span class="audience-tag tag-educators">Educators</span></div>
+      <div class="article-title">From Teacher to Director: Leadership Transitions in Early Childhood</div>
+      <div class="card-meta">
+        <span class="meta-pill"><span class="icon">🔍</span> ~30/mo</span>
+        <span class="meta-pill">KD <span class="kd-easy">~3</span></span>
+        <span class="meta-pill">Month 12</span>
+      </div>
+      <div class="card-description">Your career arc from classroom teacher to doctoral researcher to founder. Career guidance for ambitious educators. Consulting funnel entry point.</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════ PHASE 3 ═══════════════════════════════════ -->
+<section id="phase3">
+  <div class="phase-header">
+    <span class="phase-badge badge-phase3">Phase 3</span>
+    <h2>Evergreen Library</h2>
+    <p class="phase-desc">Months 13–18 · 18 Articles · Deep dives + long-tail authority</p>
+  </div>
+
+  <div class="month-label">Parent Track · Months 13–18</div>
+  <div class="card-container">
+    <div class="article-card">
+      <div class="card-top"><span class="article-number">#31</span><span class="audience-tag tag-parents">Parents</span></div>
+      <div class="article-title">Preschool vs. Pre-K: Is There a Difference?</div>
+      <div class="card-meta"><span class="meta-pill"><span class="icon">🔍</span> 300/mo</span><span class="meta-pill">KD <span class="kd-easy">~3</span></span></div>
+    </div>
+
+    <div class="article-card">
+      <div class="card-top"><span class="article-number">#32</span><span class="audience-tag tag-parents">Parents</span></div>
+      <div class="article-title">How Music and Movement Builds Your Preschooler's Brain</div>
+      <div class="card-meta"><span class="meta-pill"><span class="icon">🔍</span> 100/mo</span><span class="meta-pill">KD <span class="kd-easy">~5</span></span></div>
+      <div class="card-description">Ties to Friday Music &amp; Movement enrichment. Neural pathways argument applied to music.</div>
+    </div>
+
+    <div class="article-card">
+      <div class="card-top"><span class="article-number">#33</span><span class="audience-tag tag-parents">Parents</span></div>
+      <div class="article-title">Why Art Matters More Than You Think in Early Childhood</div>
+      <div class="card-meta"><span class="meta-pill"><span class="icon">🔍</span> 150/mo</span><span class="meta-pill">KD <span class="kd-medium">~8</span></span></div>
+      <div class="card-description">Wednesday Art enrichment spotlight. Process art vs. product art distinction.</div>
+    </div>
+
+    <div class="article-card">
+      <div class="card-top"><span class="article-number">#34</span><span class="audience-tag tag-parents">Parents</span></div>
+      <div class="article-title">STEM for Preschoolers: What It Actually Looks Like</div>
+      <div class="card-meta"><span class="meta-pill"><span class="icon">🔍</span> 300/mo</span><span class="meta-pill">KD <span class="kd-medium">15</span></span></div>
+      <div class="card-description">Tuesday STEM enrichment spotlight. Debunks the myth that STEM means screens.</div>
+    </div>
+
+    <div class="article-card">
+      <div class="card-top"><span class="article-number">#35</span><span class="audience-tag tag-parents">Parents</span></div>
+      <div class="article-title">Social-Emotional Learning: The Skill That Predicts Everything Else</div>
+      <div class="card-meta"><span class="meta-pill"><span class="icon">🔍</span> 200/mo</span><span class="meta-pill">KD <span class="kd-medium">15</span></span></div>
+      <div class="card-description">Core differentiator for Spark. Your doctoral research on peer engagement maps directly here.</div>
+    </div>
+
+    <div class="article-card">
+      <div class="card-top"><span class="article-number">#36</span><span class="audience-tag tag-parents">Parents</span></div>
+      <div class="article-title">What Is the Developmental Play Room? Inside Spark's Signature Feature</div>
+      <div class="card-meta"><span class="meta-pill"><span class="icon">🔍</span> 20/mo</span><span class="meta-pill">KD <span class="kd-easy">0</span></span></div>
+      <div class="card-description">Unique to Spark. No competitor has this content. Photo-rich walkthrough of the monthly-rotating play room.</div>
+    </div>
+
+    <div class="article-card">
+      <div class="card-top"><span class="article-number">#37</span><span class="audience-tag tag-parents">Parents</span></div>
+      <div class="article-title">Why We Don't Believe in Homework for Preschoolers</div>
+      <div class="card-meta"><span class="meta-pill"><span class="icon">🔍</span> 80/mo</span><span class="meta-pill">KD <span class="kd-easy">~3</span></span></div>
+      <div class="card-description">Counter-intuitive, shareable headline. Addresses parent anxiety about "enough academics."</div>
+    </div>
+
+    <div class="article-card">
+      <div class="card-top"><span class="article-number">#38</span><span class="audience-tag tag-parents">Parents</span></div>
+      <div class="article-title">The Introvert's Guide to Preschool: Helping Shy Children Thrive</div>
+      <div class="card-meta"><span class="meta-pill"><span class="icon">🔍</span> 100/mo</span><span class="meta-pill">KD <span class="kd-easy">~5</span></span></div>
+      <div class="card-description">Real parent concern. Spark's small class sizes and 5:1 ratio are the answer. Emotional, empathetic content.</div>
+    </div>
+
+    <div class="article-card">
+      <div class="card-top"><span class="article-number">#39</span><span class="audience-tag tag-parents">Parents</span></div>
+      <div class="article-title">Preschool Behavior: What's Normal and When to Talk to Your Teacher</div>
+      <div class="card-meta"><span class="meta-pill"><span class="icon">🔍</span> 200/mo</span><span class="meta-pill">KD <span class="kd-medium">~10</span></span></div>
+      <div class="card-description">"Behavior is communication" philosophy in parent-accessible language. Builds trust by being honest about developmental challenges.</div>
+    </div>
+
+    <div class="article-card">
+      <div class="card-top"><span class="article-number">#40</span><span class="audience-tag tag-parents">Parents</span></div>
+      <div class="article-title">How Brightwheel Keeps You Connected to Your Child's Day</div>
+      <div class="card-meta"><span class="meta-pill"><span class="icon">🔍</span> 50/mo</span><span class="meta-pill">KD <span class="kd-easy">~0</span></span></div>
+      <div class="card-description">Tech transparency. Show parents exactly what daily communication looks like. Trust-building.</div>
+    </div>
+
+    <div class="article-card">
+      <div class="card-top"><span class="article-number">#41</span><span class="audience-tag tag-parents">Parents</span></div>
+      <div class="article-title">The Working Parent's Guide to Preschool Logistics</div>
+      <div class="card-meta"><span class="meta-pill"><span class="icon">🔍</span> 80/mo</span><span class="meta-pill">KD <span class="kd-easy">~3</span></span></div>
+      <div class="card-description">Half-day program logistics for working families. Addresses the "but I work full-time" objection.</div>
+    </div>
+
+    <div class="article-card">
+      <div class="card-top"><span class="article-number">#42</span><span class="audience-tag tag-parents">Parents</span></div>
+      <div class="article-title">Private Kindergarten vs. Public: When a Smaller Setting Makes the Difference</div>
+      <div class="card-meta">
+        <span class="meta-pill"><span class="icon">🔍</span> 1,900/mo</span>
+        <span class="meta-pill">KD <span class="kd-easy">0</span></span>
+        <span class="meta-pill"><span class="icon">🔥</span> Biggest KW unlock</span>
+      </div>
+      <div class="card-description">1,900/mo at KD 0 — the biggest untapped keyword opportunity in the entire map. Positions Spark's small-class kindergarten as the premium alternative.</div>
+    </div>
+  </div>
+
+  <div class="month-label">Educator / Consulting Track · Months 13–18</div>
+  <div class="card-container">
+    <div class="article-card">
+      <div class="card-top"><span class="article-number">#43</span><span class="audience-tag tag-educators">Educators</span></div>
+      <div class="article-title">How to Evaluate Your Preschool Curriculum: A Framework for Directors</div>
+      <div class="card-meta"><span class="meta-pill"><span class="icon">🔍</span> 30/mo</span><span class="meta-pill">KD <span class="kd-easy">~3</span></span></div>
+      <div class="card-description">Practical assessment tool for school directors. Natural consulting pipeline.</div>
+    </div>
+
+    <div class="article-card">
+      <div class="card-top"><span class="article-number">#44</span><span class="audience-tag tag-educators">Educators</span></div>
+      <div class="article-title">Naturalistic Developmental Interventions in Early Childhood Classrooms</div>
+      <div class="card-meta"><span class="meta-pill"><span class="icon">🔍</span> 10/mo</span><span class="meta-pill">KD <span class="kd-easy">0</span></span></div>
+      <div class="card-description">Ultra-niche, zero competition. Own this term completely. Directly from your research expertise.</div>
+    </div>
+
+    <div class="article-card">
+      <div class="card-top"><span class="article-number">#45</span><span class="audience-tag tag-educators">Educators</span></div>
+      <div class="article-title">How to Become an Educational Consultant: A Practitioner's Guide</div>
+      <div class="card-meta"><span class="meta-pill"><span class="icon">🔍</span> 200/mo</span><span class="meta-pill">KD <span class="kd-medium">18</span></span></div>
+      <div class="card-description">Career path content. Your journey from classroom to consulting. High volume. Establishes authority by teaching the path.</div>
+    </div>
+
+    <div class="article-card">
+      <div class="card-top"><span class="article-number">#46</span><span class="audience-tag tag-educators">Educators</span></div>
+      <div class="article-title">Assessment Strategies That Actually Inform Instruction</div>
+      <div class="card-meta"><span class="meta-pill"><span class="icon">🔍</span> 50/mo</span><span class="meta-pill">KD <span class="kd-easy">~5</span></span></div>
+      <div class="card-description">Spark's individualized assessment-to-action system as the example. Observation-based vs. standardized testing.</div>
+    </div>
+
+    <div class="article-card">
+      <div class="card-top"><span class="article-number">#47</span><span class="audience-tag tag-educators">Educators</span></div>
+      <div class="article-title">Staff Development in Early Childhood: Building a Culture of Growth</div>
+      <div class="card-meta"><span class="meta-pill"><span class="icon">🔍</span> 80/mo</span><span class="meta-pill">KD <span class="kd-medium">~8</span></span></div>
+      <div class="card-description">Your improvement science approach. How you develop your own staff at Spark. Consulting showcase without being salesy.</div>
+    </div>
+
+    <div class="article-card">
+      <div class="card-top"><span class="article-number">#48</span><span class="audience-tag tag-educators">Educators</span></div>
+      <div class="article-title">DCFS Licensing in Illinois: What New Preschool Directors Need to Know</div>
+      <div class="card-meta"><span class="meta-pill"><span class="icon">🔍</span> 20/mo</span><span class="meta-pill">KD <span class="kd-easy">0</span></span></div>
+      <div class="card-description">Practical resource. Zero competition. You've navigated this process and can help others. Strong consulting entry point.</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════ SEASONAL ═══════════════════════════════════ -->
+<section id="seasonal">
+  <div class="phase-header">
+    <span class="phase-badge badge-seasonal">Seasonal</span>
+    <h2>Annual Content Calendar</h2>
+    <p class="phase-desc">12 time-sensitive posts · Republished annually</p>
+  </div>
+
+  <div class="seasonal-grid">
+    <div class="seasonal-item">
+      <div class="seasonal-timing"><div class="seasonal-month">Jan</div></div>
+      <div class="seasonal-body">
+        <h4>Enrollment Season Is Here: What to Know Before You Apply</h4>
+        <p>Enrollment opens. Families researching. Tour booking CTA.</p>
+      </div>
+    </div>
+    <div class="seasonal-item">
+      <div class="seasonal-timing"><div class="seasonal-month">Jan</div></div>
+      <div class="seasonal-body">
+        <h4>New Year, New Skills: Setting Developmental Goals (Not Resolutions)</h4>
+        <p>Counter-intuitive take on "resolutions." Developmental milestones reframed as goals.</p>
+      </div>
+    </div>
+    <div class="seasonal-item">
+      <div class="seasonal-timing"><div class="seasonal-month">Feb</div></div>
+      <div class="seasonal-body">
+        <h4>Spring Break Learning Activities for Preschoolers</h4>
+        <p>Pre-spring break content. Brand awareness play.</p>
+      </div>
+    </div>
+    <div class="seasonal-item">
+      <div class="seasonal-timing"><div class="seasonal-month">Mar–Apr</div></div>
+      <div class="seasonal-body">
+        <h4>Camp Play at Spark Academy: Your Summer Questions Answered</h4>
+        <p>Camp Play registration push. Phone CTA. Urgency around May 30 pricing deadline.</p>
+      </div>
+    </div>
+    <div class="seasonal-item">
+      <div class="seasonal-timing"><div class="seasonal-month">May</div></div>
+      <div class="seasonal-body">
+        <h4>Getting Ready for Summer: Transitioning from Preschool to Camp</h4>
+        <p>Bridge content for current families. Introduces Camp Play to preschool parents.</p>
+      </div>
+    </div>
+    <div class="seasonal-item">
+      <div class="seasonal-timing"><div class="seasonal-month">May</div></div>
+      <div class="seasonal-body">
+        <h4>Celebrating Your Preschooler's Growth: End-of-Year Reflection</h4>
+        <p>Year-end emotional content. Testimonial opportunity. Re-enrollment and referral CTA.</p>
+      </div>
+    </div>
+    <div class="seasonal-item">
+      <div class="seasonal-timing"><div class="seasonal-month">Jun–Jul</div></div>
+      <div class="seasonal-body">
+        <h4>What Your Child Did at Camp This Week (Weekly Recap Template)</h4>
+        <p>During Camp Play. Weekly social-friendly recaps showcasing what kids actually do. Up to 8 editions.</p>
+      </div>
+    </div>
+    <div class="seasonal-item">
+      <div class="seasonal-timing"><div class="seasonal-month">Aug</div></div>
+      <div class="seasonal-body">
+        <h4>Back to Preschool: Preparing Your Child for a New School Year</h4>
+        <p>Back-to-school anxiety content. Tour CTA for families who haven't enrolled yet.</p>
+      </div>
+    </div>
+    <div class="seasonal-item">
+      <div class="seasonal-timing"><div class="seasonal-month">Sep</div></div>
+      <div class="seasonal-body">
+        <h4>Fall Family Activities in Morton and the Peoria Area</h4>
+        <p>Community content. Morton Pumpkin Festival tie-in. Local SEO value.</p>
+      </div>
+    </div>
+    <div class="seasonal-item">
+      <div class="seasonal-timing"><div class="seasonal-month">Nov</div></div>
+      <div class="seasonal-body">
+        <h4>Thanksgiving Gratitude Activities for Preschoolers</h4>
+        <p>Seasonal engagement. Shareable content. Light CTA.</p>
+      </div>
+    </div>
+    <div class="seasonal-item">
+      <div class="seasonal-timing"><div class="seasonal-month">Nov</div></div>
+      <div class="seasonal-body">
+        <h4>Holiday Gift Guide: Toys That Actually Build Your Child's Brain</h4>
+        <p>High search volume season. Product recommendations with a developmental lens. Shareable.</p>
+      </div>
+    </div>
+    <div class="seasonal-item">
+      <div class="seasonal-timing"><div class="seasonal-month">Dec–Jan</div></div>
+      <div class="seasonal-body">
+        <h4>Is Preschool Tax Deductible? (Annual Update)</h4>
+        <p>Annual republish of Article 1 with updated tax year. Captures year-end tax planning searches.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════ SERIES ═══════════════════════════════════ -->
+<section id="series">
+  <div class="phase-header">
+    <span class="phase-badge badge-series">Special Series</span>
+    <h2>Branded Content Series</h2>
+    <p class="phase-desc">12 posts across 3 series · Social &amp; email ready</p>
+  </div>
+
+  <div class="series-section">
+    <!-- Inside the Classroom -->
+    <div class="series-group">
+      <div class="series-name">"Inside the Classroom"</div>
+      <div class="series-desc">Behind-the-scenes looks at Spark. Photo-rich, impossible for competitors to replicate.</div>
+
+      <div class="series-card">
+        <h4>IC-1: A Day in the Life — What Your 3-Year-Old Experiences at Spark</h4>
+        <p>Walk through the complete daily schedule: arrival ritual, academic play, dev play room, enrichment, outdoor play, snack, pickup.</p>
+      </div>
+      <div class="series-card">
+        <h4>IC-2: Inside the Developmental Play Room — How It Changes Every Month</h4>
+        <p>Spotlight on the monthly-rotating play room themes. What children explore and why each setup is intentional.</p>
+      </div>
+      <div class="series-card">
+        <h4>IC-3: Enrichment Week at Spark — Spanish, STEM, Art, Communication &amp; Music</h4>
+        <p>Monday through Friday enrichment walkthrough. What each day looks like from a child's perspective.</p>
+      </div>
+      <div class="series-card">
+        <h4>IC-4: How We Plan for Your Child (Not Just Their Age Group)</h4>
+        <p>The individualized assessment system in action. How teachers observe, plan, and adjust for each learner.</p>
+      </div>
+    </div>
+
+    <!-- Ask Dr. Peterson -->
+    <div class="series-group">
+      <div class="series-name">"Ask Dr. Peterson"</div>
+      <div class="series-desc">Real questions answered by you. Q&A format. Excellent for AI search visibility and personal brand building.</div>
+
+      <div class="series-card">
+        <h4>ADP-1: At What Age Should Children Learn to Read?</h4>
+        <p>Parent audience. Targets ~500 searches/month.</p>
+      </div>
+      <div class="series-card">
+        <h4>ADP-2: How Do You Handle Biting and Hitting in Preschool?</h4>
+        <p>Parent audience. Targets ~300 searches/month. "Behavior is communication."</p>
+      </div>
+      <div class="series-card">
+        <h4>ADP-3: What Makes a "Good" Preschool Teacher?</h4>
+        <p>Dual audience — parents and educators. Targets ~80 searches/month.</p>
+      </div>
+      <div class="series-card">
+        <h4>ADP-4: How Do You Know If a Curriculum Is Working?</h4>
+        <p>Educator audience. Targets ~30 searches/month. Natural consulting funnel entry.</p>
+      </div>
+    </div>
+
+    <!-- Homeschool Hub -->
+    <div class="series-group">
+      <div class="series-name">"The Homeschool Hub"</div>
+      <div class="series-desc">Dedicated content for Discovery Station families. Underserved audience with growing demand.</div>
+
+      <div class="series-card">
+        <h4>HH-1: Why Homeschool Families Are Choosing Drop-Off Enrichment Programs</h4>
+        <p>Address co-op vs. drop-off. No mandatory volunteer hours. Credentialed teachers. Social component.</p>
+      </div>
+      <div class="series-card">
+        <h4>HH-2: Socialization for Homeschool Kids — Beyond the Myth</h4>
+        <p>Tackle the #1 homeschool objection. Discovery Station's parties, spirit weeks, and peer interaction as the answer.</p>
+      </div>
+      <div class="series-card">
+        <h4>HH-3: After-School Enrichment vs. Homework Help — What Your Child Actually Needs</h4>
+        <p>Discovery Station as learning through exploration, not tutoring. Differentiate from Kumon/Mathnasium.</p>
+      </div>
+      <div class="series-card">
+        <h4>HH-4: Inside Discovery Station — What a Semester of Enrichment Looks Like</h4>
+        <p>Walk through current class offerings. Ages 5–11. Updated each semester for freshness.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════ FUTURE TOPICS ═══════════════════════════════════ -->
+<section id="future">
+  <div class="phase-header">
+    <span class="phase-badge badge-future">Future Expansion</span>
+    <h2>Topic Bank</h2>
+    <p class="phase-desc">24 ideas for when capacity allows or trends emerge</p>
+  </div>
+
+  <div class="topic-cluster-name">Child Development &amp; Milestones</div>
+  <div class="topic-bank-item">
+    <h4>Fine Motor Skills Activities for Preschoolers</h4>
+    <p>~300/mo · Practical activities parents can do at home. Links to enrichment page.</p>
+  </div>
+  <div class="topic-bank-item">
+    <h4>Gross Motor Development: Why Running and Climbing Matter</h4>
+    <p>~200/mo · Ties to outdoor play and Dev Play Room.</p>
+  </div>
+  <div class="topic-bank-item">
+    <h4>Speech and Language Milestones: What to Expect at Ages 3–5</h4>
+    <p>~200/mo · Thursday Communication enrichment tie-in.</p>
+  </div>
+  <div class="topic-bank-item">
+    <h4>Executive Function in Preschoolers: The Hidden Skill Behind Everything</h4>
+    <p>~150/mo · Research-heavy. Your expertise shines.</p>
+  </div>
+  <div class="topic-bank-item">
+    <h4>How to Support Early Literacy Without Flashcards</h4>
+    <p>~200/mo · Play-based reading readiness. Counter the "drill" approach.</p>
+  </div>
+  <div class="topic-bank-item">
+    <h4>Math Concepts Your Preschooler Is Learning (Without Knowing It)</h4>
+    <p>~400/mo · STEM tie-in. Cooking, blocks, patterns, sorting.</p>
+  </div>
+
+  <div class="topic-cluster-name">Parent Life &amp; Practical Guides</div>
+  <div class="topic-bank-item">
+    <h4>What to Pack in Your Child's Preschool Bag</h4>
+    <p>~100/mo · Practical, shareable. New parent utility content.</p>
+  </div>
+  <div class="topic-bank-item">
+    <h4>Navigating Preschool Friendships: When Your Child Says "No One Likes Me"</h4>
+    <p>~100/mo · Emotional. Your expertise in social-emotional development.</p>
+  </div>
+  <div class="topic-bank-item">
+    <h4>Moving Mid-Year? How to Help Your Child Transition to a New Preschool</h4>
+    <p>~80/mo · Captures families considering a mid-year switch to Spark.</p>
+  </div>
+  <div class="topic-bank-item">
+    <h4>How to Talk to Your Preschooler About Big Feelings</h4>
+    <p>~200/mo · Social-emotional learning at home. Thursday Communication tie-in.</p>
+  </div>
+  <div class="topic-bank-item">
+    <h4>When to Hold Your Child Back from Kindergarten</h4>
+    <p>~300/mo · Controversial but searchable. Your research-based take. Links to K-Prep.</p>
+  </div>
+  <div class="topic-bank-item">
+    <h4>The Benefits of Routine for Preschoolers</h4>
+    <p>~100/mo · Daily schedule as a selling point. Consistency and predictability.</p>
+  </div>
+
+  <div class="topic-cluster-name">Community &amp; Local Content</div>
+  <div class="topic-bank-item">
+    <h4>Best Family Activities in Morton, Illinois</h4>
+    <p>~100/mo · Local SEO play. Morton Pumpkin Festival featured.</p>
+  </div>
+  <div class="topic-bank-item">
+    <h4>Family-Friendly Fun in the Peoria Area: A Parent's Guide</h4>
+    <p>~200/mo · Broader metro reach.</p>
+  </div>
+  <div class="topic-bank-item">
+    <h4>Central Illinois Family Resource Guide</h4>
+    <p>~50/mo · Comprehensive resource page. Link-building magnet.</p>
+  </div>
+  <div class="topic-bank-item">
+    <h4>Why Morton Families Choose Spark Academy</h4>
+    <p>~50/mo · Testimonial-driven. Local trust signals. GBP authority builder.</p>
+  </div>
+
+  <div class="topic-cluster-name">Advanced Educator Content</div>
+  <div class="topic-bank-item">
+    <h4>Zone of Proximal Development in Practice: A Guide for ECE Teachers</h4>
+    <p>~100/mo · Vygotsky's theory in accessible professional language.</p>
+  </div>
+  <div class="topic-bank-item">
+    <h4>The Improvement Science Cycle in Early Childhood Programs</h4>
+    <p>~50/mo · Your continuous improvement philosophy at professional depth.</p>
+  </div>
+  <div class="topic-bank-item">
+    <h4>Building Parent-Teacher Partnerships That Actually Work</h4>
+    <p>~100/mo · Practical strategies. Brightwheel as example. Dual-audience potential.</p>
+  </div>
+  <div class="topic-bank-item">
+    <h4>How to Design an Intentional Classroom Environment</h4>
+    <p>~200/mo · The "third teacher" concept. Spark's homelike building as case study.</p>
+  </div>
+  <div class="topic-bank-item">
+    <h4>Observation-Based Assessment vs. Standardized Testing in Preschool</h4>
+    <p>~80/mo · Spark's individualized assessment system as the model.</p>
+  </div>
+  <div class="topic-bank-item">
+    <h4>Mentoring New Early Childhood Educators</h4>
+    <p>~30/mo · Leadership content. Consulting funnel entry point.</p>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════ REPURPOSING ═══════════════════════════════════ -->
+<section id="repurpose">
+  <div class="phase-header">
+    <span class="phase-badge badge-series">Bonus</span>
+    <h2>Content Repurposing</h2>
+    <p class="phase-desc">Each blog post becomes content across multiple channels</p>
+  </div>
+
+  <div class="repurpose-item">
+    <div class="repurpose-icon">📱</div>
+    <div class="repurpose-body">
+      <h4>Social Media</h4>
+      <p>Every post → 3–5 quote cards or carousel slides for Facebook &amp; Instagram.</p>
+    </div>
+  </div>
+  <div class="repurpose-item">
+    <div class="repurpose-icon">📄</div>
+    <div class="repurpose-body">
+      <h4>PDF Lead Magnets</h4>
+      <p>Checklist articles → Branded downloadable PDFs for email capture and tour follow-up.</p>
+    </div>
+  </div>
+  <div class="repurpose-item">
+    <div class="repurpose-icon">❓</div>
+    <div class="repurpose-body">
+      <h4>FAQ Accordion Items</h4>
+      <p>Cost and tax articles → Direct excerpts to the website FAQ page.</p>
+    </div>
+  </div>
+  <div class="repurpose-item">
+    <div class="repurpose-icon">🎬</div>
+    <div class="repurpose-body">
+      <h4>Short-Form Video</h4>
+      <p>Ask Dr. Peterson series → 60–90 second video answers for Instagram Reels &amp; Facebook.</p>
+    </div>
+  </div>
+  <div class="repurpose-item">
+    <div class="repurpose-icon">📸</div>
+    <div class="repurpose-body">
+      <h4>Photo Galleries</h4>
+      <p>Inside the Classroom series → Curated photo sets with captions for Instagram &amp; website.</p>
+    </div>
+  </div>
+  <div class="repurpose-item">
+    <div class="repurpose-icon">🎤</div>
+    <div class="repurpose-body">
+      <h4>Conference Outlines</h4>
+      <p>Educator posts → Slide deck frameworks for professional events and LinkedIn.</p>
+    </div>
+  </div>
+  <div class="repurpose-item">
+    <div class="repurpose-icon">👨‍👩‍👧</div>
+    <div class="repurpose-body">
+      <h4>Homeschool Outreach</h4>
+      <p>Homeschool Hub series → Shareable resource guides for co-op groups and Facebook groups.</p>
+    </div>
+  </div>
+  <div class="repurpose-item">
+    <div class="repurpose-icon">✉️</div>
+    <div class="repurpose-body">
+      <h4>Email Newsletter</h4>
+      <p>Seasonal posts → Monthly parent email content via Brightwheel or email list.</p>
+    </div>
+  </div>
+  <div class="repurpose-item">
+    <div class="repurpose-icon">📍</div>
+    <div class="repurpose-body">
+      <h4>Google Business Profile</h4>
+      <p>Top-performing posts → Excerpt with CTA for weekly GBP updates.</p>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════ DECISIONS ═══════════════════════════════════ -->
+<section id="decisions">
+  <div class="phase-header">
+    <span class="phase-badge badge-seasonal">Action Needed</span>
+    <h2>Decisions for Michelle</h2>
+    <p class="phase-desc">8 decisions to shape how this roadmap is implemented</p>
+  </div>
+
+  <div class="decisions-section">
+    <div class="decision-item">
+      <div class="q-number">Decision 1</div>
+      <h4>Writing Workflow Preference</h4>
+      <div class="context">Determines how Stephen drafts each post and how much of your time each post requires.</div>
+      <div class="options"><strong>Option A:</strong> Full Draft Review (15–20 min/post) — Stephen drafts, you review and add personal anecdotes.<br><strong>Option B:</strong> Voice Memo + Draft (10–15 min/post) — You record a 5–10 min voice memo, Stephen builds the post.<br><strong>Option C:</strong> Outline + Interview (25–30 min/post) — Stephen outlines, you fill in detail on a 15-min call.<br><em>You can mix and match by topic.</em></div>
+    </div>
+
+    <div class="decision-item">
+      <div class="q-number">Decision 2</div>
+      <h4>Downloadable PDF Checklists as Lead Magnets?</h4>
+      <div class="context">Articles 5 and 13 are natural lead magnets. Gating behind email capture builds a parent email list for nurture campaigns.</div>
+      <div class="options"><strong>A:</strong> Yes — gate behind email capture<br><strong>B:</strong> Yes — but ungated (no email required)<br><strong>C:</strong> No — blog content only</div>
+    </div>
+
+    <div class="decision-item">
+      <div class="q-number">Decision 3</div>
+      <h4>Research Citations for Play-Based Learning Articles</h4>
+      <div class="context">Articles 8, 9, and 11 need specific research citations to maximize authority for Google.</div>
+      <div class="options"><strong>A:</strong> You provide 2–3 study names/authors<br><strong>B:</strong> Schedule a voice memo to discuss<br><strong>C:</strong> Stephen drafts with general citations, you add specifics in review</div>
+    </div>
+
+    <div class="decision-item">
+      <div class="q-number">Decision 4</div>
+      <h4>Comfort Level with Educator-Facing Content</h4>
+      <div class="context">Articles 25–48 use professional vocabulary (NDBI, PBIS, improvement science). Please confirm these reflect your practice accurately.</div>
+      <div class="options"><strong>A:</strong> Review topic list and flag any that don't align<br><strong>B:</strong> Approve all as-is<br><strong>C:</strong> Suggest additional topics</div>
+    </div>
+
+    <div class="decision-item">
+      <div class="q-number">Decision 5</div>
+      <h4>Homeschool Hub Series Priority</h4>
+      <div class="context">Discovery Station is a confirmed program. The Homeschool Hub series supports enrollment but is lower volume than core preschool content.</div>
+      <div class="options"><strong>A:</strong> Include in Phase 2 (Months 7–12)<br><strong>B:</strong> Defer to Phase 3 (Months 13–18)<br><strong>C:</strong> Skip — not a priority right now</div>
+    </div>
+
+    <div class="decision-item">
+      <div class="q-number">Decision 6</div>
+      <h4>Publishing Cadence</h4>
+      <div class="context">The roadmap recommends 2 posts/month in Phase 1, 3/month in Phase 2, 3–4/month in Phase 3.</div>
+      <div class="options"><strong>A:</strong> Approve recommended cadence<br><strong>B:</strong> Reduce to 1–2 posts/month throughout<br><strong>C:</strong> Start at 1/month and increase as we find our rhythm</div>
+    </div>
+
+    <div class="decision-item">
+      <div class="q-number">Decision 7</div>
+      <h4>Video Content Interest</h4>
+      <div class="context">The "Ask Dr. Peterson" series is designed to be repurposed as short-form video. Optional but high-impact.</div>
+      <div class="options"><strong>A:</strong> Yes — willing to record 60–90 second video answers<br><strong>B:</strong> Maybe later — start with written only<br><strong>C:</strong> No — written content only</div>
+    </div>
+
+    <div class="decision-item">
+      <div class="q-number">Decision 8</div>
+      <h4>Community Content Involvement</h4>
+      <div class="context">Seasonal posts reference Morton-specific events. You may want input on community connections.</div>
+      <div class="options"><strong>A:</strong> You suggest local partners/events to feature<br><strong>B:</strong> Stephen researches and drafts independently<br><strong>C:</strong> Skip community content</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════ MASTER INDEX ═══════════════════════════════════ -->
+<section id="master">
+  <div class="phase-header">
+    <h2>Master Topic Index</h2>
+    <p class="phase-desc">All 99 content opportunities at a glance</p>
+  </div>
+
+  <div style="padding: 0 1rem 0.5rem; font-size: 0.72rem; color: var(--warm-gray); font-weight: 600;">PHASE 1 — Priority Articles (Months 1–6)</div>
+  <div class="master-index">
+    <div class="index-row"><span class="index-num">1</span><span class="index-title">Is Preschool Tax Deductible?</span><span class="index-meta-right"><span class="index-vol">800/mo</span></span></div>
+    <div class="index-row"><span class="index-num">2</span><span class="index-title">Daycare vs. Preschool</span><span class="index-meta-right"><span class="index-vol">1,300/mo</span></span></div>
+    <div class="index-row"><span class="index-num">3</span><span class="index-title">When Should Your Child Start Preschool?</span><span class="index-meta-right"><span class="index-vol">7,500/mo</span></span></div>
+    <div class="index-row"><span class="index-num">4</span><span class="index-title">How to Prepare for the First Day</span><span class="index-meta-right"><span class="index-vol">2,600/mo</span></span></div>
+    <div class="index-row"><span class="index-num">5</span><span class="index-title">Kindergarten Readiness Checklist</span><span class="index-meta-right"><span class="index-vol">3,800/mo</span></span></div>
+    <div class="index-row"><span class="index-num">6</span><span class="index-title">How Much Does Preschool Cost?</span><span class="index-meta-right"><span class="index-vol">700/mo</span></span></div>
+    <div class="index-row"><span class="index-num">7</span><span class="index-title">Part-Time Preschool: Is 2–3 Days Enough?</span><span class="index-meta-right"><span class="index-vol">3,300/mo</span></span></div>
+    <div class="index-row"><span class="index-num">8</span><span class="index-title">What Should a Child Learn in Preschool?</span><span class="index-meta-right"><span class="index-vol">1,400/mo</span></span></div>
+    <div class="index-row"><span class="index-num">9</span><span class="index-title">Montessori vs. Play-Based</span><span class="index-meta-right"><span class="index-vol">1,500/mo</span></span></div>
+    <div class="index-row"><span class="index-num">10</span><span class="index-title">Potty Training Before Preschool</span><span class="index-meta-right"><span class="index-vol">100/mo</span></span></div>
+    <div class="index-row"><span class="index-num">11</span><span class="index-title">Play-Based Learning: The Science</span><span class="index-meta-right"><span class="index-vol">2,000/mo</span></span></div>
+    <div class="index-row"><span class="index-num">12</span><span class="index-title">3-Year-Old Sleep Schedule</span><span class="index-meta-right"><span class="index-vol">3,000/mo</span></span></div>
+  </div>
+
+  <div style="padding: 1rem 1rem 0.5rem; font-size: 0.72rem; color: var(--warm-gray); font-weight: 600;">PHASE 2 — Expansion Articles (Months 7–12)</div>
+  <div class="master-index">
+    <div class="index-row"><span class="index-num">13</span><span class="index-title">5 Signs Your Child Is Ready for Preschool</span><span class="index-meta-right"><span class="index-vol">200/mo</span></span></div>
+    <div class="index-row"><span class="index-num">14</span><span class="index-title">What Kindergarten Teachers Wish Parents Knew</span><span class="index-meta-right"><span class="index-vol">200/mo</span></span></div>
+    <div class="index-row"><span class="index-num">15</span><span class="index-title">How to Help with Preschool Drop-Off</span><span class="index-meta-right"><span class="index-vol">100/mo</span></span></div>
+    <div class="index-row"><span class="index-num">16</span><span class="index-title">10 Questions to Ask on a Preschool Tour</span><span class="index-meta-right"><span class="index-vol">200/mo</span></span></div>
+    <div class="index-row"><span class="index-num">17</span><span class="index-title">Why Preschool Spanish Classes Matter</span><span class="index-meta-right"><span class="index-vol">50/mo</span></span></div>
+    <div class="index-row"><span class="index-num">18</span><span class="index-title">Benefits of Small Class Sizes</span><span class="index-meta-right"><span class="index-vol">50/mo</span></span></div>
+    <div class="index-row"><span class="index-num">19</span><span class="index-title">How Outdoor Play Builds Stronger Learners</span><span class="index-meta-right"><span class="index-vol">100/mo</span></span></div>
+    <div class="index-row"><span class="index-num">20</span><span class="index-title">Summer Learning Loss</span><span class="index-meta-right"><span class="index-vol">100/mo</span></span></div>
+    <div class="index-row"><span class="index-num">21</span><span class="index-title">Why Your Child's Teacher Matters More Than Curriculum</span><span class="index-meta-right"><span class="index-vol">80/mo</span></span></div>
+    <div class="index-row"><span class="index-num">22</span><span class="index-title">Screen Time and Preschoolers</span><span class="index-meta-right"><span class="index-vol">500/mo</span></span></div>
+    <div class="index-row"><span class="index-num">23</span><span class="index-title">A Typical Day at Spark Academy</span><span class="index-meta-right"><span class="index-vol">200/mo</span></span></div>
+    <div class="index-row"><span class="index-num">24</span><span class="index-title">How to Choose the Right Preschool</span><span class="index-meta-right"><span class="index-vol">50/mo</span></span></div>
+    <div class="index-row"><span class="index-num">25</span><span class="index-title">Peer Engagement Strategies <span style="color:var(--antique-gold);">▪ Educators</span></span><span class="index-meta-right"><span class="index-vol">50/mo</span></span></div>
+    <div class="index-row"><span class="index-num">26</span><span class="index-title">Play-Based Curriculum + State Standards <span style="color:var(--antique-gold);">▪ Educators</span></span><span class="index-meta-right"><span class="index-vol">50/mo</span></span></div>
+    <div class="index-row"><span class="index-num">27</span><span class="index-title">Creating Inclusive Preschool Environments <span style="color:var(--antique-gold);">▪ Educators</span></span><span class="index-meta-right"><span class="index-vol">50/mo</span></span></div>
+    <div class="index-row"><span class="index-num">28</span><span class="index-title">What Does an ECE Consultant Actually Do? <span style="color:var(--antique-gold);">▪ Educators</span></span><span class="index-meta-right"><span class="index-vol">90/mo</span></span></div>
+    <div class="index-row"><span class="index-num">29</span><span class="index-title">PBIS in Preschool <span style="color:var(--antique-gold);">▪ Educators</span></span><span class="index-meta-right"><span class="index-vol">~30/mo</span></span></div>
+    <div class="index-row"><span class="index-num">30</span><span class="index-title">From Teacher to Director <span style="color:var(--antique-gold);">▪ Educators</span></span><span class="index-meta-right"><span class="index-vol">~30/mo</span></span></div>
+  </div>
+
+  <div style="padding: 1rem 1rem 0.5rem; font-size: 0.72rem; color: var(--warm-gray); font-weight: 600;">PHASE 3 — Evergreen Library (Months 13–18)</div>
+  <div class="master-index">
+    <div class="index-row"><span class="index-num">31</span><span class="index-title">Preschool vs. Pre-K</span><span class="index-meta-right"><span class="index-vol">300/mo</span></span></div>
+    <div class="index-row"><span class="index-num">32</span><span class="index-title">Music and Movement Builds Brains</span><span class="index-meta-right"><span class="index-vol">100/mo</span></span></div>
+    <div class="index-row"><span class="index-num">33</span><span class="index-title">Why Art Matters in Early Childhood</span><span class="index-meta-right"><span class="index-vol">150/mo</span></span></div>
+    <div class="index-row"><span class="index-num">34</span><span class="index-title">STEM for Preschoolers</span><span class="index-meta-right"><span class="index-vol">300/mo</span></span></div>
+    <div class="index-row"><span class="index-num">35</span><span class="index-title">Social-Emotional Learning</span><span class="index-meta-right"><span class="index-vol">200/mo</span></span></div>
+    <div class="index-row"><span class="index-num">36</span><span class="index-title">The Developmental Play Room</span><span class="index-meta-right"><span class="index-vol">20/mo</span></span></div>
+    <div class="index-row"><span class="index-num">37</span><span class="index-title">Why We Don't Believe in Homework</span><span class="index-meta-right"><span class="index-vol">80/mo</span></span></div>
+    <div class="index-row"><span class="index-num">38</span><span class="index-title">The Introvert's Guide to Preschool</span><span class="index-meta-right"><span class="index-vol">100/mo</span></span></div>
+    <div class="index-row"><span class="index-num">39</span><span class="index-title">Preschool Behavior: What's Normal</span><span class="index-meta-right"><span class="index-vol">200/mo</span></span></div>
+    <div class="index-row"><span class="index-num">40</span><span class="index-title">How Brightwheel Keeps You Connected</span><span class="index-meta-right"><span class="index-vol">50/mo</span></span></div>
+    <div class="index-row"><span class="index-num">41</span><span class="index-title">Working Parent's Guide to Preschool</span><span class="index-meta-right"><span class="index-vol">80/mo</span></span></div>
+    <div class="index-row"><span class="index-num">42</span><span class="index-title">Private Kindergarten vs. Public</span><span class="index-meta-right"><span class="index-vol">1,900/mo</span></span></div>
+    <div class="index-row"><span class="index-num">43</span><span class="index-title">Evaluate Your Preschool Curriculum <span style="color:var(--antique-gold);">▪ Educators</span></span><span class="index-meta-right"><span class="index-vol">30/mo</span></span></div>
+    <div class="index-row"><span class="index-num">44</span><span class="index-title">Naturalistic Developmental Interventions <span style="color:var(--antique-gold);">▪ Educators</span></span><span class="index-meta-right"><span class="index-vol">10/mo</span></span></div>
+    <div class="index-row"><span class="index-num">45</span><span class="index-title">How to Become an Educational Consultant <span style="color:var(--antique-gold);">▪ Educators</span></span><span class="index-meta-right"><span class="index-vol">200/mo</span></span></div>
+    <div class="index-row"><span class="index-num">46</span><span class="index-title">Assessment Strategies That Inform Instruction <span style="color:var(--antique-gold);">▪ Educators</span></span><span class="index-meta-right"><span class="index-vol">50/mo</span></span></div>
+    <div class="index-row"><span class="index-num">47</span><span class="index-title">Staff Development in Early Childhood <span style="color:var(--antique-gold);">▪ Educators</span></span><span class="index-meta-right"><span class="index-vol">80/mo</span></span></div>
+    <div class="index-row"><span class="index-num">48</span><span class="index-title">DCFS Licensing in Illinois <span style="color:var(--antique-gold);">▪ Educators</span></span><span class="index-meta-right"><span class="index-vol">20/mo</span></span></div>
+  </div>
+
+  <div style="padding: 1rem 1rem 0.5rem; font-size: 0.72rem; color: var(--warm-gray); font-weight: 600;">SEASONAL — Annual Recurring (12 posts)</div>
+  <div class="master-index">
+    <div class="index-row"><span class="index-num">S1</span><span class="index-title">Enrollment Season Is Here</span><span class="index-meta-right"><span class="index-vol">Jan</span></span></div>
+    <div class="index-row"><span class="index-num">S2</span><span class="index-title">Spring Break Learning Activities</span><span class="index-meta-right"><span class="index-vol">Feb</span></span></div>
+    <div class="index-row"><span class="index-num">S3</span><span class="index-title">Camp Play: Summer Questions Answered</span><span class="index-meta-right"><span class="index-vol">Mar–Apr</span></span></div>
+    <div class="index-row"><span class="index-num">S4</span><span class="index-title">Transitioning from Preschool to Camp</span><span class="index-meta-right"><span class="index-vol">May</span></span></div>
+    <div class="index-row"><span class="index-num">S5</span><span class="index-title">Camp Weekly Recap (Template)</span><span class="index-meta-right"><span class="index-vol">Jun–Jul</span></span></div>
+    <div class="index-row"><span class="index-num">S6</span><span class="index-title">Back to Preschool</span><span class="index-meta-right"><span class="index-vol">Aug</span></span></div>
+    <div class="index-row"><span class="index-num">S7</span><span class="index-title">Fall Family Activities in Morton</span><span class="index-meta-right"><span class="index-vol">Sep</span></span></div>
+    <div class="index-row"><span class="index-num">S8</span><span class="index-title">Thanksgiving Gratitude Activities</span><span class="index-meta-right"><span class="index-vol">Nov</span></span></div>
+    <div class="index-row"><span class="index-num">S9</span><span class="index-title">Holiday Gift Guide: Brain-Building Toys</span><span class="index-meta-right"><span class="index-vol">Nov</span></span></div>
+    <div class="index-row"><span class="index-num">S10</span><span class="index-title">Is Preschool Tax Deductible? (Annual Update)</span><span class="index-meta-right"><span class="index-vol">Dec–Jan</span></span></div>
+    <div class="index-row"><span class="index-num">S11</span><span class="index-title">New Year, New Skills</span><span class="index-meta-right"><span class="index-vol">Jan</span></span></div>
+    <div class="index-row"><span class="index-num">S12</span><span class="index-title">End-of-Year Growth Reflection</span><span class="index-meta-right"><span class="index-vol">May</span></span></div>
+  </div>
+
+  <div style="padding: 1rem 1rem 0.5rem; font-size: 0.72rem; color: var(--warm-gray); font-weight: 600;">SPECIAL SERIES (12 posts)</div>
+  <div class="master-index">
+    <div class="index-row"><span class="index-num">IC-1</span><span class="index-title">A Day in the Life: 3-Year-Olds at Spark</span></div>
+    <div class="index-row"><span class="index-num">IC-2</span><span class="index-title">Inside the Developmental Play Room</span></div>
+    <div class="index-row"><span class="index-num">IC-3</span><span class="index-title">Enrichment Week at Spark</span></div>
+    <div class="index-row"><span class="index-num">IC-4</span><span class="index-title">How We Plan for Your Child</span></div>
+    <div class="index-row"><span class="index-num">ADP-1</span><span class="index-title">Ask Dr. Peterson: When Should Children Learn to Read?</span></div>
+    <div class="index-row"><span class="index-num">ADP-2</span><span class="index-title">Ask Dr. Peterson: Biting and Hitting</span></div>
+    <div class="index-row"><span class="index-num">ADP-3</span><span class="index-title">Ask Dr. Peterson: What Makes a Good Teacher?</span></div>
+    <div class="index-row"><span class="index-num">ADP-4</span><span class="index-title">Ask Dr. Peterson: Is a Curriculum Working?</span></div>
+    <div class="index-row"><span class="index-num">HH-1</span><span class="index-title">Why Homeschoolers Choose Drop-Off Enrichment</span></div>
+    <div class="index-row"><span class="index-num">HH-2</span><span class="index-title">Socialization for Homeschool Kids</span></div>
+    <div class="index-row"><span class="index-num">HH-3</span><span class="index-title">After-School Enrichment vs. Homework Help</span></div>
+    <div class="index-row"><span class="index-num">HH-4</span><span class="index-title">Inside Discovery Station</span></div>
+  </div>
+
+  <div style="padding: 1rem 1rem 0.5rem; font-size: 0.72rem; color: var(--warm-gray); font-weight: 600;">FUTURE EXPANSION — Topic Bank (24 ideas)</div>
+  <div class="master-index">
+    <div class="index-row"><span class="index-num">•</span><span class="index-title">Fine Motor Skills Activities</span><span class="index-meta-right"><span class="index-vol">~300/mo</span></span></div>
+    <div class="index-row"><span class="index-num">•</span><span class="index-title">Gross Motor Development</span><span class="index-meta-right"><span class="index-vol">~200/mo</span></span></div>
+    <div class="index-row"><span class="index-num">•</span><span class="index-title">Speech and Language Milestones</span><span class="index-meta-right"><span class="index-vol">~200/mo</span></span></div>
+    <div class="index-row"><span class="index-num">•</span><span class="index-title">Executive Function in Preschoolers</span><span class="index-meta-right"><span class="index-vol">~150/mo</span></span></div>
+    <div class="index-row"><span class="index-num">•</span><span class="index-title">Early Literacy Without Flashcards</span><span class="index-meta-right"><span class="index-vol">~200/mo</span></span></div>
+    <div class="index-row"><span class="index-num">•</span><span class="index-title">Math Concepts (Without Knowing It)</span><span class="index-meta-right"><span class="index-vol">~400/mo</span></span></div>
+    <div class="index-row"><span class="index-num">•</span><span class="index-title">What to Pack in Your Child's Bag</span><span class="index-meta-right"><span class="index-vol">~100/mo</span></span></div>
+    <div class="index-row"><span class="index-num">•</span><span class="index-title">Navigating Preschool Friendships</span><span class="index-meta-right"><span class="index-vol">~100/mo</span></span></div>
+    <div class="index-row"><span class="index-num">•</span><span class="index-title">Moving Mid-Year? Transitioning Schools</span><span class="index-meta-right"><span class="index-vol">~80/mo</span></span></div>
+    <div class="index-row"><span class="index-num">•</span><span class="index-title">Talking About Big Feelings</span><span class="index-meta-right"><span class="index-vol">~200/mo</span></span></div>
+    <div class="index-row"><span class="index-num">•</span><span class="index-title">When to Hold Back from Kindergarten</span><span class="index-meta-right"><span class="index-vol">~300/mo</span></span></div>
+    <div class="index-row"><span class="index-num">•</span><span class="index-title">Benefits of Routine for Preschoolers</span><span class="index-meta-right"><span class="index-vol">~100/mo</span></span></div>
+    <div class="index-row"><span class="index-num">•</span><span class="index-title">Best Family Activities in Morton, IL</span><span class="index-meta-right"><span class="index-vol">~100/mo</span></span></div>
+    <div class="index-row"><span class="index-num">•</span><span class="index-title">Family Fun in the Peoria Area</span><span class="index-meta-right"><span class="index-vol">~200/mo</span></span></div>
+    <div class="index-row"><span class="index-num">•</span><span class="index-title">Central Illinois Family Resource Guide</span><span class="index-meta-right"><span class="index-vol">~50/mo</span></span></div>
+    <div class="index-row"><span class="index-num">•</span><span class="index-title">Why Morton Families Choose Spark</span><span class="index-meta-right"><span class="index-vol">~50/mo</span></span></div>
+    <div class="index-row"><span class="index-num">•</span><span class="index-title">Zone of Proximal Development <span style="color:var(--antique-gold);">▪ Edu</span></span><span class="index-meta-right"><span class="index-vol">~100/mo</span></span></div>
+    <div class="index-row"><span class="index-num">•</span><span class="index-title">Improvement Science Cycle <span style="color:var(--antique-gold);">▪ Edu</span></span><span class="index-meta-right"><span class="index-vol">~50/mo</span></span></div>
+    <div class="index-row"><span class="index-num">•</span><span class="index-title">Parent-Teacher Partnerships <span style="color:var(--antique-gold);">▪ Edu</span></span><span class="index-meta-right"><span class="index-vol">~100/mo</span></span></div>
+    <div class="index-row"><span class="index-num">•</span><span class="index-title">Intentional Classroom Environment <span style="color:var(--antique-gold);">▪ Edu</span></span><span class="index-meta-right"><span class="index-vol">~200/mo</span></span></div>
+    <div class="index-row"><span class="index-num">•</span><span class="index-title">Observation vs. Standardized Testing <span style="color:var(--antique-gold);">▪ Edu</span></span><span class="index-meta-right"><span class="index-vol">~80/mo</span></span></div>
+    <div class="index-row"><span class="index-num">•</span><span class="index-title">Mentoring New ECE Educators <span style="color:var(--antique-gold);">▪ Edu</span></span><span class="index-meta-right"><span class="index-vol">~30/mo</span></span></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════ FOOTER ═══════════════════════════════════ -->
+<div class="footer">
+  <div class="footer-brand">Spark Academy</div>
+  <p>Blog Content Roadmap · Phase 3C Deliverable<br>
+  Prepared for Dr. Michelle Peterson, Ed.D.<br>
+  March 2026</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spark Academy — Color Palette Exploration</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  body { font-family: 'DM Sans', sans-serif; background: #FFFFFF; color: #333; min-height: 100vh; -webkit-font-smoothing: antialiased; }
+
+  /* Header */
+  .header { padding: 24px 20px 16px; border-bottom: 1px solid #EBEBEB; }
+  .header h1 { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 22px; color: #2D4A3E; letter-spacing: -0.5px; line-height: 1.2; }
+  .header p { font-size: 14px; color: #666; margin-top: 4px; line-height: 1.4; }
+  .header .hint { font-size: 12px; color: #999; margin-top: 2px; }
+
+  /* Tabs */
+  .tabs { display: flex; overflow-x: auto; border-bottom: 1px solid #EBEBEB; position: sticky; top: 0; z-index: 10; background: #FFF; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab { flex: 0 0 auto; padding: 12px 16px; font-size: 13px; font-weight: 500; font-family: 'DM Sans', sans-serif; color: #888; background: none; border: none; border-bottom: 2.5px solid transparent; cursor: pointer; white-space: nowrap; transition: all 0.15s ease; }
+  .tab.active { font-weight: 700; color: #2D4A3E; border-bottom-color: #2D4A3E; }
+
+  /* Content area */
+  .content { padding: 20px 16px 40px; }
+  .palette-header { margin-bottom: 20px; }
+  .palette-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 20px; letter-spacing: -0.3px; }
+  .palette-subtitle { font-size: 13px; font-weight: 600; color: #888; margin-top: 2px; }
+  .palette-vibe { font-size: 13px; color: #555; margin-top: 8px; line-height: 1.5; background: #FAFAFA; border-radius: 8px; padding: 10px 14px; border-left: 3px solid #999; }
+
+  /* Swatches */
+  .section-label { font-weight: 700; font-size: 14px; color: #333; margin-bottom: 10px; }
+  .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; margin-bottom: 20px; }
+  .swatch { border-radius: 10px; overflow: hidden; border: 1px solid #E8E8E8; }
+  .swatch-color { height: 56px; display: flex; align-items: flex-end; padding: 0 10px 6px; font-size: 11px; font-family: 'DM Sans', sans-serif; font-weight: 500; letter-spacing: 0.3px; }
+  .swatch-info { padding: 8px 10px; background: #FFF; }
+  .swatch-name { font-weight: 600; font-size: 13px; color: #1A1A1A; }
+  .swatch-role { font-size: 11px; color: #888; margin-top: 1px; }
+
+  /* Mock browser */
+  .mock-browser { border-radius: 12px; overflow: hidden; border: 1px solid #E0E0E0; margin-bottom: 16px; }
+  .browser-bar { padding: 6px 8px; background: #F5F5F5; border-bottom: 1px solid #E0E0E0; display: flex; align-items: center; gap: 4px; }
+  .browser-dot { width: 7px; height: 7px; border-radius: 50%; }
+  .browser-url { font-size: 9px; color: #999; margin-left: 8px; }
+  .mock-nav { display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; }
+  .mock-logo { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 15px; letter-spacing: -0.3px; }
+  .mock-links { display: flex; gap: 14px; }
+  .mock-links span { font-size: 11px; opacity: 0.7; }
+  .mock-hero { padding: 28px 20px 24px; }
+  .mock-hero h2 { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 22px; line-height: 1.25; margin-bottom: 10px; letter-spacing: -0.3px; }
+  .mock-hero p { font-size: 13px; line-height: 1.55; margin-bottom: 16px; opacity: 0.85; }
+  .mock-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
+  .mock-btn { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 13px; border: none; border-radius: 6px; padding: 10px 20px; cursor: default; letter-spacing: 0.2px; }
+  .mock-btn-outline { background: transparent; border: 1.5px solid; }
+  .mock-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 16px 16px 20px; }
+  .mock-card { border-radius: 8px; padding: 14px 12px; }
+  .mock-card h3 { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+  .mock-card p { font-size: 11px; opacity: 0.7; line-height: 1.4; }
+  .mock-card .learn-more { font-weight: 600; font-size: 11px; margin-top: 8px; letter-spacing: 0.2px; }
+  .mock-testimonial { padding: 16px 20px; }
+  .mock-testimonial .quote { font-family: 'Playfair Display', serif; font-style: italic; font-size: 13px; color: #FFF; line-height: 1.5; opacity: 0.95; margin-bottom: 6px; }
+  .mock-testimonial .author { font-size: 11px; color: #FFF; opacity: 0.7; }
+
+  /* Accessibility */
+  .a11y-box { background: #F8F8F8; border-radius: 10px; padding: 14px 16px; margin-bottom: 16px; border: 1px solid #EBEBEB; }
+  .a11y-box .section-label { margin-bottom: 10px; }
+  .a11y-row { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #666; margin-top: 4px; }
+  .a11y-label { font-size: 11px; color: #888; }
+  .a11y-badge { display: inline-flex; align-items: center; gap: 3px; padding: 1px 6px; border-radius: 3px; font-size: 11px; font-weight: 600; }
+  .a11y-pass { background: #E8F5E9; color: #2E7D32; }
+  .a11y-warn { background: #FFF8E1; color: #F57F17; }
+  .a11y-fail { background: #FFEBEE; color: #C62828; }
+
+  /* Changes box */
+  .changes-box { border-radius: 10px; padding: 14px 16px; }
+  .changes-box h4 { font-weight: 700; font-size: 13px; margin-bottom: 6px; }
+  .changes-box .details { font-size: 12px; color: #555; line-height: 1.6; }
+  .changes-box .details strong { color: #333; }
+
+  /* Stephen's notes */
+  .notes-box { background: #FFFBEB; border: 1px solid #F5E6B8; border-radius: 10px; padding: 14px 16px; margin-top: 16px; }
+  .notes-box h4 { font-weight: 700; font-size: 13px; color: #92700C; margin-bottom: 6px; }
+  .notes-box p { font-size: 12px; color: #6B5A10; line-height: 1.6; }
+
+  /* Fade-in animation */
+  .fade-in { animation: fadeIn 0.25s ease-out; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Spark Academy</h1>
+  <p>Color Palette Exploration</p>
+  <div class="hint">Tap each option to see how it feels on the website</div>
+</div>
+
+<div class="tabs" id="tabs"></div>
+<div class="content" id="content"></div>
+
+<script>
+const palettes = [
+  {
+    id: "current", name: "Current Palette", subtitle: "From the existing Brand Guide",
+    vibe: "Bold, saturated, high-contrast. This is what the Brand Guide currently specifies.",
+    colors: { headingGreen: "#2D4A3E", accentGreen: "#2D4A3E", lightGreen: "#E8EFEB", cta: "#FFC716", ctaText: "#1A1A1A", background: "#F9F6F2", text: "#1A1A1A", cardBg: "#FFFFFF", lightAccent: "#FFF8E1" },
+    swatches: [
+      { name: "Deep Evergreen", hex: "#2D4A3E", role: "Primary / Headings" },
+      { name: "Muted Mustard", hex: "#FFC716", role: "CTA Buttons" },
+      { name: "Warm Cream", hex: "#F9F6F2", role: "Background" },
+      { name: "Body Text", hex: "#1A1A1A", role: "Paragraphs" }
+    ],
+    changes: null
+  },
+  {
+    id: "sage", name: "Sage & Honey", subtitle: "Warm · Grounded · Gentle",
+    vibe: "The gentlest shift from current — recognizably Spark, but softer and warmer. Green leans toward a warm sage. Gold becomes a rich honey.",
+    colors: { headingGreen: "#4A6B52", accentGreen: "#8BAF96", lightGreen: "#ECF2ED", cta: "#D4A51A", ctaText: "#FFFFFF", background: "#FAFAF5", text: "#2A2A2A", cardBg: "#FFFFFF", lightAccent: "#F8F2E0" },
+    swatches: [
+      { name: "Warm Sage", hex: "#4A6B52", role: "Headings" },
+      { name: "Light Sage", hex: "#8BAF96", role: "Accents / Borders" },
+      { name: "Honey Gold", hex: "#D4A51A", role: "CTA Buttons" },
+      { name: "Soft Cream", hex: "#FAFAF5", role: "Background" },
+      { name: "Sage Mist", hex: "#ECF2ED", role: "Card Backgrounds" }
+    ],
+    changes: "<strong>Green:</strong> Deep Evergreen → Warm Sage (lighter, warmer undertone)<br><strong>Gold:</strong> Bright Mustard → Rich Honey (slightly toned down, more organic)<br><strong>Feel:</strong> Still warm and inviting. The smallest departure — if you like the current direction but just want it dialed back, this is the one."
+  },
+  {
+    id: "mist", name: "Morning Mist", subtitle: "Cool · Serene · Ethereal",
+    vibe: "The lightest, airiest option. Think Scandinavian nursery — lots of white space, muted cool-sage tones, antique gold accents. Maximum \"light and airy.\"",
+    colors: { headingGreen: "#3D6B62", accentGreen: "#9BB8AD", lightGreen: "#EFF5F2", cta: "#C49826", ctaText: "#FFFFFF", background: "#FBFAF8", text: "#2E2E2E", cardBg: "#FFFFFF", lightAccent: "#F5EFD9" },
+    swatches: [
+      { name: "Mist Teal", hex: "#3D6B62", role: "Headings" },
+      { name: "Misty Sage", hex: "#9BB8AD", role: "Accents / Borders" },
+      { name: "Antique Gold", hex: "#C49826", role: "CTA Buttons" },
+      { name: "Cloud White", hex: "#FBFAF8", role: "Background" },
+      { name: "Whisper Sage", hex: "#EFF5F2", role: "Card Backgrounds" }
+    ],
+    changes: "<strong>Green:</strong> Deep Evergreen → Cool Misty Sage (noticeably lighter, slight teal lean)<br><strong>Gold:</strong> Bright Mustard → Antique Gold (muted, sophisticated)<br><strong>Feel:</strong> The most \"light and airy\" of the three. Maximum white space, minimal visual weight. Premium-serene. If this is the direction, the photography will do the heavy lifting for warmth."
+  },
+  {
+    id: "eucalyptus", name: "Eucalyptus & Amber", subtitle: "Balanced · Organic · Refined",
+    vibe: "The Goldilocks option — clearly softer than current, but retains enough depth to feel grounded and premium. True-green eucalyptus with warm amber.",
+    colors: { headingGreen: "#3F7060", accentGreen: "#72A08A", lightGreen: "#E5EFE9", cta: "#CC9E1D", ctaText: "#FFFFFF", background: "#FAF8F4", text: "#262626", cardBg: "#FFFFFF", lightAccent: "#F5EDD8" },
+    swatches: [
+      { name: "Eucalyptus", hex: "#3F7060", role: "Headings" },
+      { name: "Soft Eucalyptus", hex: "#72A08A", role: "Accents / Borders" },
+      { name: "Warm Amber", hex: "#CC9E1D", role: "CTA Buttons" },
+      { name: "Natural Cream", hex: "#FAF8F4", role: "Background" },
+      { name: "Pale Eucalyptus", hex: "#E5EFE9", role: "Card Backgrounds" }
+    ],
+    changes: "<strong>Green:</strong> Deep Evergreen → True Eucalyptus (lighter but grounded, nature-inspired)<br><strong>Gold:</strong> Bright Mustard → Warm Amber (rich but not bright)<br><strong>Feel:</strong> The balanced choice. Clearly softer than current, but deep enough to feel premium without relying entirely on photography. Best of both worlds."
+  }
+];
+
+function contrastRatio(hex1, hex2) {
+  function lum(hex) {
+    const rgb = [1,3,5].map(i => {
+      let c = parseInt(hex.slice(i, i+2), 16) / 255;
+      return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+    });
+    return 0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2];
+  }
+  const l1 = lum(hex1), l2 = lum(hex2);
+  return ((Math.max(l1,l2) + 0.05) / (Math.min(l1,l2) + 0.05)).toFixed(1);
+}
+
+function a11yBadge(fg, bg, label) {
+  const ratio = contrastRatio(fg, bg);
+  const passes = ratio >= 4.5;
+  const passesLarge = ratio >= 3.0;
+  const cls = passes ? "a11y-pass" : passesLarge ? "a11y-warn" : "a11y-fail";
+  const txt = passes ? "✓ AA" : passesLarge ? "~ Large only" : "✗ Fails";
+  return `<div class="a11y-row"><span class="a11y-label">${label}</span><span class="a11y-badge ${cls}">${ratio}:1 ${txt}</span></div>`;
+}
+
+function isLightColor(hex) {
+  return contrastRatio(hex, "#FFFFFF") < 3;
+}
+
+let activeTab = 0;
+
+function renderTabs() {
+  const tabsEl = document.getElementById("tabs");
+  tabsEl.innerHTML = palettes.map((p, i) =>
+    `<button class="tab ${i === activeTab ? 'active' : ''}" data-index="${i}">${i === 0 ? 'Current' : p.name}</button>`
+  ).join('');
+  tabsEl.querySelectorAll('.tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      activeTab = parseInt(btn.dataset.index);
+      renderTabs();
+      renderContent();
+    });
+  });
+}
+
+function renderContent() {
+  const p = palettes[activeTab];
+  const c = p.colors;
+
+  let html = `<div class="fade-in">`;
+
+  // Palette header
+  html += `
+    <div class="palette-header">
+      <div class="palette-name" style="color:${c.headingGreen}">${p.name}</div>
+      <div class="palette-subtitle">${p.subtitle}</div>
+      <div class="palette-vibe" style="border-left-color:${c.accentGreen}">${p.vibe}</div>
+    </div>`;
+
+  // Swatches
+  html += `<div class="section-label">Colors</div><div class="swatches">`;
+  p.swatches.forEach(s => {
+    const txtColor = isLightColor(s.hex) ? "#333" : "#FFF";
+    html += `
+      <div class="swatch">
+        <div class="swatch-color" style="background:${s.hex};color:${txtColor}">${s.hex}</div>
+        <div class="swatch-info"><div class="swatch-name">${s.name}</div><div class="swatch-role">${s.role}</div></div>
+      </div>`;
+  });
+  html += `</div>`;
+
+  // Mock website
+  html += `<div class="section-label">In Context</div>`;
+  html += `<div class="mock-browser">`;
+
+  // Browser bar
+  html += `<div class="browser-bar">
+    <div class="browser-dot" style="background:#FF5F57"></div>
+    <div class="browser-dot" style="background:#FEBC2E"></div>
+    <div class="browser-dot" style="background:#28C840"></div>
+    <span class="browser-url">sparkacademymorton.com</span>
+  </div>`;
+
+  // Nav
+  html += `<div class="mock-nav" style="background:${c.background};border-bottom:1px solid ${c.lightGreen}">
+    <div class="mock-logo" style="color:${c.headingGreen}">Spark Academy</div>
+    <div class="mock-links">
+      <span style="color:${c.text}">Programs</span>
+      <span style="color:${c.text}">About</span>
+      <span style="color:${c.text}">Blog</span>
+    </div>
+  </div>`;
+
+  // Hero
+  html += `<div class="mock-hero" style="background:${c.lightGreen}">
+    <h2 style="color:${c.headingGreen}">Where Curiosity Becomes Confidence</h2>
+    <p style="color:${c.text}">Morton's only doctoral-led preschool. Purposeful play, intentional learning, and a community built on trust.</p>
+    <div class="mock-buttons">
+      <button class="mock-btn" style="background:${c.cta};color:${c.ctaText}">Schedule a Tour</button>
+      <button class="mock-btn mock-btn-outline" style="color:${c.headingGreen};border-color:${c.accentGreen}">Explore Programs</button>
+    </div>
+  </div>`;
+
+  // Cards
+  const learnMoreColor = c.cta === "#FFC716" ? c.headingGreen : c.cta;
+  html += `<div class="mock-cards" style="background:${c.background}">
+    <div class="mock-card" style="background:${c.cardBg};border:1px solid ${c.lightGreen}">
+      <h3 style="color:${c.headingGreen}">3's Preschool</h3>
+      <p style="color:${c.text}">Ages 3+ · T/Th or M/W</p>
+      <div class="learn-more" style="color:${learnMoreColor}">Learn More →</div>
+    </div>
+    <div class="mock-card" style="background:${c.cardBg};border:1px solid ${c.lightGreen}">
+      <h3 style="color:${c.headingGreen}">4's Preschool</h3>
+      <p style="color:${c.text}">Ages 4+ · Flexible days</p>
+      <div class="learn-more" style="color:${learnMoreColor}">Learn More →</div>
+    </div>
+  </div>`;
+
+  // Testimonial
+  html += `<div class="mock-testimonial" style="background:${c.headingGreen}">
+    <div class="quote">"My daughter asks to go to school every single morning. That tells me everything I need to know."</div>
+    <div class="author">— Sarah M., Spark Academy Parent</div>
+  </div>`;
+
+  html += `</div>`; // close mock-browser
+
+  // Accessibility
+  html += `<div class="a11y-box">
+    <div class="section-label">Accessibility Check</div>
+    ${a11yBadge(c.headingGreen, c.background, "Heading on background")}
+    ${a11yBadge(c.text, c.background, "Body text on background")}
+    ${a11yBadge(c.headingGreen, c.lightGreen, "Heading on hero")}
+    ${a11yBadge(c.ctaText, c.cta, "CTA button text")}
+    ${a11yBadge("#FFFFFF", c.headingGreen, "White on dark green")}
+  </div>`;
+
+  // Changes from current
+  if (p.changes) {
+    html += `<div class="changes-box" style="background:${c.lightGreen};border:1px solid ${c.accentGreen}33">
+      <h4 style="color:${c.headingGreen}">What changes from current</h4>
+      <div class="details">${p.changes}</div>
+    </div>`;
+  }
+
+  // Stephen's recommendation note (only on eucalyptus)
+  if (p.id === "eucalyptus") {
+    html += `<div class="notes-box">
+      <h4>⭐ Stephen's Recommendation</h4>
+      <p>This is the palette I'd recommend. It gives you the lighter, airier feel you're looking for while keeping enough depth that headings anchor the page and CTA buttons still demand attention. It's the best balance of soft aesthetics and conversion performance.</p>
+    </div>`;
+  }
+
+  html += `</div>`; // close fade-in
+
+  document.getElementById("content").innerHTML = html;
+}
+
+renderTabs();
+renderContent();
+</script>
+</body>
+</html>

@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spark Academy — 4's Preschool Copy Deck</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --mist-teal: #3D6B62;
+    --antique-gold: #C49826;
+    --cloud-white: #FBFAF8;
+    --whisper-sage: #EFF5F2;
+    --misty-sage: #9BB8AD;
+    --body-text: #2E2E2E;
+    --deep-teal: #2C4F48;
+    --light-gold: #FBF5E6;
+    --warm-gray: #8A8A8A;
+    --border-light: #E2EBE7;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cloud-white);
+    color: var(--body-text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: linear-gradient(165deg, var(--mist-teal) 0%, var(--deep-teal) 100%);
+    color: white;
+    padding: 3rem 1.5rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: -20%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(196,152,38,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -15%;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(155,184,173,0.1) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--antique-gold);
+    margin-bottom: 0.75rem;
+    position: relative;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    position: relative;
+  }
+  .hero-subtitle {
+    font-size: 1rem;
+    color: var(--misty-sage);
+    font-weight: 400;
+    margin-bottom: 1.75rem;
+    position: relative;
+  }
+  .hero-meta {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    position: relative;
+  }
+  .hero-tag {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.75rem;
+    border-radius: 100px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.8);
+  }
+  .hero-tag.gold {
+    background: rgba(196,152,38,0.15);
+    border-color: rgba(196,152,38,0.3);
+    color: var(--antique-gold);
+  }
+
+  /* ─── STICKY NAV ─── */
+  .sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--cloud-white);
+    border-bottom: 1px solid var(--border-light);
+    padding: 0.75rem 1rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    scrollbar-width: none;
+  }
+  .sticky-nav::-webkit-scrollbar { display: none; }
+  .nav-pills {
+    display: inline-flex;
+    gap: 0.4rem;
+  }
+  .nav-pill {
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.35rem 0.8rem;
+    border-radius: 100px;
+    background: var(--whisper-sage);
+    color: var(--mist-teal);
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+  }
+  .nav-pill:hover, .nav-pill:active {
+    background: var(--mist-teal);
+    color: white;
+  }
+
+  /* ─── PAGE SPECS CARD ─── */
+  .specs-section {
+    padding: 1.5rem;
+  }
+  .specs-card {
+    background: white;
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    overflow: hidden;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .specs-header {
+    background: var(--whisper-sage);
+    padding: 0.75rem 1.25rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mist-teal);
+  }
+  .specs-grid {
+    padding: 0.5rem 0;
+  }
+  .spec-row {
+    display: flex;
+    padding: 0.6rem 1.25rem;
+    border-bottom: 1px solid #f0f4f2;
+    gap: 1rem;
+    align-items: baseline;
+  }
+  .spec-row:last-child { border-bottom: none; }
+  .spec-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--mist-teal);
+    min-width: 110px;
+    flex-shrink: 0;
+  }
+  .spec-value {
+    font-size: 0.82rem;
+    color: var(--body-text);
+    line-height: 1.5;
+  }
+
+  /* ─── STRATEGIC NOTES ─── */
+  .strategic-note {
+    background: var(--light-gold);
+    border-left: 3px solid var(--antique-gold);
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.25rem;
+    margin: 1.25rem 0;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .strategic-note-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--antique-gold);
+    margin-bottom: 0.4rem;
+  }
+  .strategic-note p {
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: #5C4A1A;
+  }
+
+  /* ─── PHOTO DIRECTION ─── */
+  .photo-note {
+    background: #F3F0F8;
+    border-left: 3px solid #8B7DBB;
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.25rem;
+    margin: 1.25rem auto;
+    max-width: 700px;
+  }
+  .photo-note-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #8B7DBB;
+    margin-bottom: 0.4rem;
+  }
+  .photo-note p {
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: #4A4260;
+  }
+
+  /* ─── CONTENT SECTIONS ─── */
+  .content-section {
+    padding: 2rem 1.5rem;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .content-section + .content-section {
+    border-top: 1px solid var(--border-light);
+  }
+  .section-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--misty-sage);
+    margin-bottom: 0.5rem;
+  }
+  .section-h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--mist-teal);
+    line-height: 1.25;
+    margin-bottom: 1rem;
+  }
+  .section-h1-display {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--deep-teal);
+    line-height: 1.25;
+    margin-bottom: 0.75rem;
+    padding: 1rem 1.25rem;
+    background: var(--whisper-sage);
+    border-radius: 8px;
+    text-align: center;
+  }
+  .subheadline-display {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--body-text);
+    line-height: 1.7;
+    padding: 1rem 1.25rem;
+    background: white;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+  .copy-block {
+    font-size: 0.92rem;
+    line-height: 1.8;
+    color: var(--body-text);
+    margin-bottom: 1rem;
+  }
+  .copy-block p {
+    margin-bottom: 1rem;
+  }
+  .copy-block p:last-child {
+    margin-bottom: 0;
+  }
+  .copy-block strong {
+    color: var(--deep-teal);
+  }
+
+  /* ─── CTA BLOCK ─── */
+  .cta-block {
+    background: white;
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin: 1.25rem 0;
+    text-align: center;
+  }
+  .cta-primary {
+    display: inline-block;
+    background: var(--antique-gold);
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 0.65rem 1.75rem;
+    border-radius: 6px;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+  }
+  .cta-secondary {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--mist-teal);
+    font-weight: 500;
+    margin-top: 0.4rem;
+  }
+  .trust-line {
+    font-size: 0.75rem;
+    color: var(--warm-gray);
+    margin-top: 0.75rem;
+    line-height: 1.5;
+  }
+
+  /* ─── SCHEDULE TABLE ─── */
+  .schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border-light);
+  }
+  .schedule-table thead th {
+    background: var(--mist-teal);
+    color: white;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.7rem 1rem;
+    text-align: left;
+  }
+  .schedule-table tbody td {
+    padding: 0.75rem 1rem;
+    font-size: 0.84rem;
+    border-bottom: 1px solid #f0f4f2;
+    vertical-align: top;
+  }
+  .schedule-table tbody tr:last-child td { border-bottom: none; }
+  .schedule-table tbody tr:nth-child(even) { background: var(--whisper-sage); }
+  .time-col {
+    font-weight: 600;
+    color: var(--mist-teal);
+    white-space: nowrap;
+    min-width: 80px;
+  }
+
+  /* ─── TUITION TABLE ─── */
+  .tuition-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border-light);
+  }
+  .tuition-table td {
+    padding: 0.7rem 1rem;
+    font-size: 0.84rem;
+    border-bottom: 1px solid #f0f4f2;
+    vertical-align: top;
+  }
+  .tuition-table tr:last-child td { border-bottom: none; }
+  .tuition-table tr:nth-child(even) { background: var(--whisper-sage); }
+  .tuition-table .t-label {
+    font-weight: 600;
+    color: var(--mist-teal);
+    min-width: 110px;
+    white-space: nowrap;
+  }
+
+  /* ─── ENRICHMENT TABLE ─── */
+  .enrichment-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border-light);
+  }
+  .enrichment-table thead th {
+    background: var(--mist-teal);
+    color: white;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.7rem 1rem;
+    text-align: left;
+  }
+  .enrichment-table tbody td {
+    padding: 0.7rem 1rem;
+    font-size: 0.84rem;
+    border-bottom: 1px solid #f0f4f2;
+    vertical-align: top;
+  }
+  .enrichment-table tbody tr:last-child td { border-bottom: none; }
+  .enrichment-table tbody tr:nth-child(even) { background: var(--whisper-sage); }
+  .enrichment-day {
+    font-weight: 600;
+    color: var(--mist-teal);
+    white-space: nowrap;
+    min-width: 90px;
+  }
+
+  /* ─── SCHEDULING CARDS ─── */
+  .schedule-option {
+    background: white;
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  .schedule-option-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--deep-teal);
+    margin-bottom: 0.4rem;
+  }
+  .schedule-option-price {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--antique-gold);
+    margin-bottom: 0.6rem;
+  }
+  .schedule-option p {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: var(--body-text);
+  }
+  .schedule-option.featured {
+    border-color: var(--misty-sage);
+    border-width: 2px;
+    background: var(--whisper-sage);
+  }
+
+  /* ─── FAQ ─── */
+  .faq-item {
+    margin-bottom: 1.25rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border-light);
+  }
+  .faq-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  .faq-q {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--deep-teal);
+    margin-bottom: 0.4rem;
+    line-height: 1.4;
+  }
+  .faq-a {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: var(--body-text);
+  }
+
+  /* ─── INTERNAL LINKS TABLE ─── */
+  .links-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border-light);
+    font-size: 0.82rem;
+  }
+  .links-table thead th {
+    background: var(--mist-teal);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.6rem 0.75rem;
+    text-align: left;
+  }
+  .links-table tbody td {
+    padding: 0.6rem 0.75rem;
+    border-bottom: 1px solid #f0f4f2;
+    vertical-align: top;
+  }
+  .links-table tbody tr:nth-child(even) { background: var(--whisper-sage); }
+  .links-table tbody tr:last-child td { border-bottom: none; }
+
+  /* ─── PHOTO SUMMARY TABLE ─── */
+  .photo-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #D8D0E8;
+    font-size: 0.82rem;
+  }
+  .photo-table thead th {
+    background: #8B7DBB;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.6rem 0.75rem;
+    text-align: left;
+  }
+  .photo-table tbody td {
+    padding: 0.6rem 0.75rem;
+    border-bottom: 1px solid #E8E4F0;
+    vertical-align: top;
+  }
+  .photo-table tbody tr:nth-child(even) { background: #F3F0F8; }
+  .photo-table tbody tr:last-child td { border-bottom: none; }
+
+  /* ─── DIVIDER ─── */
+  .section-divider {
+    height: 4px;
+    background: linear-gradient(90deg, var(--mist-teal), var(--misty-sage), transparent);
+    border: none;
+    margin: 0;
+    opacity: 0.3;
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    background: var(--deep-teal);
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    padding: 2rem 1.5rem;
+    font-size: 0.78rem;
+    line-height: 1.7;
+  }
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.35rem;
+  }
+  .footer .draft-badge {
+    display: inline-block;
+    margin-top: 0.75rem;
+    padding: 0.3rem 1rem;
+    border: 1px solid rgba(196,152,38,0.4);
+    border-radius: 100px;
+    color: var(--antique-gold);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (min-width: 600px) {
+    .hero { padding: 4rem 2rem 3rem; }
+    .hero h1 { font-size: 2.4rem; }
+    .content-section { padding: 2.5rem 2rem; }
+    .section-h2 { font-size: 1.65rem; }
+  }
+  @media (min-width: 800px) {
+    .hero h1 { font-size: 2.75rem; }
+    .section-h2 { font-size: 1.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<div class="hero">
+  <div class="hero-label">Phase 3A Copy Deck · Draft</div>
+  <h1>4's Preschool</h1>
+  <div class="hero-subtitle">Page Copy Deck — /preschool-4s/</div>
+  <div class="hero-meta">
+    <span class="hero-tag">Child-Centric 80/20</span>
+    <span class="hero-tag gold">Mid Funnel</span>
+    <span class="hero-tag">1,500–1,900 Words</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════ STICKY NAV ═══════════════════════ -->
+<nav class="sticky-nav">
+  <div class="nav-pills">
+    <a href="#specs" class="nav-pill">Specs</a>
+    <a href="#s1" class="nav-pill">Hero</a>
+    <a href="#s2" class="nav-pill">What Changes</a>
+    <a href="#s3" class="nav-pill">Daily Schedule</a>
+    <a href="#s4" class="nav-pill">How Many Days</a>
+    <a href="#s5" class="nav-pill">K-Readiness</a>
+    <a href="#s6" class="nav-pill">Tuition</a>
+    <a href="#s7" class="nav-pill">Testimonials</a>
+    <a href="#s8" class="nav-pill">Tour CTA</a>
+    <a href="#s9" class="nav-pill">FAQ</a>
+    <a href="#links" class="nav-pill">Links & Photos</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════ PAGE SPECS ═══════════════════════ -->
+<section class="specs-section" id="specs">
+  <div class="specs-card">
+    <div class="specs-header">Page Specifications</div>
+    <div class="specs-grid">
+      <div class="spec-row">
+        <span class="spec-label">URL</span>
+        <span class="spec-value">/preschool-4s/</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Primary KW</span>
+        <span class="spec-value">preschool for 4 year olds Morton IL</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Secondary KWs</span>
+        <span class="spec-value">4 year old preschool Peoria IL · pre-K Morton Illinois · preschool 4 year old near me</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Long-Tail</span>
+        <span class="spec-value">how many days should my 4 year old go to preschool · pre-kindergarten Morton IL · best preschool 4 year old Central Illinois</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Intent</span>
+        <span class="spec-value">Commercial — parent actively comparing pre-K options and scheduling decisions</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Funnel Stage</span>
+        <span class="spec-value">Mid Funnel — evaluating, comparing, beginning to feel kindergarten urgency</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Audience</span>
+        <span class="spec-value">Parents of 4-year-olds; parents weighing 2-day vs 3-day vs 5-day schedules</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Messaging</span>
+        <span class="spec-value">Child-Centric — 80% child / 20% school</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Primary CTA</span>
+        <span class="spec-value">Schedule a Tour</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Secondary CTA</span>
+        <span class="spec-value">Have a Question? We'd love to hear from you.</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Meta Title</span>
+        <span class="spec-value">4's Preschool Morton IL | Pre-K | Spark Academy</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Meta Desc</span>
+        <span class="spec-value">Pre-K preschool for 4-year-olds in Morton, IL. Flexible 2, 3, or 5-day schedules. Play-based, doctoral-led. 5:1 ratio. Schedule a tour at Spark Academy.</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Schema</span>
+        <span class="spec-value">EducationalOccupationalProgram + FAQPage + BreadcrumbList</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Data Layer</span>
+        <span class="spec-value" style="font-family:monospace;font-size:0.78rem;">page_type: program | funnel: parent | content_category: program | has_form: false | page_template: program-page</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Word Count</span>
+        <span class="spec-value">1,500–1,900 words</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Links From</span>
+        <span class="spec-value">Homepage program tile · /programs/ · /preschool-3s/ (what comes next) · /kindergarten-prep/</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="strategic-note" style="margin-top:1.5rem;">
+    <div class="strategic-note-label">Strategic Context</div>
+    <p>Four is the year when kindergarten readiness starts to feel real to parents. The 3's page answers "Is my child ready?" The 4's page answers "Is my child getting what they need to succeed?" Parents here are more academically aware, more schedule-conscious, and more likely to be comparing Spark against other pre-K options. The unique SEO and content hook on this page is the scheduling choice — two, three, or five days — framed not just logistically but developmentally. What does a child gain by adding a third day? That question, answered clearly, is the conversion engine for this page.</p>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════ SECTION 1: HERO ═══════════════════════ -->
+<section class="content-section" id="s1">
+  <div class="section-label">Section 1 · Hero (Above the Fold)</div>
+
+  <div class="section-h1-display">Your Four-Year-Old Is Ready to Go Further. So Are We.</div>
+
+  <div class="strategic-note">
+    <div class="strategic-note-label">H1 Strategy</div>
+    <p>"Ready to go further" does double duty: it speaks to the parent's growing sense that their child is capable of more, and it positions the 4's program as a step up from what came before — without diminishing the 3's program. This H1 passes the Flip Test — the child is the subject, Spark is the environment that responds. The phrase "So are we" adds warmth and partnership without being saccharine.</p>
+  </div>
+
+  <div class="subheadline-display">
+    The 4's program at Spark Academy is where children move from learning how to be in school to loving what school can do for them. With flexible scheduling, individualized learning paths, and a doctoral-led curriculum built on purposeful play — four is a remarkable year to be a Spark student.
+  </div>
+
+  <div class="cta-block">
+    <div class="cta-primary">Schedule a Tour</div>
+    <div class="cta-secondary">Have a Question? We'd love to hear from you.</div>
+    <div class="trust-line">5:1 Student-to-Teacher Ratio · Led by Dr. Michelle Peterson, Ed.D. · Morton, IL</div>
+  </div>
+
+  <div class="photo-note">
+    <div class="photo-note-label">Photo Direction — Hero</div>
+    <p>Two 4-year-olds collaborating on a project — building, a STEM activity, or an art creation. Both children should look engaged and purposeful, not just playing. A teacher can be visible in the peripheral — leaning in, attentive. Natural light. The image communicates: <em>these children are doing something.</em> There is intent in the frame.</p>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════ SECTION 2: WHAT CHANGES AT FOUR ═══════════════════════ -->
+<section class="content-section" id="s2">
+  <div class="section-label">Section 2 · What Changes at Four</div>
+  <div class="section-h2">Four Is the Bridge Year — and How You Cross It Matters</div>
+
+  <div class="copy-block">
+    <p>Something shifts at four. Children who spent their 3's year learning how to be in school — how to sit, listen, share, and take turns — arrive at four ready to do more with that foundation. Their vocabulary is exploding. They're asking "why" about everything. They're forming real friendships and navigating the complexity of them.</p>
+    <p>This is the pre-kindergarten year. And at Spark, we take that seriously.</p>
+    <p>The 4's program builds directly on the Purposeful Play Framework, deepening the academic play, enrichment, and developmental playroom experiences your child already knows. But four-year-olds are developmentally ready for more — more sustained engagement, more complex challenges, more independence — and the 4's program is calibrated for exactly that.</p>
+    <p>Dr. Peterson's doctoral research in early childhood education isn't a credential we list to look impressive. It's the reason the 4's program is structured the way it is. She knows what four-year-old brains need and what they can handle — and that knowledge is built into every part of the day.</p>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════ SECTION 3: A DAY IN THE 4'S PROGRAM ═══════════════════════ -->
+<section class="content-section" id="s3">
+  <div class="section-label">Section 3 · A Day in the 4's Program</div>
+  <div class="section-h2">A Day Designed for the Four-Year-Old Brain</div>
+
+  <div class="copy-block">
+    <p>The 4's daily schedule follows the same proven rhythm as the 3's program, with the same rich enrichment rotation and the same Developmental Playroom — because consistency matters for young children. What deepens is the complexity of the activities, the expectations for engagement, and the academic scaffolding layered into every session.</p>
+  </div>
+
+  <table class="schedule-table">
+    <thead>
+      <tr>
+        <th>Time Block</th>
+        <th>Activity</th>
+        <th>What Your Child Is Building</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="time-col">1.5 Hours</td>
+        <td><strong>Academic Play</strong></td>
+        <td>Deeper cognitive engagement, early literacy and numeracy, collaborative problem-solving, and independent thinking — all through teacher-guided purposeful play</td>
+      </tr>
+      <tr>
+        <td class="time-col">30 Minutes</td>
+        <td><strong>Developmental Playroom</strong></td>
+        <td>Advanced collaboration, creative initiative, and social-emotional development in a monthly-rotating student-directed environment</td>
+      </tr>
+      <tr>
+        <td class="time-col">30 Minutes</td>
+        <td><strong>Daily Enrichment</strong></td>
+        <td>A rotating schedule of Spanish, STEM, Art, Communication, and Music & Movement — deepening each subject at a four-year-old level</td>
+      </tr>
+      <tr>
+        <td class="time-col">15 Minutes</td>
+        <td><strong>Outdoor Play</strong></td>
+        <td>Physical confidence, gross motor development, and peer relationship skills</td>
+      </tr>
+      <tr>
+        <td class="time-col">15 Minutes</td>
+        <td><strong>Snack &amp; Bathroom Break</strong></td>
+        <td>Conversation, community, and growing independence in self-care routines</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top:0.75rem;font-size:0.85rem;color:var(--mist-teal);font-weight:600;">
+    Hours: 8:30–11:30 AM · Schedule Options: T/Th · M/W/F · M–F
+  </div>
+
+  <div style="margin-top:2rem;">
+    <div style="font-size:0.92rem;font-weight:700;color:var(--deep-teal);margin-bottom:0.5rem;">Enrichment at Four — Going Deeper</div>
+    <div class="copy-block">
+      <p>The daily enrichment rotation doesn't just repeat what your child experienced in the 3's program. The activities, vocabulary, and expectations evolve alongside the children's growing capabilities.</p>
+    </div>
+
+    <table class="enrichment-table">
+      <thead>
+        <tr>
+          <th>Day</th>
+          <th>Enrichment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="enrichment-day">Monday</td>
+          <td><strong>Spanish</strong> — vocabulary expands, simple phrases emerge, language confidence grows</td>
+        </tr>
+        <tr>
+          <td class="enrichment-day">Tuesday</td>
+          <td><strong>STEM</strong> — more complex experiments, hypothesis-building, early engineering challenges</td>
+        </tr>
+        <tr>
+          <td class="enrichment-day">Wednesday</td>
+          <td><strong>Art</strong> — diverse media, intentional technique, and creative confidence</td>
+        </tr>
+        <tr>
+          <td class="enrichment-day">Thursday</td>
+          <td><strong>Communication</strong> — storytelling, presentation, listening, and early literacy</td>
+        </tr>
+        <tr>
+          <td class="enrichment-day">Friday</td>
+          <td><strong>Music &amp; Movement</strong> — rhythm, coordination, collaborative performance, and joy</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="copy-block" style="margin-top:1rem;">
+      <p>By the end of the 4's year, your child will have experienced hundreds of hours of structured enrichment across five disciplines — a breadth that most elementary schools don't offer until third or fourth grade.</p>
+    </div>
+  </div>
+
+  <div class="photo-note">
+    <div class="photo-note-label">Photo Direction — Day in Program</div>
+    <p>Enrichment moment — STEM activity or Spanish session showing specialist-led energy. Children engaged, teacher facilitating. Natural, purposeful, not staged.</p>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════ SECTION 4: HOW MANY DAYS ═══════════════════════ -->
+<section class="content-section" id="s4">
+  <div class="section-label">Section 4 · How Many Days Is Right for Your Child?</div>
+  <div class="section-h2">Two Days, Three Days, or Five — Here's How to Think About It</div>
+
+  <div class="copy-block">
+    <p>The 4's program offers three scheduling options, and choosing between them is one of the most common questions families bring to their tour. Here's an honest, developmentally grounded way to think through it.</p>
+  </div>
+
+  <div class="schedule-option">
+    <div class="schedule-option-title">Two Days a Week</div>
+    <div class="schedule-option-price">T/Th — $350/month</div>
+    <p>Two days is a strong start and a complete program. Your child receives the full Purposeful Play curriculum, the daily enrichment rotation, and the Developmental Playroom experience — just on two days a week. This is a great option for families with younger siblings at home, families managing complex schedules, or children who are still building stamina for structured learning environments.</p>
+  </div>
+
+  <div class="schedule-option featured">
+    <div class="schedule-option-title">Three Days a Week</div>
+    <div class="schedule-option-price">M/W/F — $450/month</div>
+    <p>Three days is where many families land — the sweet spot between scheduling flexibility and developmental depth. An additional day means more time with peers, more repetitions of the enrichment cycle, and more sustained engagement with curriculum themes. Children who attend three days a week often show noticeably stronger peer relationships by mid-year simply because they have more time to build them.</p>
+  </div>
+
+  <div class="schedule-option">
+    <div class="schedule-option-title">Five Days a Week</div>
+    <div class="schedule-option-price">M–F — $600/month</div>
+    <p>Five days is the fullest experience Spark offers for four-year-olds. It's ideal for children who are energized by school, have demonstrated strong readiness, and whose families are preparing for the routine of daily kindergarten the following year. Five days at Spark is the most natural preparation for a full kindergarten schedule — your child arrives already knowing how to be in school every single day.</p>
+  </div>
+
+  <div style="margin-top:1.25rem;">
+    <div style="font-size:0.92rem;font-weight:700;color:var(--deep-teal);margin-bottom:0.5rem;">The Honest Answer</div>
+    <div class="copy-block">
+      <p>There's no wrong choice. Every option represents the full Spark program. If you're unsure, start with two or three days and see how your child responds — it's not uncommon for families to add days mid-year once they see how their child is thriving.</p>
+    </div>
+  </div>
+
+  <div class="strategic-note">
+    <div class="strategic-note-label">Strategic Note</div>
+    <p>This section is the most conversion-critical on the page because it answers the #1 parent question before they have to ask it. Writing the scheduling choice as a developmental framing — rather than just a cost/logistics table — is child-centric and consistent with the 80/20 lens. The honest sign-off ("there's no wrong choice") is authentically Michelle's voice and builds trust.</p>
+  </div>
+
+  <div class="photo-note">
+    <div class="photo-note-label">Photo Direction — Scheduling Section</div>
+    <p>Children at different activity types to visually represent variety — no text-heavy diagram needed. Show the breadth of the experience.</p>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════ SECTION 5: KINDERGARTEN CONNECTION ═══════════════════════ -->
+<section class="content-section" id="s5">
+  <div class="section-label">Section 5 · The Kindergarten Connection</div>
+  <div class="section-h2">Everything Your Child Builds This Year, They'll Carry Into Kindergarten</div>
+
+  <div class="copy-block">
+    <p>The 4's year at Spark isn't separate from kindergarten — it's preparation for it. Every skill built, every friendship formed, every morning of showing up and participating is preparing your child to walk into their kindergarten classroom with confidence.</p>
+    <p>At Spark, kindergarten readiness isn't a checklist we hand you at the end of the year. It's something we track, support, and communicate about throughout the entire program. Dr. Peterson's individualized assessment approach means your child's teachers know where they are developmentally — not compared to a generic benchmark, but relative to their own growth trajectory.</p>
+    <p>When your child leaves the 4's program, you'll know exactly where they stand. And so will they.</p>
+  </div>
+
+  <div style="background:var(--whisper-sage);border-radius:8px;padding:1rem 1.25rem;margin-top:1.25rem;">
+    <div class="copy-block" style="margin-bottom:0;">
+      <p><strong>If your child turns 5 before November 30</strong> and won't attend public kindergarten, ask us about our Kindergarten Prep program — a more intensive daily option for children who are ready for the full step.</p>
+      <p style="margin-top:0.5rem;"><strong style="color:var(--mist-teal);">Learn about Kindergarten Prep →</strong> <em style="font-size:0.82rem;color:var(--warm-gray);">/kindergarten-prep/</em></p>
+    </div>
+  </div>
+
+  <div class="photo-note" style="margin-top:1.25rem;">
+    <div class="photo-note-label">Photo Direction — Kindergarten Connection</div>
+    <p>A child writing or engaged in a pre-literacy activity — purposeful, not formal. Show concentration and capability without a classroom-lecture feel.</p>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════ SECTION 6: TUITION ═══════════════════════ -->
+<section class="content-section" id="s6">
+  <div class="section-label">Section 6 · Tuition & Scheduling</div>
+  <div class="section-h2">Transparent Pricing. Every Schedule Option Included.</div>
+
+  <table class="schedule-table">
+    <thead>
+      <tr>
+        <th>Schedule</th>
+        <th>Days</th>
+        <th>Monthly Tuition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Tuesday/Thursday</strong></td>
+        <td>2 days/week</td>
+        <td><strong>$350/month</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Monday/Wednesday/Friday</strong></td>
+        <td>3 days/week</td>
+        <td><strong>$450/month</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Monday–Friday</strong></td>
+        <td>5 days/week</td>
+        <td><strong>$600/month</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top:0.75rem;font-size:0.85rem;color:var(--mist-teal);font-weight:600;">
+    Hours: 8:30–11:30 AM · Age: Must be 4 by the first day of school · Potty Training: Required
+  </div>
+
+  <div class="copy-block" style="margin-top:1.25rem;">
+    <p><strong>What's included:</strong> All programming, curriculum materials, enrichment, developmental playroom, and outdoor play. No supply lists. No hidden fees. No additional costs. Tuition covers everything.</p>
+    <p><strong>Payment Terms:</strong> Tuition is billed over 10 months. A 10% discount is available for families who pay the full year's tuition by August 15. A $100 non-refundable deposit holds your enrollment spot.</p>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════ SECTION 7: TESTIMONIALS ═══════════════════════ -->
+<section class="content-section" id="s7">
+  <div class="section-label">Section 7 · What Parents Are Saying</div>
+  <div class="section-h2">From Families in the 4's Program</div>
+
+  <div style="background:var(--whisper-sage);border-radius:8px;padding:1rem 1.25rem;font-size:0.82rem;color:var(--mist-teal);text-align:center;">
+    <strong>PLACEHOLDER — Testimonials Coming Soon</strong><br>
+    <span style="font-size:0.78rem;color:var(--warm-gray);">This section will feature 2–3 parent quotes specific to the 4's experience — ideally addressing the scheduling decision, growth during the year, or kindergarten readiness outcomes.</span>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════ SECTION 8: TOUR CTA ═══════════════════════ -->
+<section class="content-section" id="s8">
+  <div class="section-label">Section 8 · Come See It for Yourself</div>
+  <div class="section-h2">The Best Way to Know Is to Visit</div>
+
+  <div class="copy-block">
+    <p>Four is a big year. The preschool you choose for this stage matters — not because it needs to be perfect, but because it needs to be the right fit for your child.</p>
+    <p>We'd love to show you what the 4's program looks like in person. Our tours are informal, about 20–30 minutes, and designed to give you a real picture of what your child's day at Spark would look like.</p>
+  </div>
+
+  <div style="text-align:center;font-family:'Playfair Display',serif;font-style:italic;font-size:0.92rem;color:var(--mist-teal);margin:1.25rem 0;">
+    The only preschool in Central Illinois founded and led by a doctoral researcher in early childhood education.
+  </div>
+
+  <div class="cta-block">
+    <div class="cta-primary">Schedule a Tour</div>
+    <div class="cta-secondary">Have a Question? We'd love to hear from you.</div>
+    <div class="trust-line">Call us: 309-291-3292</div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════ SECTION 9: FAQ ═══════════════════════ -->
+<section class="content-section" id="s9">
+  <div class="section-label">Section 9 · Frequently Asked Questions</div>
+  <div class="section-h2">Questions About the 4's Program</div>
+
+  <div class="faq-item">
+    <div class="faq-q">What is the age requirement for the 4's program?</div>
+    <div class="faq-a">Children must be four years old by their first day of school and must be fully potty trained.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">How do I choose the right number of days?</div>
+    <div class="faq-a">We recommend thinking about two things: your child's stamina and your family's schedule. Two days is a complete, rich program. Three days deepens peer relationships and curriculum engagement. Five days is ideal for children preparing for a full daily kindergarten schedule. If you're unsure, start with two or three — you can always add days.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Is the 4's program academically rigorous enough?</div>
+    <div class="faq-a">Yes. The Purposeful Play Framework is built on Dr. Peterson's doctoral research in early childhood education and the Experience Early Learning whole-child curriculum. The 4's program includes structured academic play, five enrichment disciplines, individualized learning paths, and developmental assessment. It is not a daycare program — it is a purposeful, research-grounded pre-K experience.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">What's the class size?</div>
+    <div class="faq-a">Maximum 10–12 students per class with a 5:1 student-to-teacher ratio.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Can my child start mid-year?</div>
+    <div class="faq-a">Yes, subject to availability. Contact us to discuss your child's specific timing.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">How will I know if my child is ready for kindergarten?</div>
+    <div class="faq-a">Dr. Peterson's individualized assessment approach means your child's development is tracked throughout the program — not just at year-end. You'll have ongoing communication with your child's teachers and a clear picture of their readiness as kindergarten approaches.</div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════ INTERNAL LINKS & PHOTO DIRECTION ═══════════════════════ -->
+<section class="content-section" id="links">
+  <div class="section-label">Internal Linking Map</div>
+
+  <table class="links-table">
+    <thead>
+      <tr>
+        <th>Link Target</th>
+        <th>URL</th>
+        <th>Where on Page</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Schedule a Tour</strong></td>
+        <td>/schedule-a-tour/</td>
+        <td>Hero CTA, Section 8 CTA, bottom of page</td>
+      </tr>
+      <tr>
+        <td><strong>Kindergarten Prep</strong></td>
+        <td>/kindergarten-prep/</td>
+        <td>Section 5 (kindergarten connection)</td>
+      </tr>
+      <tr>
+        <td><strong>3's Preschool</strong></td>
+        <td>/preschool-3s/</td>
+        <td>Internal nav / breadcrumb</td>
+      </tr>
+      <tr>
+        <td><strong>Programs Overview</strong></td>
+        <td>/programs/</td>
+        <td>Breadcrumb navigation</td>
+      </tr>
+      <tr>
+        <td><strong>Purposeful Play Framework</strong></td>
+        <td>/purposeful-play-framework/</td>
+        <td>Section 2 (framework mention)</td>
+      </tr>
+      <tr>
+        <td><strong>Dr. Michelle Peterson</strong></td>
+        <td>/dr-michelle-peterson/</td>
+        <td>Trust line under CTA</td>
+      </tr>
+      <tr>
+        <td><strong>Phone CTA</strong></td>
+        <td>tel:3092913292</td>
+        <td>Section 8</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top:2rem;">
+    <div class="section-label" style="color:#8B7DBB;">Photo Direction Summary</div>
+    <table class="photo-table">
+      <thead>
+        <tr>
+          <th>Section</th>
+          <th>Shot Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Hero</strong></td>
+          <td>Two 4-year-olds collaborating on a project, engaged and purposeful, teacher attentive in background</td>
+        </tr>
+        <tr>
+          <td><strong>Day in Program</strong></td>
+          <td>Enrichment moment — STEM activity or Spanish session showing specialist-led energy</td>
+        </tr>
+        <tr>
+          <td><strong>Scheduling</strong></td>
+          <td>Children at different activity types to visually represent variety — no text-heavy diagram needed</td>
+        </tr>
+        <tr>
+          <td><strong>Kindergarten Connection</strong></td>
+          <td>A child writing or engaged in a pre-literacy activity — purposeful, not formal</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<div class="footer">
+  <div class="footer-brand">Spark Academy</div>
+  <p>4's Preschool Copy Deck · Phase 3A Deliverable<br>
+  Prepared for Dr. Michelle Peterson, Ed.D.<br>
+  Prepared by Stephen Odanovich · March 2026</p>
+  <div class="draft-badge">Draft — Pending Dr. Peterson's Review</div>
+</div>
+
+</body>
+</html>
