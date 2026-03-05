@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spark Academy — Summer Camp Copy Deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --mist-teal: #3D6B62;
+  --misty-sage: #9BB8AD;
+  --antique-gold: #C49826;
+  --cloud-white: #FBFAF8;
+  --whisper-sage: #EFF5F2;
+  --body-text: #2E2E2E;
+  --light-sage: #D8E8DE;
+  --warm-gold-bg: #FBF6EC;
+  --flag-red: #C44;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { font-size: 16px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--body-text);
+  background: var(--cloud-white);
+  line-height: 1.65;
+}
+
+/* ── COVER ── */
+.cover {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  background: linear-gradient(165deg, var(--whisper-sage) 0%, var(--cloud-white) 40%, var(--cloud-white) 100%);
+  position: relative;
+  overflow: hidden;
+}
+.cover::before {
+  content: '';
+  position: absolute;
+  width: 340px; height: 340px;
+  border-radius: 50%;
+  background: var(--misty-sage);
+  opacity: 0.12;
+  top: -80px; right: -80px;
+}
+.cover::after {
+  content: '';
+  position: absolute;
+  width: 260px; height: 260px;
+  border-radius: 50%;
+  background: var(--antique-gold);
+  opacity: 0.08;
+  bottom: -60px; left: -60px;
+}
+.cover-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--antique-gold);
+  border: 1.5px solid var(--antique-gold);
+  border-radius: 100px;
+  padding: 0.3rem 1rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+.cover h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--mist-teal);
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+  position: relative;
+  z-index: 1;
+}
+.cover .subtitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  color: var(--misty-sage);
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+.cover-meta {
+  font-size: 0.85rem;
+  color: #888;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+.cover-meta strong { color: var(--body-text); }
+.cover-status {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--antique-gold);
+  background: var(--warm-gold-bg);
+  border-radius: 100px;
+  padding: 0.4rem 1.2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── TABLE OF CONTENTS ── */
+.toc {
+  background: var(--whisper-sage);
+  border-bottom: 2px solid var(--light-sage);
+  padding: 2rem 1.5rem;
+}
+.toc h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--mist-teal);
+  margin-bottom: 1rem;
+}
+.toc-list {
+  list-style: none;
+  counter-reset: toc-counter;
+}
+.toc-list li {
+  counter-increment: toc-counter;
+  border-bottom: 1px solid var(--light-sage);
+}
+.toc-list li a {
+  display: block;
+  padding: 0.6rem 0 0.6rem 2.5rem;
+  text-decoration: none;
+  color: var(--mist-teal);
+  font-size: 0.9rem;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.2s;
+}
+.toc-list li a:hover { color: var(--antique-gold); }
+.toc-list li a::before {
+  content: counter(toc-counter, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+  color: var(--antique-gold);
+  font-size: 0.85rem;
+}
+
+/* ── SPECS ── */
+.specs {
+  padding: 2rem 1.5rem;
+  background: var(--cloud-white);
+}
+.specs h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--mist-teal);
+  margin-bottom: 1.25rem;
+}
+.spec-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.15rem;
+}
+.spec-row {
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--light-sage);
+}
+.spec-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--misty-sage);
+  margin-bottom: 0.15rem;
+}
+.spec-value {
+  font-size: 0.9rem;
+  color: var(--body-text);
+  line-height: 1.5;
+}
+
+/* ── SECTIONS ── */
+.section {
+  padding: 2rem 1.5rem;
+  border-bottom: 3px solid var(--whisper-sage);
+}
+.section-odd {
+  background: linear-gradient(180deg, var(--cloud-white) 0%, var(--whisper-sage) 100%);
+}
+.section-even {
+  background: var(--cloud-white);
+}
+.section-number {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--antique-gold);
+  margin-bottom: 0.5rem;
+}
+.section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--mist-teal);
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+.section h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--misty-sage);
+  margin-bottom: 0.35rem;
+}
+
+/* ── COPY ELEMENTS ── */
+.copy-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--mist-teal);
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--antique-gold);
+}
+.copy-subheadline {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--body-text);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+p.copy-body {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  margin-bottom: 1rem;
+  color: var(--body-text);
+}
+p.copy-body strong { font-weight: 700; }
+.h2-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--misty-sage);
+  margin-bottom: 0.25rem;
+  margin-top: 1.5rem;
+}
+.copy-headline-h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--mist-teal);
+  line-height: 1.3;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid var(--antique-gold);
+}
+
+/* ── NOTES / FLAGS / PHOTO ── */
+.note {
+  border-left: 3px solid var(--antique-gold);
+  background: var(--warm-gold-bg);
+  padding: 0.85rem 1rem;
+  margin: 1rem 0;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: #555;
+}
+.note-label {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--antique-gold);
+  margin-bottom: 0.35rem;
+}
+.photo-dir {
+  border-left: 3px solid var(--mist-teal);
+  background: var(--whisper-sage);
+  padding: 0.85rem 1rem;
+  margin: 1rem 0;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: #444;
+}
+.photo-dir-label {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--mist-teal);
+  margin-bottom: 0.35rem;
+}
+.flag {
+  border-left: 3px solid var(--flag-red);
+  background: #FFF0F0;
+  padding: 0.85rem 1rem;
+  margin: 1rem 0;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: #555;
+}
+.flag-label {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--flag-red);
+  margin-bottom: 0.35rem;
+}
+
+/* ── CTA BLOCKS ── */
+.cta-block {
+  margin: 1.25rem 0;
+  padding: 1rem;
+  background: linear-gradient(135deg, var(--whisper-sage) 0%, var(--cloud-white) 100%);
+  border-radius: 10px;
+  border: 1.5px solid var(--light-sage);
+}
+.cta-prompt {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--body-text);
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+.cta-prompt a { color: var(--mist-teal); font-weight: 700; text-decoration: none; }
+.cta-prompt strong { font-weight: 700; }
+.cta-primary {
+  display: inline-block;
+  background: var(--antique-gold);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 0.6rem 1.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+}
+.cta-secondary {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--mist-teal);
+  font-weight: 500;
+  margin-top: 0.35rem;
+}
+.trust-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.75rem 0;
+}
+.trust-badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--mist-teal);
+  background: var(--whisper-sage);
+  padding: 0.35rem 0.75rem;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+
+/* ── TABLES ── */
+.styled-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--light-sage);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 1rem 0;
+  font-size: 0.85rem;
+}
+.styled-table thead th {
+  background: var(--whisper-sage);
+  color: var(--mist-teal);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.65rem 0.75rem;
+  text-align: left;
+}
+.styled-table tbody td {
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+  line-height: 1.5;
+}
+.styled-table tbody tr:nth-child(even) td { background: #FDFCFA; }
+.styled-table tbody tr:last-child td { border-bottom: none; }
+.table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1rem 0; }
+
+/* ── TESTIMONIAL ── */
+.testimonial {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin: 1rem 0;
+  border: 1.5px solid var(--light-sage);
+  position: relative;
+}
+.testimonial::before {
+  content: '\201C';
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+  color: var(--misty-sage);
+  opacity: 0.3;
+  position: absolute;
+  top: 0;
+  left: 0.75rem;
+  line-height: 1;
+}
+.testimonial p {
+  font-size: 0.88rem;
+  font-style: italic;
+  color: #777;
+  padding-left: 1rem;
+}
+
+/* ── INTERNAL LINK ── */
+.int-link {
+  font-size: 0.82rem;
+  color: var(--antique-gold);
+  font-weight: 500;
+  margin: 0.5rem 0;
+}
+.int-link::before { content: '→ '; font-weight: 700; }
+
+/* ── SHOT CARDS ── */
+.shot-card {
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid var(--light-sage);
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+}
+.shot-card-number {
+  display: inline-block;
+  font-size: 0.55rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: var(--mist-teal);
+  color: #fff;
+  padding: 0.2rem 0.6rem;
+  border-radius: 100px;
+  margin-bottom: 0.5rem;
+}
+.shot-card h4 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--mist-teal);
+  margin-bottom: 0.3rem;
+}
+.shot-card p {
+  font-size: 0.82rem;
+  color: #555;
+  line-height: 1.55;
+}
+
+/* ── FAQ ── */
+.faq-item {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--light-sage);
+}
+.faq-item:last-child { border-bottom: none; }
+.faq-q {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--mist-teal);
+  margin-bottom: 0.4rem;
+}
+.faq-a {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--body-text);
+}
+
+/* ── FOOTER ── */
+.doc-footer {
+  background: var(--mist-teal);
+  color: #fff;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  font-size: 0.8rem;
+  line-height: 1.8;
+}
+.doc-footer strong { font-weight: 700; }
+
+/* ── RESPONSIVE ── */
+@media (min-width: 600px) {
+  .cover h1 { font-size: 2.8rem; }
+  .section { padding: 3rem 2.5rem; }
+  .specs { padding: 2rem 2.5rem; }
+  .toc { padding: 2rem 2.5rem; }
+  .copy-headline { font-size: 2rem; }
+  .copy-headline-h2 { font-size: 1.5rem; }
+  .spec-grid { grid-template-columns: 1fr 1fr; gap: 0.15rem 2rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════ COVER ════════════════════════════ -->
+<div class="cover">
+  <div class="cover-badge">Phase 3A Deliverable</div>
+  <h1>Summer Camp Copy Deck</h1>
+  <div class="subtitle">Spark Academy Website Rebuild</div>
+  <div class="cover-meta">
+    Prepared for <strong>Dr. Michelle Peterson, Ed.D.</strong><br>
+    Founder &amp; Executive Director, Spark Academy<br><br>
+    Prepared by <strong>Stephen Odanovich</strong><br>
+    Internet Marketing Specialist<br>
+    March 2026
+  </div>
+  <div class="cover-status">Draft — Pending Dr. Peterson's Review</div>
+</div>
+
+<!-- ════════════════════════════ TOC ════════════════════════════ -->
+<div class="toc">
+  <h2>What's Inside</h2>
+  <ol class="toc-list">
+    <li><a href="#specs">Page Specifications</a></li>
+    <li><a href="#s1">Hero (Above the Fold)</a></li>
+    <li><a href="#s2">What Camp Play Is</a></li>
+    <li><a href="#s3">Age Groups</a></li>
+    <li><a href="#s4">Summer 2026 Details</a></li>
+    <li><a href="#s5">What Makes Camp Play Different</a></li>
+    <li><a href="#s6">What Parents Are Saying</a></li>
+    <li><a href="#s7">How to Register</a></li>
+    <li><a href="#s8">Frequently Asked Questions</a></li>
+    <li><a href="#links">Internal Linking Map</a></li>
+    <li><a href="#photos">Photo Direction Summary</a></li>
+  </ol>
+</div>
+
+<!-- ════════════════════════════ SPECS ════════════════════════════ -->
+<div class="specs" id="specs">
+  <h2>Page Specifications</h2>
+  <div class="spec-grid">
+    <div class="spec-row">
+      <div class="spec-label">Page</div>
+      <div class="spec-value">Summer Camp — Camp Play</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">URL</div>
+      <div class="spec-value">/summer-camp/</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Primary Keyword</div>
+      <div class="spec-value">summer camp Morton IL</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Secondary Keywords</div>
+      <div class="spec-value">summer day camp Peoria IL; kids summer camp near me; play-based summer camp Central Illinois</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Long-Tail Variations</div>
+      <div class="spec-value">half day summer camp Morton Illinois; summer camp for 3 year olds near me; affordable summer camp Peoria area</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Search Intent</div>
+      <div class="spec-value">High-intent Commercial — parent actively searching for summer programming; seasonal urgency</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Funnel Stage</div>
+      <div class="spec-value">Mid-to-Bottom Funnel — parent is ready to commit; comparing options, checking pricing and availability</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Audience</div>
+      <div class="spec-value">Parents of children ages 3–11 in the greater Peoria metro area</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Messaging Lens</div>
+      <div class="spec-value">Child-Centric — 80% child-centric / 20% school-centric</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Primary CTA</div>
+      <div class="spec-value">Call to Register — 309-291-3292 (with urgency: before May 30 for best pricing)</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Secondary CTA</div>
+      <div class="spec-value">Have a Question? We'd love to hear from you.</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Meta Title (≤60 chars)</div>
+      <div class="spec-value">Summer Camp Morton IL | Camp Play | Spark Academy</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Meta Description (≤155 chars)</div>
+      <div class="spec-value">Play-based summer day camp for ages 3–11 in Morton, IL. June 1–July 31. Small groups, big adventures. Call 309-291-3292 to register before May 30.</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Schema Markup</div>
+      <div class="spec-value">Event + EducationalOccupationalProgram + FAQPage + BreadcrumbList</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Data Layer</div>
+      <div class="spec-value">page_type: program | funnel: parent | content_category: seasonal | has_form: false | page_template: program-page</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Word Count Target</div>
+      <div class="spec-value">1,600–2,000 words</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Internal Links From</div>
+      <div class="spec-value">Homepage (seasonal banner or program tile), /programs/ overview, blog seasonal content</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Strategic Note after specs ── -->
+<div style="padding: 0 1.5rem 1.5rem; background: var(--cloud-white);">
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    This is a seasonal conversion page with a built-in urgency mechanic: the May 30 pricing deadline. After May 30 (or when spots fill), weekly and full-summer pricing disappears — only the day rate remains. This deadline isn't manufactured scarcity; it's a real enrollment structure that rewards early commitment. The copy must communicate this clearly and naturally without resorting to countdown-timer panic tactics. The parent reading this page wants two things: (1) to picture their child having the best summer of their life, and (2) to feel confident that this camp is safe, structured, and run by people who know what they're doing. The age range (3–11) is broader than any other Spark program, which means the copy must speak to parents of preschoolers AND parents of 10-year-olds within the same page. Age groupings are the structural answer to this challenge. The perennial value framing (what Camp Play is, why it's great) should endure year over year; only the 2026-specific details (dates, pricing, deadlines) need to be updated annually.
+  </div>
+</div>
+
+<!-- ════════════════════════════ SECTION 1: HERO ════════════════════════════ -->
+<div class="section section-odd" id="s1">
+  <div class="section-number">Section 01</div>
+  <h2>Hero (Above the Fold)</h2>
+
+  <h3>Page Title (H1)</h3>
+  <div class="copy-headline">The Summer They'll Talk About All Year</div>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    Pure child-centric aspiration. This H1 doesn't describe the camp — it describes the outcome. A parent reading this immediately pictures their child at the dinner table in October, still telling stories about what happened at camp. It passes the Flip Test: it's outcome-specific and emotionally resonant in a way that "Fun Summer Camp in Morton" never could be.
+  </div>
+
+  <h3>Hero Subheadline</h3>
+  <div class="copy-subheadline">Camp Play at Spark Academy is a play-based summer day camp for ages 3–11. Eight weeks of science, art, cooking, LEGOs, dramatic play, and outdoor adventures — in small groups, led by the same credentialed team that runs Spark's school-year programs. Mornings only. Designed for happy, tired kids at pickup.</div>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    "Designed for happy, tired kids at pickup" is Dr. Peterson's line from the Camp Play flyer — and it's one of the best pieces of copy in the entire project. It tells the parent exactly what the outcome looks like, in five words, with an image they can feel. The subheadline also front-loads the key logistics (ages, duration, activity types) so the above-the-fold content answers the two most immediate questions: "What is this?" and "Is it right for my child's age?"
+  </div>
+
+  <h3>Hero CTA Block</h3>
+  <div class="cta-block">
+    <div class="cta-prompt">Spots fill fast. Call <a href="tel:3092913292">309-291-3292</a> to register — <strong>weekly and full-summer pricing available until May 30.</strong></div>
+    <div class="cta-secondary">Have a Question? We'd love to hear from you.</div>
+    <div class="trust-bar">
+      <span class="trust-badge">Ages 3–11</span>
+      <span class="trust-badge">June 1–July 31</span>
+      <span class="trust-badge">Mon–Fri, 8:30 AM–12:00 PM</span>
+      <span class="trust-badge">Small Groups</span>
+      <span class="trust-badge">Credentialed Staff</span>
+    </div>
+  </div>
+
+  <div class="photo-dir">
+    <div class="photo-dir-label">📸 Photo Direction — Hero</div>
+    A wide, sun-drenched shot of children outdoors — running, playing, or engaged in a group activity. Multiple ages visible (a young child alongside an older one). Joy, movement, and summer energy. This photo must communicate the season: warm, bright, alive.
+  </div>
+</div>
+
+<!-- ════════════════════════════ SECTION 2: WHAT CAMP PLAY IS ════════════════════════════ -->
+<div class="section section-even" id="s2">
+  <div class="section-number">Section 02</div>
+  <h2>What Camp Play Is</h2>
+
+  <div class="h2-label">Section Headline (H2)</div>
+  <div class="copy-headline-h2">A Perfect Blend of Structure and Freedom</div>
+
+  <p class="copy-body">Camp Play isn't daycare with a summer label. It's an intentionally designed program where children spend their mornings exploring, creating, experimenting, and playing — the same way they would during Spark's school year, but with the energy and spirit of summer woven through everything.</p>
+
+  <p class="copy-body">Every day, your child moves through a mix of hands-on activities designed for their age group: science experiments, art projects, cooking challenges, LEGO building, dramatic play, and outdoor games. The activities rotate. The groups stay small. And the adults in the room are the same credentialed teachers and staff who lead Spark's year-round programs — not seasonal hires filling seats.</p>
+
+  <p class="copy-body">Camp runs Monday through Friday, 8:30 AM to 12:00 PM. Your child arrives, dives into a morning packed with things they'll want to tell you about at lunch, and goes home ready for an afternoon nap or a backyard adventure.</p>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    The "not daycare with a summer label" line is a structural cousin to the "not a daycare" positioning pillar that governs the preschool pages. It serves the same function here: immediate differentiation from chain summer programs and rec-department day camps that warehouse kids. The credentialed staff callout addresses the most common summer camp trust concern (who is actually watching my child?).
+  </div>
+</div>
+
+<!-- ════════════════════════════ SECTION 3: AGE GROUPS ════════════════════════════ -->
+<div class="section section-odd" id="s3">
+  <div class="section-number">Section 03</div>
+  <h2>Age Groups</h2>
+
+  <div class="h2-label">Section Headline (H2)</div>
+  <div class="copy-headline-h2">Four Groups. One Camp. Every Child in the Right Place.</div>
+
+  <p class="copy-body">Camp Play serves children ages 3 through 11, divided into four age-based groups so every activity, every interaction, and every expectation is matched to your child's developmental stage.</p>
+
+  <div class="table-scroll">
+    <table class="styled-table">
+      <thead>
+        <tr><th>Age Group</th><th>Ages</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Little Explorers</strong></td><td>3 &amp; 4</td></tr>
+        <tr><td><strong>Adventure Builders</strong></td><td>5 &amp; 6</td></tr>
+        <tr><td><strong>Trailblazers</strong></td><td>7 &amp; 8</td></tr>
+        <tr><td><strong>Summit Squad</strong></td><td>9–11</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="flag">
+    <div class="flag-label">⚠️ Placeholder — Age Group Names</div>
+    The names above (Little Explorers, Adventure Builders, Trailblazers, Summit Squad) are suggestions. Dr. Peterson may have existing or preferred group names from previous Camp Play sessions. Please confirm or replace.
+  </div>
+
+  <p class="copy-body">Your three-year-old isn't in a group with a ten-year-old. Your nine-year-old isn't doing toddler activities. Each group has its own activity plan, its own energy, and its own staff — all under the same Camp Play umbrella.</p>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    Naming the age groups (rather than just listing numbers) transforms the program from abstract to personal. A parent of a 7-year-old immediately sees "Trailblazers" and thinks: <em>that's my kid's group.</em> It also addresses the most common objection for a 3–11 age range program: "Won't my little one get lost among the big kids?" The answer — four distinct groups — is structural, not just verbal.
+  </div>
+</div>
+
+<!-- ════════════════════════════ SECTION 4: 2026 DETAILS ════════════════════════════ -->
+<div class="section section-even" id="s4">
+  <div class="section-number">Section 04</div>
+  <h2>Summer 2026 Details</h2>
+
+  <div class="h2-label">Section Headline (H2)</div>
+  <div class="copy-headline-h2">Camp Play 2026 — Everything You Need to Know</div>
+
+  <div class="flag">
+    <div class="flag-label">⚠️ Updateable Content Block</div>
+    Update the dates, pricing, and deposit details annually. The rest of the page (what Camp Play is, age groups, value framing) is designed to be perennial.
+  </div>
+
+  <div class="table-scroll">
+    <table class="styled-table">
+      <thead>
+        <tr><th>Detail</th><th>Information</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Dates</strong></td><td>June 1 – July 31, 2026</td></tr>
+        <tr><td><strong>Week Off</strong></td><td>June 29 – July 3 (no camp this week)</td></tr>
+        <tr><td><strong>Total Duration</strong></td><td>8 weeks · 40 camp days</td></tr>
+        <tr><td><strong>Daily Schedule</strong></td><td>Monday–Friday, 8:30 AM – 12:00 PM</td></tr>
+        <tr><td><strong>Ages</strong></td><td>3–11 (grouped by age)</td></tr>
+        <tr><td><strong>Activities</strong></td><td>Science · Art · Cooking · LEGOs · Dramatic Play · Outdoor Games</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="h2-label">Pricing</div>
+  <div class="table-scroll">
+    <table class="styled-table">
+      <thead>
+        <tr><th>Option</th><th>Price</th><th>Details</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Day Rate</strong></td><td>$50/day</td><td>Available any time, no commitment</td></tr>
+        <tr><td><strong>Weekly Rate</strong></td><td>$225/week</td><td>$250 non-refundable deposit required (applies toward tuition)</td></tr>
+        <tr><td><strong>Full Summer</strong></td><td>$1,500 for all 8 weeks</td><td>$250 non-refundable deposit required (applies toward tuition)</td></tr>
+        <tr><td><strong>Sibling Discount</strong></td><td>10% off</td><td>Applied to 2nd child and beyond</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="flag">
+    <div class="flag-label">⚠️ Important — May 30 Pricing Deadline</div>
+    <p style="margin-bottom:0.5rem;">Weekly and full-summer pricing are available through May 30, 2026 — or until spots fill, whichever comes first. After May 30, all registrations are at the day rate only.</p>
+    <p>This is not a sale. It's how Camp Play enrollment works: families who commit early get the best rate. Families who register later still get the same great camp — just at the per-day price.</p>
+  </div>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    The pricing deadline is presented as a practical enrollment reality, not a scarcity tactic. "This is not a sale" is an important tone-setter — it distinguishes Spark's approach from countdown-timer marketing. The full-summer savings ($500 compared to day-rate pricing for 40 days) should be obvious to any parent doing the math, but the copy doesn't need to spell it out. Intelligent parents appreciate being trusted to do arithmetic.
+  </div>
+
+  <div class="h2-label">Full-Summer Value</div>
+  <p class="copy-body">Forty mornings. Eight weeks. At the full-summer rate of $1,500, that's $37.50 per morning of play-based, small-group, credentialed-staff summer programming. Compare that to any alternative that covers the same hours, ages, and quality of instruction.</p>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    The per-morning cost reframe ($37.50) is included as a value anchor. Parents evaluating summer options often compare on weekly or total cost — reframing to a per-session number makes the investment tangible and competitive.
+  </div>
+</div>
+
+<!-- ════════════════════════════ SECTION 5: WHAT MAKES CAMP PLAY DIFFERENT ════════════════════════════ -->
+<div class="section section-odd" id="s5">
+  <div class="section-number">Section 05</div>
+  <h2>What Makes Camp Play Different</h2>
+
+  <div class="h2-label">Section Headline (H2)</div>
+  <div class="copy-headline-h2">Not Every Summer Camp Is Built the Same</div>
+
+  <p class="copy-body"><strong>Small groups.</strong> Camp Play maintains the same small-group philosophy as Spark's school-year programs. Your child isn't one of fifty kids in a gymnasium. They're in a group matched to their age, with adults who know their name.</p>
+
+  <p class="copy-body"><strong>Credentialed staff.</strong> The people leading Camp Play are the same qualified, credentialed teachers and staff who run Spark Academy during the school year. This isn't a summer job for college students — it's an extension of the school your family already trusts (or is about to discover).</p>
+
+  <p class="copy-body"><strong>Play with purpose.</strong> Every activity is designed — not improvised. The science experiments, the art projects, the cooking challenges — they're chosen because they build something specific: curiosity, confidence, collaboration, and the kind of skills children carry into the school year ahead.</p>
+
+  <p class="copy-body"><strong>Led by Dr. Michelle Peterson, Ed.D.</strong> Camp Play operates under the same doctoral-level oversight as every other Spark program. Dr. Peterson designed the program structure, selected the activity framework, and leads the team. That continuity of quality is something most summer camps simply cannot offer.</p>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    This section concentrates the school-centric proof layer. By this point on the page, the parent has been immersed in child-centric aspiration (hero, activities, age groups). Now they need reasons to trust. The four differentiators here are all verifiable — small groups, credentialed staff, intentional design, doctoral leadership — and each one separates Camp Play from chain summer programs and recreation-department offerings.
+  </div>
+</div>
+
+<!-- ════════════════════════════ SECTION 6: TESTIMONIALS ════════════════════════════ -->
+<div class="section section-even" id="s6">
+  <div class="section-number">Section 06</div>
+  <h2>What Parents Are Saying</h2>
+
+  <div class="h2-label">Section Headline (H2)</div>
+  <div class="copy-headline-h2">From Camp Play Families</div>
+
+  <div class="testimonial">
+    <p><strong>Testimonials Coming Soon</strong> — This section will feature 2–3 attributed parent quotes specific to Camp Play — ideally addressing the quality of activities, the child's excitement to attend each morning, or the staff relationships. Until testimonials are available, this placeholder remains.</p>
+  </div>
+</div>
+
+<!-- ════════════════════════════ SECTION 7: HOW TO REGISTER ════════════════════════════ -->
+<div class="section section-odd" id="s7">
+  <div class="section-number">Section 07</div>
+  <h2>How to Register</h2>
+
+  <div class="h2-label">Section Headline (H2)</div>
+  <div class="copy-headline-h2">Secure Your Child's Spot — Before May 30</div>
+
+  <p class="copy-body">Registration for Camp Play is by phone. Call <a href="tel:3092913292" style="color:var(--mist-teal);font-weight:700;text-decoration:none;">309-291-3292</a> and our team will help you choose the right option — day, weekly, or full summer — and answer any questions about age groups, activities, or scheduling.</p>
+
+  <p class="copy-body"><strong>Remember:</strong> Weekly and full-summer pricing are available through May 30, 2026, or until spots fill. After that date, all registrations are at the day rate ($50/day). If you know your child is coming to Camp Play this summer, locking in your rate now is the simplest decision you'll make all spring.</p>
+
+  <div class="cta-block">
+    <a class="cta-primary" href="tel:3092913292">Call to Register — 309-291-3292</a>
+    <div class="cta-secondary">Have a Question? We'd love to hear from you.</div>
+    <div class="trust-bar">
+      <span class="trust-badge">Ages 3–11</span>
+      <span class="trust-badge">Small Groups</span>
+      <span class="trust-badge">Credentialed Staff</span>
+      <span class="trust-badge">Led by Dr. Michelle Peterson, Ed.D.</span>
+    </div>
+  </div>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    The urgency mechanic is restated here — but the final sentence reframes it as simplicity, not pressure. "The simplest decision you'll make all spring" is warm and confident, not pushy. It trusts the parent to recognize the value and act on their own timeline.
+  </div>
+</div>
+
+<!-- ════════════════════════════ SECTION 8: FAQ ════════════════════════════ -->
+<div class="section section-even" id="s8">
+  <div class="section-number">Section 08</div>
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="h2-label">Section Headline (H2)</div>
+  <div class="copy-headline-h2">Questions About Camp Play</div>
+
+  <div class="faq-item">
+    <div class="faq-q">What ages can attend Camp Play?</div>
+    <div class="faq-a">Camp Play is open to children ages 3 through 11. Children are divided into four age-based groups (3/4, 5/6, 7/8, and 9–11) so every activity and interaction is matched to your child's developmental stage.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">What are the hours?</div>
+    <div class="faq-a">Camp runs Monday through Friday, 8:30 AM to 12:00 PM. Drop-off begins at 8:30 and pickup is at noon.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Do I have to commit to the full summer?</div>
+    <div class="faq-a">No. You can register for individual days, individual weeks, or the full eight-week session. The pricing structure rewards longer commitments — but the day rate is always available for families who need flexibility.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">What happens during the week of June 29 – July 3?</div>
+    <div class="faq-a">Camp is closed that week. Camp Play runs for eight total weeks between June 1 and July 31, with one week off for the Fourth of July holiday.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Is there a sibling discount?</div>
+    <div class="faq-a">Yes. Families with more than one child enrolled receive a 10% discount on the second child and beyond.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">What if I register after May 30?</div>
+    <div class="faq-a">After May 30, weekly and full-summer pricing is no longer available. All registrations after that date (or once spots fill, whichever comes first) are at the day rate of $50 per day. Your child still gets the same Camp Play experience — the only difference is the rate.</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════ INTERNAL LINKING MAP ════════════════════════════ -->
+<div class="section section-odd" id="links">
+  <div class="section-number">Section 09</div>
+  <h2>Internal Linking Map</h2>
+
+  <div class="table-scroll">
+    <table class="styled-table">
+      <thead>
+        <tr><th>Link Target</th><th>URL</th><th>Where on Page</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Call to Register</td><td>tel:3092913292</td><td>Hero CTA, Section 7, bottom CTA</td></tr>
+        <tr><td>Programs Overview</td><td>/programs/</td><td>Breadcrumb navigation</td></tr>
+        <tr><td>Dr. Michelle Peterson</td><td>/dr-michelle-peterson/</td><td>Section 5 (credential mention), trust line</td></tr>
+        <tr><td>Blog: Camp Play seasonal posts</td><td>/blog/</td><td>Contextual links from summer content</td></tr>
+        <tr><td>FAQ</td><td>/faq/</td><td>Cross-link for general school questions</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ════════════════════════════ PHOTO DIRECTION SUMMARY ════════════════════════════ -->
+<div class="section section-even" id="photos" style="background:var(--whisper-sage);">
+  <div class="section-number">Section 10</div>
+  <h2>Photo Direction Summary</h2>
+
+  <div class="shot-card">
+    <span class="shot-card-number">Shot 01</span>
+    <h4>Hero</h4>
+    <p>Wide outdoor shot — multiple children, multiple ages, summer energy. Sun, movement, joy.</p>
+  </div>
+
+  <div class="shot-card">
+    <span class="shot-card-number">Shot 02</span>
+    <h4>What Camp Play Is</h4>
+    <p>3–4 activity photos: science experiment, art project, outdoor games, cooking or LEGOs. Children active and engaged.</p>
+  </div>
+
+  <div class="shot-card">
+    <span class="shot-card-number">Shot 03</span>
+    <h4>Age Groups</h4>
+    <p>Optional: one photo per age group showing age-appropriate activity. Helps parents immediately see where their child fits.</p>
+  </div>
+
+  <div class="shot-card">
+    <span class="shot-card-number">Shot 04</span>
+    <h4>Registration / Urgency</h4>
+    <p>No photo needed — clean layout, strong CTA. The urgency section relies on copy, not imagery.</p>
+  </div>
+</div>
+
+<!-- ════════════════════════════ FOOTER ════════════════════════════ -->
+<div class="doc-footer">
+  <strong>Spark Academy</strong> — Website Rebuild Project<br>
+  Phase 3A: Summer Camp Copy Deck • March 2026<br>
+  Confidential — For Internal Review Only
+</div>
+
+</body>
+</html>

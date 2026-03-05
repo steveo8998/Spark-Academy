@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spark Academy — Discovery Station Copy Deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --mist-teal: #3D6B62;
+  --misty-sage: #9BB8AD;
+  --antique-gold: #C49826;
+  --cloud-white: #FBFAF8;
+  --whisper-sage: #EFF5F2;
+  --body-text: #2E2E2E;
+  --light-sage: #D8E8DE;
+  --warm-gold-bg: #FBF6EC;
+  --flag-red: #C44;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--body-text);
+  line-height: 1.65;
+  background: var(--cloud-white);
+}
+
+/* ── COVER ── */
+.cover {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  background: linear-gradient(165deg, var(--whisper-sage) 0%, var(--cloud-white) 40%, var(--cloud-white) 100%);
+  position: relative;
+  overflow: hidden;
+}
+.cover::before {
+  content: '';
+  position: absolute;
+  width: 320px; height: 320px;
+  border-radius: 50%;
+  background: var(--misty-sage);
+  opacity: 0.12;
+  top: -80px; right: -80px;
+}
+.cover::after {
+  content: '';
+  position: absolute;
+  width: 240px; height: 240px;
+  border-radius: 50%;
+  background: var(--antique-gold);
+  opacity: 0.08;
+  bottom: -60px; left: -60px;
+}
+.cover-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--antique-gold);
+  border: 1.5px solid var(--antique-gold);
+  border-radius: 100px;
+  padding: 0.3rem 1.1rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+.cover h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--mist-teal);
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+  position: relative;
+}
+.cover .subtitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  color: var(--misty-sage);
+  margin-bottom: 2rem;
+  position: relative;
+}
+.cover-meta {
+  font-size: 0.85rem;
+  color: #888;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+.cover-meta strong { color: var(--body-text); }
+.cover-status {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--antique-gold);
+  background: var(--warm-gold-bg);
+  border-radius: 100px;
+  padding: 0.4rem 1.2rem;
+  position: relative;
+}
+
+/* ── TABLE OF CONTENTS ── */
+.toc {
+  background: var(--whisper-sage);
+  padding: 2rem 1.5rem;
+  border-bottom: 2px solid var(--light-sage);
+}
+.toc h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--mist-teal);
+  margin-bottom: 1.25rem;
+}
+.toc-list {
+  list-style: none;
+  counter-reset: toc-counter;
+}
+.toc-list li {
+  counter-increment: toc-counter;
+  border-bottom: 1px solid var(--light-sage);
+}
+.toc-list li a {
+  display: block;
+  padding: 0.6rem 0 0.6rem 2.5rem;
+  text-decoration: none;
+  color: var(--mist-teal);
+  font-size: 0.9rem;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.2s;
+}
+.toc-list li a:hover { color: var(--antique-gold); }
+.toc-list li a::before {
+  content: counter(toc-counter, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+  color: var(--antique-gold);
+  font-size: 0.85rem;
+}
+
+/* ── PAGE SPECIFICATIONS ── */
+.specs {
+  padding: 2rem 1.5rem;
+  background: var(--cloud-white);
+}
+.specs h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--mist-teal);
+  margin-bottom: 1.25rem;
+}
+.spec-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.1rem;
+}
+.spec-row {
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--light-sage);
+}
+.spec-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--misty-sage);
+  margin-bottom: 0.15rem;
+}
+.spec-value {
+  font-size: 0.9rem;
+  color: var(--body-text);
+  line-height: 1.5;
+}
+
+/* ── SECTIONS ── */
+.section {
+  padding: 2rem 1.5rem;
+  border-bottom: 3px solid var(--whisper-sage);
+}
+.section-odd {
+  background: linear-gradient(180deg, var(--cloud-white) 0%, var(--whisper-sage) 100%);
+}
+.section-even {
+  background: var(--cloud-white);
+}
+.section-number {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--antique-gold);
+  margin-bottom: 0.5rem;
+}
+.section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--mist-teal);
+  margin-bottom: 1.25rem;
+  line-height: 1.3;
+}
+
+/* ── COPY ELEMENTS ── */
+.copy-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--mist-teal);
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--antique-gold);
+}
+.copy-subheadline {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: #555;
+  line-height: 1.65;
+  margin-bottom: 1.25rem;
+}
+p.copy-body {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  margin-bottom: 1rem;
+  color: var(--body-text);
+}
+.copy-body strong { font-weight: 700; }
+.h2-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--misty-sage);
+  margin-bottom: 0.25rem;
+}
+
+.section-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--mist-teal);
+  line-height: 1.3;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--antique-gold);
+}
+
+.bold-callout {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--mist-teal);
+  background: var(--whisper-sage);
+  padding: 0.85rem 1rem;
+  border-radius: 8px;
+  border-left: 4px solid var(--mist-teal);
+  margin: 1.25rem 0;
+  line-height: 1.5;
+}
+
+/* ── NOTES, FLAGS, PHOTO DIRECTIONS ── */
+.note {
+  border-left: 3px solid var(--antique-gold);
+  background: var(--warm-gold-bg);
+  padding: 0.85rem 1rem;
+  margin: 1rem 0;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: #555;
+}
+.note-label {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--antique-gold);
+  margin-bottom: 0.35rem;
+}
+.photo-dir {
+  border-left: 3px solid var(--mist-teal);
+  background: var(--whisper-sage);
+  padding: 0.85rem 1rem;
+  margin: 1rem 0;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: #444;
+}
+.photo-dir-label {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--mist-teal);
+  margin-bottom: 0.35rem;
+}
+.flag {
+  border-left: 3px solid var(--flag-red);
+  background: #FFF0F0;
+  padding: 0.85rem 1rem;
+  margin: 1rem 0;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: #555;
+}
+.flag-label {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--flag-red);
+  margin-bottom: 0.35rem;
+}
+
+/* ── CTA BLOCKS ── */
+.cta-block {
+  margin: 1.25rem 0;
+  padding: 1rem;
+  background: linear-gradient(135deg, var(--whisper-sage) 0%, var(--cloud-white) 100%);
+  border-radius: 10px;
+  border: 1.5px solid var(--light-sage);
+}
+.cta-primary {
+  display: inline-block;
+  background: var(--antique-gold);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 0.6rem 1.5rem;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  text-decoration: none;
+}
+.cta-secondary {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--mist-teal);
+  font-weight: 500;
+  margin-top: 0.35rem;
+}
+
+/* ── TRUST BAR ── */
+.trust-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.75rem 0;
+}
+.trust-badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--mist-teal);
+  background: var(--whisper-sage);
+  padding: 0.35rem 0.75rem;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+
+/* ── INTERNAL LINKS ── */
+.int-link {
+  font-size: 0.82rem;
+  color: var(--antique-gold);
+  font-weight: 500;
+  margin: 0.5rem 0;
+}
+.int-link::before { content: '→ '; font-weight: 700; }
+
+/* ── TESTIMONIAL PLACEHOLDER ── */
+.testimonial {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin: 1rem 0;
+  border: 1.5px solid var(--light-sage);
+  position: relative;
+}
+.testimonial::before {
+  content: '\201C';
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+  color: var(--misty-sage);
+  opacity: 0.3;
+  position: absolute;
+  top: 0;
+  left: 0.75rem;
+  line-height: 1;
+}
+.testimonial p {
+  font-size: 0.9rem;
+  color: #888;
+  font-style: italic;
+  padding-left: 2rem;
+}
+
+/* ── TABLES ── */
+.table-wrap {
+  overflow-x: auto;
+  margin: 1rem 0;
+  -webkit-overflow-scrolling: touch;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--light-sage);
+  font-size: 0.85rem;
+}
+table thead th {
+  background: var(--whisper-sage);
+  color: var(--mist-teal);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.65rem 0.75rem;
+  text-align: left;
+}
+table tbody td {
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid #f0f0ed;
+  vertical-align: top;
+  line-height: 1.55;
+}
+table tbody tr:nth-child(even) td { background: #FDFCFA; }
+table tbody td strong { font-weight: 700; color: var(--mist-teal); }
+
+/* ── FAQ ── */
+.faq-item {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--light-sage);
+}
+.faq-item:last-child { border-bottom: none; }
+.faq-q {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--mist-teal);
+  margin-bottom: 0.4rem;
+}
+.faq-a {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--body-text);
+}
+
+/* ── PHOTO SUMMARY CARDS ── */
+.shot-cards { display: grid; gap: 0.75rem; margin-top: 1rem; }
+.shot-card {
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid var(--light-sage);
+  padding: 1rem;
+}
+.shot-card-number {
+  display: inline-block;
+  font-size: 0.55rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: var(--mist-teal);
+  color: #fff;
+  padding: 0.2rem 0.6rem;
+  border-radius: 100px;
+  margin-bottom: 0.5rem;
+}
+.shot-card h4 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--mist-teal);
+  margin-bottom: 0.3rem;
+}
+.shot-card p {
+  font-size: 0.8rem;
+  color: #555;
+  line-height: 1.55;
+}
+
+/* ── FOOTER ── */
+.doc-footer {
+  background: var(--mist-teal);
+  color: #fff;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  font-size: 0.8rem;
+  line-height: 1.8;
+}
+.doc-footer strong { font-weight: 700; }
+
+/* ── RESPONSIVE ── */
+@media (min-width: 600px) {
+  .cover h1 { font-size: 2.8rem; }
+  .section { padding: 3rem 2.5rem; }
+  .specs { padding: 2rem 2.5rem; }
+  .toc { padding: 2rem 2.5rem; }
+  .copy-headline { font-size: 2rem; }
+  .section-headline { font-size: 1.5rem; }
+  .spec-grid { grid-template-columns: 1fr 1fr; gap: 0 2rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════════ COVER ════════ -->
+<div class="cover">
+  <div class="cover-badge">Phase 3A Deliverable</div>
+  <h1>Discovery Station Copy Deck</h1>
+  <div class="subtitle">Spark Academy Website Rebuild</div>
+  <div class="cover-meta">
+    Prepared for <strong>Dr. Michelle Peterson, Ed.D.</strong><br>
+    Founder &amp; Executive Director, Spark Academy<br><br>
+    Prepared by <strong>Stephen Odanovich</strong><br>
+    Internet Marketing Specialist<br>
+    March 2026
+  </div>
+  <div class="cover-status">Draft — Pending Dr. Peterson's Review</div>
+</div>
+
+<!-- ════════ TABLE OF CONTENTS ════════ -->
+<div class="toc">
+  <h2>What's Inside</h2>
+  <ol class="toc-list">
+    <li><a href="#specs">Page Specifications</a></li>
+    <li><a href="#s1">Hero (Above the Fold)</a></li>
+    <li><a href="#s2">What Discovery Station Is</a></li>
+    <li><a href="#s3">The Schedule</a></li>
+    <li><a href="#s4">What's Happening This Semester</a></li>
+    <li><a href="#s5">The Part That Changes Everything</a></li>
+    <li><a href="#s6">What Parents Are Saying</a></li>
+    <li><a href="#s7">Pricing &amp; Enrollment</a></li>
+    <li><a href="#s8">Frequently Asked Questions</a></li>
+    <li><a href="#links">Internal Linking Map</a></li>
+    <li><a href="#photos">Photo Direction Summary</a></li>
+  </ol>
+</div>
+
+<!-- ════════ PAGE SPECIFICATIONS ════════ -->
+<div class="specs" id="specs">
+  <h2>Page Specifications</h2>
+  <div class="spec-grid">
+    <div class="spec-row">
+      <div class="spec-label">Page</div>
+      <div class="spec-value">Discovery Station</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">URL</div>
+      <div class="spec-value">/homeschool-enrichment/</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Primary Keyword</div>
+      <div class="spec-value">homeschool enrichment programs Morton IL</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Secondary Keywords</div>
+      <div class="spec-value">homeschool classes Peoria IL; enrichment programs for homeschoolers; drop-off homeschool enrichment Illinois</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Long-Tail Variations</div>
+      <div class="spec-value">homeschool enrichment near me; homeschool socialization programs Central Illinois; homeschool drop-off classes Peoria area</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Search Intent</div>
+      <div class="spec-value">Commercial / Informational — homeschool parent seeking supplemental enrichment and socialization for their child</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Funnel Stage</div>
+      <div class="spec-value">Top-to-Mid Funnel — parent exploring options, may not know Spark exists yet</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Audience</div>
+      <div class="spec-value">Homeschool families with children ages 5–11 in the greater Peoria metro</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Messaging Lens</div>
+      <div class="spec-value">Child-Centric — 80% child-centric / 20% school-centric</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Primary CTA</div>
+      <div class="spec-value">Call to Register — 309-291-3292</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Secondary CTA</div>
+      <div class="spec-value">Have a Question? We'd love to hear from you.</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Meta Title (≤60 chars)</div>
+      <div class="spec-value">Homeschool Enrichment Morton IL | Discovery Station</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Meta Description (≤155 chars)</div>
+      <div class="spec-value">Drop-off enrichment classes for homeschool kids ages 5–11 in Morton, IL. Credentialed teachers. No co-op hours. Call 309-291-3292 to register.</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Schema Markup</div>
+      <div class="spec-value">EducationalOccupationalProgram + FAQPage + BreadcrumbList</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Data Layer</div>
+      <div class="spec-value">page_type: program | funnel: parent | content_category: program | has_form: false | page_template: program-page</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Word Count Target</div>
+      <div class="spec-value">1,400–1,800 words</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Internal Links From</div>
+      <div class="spec-value">Homepage program tile, /programs/ overview, blog Homeschool Hub series</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ STRATEGIC NOTE (post-spec) ═══ -->
+<div style="padding: 1.5rem; background: var(--cloud-white);">
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    The homeschool parent reading this page carries a specific kind of exhaustion. They chose to educate their child at home — and they love it — but they also know what's missing: socialization, peer interaction, and the chance for their child to be in someone else's classroom learning something new alongside other kids. The two questions this page must answer in the first scroll are: (1) "Does my child get to stay without me?" and (2) "Will my child make friends here?" The drop-off format is the headline differentiator in the homeschool enrichment world, where co-ops requiring mandatory parent participation are the norm. The social component — end-of-semester parties, themed spirit weeks, friendships built week after week — is the emotional hook. The credentialed teachers and Dr. Peterson's doctoral leadership are the trust layer that closes the deal. This page must also be built as a flexible content container: classes rotate by semester, and the page structure must allow Dr. Peterson to swap in new class listings without a full redesign.
+  </div>
+</div>
+
+<!-- ════════ SECTION 1: HERO ════════ -->
+<div class="section section-odd" id="s1">
+  <div class="section-number">Section 01</div>
+  <h2>Hero (Above the Fold)</h2>
+
+  <div class="h2-label">H1 — Page Title</div>
+  <div class="copy-headline">Where Homeschool Kids Explore, Discover, and Make Friends They'll Keep</div>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    Pure child-centric lens. "Explore" and "discover" are active, child-as-protagonist verbs. "Make friends they'll keep" is the emotional promise that addresses the socialization concern homeschool parents carry — often unspoken but always present. This H1 passes the Flip Test: no competitor could say this identically, because the combination of enrichment + genuine social community is Spark's specific differentiator.
+  </div>
+
+  <div class="h2-label">Hero Subheadline</div>
+  <p class="copy-subheadline">Discovery Station is a drop-off enrichment program for homeschool children ages 5–11. Credentialed teachers. No co-op hours. No mandatory volunteer shifts. Just your child — learning, creating, and building friendships in a space designed for exactly this.</p>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    The subheadline front-loads the three things homeschool parents most urgently need to know: (1) drop-off, (2) credentialed teachers, and (3) no co-op hours. The word "just" before "your child" is intentional — it releases the tension homeschool parents feel about programs that demand parent labor in exchange for their child's access.
+  </div>
+
+  <div class="h2-label">Hero CTA Block</div>
+  <div class="cta-block">
+    <span class="cta-primary">Call to Register — 309-291-3292</span>
+    <span class="cta-secondary">Have a Question? We'd love to hear from you.</span>
+    <div class="trust-bar">
+      <span class="trust-badge">Ages 5–11</span>
+      <span class="trust-badge">Tuesdays &amp; Thursdays</span>
+      <span class="trust-badge">Credentialed Teachers</span>
+      <span class="trust-badge">Led by Dr. Michelle Peterson, Ed.D.</span>
+    </div>
+  </div>
+
+  <div class="photo-dir">
+    <div class="photo-dir-label">📸 Photo Direction — Hero</div>
+    A group of school-age children (ages 7–9 range) actively engaged in a hands-on project together — cooking, building, or a group art activity. The children are laughing or focused, interacting with each other — the image must communicate friendship and collaboration, not isolated activity. Adults in the background, present but not dominating. Natural light, warm tones.
+  </div>
+</div>
+
+<!-- ════════ SECTION 2: WHAT DISCOVERY STATION IS ════════ -->
+<div class="section section-even" id="s2">
+  <div class="section-number">Section 02</div>
+  <h2>What Discovery Station Is</h2>
+
+  <div class="h2-label">Section Headline (H2)</div>
+  <div class="section-headline">Enrichment They Can't Get at the Kitchen Table</div>
+
+  <p class="copy-body">Discovery Station is Spark Academy's semester-based enrichment program built specifically for homeschool families. It's not core curriculum — and it's not meant to be. It's the part of your child's education that thrives in the company of other kids: creative exploration, hands-on projects, collaborative learning, and the kind of friendships that only form when children show up to the same place, week after week, with the same group of peers.</p>
+
+  <p class="copy-body">Classes run on Tuesdays and Thursdays, with three 50-minute sessions per day. Age groups are separated across time slots so your child is always learning alongside peers at a similar stage. You can sign up for one class or all six — some families do all three back-to-back on a single day.</p>
+
+  <p class="copy-body">And here's the part homeschool parents always ask first:</p>
+
+  <div class="bold-callout">You drop your child off. You do not stay.</div>
+
+  <p class="copy-body">This is not a co-op. There are no mandatory volunteer hours. No assigned class duties. Parents are welcome to stay if they'd like — but they are never required to. Your child is in the care of qualified, credentialed teachers the entire time.</p>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    Dr. Peterson was explicit about leading with the drop-off distinction: "In homeschool world, that's a big differentiator. Drop-in means the parents do not stick around. People want to know that up front." The formatting here — bold, standalone, declarative — mirrors the urgency with which homeschool parents need this answer. It's the single most important sentence on the page below the H1.
+  </div>
+</div>
+
+<!-- ════════ SECTION 3: THE SCHEDULE ════════ -->
+<div class="section section-odd" id="s3">
+  <div class="section-number">Section 03</div>
+  <h2>The Schedule</h2>
+
+  <div class="h2-label">Section Headline (H2)</div>
+  <div class="section-headline">Three Classes Per Day. Tuesdays and Thursdays. Your Choice.</div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Time Slot</th>
+          <th>Day</th>
+          <th>Duration</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1:00–1:50 PM</td>
+          <td>Tuesday or Thursday</td>
+          <td>50 minutes</td>
+        </tr>
+        <tr>
+          <td>2:00–2:50 PM</td>
+          <td>Tuesday or Thursday</td>
+          <td>50 minutes</td>
+        </tr>
+        <tr>
+          <td>3:00–3:50 PM</td>
+          <td>Tuesday or Thursday</td>
+          <td>50 minutes</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="copy-body">That's six total class slots per week across two days. Age groups are separated across time slots: Ages 5 &amp; 6 / Ages 7 &amp; 8 / Ages 9–11. Your child is always in a group matched to their developmental stage.</p>
+
+  <p class="copy-body"><strong>Enrollment is flexible:</strong> Sign up for one class, three classes on one day, or all six sessions across both days. Many families do all three back-to-back on Tuesday — their child gets a full afternoon of enrichment, and Tuesday becomes the highlight of the week.</p>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    The scheduling flexibility is a quiet conversion asset. Homeschool families have wildly different routines — some can commit to two afternoons a week, some only one. Offering mix-and-match enrollment removes the friction of an all-or-nothing commitment.
+  </div>
+</div>
+
+<!-- ════════ SECTION 4: CURRENT SEMESTER ════════ -->
+<div class="section section-even" id="s4">
+  <div class="section-number">Section 04</div>
+  <h2>What's Happening This Semester</h2>
+
+  <div class="h2-label">Section Headline (H2)</div>
+  <div class="section-headline">Spring 2026 Class Offerings</div>
+
+  <div class="flag">
+    <div class="flag-label">⚠️ Updateable Content Block</div>
+    This section is designed to be refreshed each semester by Dr. Peterson or her team. The structure (class name, day, brief description) should remain consistent. Only the specific class listings change.
+  </div>
+
+  <p class="copy-body" style="font-weight: 700; color: var(--mist-teal); margin-top: 1rem;">Tuesdays</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Class</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Global Passport</strong></td>
+          <td>Travel the world without leaving Morton. Each week, your child explores a different country's culture, traditions, food, and geography through hands-on activities and collaborative projects.</td>
+        </tr>
+        <tr>
+          <td><strong>Theater Performance</strong></td>
+          <td>Storytelling, character development, stage presence, and the confidence to perform. This semester's students are building toward a live production.</td>
+        </tr>
+        <tr>
+          <td><strong>Cooking</strong></td>
+          <td>Real recipes. Real skills. Children measure, mix, follow instructions, and eat what they make — building math, reading, and fine motor skills along the way.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="copy-body" style="font-weight: 700; color: var(--mist-teal); margin-top: 1.25rem;">Thursdays</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Class</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Playroom</strong></td>
+          <td>Open-ended, student-driven exploration in Spark's signature Developmental Playroom — a monthly-rotating environment designed to spark creativity and problem-solving.</td>
+        </tr>
+        <tr>
+          <td><strong>Myth Busters</strong></td>
+          <td>Can you really cook an egg on the sidewalk? Science-meets-curiosity experiments that teach the scientific method through the questions kids are already asking.</td>
+        </tr>
+        <tr>
+          <td><strong>Storybook Creations</strong></td>
+          <td>Children write, illustrate, and bind their own books — developing literacy, fine motor skills, and creative storytelling in a way that worksheets never could.</td>
+        </tr>
+        <tr>
+          <td><strong>Game Club</strong></td>
+          <td>Strategy, teamwork, turn-taking, and losing gracefully. Board games and collaborative challenges that build executive function and social skills.</td>
+        </tr>
+        <tr>
+          <td><strong>Famous Plays in History</strong></td>
+          <td>History comes alive through dramatic reenactment. Children learn about pivotal moments by performing them — building comprehension, empathy, and public speaking skills.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="copy-body" style="margin-top: 1rem;"><strong>Current Instructors:</strong> Ms. Kyleigh · Ms. Cristi · Ms. Michelle · Ms. Angel · Ms. Amy · Gigi — all qualified, credentialed teachers.</p>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    The class descriptions are written to do double duty: they communicate the subject (what the child will do) and the developmental purpose (what the child will build). This matters because the homeschool parent isn't buying entertainment — they're buying enrichment. Each description answers "what will my child gain?" not just "what will they do?" The instructor names are listed because trust in the people is paramount for a parent leaving their child.
+  </div>
+</div>
+
+<!-- ════════ SECTION 5: SOCIAL / COMMUNITY ════════ -->
+<div class="section section-odd" id="s5">
+  <div class="section-number">Section 05</div>
+  <h2>The Part That Changes Everything</h2>
+
+  <div class="h2-label">Section Headline (H2)</div>
+  <div class="section-headline">They Won't Just Learn Here. They'll Belong Here.</div>
+
+  <p class="copy-body">Discovery Station isn't just classes. It's a community.</p>
+
+  <p class="copy-body">Every semester ends with a party — and for a homeschool child, that's not a small thing. When your child is educated at home, the opportunities to celebrate with peers, to have a group of friends who know them, to experience the kind of shared joy that comes from finishing something together — those opportunities don't happen automatically.</p>
+
+  <p class="copy-body">At Discovery Station, they do. Your child will walk into the same room every Tuesday, or every Thursday, and see the same faces. They'll build inside jokes. They'll collaborate on projects. They'll celebrate themed spirit weeks — Valentine's Day, Halloween, and everything in between. And at the end of every semester, they'll gather with their friends to mark what they accomplished together.</p>
+
+  <p class="copy-body">That social fabric — the making of friends, the keeping of friends, the celebrating with friends — is woven into every part of this program. Not as an afterthought. As a priority.</p>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    This section draws directly from Dr. Peterson's own words: "When you're homeschooled and you're isolated, there's a social component to it too. It's a way to make friends, have friends, keep friends, celebrate with friends." The repetition of "friends" in the copy mirrors her cadence intentionally. This is the emotional core of the page — the section most likely to convert a parent who was on the fence. It must not be positioned as a footnote. It is the differentiator.
+  </div>
+</div>
+
+<!-- ════════ SECTION 6: TESTIMONIALS ════════ -->
+<div class="section section-even" id="s6">
+  <div class="section-number">Section 06</div>
+  <h2>What Parents Are Saying</h2>
+
+  <div class="h2-label">Section Headline (H2)</div>
+  <div class="section-headline">From Discovery Station Families</div>
+
+  <div class="testimonial">
+    <p><strong>Testimonials Coming Soon</strong> — This section will feature 2–3 attributed parent quotes specific to Discovery Station — ideally addressing the drop-off convenience, the social connections their child has built, or a specific class their child loved. Until testimonials are available, this placeholder remains.</p>
+  </div>
+</div>
+
+<!-- ════════ SECTION 7: PRICING & ENROLLMENT ════════ -->
+<div class="section section-odd" id="s7">
+  <div class="section-number">Section 07</div>
+  <h2>Pricing &amp; Enrollment</h2>
+
+  <div class="h2-label">Section Headline (H2)</div>
+  <div class="section-headline">Transparent Pricing. Flexible Options. No Surprises.</div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Option</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Individual Class</strong> (one class per semester)</td>
+          <td>$180</td>
+        </tr>
+        <tr>
+          <td><strong>Three Classes</strong> (15% discount)</td>
+          <td>$459</td>
+        </tr>
+        <tr>
+          <td><strong>All Six Classes</strong></td>
+          <td>$800</td>
+        </tr>
+        <tr>
+          <td><strong>Sibling Discount</strong></td>
+          <td>10% off for each additional child</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="copy-body"><strong>Payment:</strong> Billed via Brightwheel. Payment due January 15 per semester. Payment plans available on request.</p>
+
+  <p class="copy-body"><strong>No homework.</strong> All learning takes place inside the classroom. When your child leaves Discovery Station, the rest of the afternoon is yours.</p>
+
+  <p class="copy-body"><strong>All-inclusive.</strong> No supply lists, no material fees, no hidden costs. Tuition covers everything.</p>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    "No homework" is a deliberate callout. Homeschool parents are already managing a full curriculum at home — the last thing they want is more assignments from an enrichment program. Naming it explicitly removes a silent objection. The "all-inclusive" line matches every other Spark program page and reinforces the brand-wide message.
+  </div>
+
+  <div class="h2-label" style="margin-top: 1.5rem;">How to Register</div>
+  <p class="copy-body">Registration for Discovery Station is by phone. Call <a href="tel:3092913292" style="color: var(--antique-gold); font-weight: 700; text-decoration: none;">309-291-3292</a> and our registration specialist will walk you through class options, availability, and scheduling.</p>
+
+  <div class="cta-block">
+    <span class="cta-primary">Call to Register — 309-291-3292</span>
+    <span class="cta-secondary">Have a Question? We'd love to hear from you.</span>
+    <div class="trust-bar">
+      <span class="trust-badge">Credentialed Teachers</span>
+      <span class="trust-badge">Drop-Off Program</span>
+      <span class="trust-badge">Led by Dr. Michelle Peterson, Ed.D.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ SECTION 8: FAQ ════════ -->
+<div class="section section-even" id="s8">
+  <div class="section-number">Section 08</div>
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="h2-label">Section Headline (H2)</div>
+  <div class="section-headline">Questions About Discovery Station</div>
+
+  <div class="faq-item">
+    <div class="faq-q">Do I have to stay during class?</div>
+    <div class="faq-a">No. Discovery Station is a drop-off program — your child is in the care of credentialed teachers the entire time. Parents are welcome to stay if they'd like, but it is never required. There are no mandatory volunteer hours and no co-op obligations.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">What ages do you serve?</div>
+    <div class="faq-a">Discovery Station is designed for children ages 5–11. Age groups are separated across time slots so your child is always with peers at a similar developmental stage.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Can my child attend just one class?</div>
+    <div class="faq-a">Absolutely. You can enroll in a single class, three classes on one day, or all six sessions across both days. Many families start with one and add more the following semester.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Do classes change each semester?</div>
+    <div class="faq-a">Yes. Discovery Station classes rotate by semester, so your child can attend year after year and always experience something new. The page you're reading now reflects the current semester's offerings — check back or call us before each new term for the updated lineup.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Is this a co-op?</div>
+    <div class="faq-a">No. Discovery Station is a teacher-led enrichment program, not a co-op. There are no mandatory volunteer hours, no class assignments for parents, and no parent-led instruction requirements. Parents are welcome but never required.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Can my child also attend the After-School Enrichment program?</div>
+    <div class="faq-a">Yes — and some families do exactly that. Discovery Station meets on Tuesday and Thursday afternoons, and our After-School Enrichment program runs on Tuesdays at 4:00 PM. Some homeschool students attend Discovery Station classes and stay for After-School Enrichment on the same day.</div>
+  </div>
+</div>
+
+<!-- ════════ INTERNAL LINKING MAP ════════ -->
+<div class="section section-odd" id="links">
+  <div class="section-number">Internal Links</div>
+  <h2>Internal Linking Map</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Link Target</th>
+          <th>URL</th>
+          <th>Where on Page</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Call to Register</strong></td>
+          <td>tel:3092913292</td>
+          <td>Hero CTA, Section 7 enrollment, bottom CTA</td>
+        </tr>
+        <tr>
+          <td><strong>After-School Enrichment</strong></td>
+          <td>/after-school-programs/</td>
+          <td>FAQ (cross-enrollment question), Section 3 (optional mention)</td>
+        </tr>
+        <tr>
+          <td><strong>Programs Overview</strong></td>
+          <td>/programs/</td>
+          <td>Breadcrumb navigation</td>
+        </tr>
+        <tr>
+          <td><strong>Dr. Michelle Peterson</strong></td>
+          <td>/dr-michelle-peterson/</td>
+          <td>Trust line attribution</td>
+        </tr>
+        <tr>
+          <td><strong>Blog: Homeschool Hub series</strong></td>
+          <td>/blog/</td>
+          <td>Contextual links from enrichment content</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ════════ PHOTO DIRECTION SUMMARY ════════ -->
+<div class="section section-even" id="photos" style="background: var(--whisper-sage);">
+  <div class="section-number">Photo Direction</div>
+  <h2>Photo Direction Summary</h2>
+
+  <div class="shot-cards">
+    <div class="shot-card">
+      <span class="shot-card-number">Shot 01</span>
+      <h4>Hero</h4>
+      <p>Group of school-age children (7–9 range) collaborating on hands-on project. Laughter, interaction, friendship visible. Adults in background.</p>
+    </div>
+    <div class="shot-card">
+      <span class="shot-card-number">Shot 02</span>
+      <h4>Class Offerings</h4>
+      <p>One photo per class if possible — or 3–4 rotating images showing different class types (cooking, theater, science, art). Children active and engaged.</p>
+    </div>
+    <div class="shot-card">
+      <span class="shot-card-number">Shot 03</span>
+      <h4>Social Section</h4>
+      <p>Children together in a celebratory moment — end-of-semester party, group activity, or candid friendship moment. This photo is the emotional anchor of the page.</p>
+    </div>
+    <div class="shot-card">
+      <span class="shot-card-number">Shot 04</span>
+      <h4>Pricing Section</h4>
+      <p>No photo needed — clean table layout.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ FOOTER ════════ -->
+<div class="doc-footer">
+  <strong>Spark Academy</strong> — Website Rebuild Project<br>
+  Phase 3A: Discovery Station Copy Deck • March 2026<br>
+  Confidential — For Internal Review Only
+</div>
+
+</body>
+</html>
