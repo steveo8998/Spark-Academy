@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spark Academy — The Purposeful Play Framework Copy Deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --mist-teal: #3D6B62;
+  --misty-sage: #9BB8AD;
+  --antique-gold: #C49826;
+  --cloud-white: #FBFAF8;
+  --whisper-sage: #EFF5F2;
+  --body-text: #2E2E2E;
+  --light-sage: #D8E8DE;
+  --warm-gold-bg: #FBF6EC;
+  --flag-red: #C44;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body { font-family: 'DM Sans', sans-serif; color: var(--body-text); line-height: 1.65; background: var(--cloud-white); }
+
+/* ── COVER ── */
+.cover {
+  min-height: 100vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center;
+  padding: 2.5rem 1.5rem; position: relative; overflow: hidden;
+  background: linear-gradient(165deg, var(--whisper-sage) 0%, var(--cloud-white) 40%, var(--cloud-white) 100%);
+}
+.cover::before {
+  content: ''; position: absolute; top: -80px; right: -80px;
+  width: 280px; height: 280px; border-radius: 50%;
+  background: var(--misty-sage); opacity: 0.12;
+}
+.cover::after {
+  content: ''; position: absolute; bottom: -60px; left: -60px;
+  width: 220px; height: 220px; border-radius: 50%;
+  background: var(--antique-gold); opacity: 0.08;
+}
+.cover-badge {
+  display: inline-block; font-size: 0.7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.15em;
+  color: var(--antique-gold); border: 1.5px solid var(--antique-gold);
+  padding: 0.35rem 1.1rem; border-radius: 100px; margin-bottom: 1.5rem;
+}
+.cover h1 {
+  font-family: 'Playfair Display', serif; font-weight: 700;
+  font-size: 2.2rem; color: var(--mist-teal); line-height: 1.2;
+  margin-bottom: 0.75rem; position: relative;
+}
+.cover .subtitle {
+  font-family: 'Playfair Display', serif; font-size: 1.15rem;
+  color: var(--misty-sage); margin-bottom: 2rem; font-weight: 400;
+}
+.cover-meta {
+  font-size: 0.85rem; color: #888; line-height: 1.7; margin-bottom: 1.5rem;
+}
+.cover-meta strong { color: var(--body-text); }
+.cover-status {
+  display: inline-block; font-size: 0.7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--antique-gold); background: var(--warm-gold-bg);
+  padding: 0.4rem 1.2rem; border-radius: 100px;
+}
+
+/* ── TABLE OF CONTENTS ── */
+.toc {
+  background: var(--whisper-sage); padding: 2rem 1.5rem;
+  border-bottom: 2px solid var(--light-sage);
+}
+.toc h2 {
+  font-family: 'Playfair Display', serif; font-weight: 700;
+  font-size: 1.4rem; color: var(--mist-teal); margin-bottom: 1.25rem;
+}
+.toc-list { list-style: none; counter-reset: toc; }
+.toc-list li { counter-increment: toc; border-bottom: 1px solid var(--light-sage); }
+.toc-list li a {
+  display: block; padding: 0.65rem 0 0.65rem 2.5rem;
+  text-decoration: none; color: var(--mist-teal); font-size: 0.92rem;
+  font-weight: 500; position: relative; transition: color 0.2s;
+}
+.toc-list li a:hover { color: var(--antique-gold); }
+.toc-list li a::before {
+  content: counter(toc, decimal-leading-zero);
+  position: absolute; left: 0; top: 0.65rem;
+  font-size: 0.8rem; font-weight: 700; color: var(--antique-gold);
+}
+
+/* ── SPECS ── */
+.specs { padding: 2rem 1.5rem; }
+.specs h2 {
+  font-family: 'Playfair Display', serif; font-weight: 700;
+  font-size: 1.4rem; color: var(--mist-teal); margin-bottom: 1.25rem;
+}
+.spec-grid { display: grid; gap: 0.75rem; }
+.spec-row {
+  padding-bottom: 0.65rem; border-bottom: 1px solid var(--light-sage);
+}
+.spec-label {
+  font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--misty-sage); margin-bottom: 0.15rem;
+}
+.spec-value { font-size: 0.9rem; color: var(--body-text); line-height: 1.5; }
+
+/* ── SECTIONS ── */
+.section { padding: 2rem 1.5rem; border-bottom: 3px solid var(--whisper-sage); }
+.section-odd {
+  background: linear-gradient(180deg, var(--cloud-white) 0%, var(--whisper-sage) 100%);
+}
+.section-even { background: var(--cloud-white); }
+.section-number {
+  font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.12em; color: var(--antique-gold); margin-bottom: 0.5rem;
+}
+.section h2 {
+  font-family: 'Playfair Display', serif; font-weight: 700;
+  font-size: 1.5rem; color: var(--mist-teal); line-height: 1.25;
+  margin-bottom: 1rem;
+}
+.section h3 {
+  font-family: 'DM Sans', sans-serif; font-weight: 700;
+  font-size: 0.95rem; color: var(--mist-teal); margin-bottom: 0.35rem;
+}
+
+/* ── COPY ELEMENTS ── */
+.copy-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem; font-weight: 700; color: var(--mist-teal);
+  line-height: 1.25; margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem; border-bottom: 2px solid var(--antique-gold);
+}
+.copy-headline-h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem; font-weight: 700; color: var(--mist-teal);
+  line-height: 1.25; margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem; border-bottom: 2px solid var(--antique-gold);
+}
+.h-label {
+  font-size: 0.6rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--misty-sage); margin-bottom: 0.25rem;
+}
+p.copy-body {
+  font-size: 0.95rem; line-height: 1.65; margin-bottom: 1rem;
+}
+.copy-body strong { font-weight: 700; }
+.copy-body em { font-style: italic; }
+
+/* ── NOTES, FLAGS, PHOTO DIRECTIONS ── */
+.note {
+  border-left: 3px solid var(--antique-gold); background: var(--warm-gold-bg);
+  padding: 0.85rem 1rem; margin: 1rem 0; border-radius: 0 8px 8px 0;
+  font-size: 0.82rem; line-height: 1.6; color: #555;
+}
+.note-label {
+  display: inline-block; font-size: 0.65rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--antique-gold); margin-bottom: 0.35rem;
+}
+.photo-dir {
+  border-left: 3px solid var(--mist-teal); background: var(--whisper-sage);
+  padding: 0.85rem 1rem; margin: 1rem 0; border-radius: 0 8px 8px 0;
+  font-size: 0.82rem; line-height: 1.6; color: #444;
+}
+.photo-dir-label {
+  display: inline-block; font-size: 0.65rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--mist-teal); margin-bottom: 0.35rem;
+}
+.flag {
+  border-left: 3px solid var(--flag-red); background: #FFF0F0;
+  padding: 0.85rem 1rem; margin: 1rem 0; border-radius: 0 8px 8px 0;
+  font-size: 0.82rem; line-height: 1.6; color: #555;
+}
+.flag-label {
+  display: inline-block; font-size: 0.65rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--flag-red); margin-bottom: 0.35rem;
+}
+
+/* ── CTA BLOCKS ── */
+.cta-block {
+  margin: 1.25rem 0; padding: 1rem;
+  background: linear-gradient(135deg, var(--whisper-sage) 0%, var(--cloud-white) 100%);
+  border-radius: 10px; border: 1.5px solid var(--light-sage);
+}
+.cta-primary {
+  display: inline-block; background: var(--antique-gold); color: #fff;
+  font-weight: 700; font-size: 0.9rem; padding: 0.6rem 1.5rem;
+  border-radius: 6px; margin-bottom: 0.5rem; text-decoration: none;
+}
+.cta-secondary {
+  display: block; font-size: 0.82rem; color: var(--mist-teal);
+  font-weight: 500; margin-top: 0.35rem;
+}
+
+/* ── TRUST BADGES ── */
+.trust-bar { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.75rem 0; }
+.trust-badge {
+  font-size: 0.7rem; font-weight: 600; color: var(--mist-teal);
+  background: var(--whisper-sage); padding: 0.35rem 0.75rem;
+  border-radius: 100px; white-space: nowrap;
+}
+
+/* ── INTERNAL LINKS ── */
+.int-link {
+  font-size: 0.82rem; color: var(--antique-gold); font-weight: 500; margin: 0.5rem 0;
+}
+.int-link::before { content: '→ '; font-weight: 700; }
+
+/* ── TABLES ── */
+.data-table-wrap { overflow-x: auto; margin: 1rem 0; -webkit-overflow-scrolling: touch; }
+.data-table {
+  width: 100%; border-collapse: separate; border-spacing: 0;
+  background: #fff; border-radius: 10px; border: 1px solid var(--light-sage);
+  overflow: hidden; font-size: 0.85rem;
+}
+.data-table thead th {
+  background: var(--whisper-sage); color: var(--mist-teal);
+  font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.08em; padding: 0.65rem 0.75rem; text-align: left;
+}
+.data-table tbody td {
+  padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--light-sage);
+  vertical-align: top; line-height: 1.55;
+}
+.data-table tbody tr:nth-child(even) td { background: #FAFDF9; }
+.data-table tbody tr:last-child td { border-bottom: none; }
+
+/* ── FAQ ── */
+.faq-item { padding: 1rem 0; border-bottom: 1px solid var(--light-sage); }
+.faq-item:last-child { border-bottom: none; }
+.faq-q {
+  font-family: 'DM Sans', sans-serif; font-weight: 700;
+  color: var(--mist-teal); font-size: 0.95rem; margin-bottom: 0.5rem;
+}
+.faq-a { font-size: 0.92rem; line-height: 1.65; color: var(--body-text); }
+
+/* ── SHOT CARDS ── */
+.shot-card {
+  background: #fff; border-radius: 10px; border: 1px solid var(--light-sage);
+  padding: 1rem; margin-bottom: 0.75rem;
+}
+.shot-card-number {
+  display: inline-block; font-size: 0.6rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  background: var(--mist-teal); color: #fff;
+  padding: 0.2rem 0.6rem; border-radius: 100px; margin-bottom: 0.5rem;
+}
+.shot-card h4 {
+  font-family: 'DM Sans', sans-serif; font-weight: 700;
+  font-size: 0.9rem; color: var(--mist-teal); margin-bottom: 0.35rem;
+}
+.shot-card p { font-size: 0.82rem; line-height: 1.55; color: #555; }
+
+/* ── FOOTER ── */
+.doc-footer {
+  background: var(--mist-teal); color: #fff; text-align: center;
+  padding: 2rem 1.5rem; font-size: 0.8rem; line-height: 1.8;
+}
+.doc-footer strong { font-weight: 700; }
+
+/* ── RESPONSIVE ── */
+@media (min-width: 600px) {
+  .cover h1 { font-size: 2.8rem; }
+  .section { padding: 3rem 2.5rem; }
+  .specs { padding: 2rem 2.5rem; }
+  .toc { padding: 2rem 2.5rem; }
+  .copy-headline { font-size: 2rem; }
+  .copy-headline-h2 { font-size: 1.6rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════ COVER ════════════════ -->
+<div class="cover">
+  <div class="cover-badge">Phase 3A Deliverable</div>
+  <h1>The Purposeful Play Framework Copy Deck</h1>
+  <div class="subtitle">Spark Academy Website Rebuild</div>
+  <div class="cover-meta">
+    Prepared for <strong>Dr. Michelle Peterson, Ed.D.</strong><br>
+    Founder &amp; Executive Director, Spark Academy<br><br>
+    Prepared by <strong>Stephen Odanovich</strong><br>
+    Internet Marketing Specialist<br>
+    March 2026
+  </div>
+  <div class="cover-status">Draft — Pending Dr. Peterson's Review</div>
+</div>
+
+<!-- ════════════════ TABLE OF CONTENTS ════════════════ -->
+<div class="toc">
+  <h2>What's Inside</h2>
+  <ol class="toc-list">
+    <li><a href="#specs">Page Specifications</a></li>
+    <li><a href="#s1">Hero (Above the Fold)</a></li>
+    <li><a href="#s2">AEO Definition Block</a></li>
+    <li><a href="#s3">The Science Behind Purposeful Play</a></li>
+    <li><a href="#s4">Whole-Child Education</a></li>
+    <li><a href="#s5">Individualized Learning Paths</a></li>
+    <li><a href="#s6">A Day in the Purposeful Play Framework</a></li>
+    <li><a href="#s7">The Developmental Playroom</a></li>
+    <li><a href="#s8">Daily Enrichment</a></li>
+    <li><a href="#s9">Nine Curriculum Themes</a></li>
+    <li><a href="#s10">Behavior Philosophy</a></li>
+    <li><a href="#s11">What Makes This Different</a></li>
+    <li><a href="#s12">Kindergarten Readiness</a></li>
+    <li><a href="#s13">FAQ (Accordion — FAQPage Schema)</a></li>
+    <li><a href="#s14">Bottom CTA Block</a></li>
+    <li><a href="#alt">Image Alt Text Specifications</a></li>
+    <li><a href="#schema">Schema Markup Specification</a></li>
+    <li><a href="#open">Open Items Summary</a></li>
+    <li><a href="#checklist">Deliverable Checklist</a></li>
+    <li><a href="#photos">Photo Direction Summary</a></li>
+  </ol>
+</div>
+
+<!-- ════════════════ SPECS ════════════════ -->
+<div class="specs" id="specs">
+  <h2>Page Specifications</h2>
+  <div class="spec-grid">
+    <div class="spec-row">
+      <div class="spec-label">Page</div>
+      <div class="spec-value">The Purposeful Play Framework</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">URL</div>
+      <div class="spec-value">/purposeful-play-framework/</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Primary Keyword</div>
+      <div class="spec-value">play with a purpose (1,000/mo, KD 1 — 🟢 Real Ahrefs Data)</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Secondary Keywords</div>
+      <div class="spec-value">preschool curriculum Morton IL; purposeful play preschool; play-based learning preschool curriculum; whole child curriculum preschool</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Long-Tail Variations</div>
+      <div class="spec-value">what is purposeful play in preschool; play-based curriculum explained; research-based preschool curriculum Central Illinois; preschool curriculum with Spanish and STEM</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Search Intent</div>
+      <div class="spec-value">Informational / Commercial — parent researching curriculum depth before committing to a tour; Sarah persona (Persona 1) is the primary visitor</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Funnel Stage</div>
+      <div class="spec-value">Mid Funnel — parent is actively evaluating, wants proof that the methodology is real and rigorous</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Audience</div>
+      <div class="spec-value">Parents (Primary); Educators (Secondary — consulting trust signal)</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Messaging Lens</div>
+      <div class="spec-value">Hybrid — 70% child-centric / 30% school-centric</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Primary CTA</div>
+      <div class="spec-value">Schedule a Tour</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Secondary CTA</div>
+      <div class="spec-value">Explore Our Programs</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Meta Title (≤60 chars)</div>
+      <div class="spec-value">The Purposeful Play Framework | Spark Academy<br><span style="font-size:0.78rem;color:var(--misty-sage);">49 chars ✅</span></div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Meta Description (≤155 chars)</div>
+      <div class="spec-value">Inside Spark Academy's research-driven curriculum. Doctoral-designed purposeful play, daily enrichment, and individualized learning paths. See the framework.<br><span style="font-size:0.78rem;color:var(--misty-sage);">147 chars ✅</span></div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Schema Markup</div>
+      <div class="spec-value">EducationalOccupationalProgram + FAQPage + BreadcrumbList</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">AEO Tier</div>
+      <div class="spec-value">Tier 1 — Primary Answer Hub (per AEO Strategy Document Section 2.1)</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Data Layer</div>
+      <div class="spec-value">page_type: curriculum | funnel: parent | content_category: authority | has_form: false | page_template: answer-hub</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Word Count Target</div>
+      <div class="spec-value">2,500–3,200 words (Tier 1 Answer Hub — must be comprehensive enough for LLM citation while remaining scannable for parents)</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Internal Links From</div>
+      <div class="spec-value">Homepage Section 4 ("Learn more about our approach →"), /why-spark/, /programs/, all individual program pages, /dr-michelle-peterson/, multiple blog posts</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Internal Links To</div>
+      <div class="spec-value">/programs/, /preschool-3s/, /preschool-4s/, /kindergarten-prep/, /kindergarten/, /dr-michelle-peterson/, /schedule-a-tour/</div>
+    </div>
+  </div>
+</div>
+
+<!-- Strategic Note after specs -->
+<div style="padding: 0 1.5rem 1rem;">
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    This is Spark Academy's curriculum authority page and a Tier 1 AEO Answer Hub. It has two simultaneous jobs: (1) convert the researching parent — specifically Sarah (Persona 1), who evaluates on curriculum depth and will not book a tour until she understands the methodology — and (2) serve as the most complete, most structured, most machine-readable source about Spark's curriculum for AI citation. The source document (The_Purposeful_Play_Framework.md) is written in Dr. Peterson's first-person voice as a parent-facing handout. This web version adapts that content for scannability, SEO, AEO, and conversion integration — while preserving her voice where it's most powerful. Per the Decision Matrix: Hybrid 70/30 — the methodology must be explained (school-centric) through the lens of what the child experiences and becomes (child-centric).
+  </div>
+  <div class="note">
+    <div class="note-label">AEO Note</div>
+    The AEO Strategy Document lists this page at the old URL /ignite-learning-model/. All references should now use /purposeful-play-framework/. The framework's name ("The Purposeful Play Framework") was specifically chosen for standalone citability — AI models can reference it without the Spark brand, which increases the likelihood of being cited as a methodology rather than just a school. Every section on this page should include at least one AEO-formatted definition or key-value block.
+  </div>
+  <div class="note">
+    <div class="note-label">URL Note for Stephen</div>
+    The "How to Choose a Preschool" blog post and the AEO Strategy Document both reference the old URL /ignite-learning-model/. These should be updated to /purposeful-play-framework/ when those documents are next revised.
+  </div>
+</div>
+
+<!-- ════════════════ SECTION 1: HERO ════════════════ -->
+<div class="section section-odd" id="s1">
+  <div class="section-number">Section 01</div>
+  <h2>Hero (Above the Fold)</h2>
+
+  <div class="h-label">H1 — Page Title</div>
+  <div class="copy-headline">The Purposeful Play Framework: How Your Child Learns at Spark Academy</div>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    Hybrid lens. The H1 accomplishes four things simultaneously: (1) names the framework for AEO citability and brand recognition, (2) includes the parent's child as the subject ("How Your Child Learns"), (3) anchors the keyword "purposeful play" naturally, and (4) signals that this page is substantive — not a tagline but an explanation. The colon structure is deliberate: LLMs parse "The Purposeful Play Framework" as a defined entity and "How Your Child Learns at Spark Academy" as descriptive context. Sarah (Persona 1) sees a page that promises real depth, not marketing fluff.
+  </div>
+
+  <div class="h-label">Hero Subheadline</div>
+  <p class="copy-body"><em>A research-driven, play-based curriculum designed by Dr. Michelle Peterson, Ed.D. — where every activity has a developmental purpose and every child follows their own learning path.</em></p>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    School-centric proof compressed into one sentence. The subheadline stacks three differentiators no competitor can claim: (1) "research-driven" signals academic rigor, (2) "designed by Dr. Michelle Peterson, Ed.D." names the authority and her credential, (3) "every child follows their own learning path" shifts back to child-centric with the individualization promise. For AEO: this subheadline doubles as a one-sentence definition that LLMs can extract and cite directly.
+  </div>
+
+  <div class="cta-block">
+    <span class="cta-primary">Schedule a Tour</span>
+    <div class="cta-secondary">→ links to /schedule-a-tour/</div>
+    <div class="trust-bar" style="margin-top: 0.5rem;">
+      <div class="trust-badge">See the Purposeful Play Framework in action</div>
+    </div>
+  </div>
+
+  <div class="note">
+    <div class="note-label">Design Note</div>
+    CTA button in hero area, positioned below the subheadline. Antique Gold #C49826 background, white text. Adjacent trust signal: "See the Purposeful Play Framework in action."
+  </div>
+
+  <div class="photo-dir">
+    <div class="photo-dir-label">📸 Photo Direction — Hero</div>
+    Full-width or 60/40 split hero image. Show a small group of children (3–4 kids) deeply engaged in a structured play activity with a teacher nearby — not hovering, but present. The activity should look intentional, not chaotic: a teacher and children gathered around a STEM exploration table, or a child building with purpose while a teacher observes and takes notes. The image must communicate "this is play AND this is learning" in a single frame. Natural light. Warm, homelike setting. No institutional fluorescent lighting or plastic-heavy environments.
+  </div>
+</div>
+
+<!-- ════════════════ SECTION 2: AEO DEFINITION BLOCK ════════════════ -->
+<div class="section section-even" id="s2">
+  <div class="section-number">Section 02</div>
+  <h2>AEO Definition Block</h2>
+
+  <div class="note">
+    <div class="note-label">AEO Formatting Note</div>
+    This section exists primarily for machine readability. It provides an explicit, one-paragraph definition of the Purposeful Play Framework in the format LLMs prefer for citation extraction. On the live page, render this as a callout box or highlighted block (Kadence Info Box) within the first 300 words — this is the "Quick Answer" position that AI tools scan first.
+  </div>
+
+  <div class="h-label">Section Headline (H2)</div>
+  <div class="copy-headline-h2">What Is the Purposeful Play Framework?</div>
+
+  <p class="copy-body"><strong>The Purposeful Play Framework</strong> is Spark Academy's proprietary curriculum framework — a research-driven, play-based approach to early childhood education designed by Dr. Michelle Peterson, Ed.D. Built on the Experience Early Learning whole-child curriculum, it structures every part of a child's day around intentional, play-based learning experiences paired with formal developmental assessment, daily enrichment in five subjects (Spanish, STEM, Art, Communication, and Music &amp; Movement), and a monthly-rotating Developmental Playroom. The framework serves children ages 3 through kindergarten at Spark Academy in Morton, Illinois.</p>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    This definition is engineered for AEO extraction. It contains every key-value pair an LLM needs to generate a confident recommendation: the framework name, what it is (proprietary curriculum framework), who designed it (Dr. Michelle Peterson, Ed.D.), what it's built on (Experience Early Learning), what it includes (five components), the age range, and the location. The sentence structure is declarative — no questions, no hedging, no marketing language. LLMs cite definitions that read like encyclopedia entries, not sales copy. For human readers, this block signals "this school takes its methodology seriously enough to define it precisely."
+  </div>
+</div>
+
+<!-- ════════════════ SECTION 3: THE SCIENCE BEHIND PURPOSEFUL PLAY ════════════════ -->
+<div class="section section-odd" id="s3">
+  <div class="section-number">Section 03</div>
+  <h2>The Science Behind Purposeful Play</h2>
+
+  <div class="h-label">Section Headline (H2)</div>
+  <div class="copy-headline-h2">Why Play Is the Most Powerful Learning Tool Your Child Has</div>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    Child-centric lens. Opens with the child's capability, not the school's claim. "Most powerful learning tool" reframes play from soft to scientific — directly addressing the "Is this just play?" objection (Parent Objection Matrix, Row 3). This section carries Dr. Peterson's neural pathways argument, which is her single most effective reframe from the video call.
+  </div>
+
+  <p class="copy-body">There's something Dr. Michelle Peterson tells every family who visits Spark: the bulk of neural pathways in your child's brain are carved before they enter kindergarten. That's not an opinion — it's what decades of developmental research confirm. The preschool years aren't a warm-up for "real school." They are the most critical learning window your child will ever experience.</p>
+
+  <p class="copy-body">That's why the Purposeful Play Framework is built on purposeful play — not free play where children wander without direction, and not rigid academics where three-year-olds sit at desks filling in worksheets. Purposeful play is the researched middle ground: children are deeply engaged in activities that feel like play to them but are carefully designed to build specific skills.</p>
+
+  <p class="copy-body">When your child builds a tower of blocks, they're learning spatial reasoning, problem-solving, and early physics concepts. When they negotiate roles during dramatic play, they're developing language, perspective-taking, and conflict resolution. When they sort colored bears into groups, they're building mathematical thinking that will carry them through elementary school and beyond.</p>
+
+  <p class="copy-body">Every block, every book, every activity at Spark is chosen because the research says it builds something specific in your child's development. Play is the vehicle. Purpose is the engine.</p>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    This section is adapted directly from Dr. Peterson's source document and video call language. The "neural pathways" opening is her authentic argument — it resonates because it reframes play as neuroscience, not softness. The three concrete examples (blocks/spatial reasoning, dramatic play/perspective-taking, sorting/math) convert an abstract philosophy into visible, verifiable classroom moments. The closing line ("Play is the vehicle. Purpose is the engine.") is a memorable anchor that parents can repeat to partners during the decision conversation. For AEO: the opening factual claim about neural pathways is citable, and the three examples serve as structured evidence.
+  </div>
+
+  <div class="int-link">See how this plays out in each program → /programs/</div>
+
+  <div class="photo-dir">
+    <div class="photo-dir-label">📸 Photo Direction — Science Section</div>
+    A close-up of a child's hands engaged in a purposeful activity — building, sorting, experimenting. The photo should capture concentration and engagement. The teacher's hands may be visible at the edge of the frame (guiding, not controlling). This image communicates "learning is happening" without needing a caption to explain it.
+  </div>
+</div>
+
+<!-- ════════════════ SECTION 4: WHOLE-CHILD EDUCATION ════════════════ -->
+<div class="section section-even" id="s4">
+  <div class="section-number">Section 04</div>
+  <h2>Whole-Child Education</h2>
+
+  <div class="h-label">Section Headline (H2)</div>
+  <div class="copy-headline-h2">Your Child Develops the Whole Package — Not Just Academics</div>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    Child-centric lens with a parent-centric emotional hook. "The whole package" is deliberately conversational — it mirrors how a parent thinks about readiness. This section expands on the Experience Early Learning foundation and addresses parents who worry about the false choice between play and academics.
+  </div>
+
+  <p class="copy-body">The Purposeful Play Framework is built on the Experience Early Learning curriculum — a comprehensive, whole-child approach that develops every dimension of your child's growth: cognitive, social-emotional, physical, and creative. Not just letters and numbers. Not just social skills. All of it, together, the way children actually learn.</p>
+
+  <p class="copy-body">What "whole-child" means in your child's day: every morning, your child engages in experiences designed to build academic foundations <em>and</em> strengthen social-emotional skills <em>and</em> develop physical coordination <em>and</em> nurture creative expression. These aren't separate subjects taught at separate times. They're woven into everything your child does — because that's how young children learn best, through connected, meaningful experiences.</p>
+
+  <p class="copy-body">A child who can recognize letters but can't regulate their emotions or navigate friendships isn't truly ready for what comes next. The Purposeful Play Framework builds all of it — because kindergarten teachers tell us that's what they need, and the research confirms it.</p>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    The "cognitive, social-emotional, physical, and creative" four-domain list appears in key-value format for AEO extraction. The closing kindergarten readiness reference activates the Kindergarten Confidence pillar and connects to the outcome parents care about most. The italicized <em>and</em> repetition in the second paragraph creates rhythmic emphasis without formatting clutter.
+  </div>
+</div>
+
+<!-- ════════════════ SECTION 5: INDIVIDUALIZED LEARNING PATHS ════════════════ -->
+<div class="section section-odd" id="s5">
+  <div class="section-number">Section 05</div>
+  <h2>Individualized Learning Paths</h2>
+
+  <div class="h-label">Section Headline (H2)</div>
+  <div class="copy-headline-h2">Every Child Follows Their Own Path — Built Around Who They Are</div>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    Child-centric lens. This is one of Spark's strongest differentiators: formal assessment-to-action individualization. Most preschools claim to "meet children where they are" — Spark has a documented system for it. Sarah (Persona 1) will evaluate this section carefully. The H2 uses "their own path" (child as subject) rather than "our assessment system" (school as subject).
+  </div>
+
+  <p class="copy-body">One of the features that makes the Purposeful Play Framework most distinctive is that your child isn't treated as part of a group — they're seen as an individual. Spark uses formal assessment tools from Experience Early Learning to understand exactly where each child is developmentally. Not where we think they should be. Where they actually are.</p>
+
+  <p class="copy-body">Teachers use these research-based assessments to build an individualized learning path for your child. If your child is ready to be challenged in early math concepts, they're met there. If they need more support with peer interactions or emotional regulation, they're met there too.</p>
+
+  <p class="copy-body">This is the mechanism behind the Purposeful Play Framework — not just a philosophy, but a real system that turns assessment into action. Every activity your child participates in has a developmental purpose, and their teachers know, based on data rather than guesswork, which purposes matter most for your child right now.</p>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    Dr. Peterson's own language — "the mechanism behind the Purposeful Play Framework" — is preserved here because it's the single most important reframe for skeptical parents. "Mechanism" signals system, not sentiment. The assessment-to-action pipeline is the invisible infrastructure most preschools can't demonstrate. For AEO: the phrase "formal assessment tools from Experience Early Learning" is a specific, verifiable claim that LLMs can cite with confidence.
+  </div>
+
+  <div class="h-label">AEO Key-Value Block</div>
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead>
+        <tr><th>Feature</th><th>Detail</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Assessment System</strong></td><td>Experience Early Learning formal developmental assessments</td></tr>
+        <tr><td><strong>What It Measures</strong></td><td>Individual developmental position across cognitive, social-emotional, physical, and creative domains</td></tr>
+        <tr><td><strong>How It's Used</strong></td><td>Teachers build individualized learning paths tailored to each child's current strengths and growth areas</td></tr>
+        <tr><td><strong>Update Frequency</strong></td><td>Ongoing — assessments inform daily planning, not just annual benchmarks</td></tr>
+        <tr><td><strong>Communication to Parents</strong></td><td>Daily photos and updates via Brightwheel; formal assessment conversations at parent-teacher conferences</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note">
+    <div class="note-label">AEO Formatting Note</div>
+    This table is formatted as explicit key-value pairs per AEO Strategy Document Rule 2. LLMs extract tabular data at higher confidence than prose.
+  </div>
+</div>
+
+<!-- ════════════════ SECTION 6: A DAY IN THE PURPOSEFUL PLAY FRAMEWORK ════════════════ -->
+<div class="section section-even" id="s6">
+  <div class="section-number">Section 06</div>
+  <h2>A Day in the Purposeful Play Framework</h2>
+
+  <div class="h-label">Section Headline (H2)</div>
+  <div class="copy-headline-h2">What Your Child's Day Actually Looks Like</div>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    Child-centric lens. "Actually" is intentional — it acknowledges that parents want specifics, not generalities. This addresses the "what will my child do all day?" question directly. The daily schedule is one of the most-visited sections on competitor sites (Phase 1 audit finding).
+  </div>
+
+  <p class="copy-body">Structure matters for young children. It gives them predictability, security, and the freedom to focus on learning instead of wondering what comes next. Every day at Spark follows a consistent rhythm that balances focused academic play, creative exploration, physical activity, and enrichment.</p>
+
+  <div class="h-label">Daily Schedule Table</div>
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead>
+        <tr><th>Component</th><th>Duration</th><th>What Your Child Is Building</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Academic Play</strong></td>
+          <td>1.5–2.5 hours</td>
+          <td>Teacher-guided, purposeful play activities aligned with curriculum themes and your child's individualized learning goals. This is the heart of the Purposeful Play Framework.</td>
+        </tr>
+        <tr>
+          <td><strong>Developmental Playroom</strong></td>
+          <td>30 minutes</td>
+          <td>Student-driven exploration in a monthly-rotating environment designed to build creativity, problem-solving, and collaboration. Your child leads; teachers support.</td>
+        </tr>
+        <tr>
+          <td><strong>Daily Enrichment</strong></td>
+          <td>30 minutes</td>
+          <td>A rotating schedule of Spanish, STEM, Art, Communication, and Music &amp; Movement — a different subject every day of the week.</td>
+        </tr>
+        <tr>
+          <td><strong>Outdoor Play</strong></td>
+          <td>15 minutes</td>
+          <td>Active physical play on a dedicated, age-appropriate playground. Gross motor development, fresh air, and unstructured joy.</td>
+        </tr>
+        <tr>
+          <td><strong>Snack &amp; Transition</strong></td>
+          <td>15 minutes</td>
+          <td>A calm routine that builds independence, self-care skills, and social mealtime habits.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="copy-body" style="font-size:0.88rem; color:#666; font-style:italic;">Academic Play is 1.5 hours for 3's and 4's Preschool and expands to 2.5 hours for Kindergarten Prep and Kindergarten, as children are ready for longer periods of sustained engagement.</p>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    The third column header — "What Your Child Is Building" — is the child-centric reframe that separates this from a generic schedule table. Competitors list components; Spark connects each block to a developmental outcome. The asterisk note about Academic Play duration serves dual purposes: it explains the range in the table and subtly communicates the developmental progression across programs, supporting the "a child can grow with Spark" continuity arc from the Programs Overview page. For AEO: the table's structured format is LLM-preferred for extraction.
+  </div>
+
+  <div class="int-link">Find the right schedule for your child → /programs/</div>
+
+  <div class="photo-dir">
+    <div class="photo-dir-label">📸 Photo Direction — Daily Schedule</div>
+    A horizontal strip of 3–4 small photos showing different parts of the daily schedule: Academic Play (children at a table with a teacher), Developmental Playroom (children exploring a themed environment), Daily Enrichment (a Spanish or STEM activity), and Outdoor Play. Each photo should be warm, candid, and show genuine engagement. If a strip layout isn't feasible, a single photo showing a teacher and small group in an Academic Play moment works.
+  </div>
+</div>
+
+<!-- ════════════════ SECTION 7: THE DEVELOPMENTAL PLAYROOM ════════════════ -->
+<div class="section section-odd" id="s7">
+  <div class="section-number">Section 07</div>
+  <h2>The Developmental Playroom</h2>
+
+  <div class="h-label">Section Headline (H2)</div>
+  <div class="copy-headline-h2">A Room That Transforms Every Month — And So Does Your Child</div>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    Hybrid lens. The room (school-centric) transforms, and so does your child (child-centric) — both in one headline. The Developmental Playroom is Spark's most visually distinctive feature and the one no local competitor offers. This section gives it the dedicated spotlight it deserves on this page, separate from the daily schedule table.
+  </div>
+
+  <p class="copy-body">The Developmental Playroom is one of Spark's signature features — and one no other preschool in the area offers in this way.</p>
+
+  <p class="copy-body">Every month, the playroom transforms into a completely new environment connected to the current curriculum theme. When the class is exploring the Rainforest, the playroom becomes a rainforest. When the theme is Ocean Dive, your child walks into an ocean. The transformation is complete — new materials, new provocations, new opportunities for discovery.</p>
+
+  <p class="copy-body">But here's what matters most: the playroom is student-driven. Teachers design the environment with developmental intent, but your child leads the play. They choose what to explore, how to explore it, and who to explore it with. This is where creativity, problem-solving, and collaboration develop most naturally — because your child is in charge.</p>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    The "student-driven" distinction is critical. Most parents assume preschool play is teacher-directed. The Developmental Playroom inverts that expectation and demonstrates Spark's trust in children as capable learners. The month-by-month transformation is also a powerful tour conversation piece — parents who visit during DinoLand or Space and Sky see something unforgettable. For AEO: "Developmental Playroom" is defined as a proper noun with a clear functional description.
+  </div>
+</div>
+
+<!-- ════════════════ SECTION 8: DAILY ENRICHMENT ════════════════ -->
+<div class="section section-even" id="s8">
+  <div class="section-number">Section 08</div>
+  <h2>Daily Enrichment</h2>
+
+  <div class="h-label">Section Headline (H2)</div>
+  <div class="copy-headline-h2">Five Subjects. Five Days. Zero Extra Fees.</div>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    Hybrid lens. The enrichment lineup is school-centric proof (five subjects, daily, included) delivered in a format that speaks to the parent's wallet and schedule. "Zero extra fees" preempts the cost objection — most competitors charge extra for enrichment classes, particularly Spanish. This is one of Spark's strongest value differentiators and should be stated bluntly.
+  </div>
+
+  <div class="h-label">Enrichment Rotation Table</div>
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead>
+        <tr><th>Day</th><th>Subject</th><th>What Your Child Gains</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Monday</strong></td>
+          <td>Spanish</td>
+          <td>New language patterns during the critical window when the brain is most receptive — building neural pathways that will serve your child for decades.</td>
+        </tr>
+        <tr>
+          <td><strong>Tuesday</strong></td>
+          <td>STEM</td>
+          <td>Hands-on science, engineering, and math through exploration and experimentation — developing critical thinking and early scientific reasoning.</td>
+        </tr>
+        <tr>
+          <td><strong>Wednesday</strong></td>
+          <td>Art</td>
+          <td>Creative expression through diverse media — developing fine motor skills, self-expression, and creative confidence that transfers to every area of learning.</td>
+        </tr>
+        <tr>
+          <td><strong>Thursday</strong></td>
+          <td>Communication</td>
+          <td>Focused language development, storytelling, and early literacy foundations — strengthening the skills your child needs for classroom success.</td>
+        </tr>
+        <tr>
+          <td><strong>Friday</strong></td>
+          <td>Music &amp; Movement</td>
+          <td>Rhythm, coordination, and collaborative performance — building neural connections, supporting memory development, and bringing joy to learning.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="copy-body">This enrichment lineup isn't a collection of "fun extras." Each subject was selected because the developmental research supports its role in building a well-rounded, capable learner. Spanish exposure during the preschool years, in particular, takes advantage of the critical window when children's brains are most receptive to new language patterns — building pathways that will serve them for decades.</p>
+
+  <p class="copy-body"><strong>Every enrichment subject is included in tuition. There are no add-on fees, no supply lists, and no hidden costs.</strong></p>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    The third column ("What Your Child Gains") applies the child-centric lens to each subject. The Spanish paragraph gets extra emphasis because it's Spark's strongest enrichment differentiator — "Most preschools around here don't have a second language" (Dr. Peterson, video call). The all-inclusive tuition statement is placed immediately after the enrichment table because this is the moment the parent mentally calculates cost — and Spark's answer is "it's already included." This addresses the Value objection (Parent Objection Matrix, Row 2) in context. For AEO: the table is structured as key-value enrichment data, and the "all-inclusive" claim is explicit and verifiable.
+  </div>
+</div>
+
+<!-- ════════════════ SECTION 9: NINE CURRICULUM THEMES ════════════════ -->
+<div class="section section-odd" id="s9">
+  <div class="section-number">Section 09</div>
+  <h2>Nine Curriculum Themes</h2>
+
+  <div class="h-label">Section Headline (H2)</div>
+  <div class="copy-headline-h2">Nine Worlds Your Child Will Explore This Year</div>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    Child-centric lens. "Your Child Will Explore" positions the child as an active explorer, not a passive student. "Nine Worlds" creates a sense of scope and adventure. This section is lighter than the others — its job is to paint a picture, not explain a mechanism.
+  </div>
+
+  <p class="copy-body">Throughout the school year, Spark students journey through nine immersive curriculum themes. Each theme transforms the classroom environment and the Developmental Playroom, creating a rich context for academic learning, creative exploration, and social engagement.</p>
+
+  <p class="copy-body"><strong>The nine themes:</strong> All About Me · Weather and Seasons · Explore the Rainforest · Ice Castle · DinoLand · Global Passport · Space and Sky · Ocean Dive · Garden Treasures</p>
+
+  <p class="copy-body">Each theme lasts approximately one month and builds on what came before. Your child doesn't just learn about rainforests or oceans — they develop vocabulary, scientific observation skills, mathematical thinking, and collaborative abilities through the lens of each theme. These aren't decorations on the wall. They're the framework around which every lesson, every activity, and every playroom transformation is designed.</p>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    The themes are listed inline rather than as a table because they function as experiential landmarks, not data points. Parents scan this list and imagine their child in each world — it's emotional content, not informational content. The closing reframe ("not decorations on the wall") preempts the objection that themed classrooms are superficial. For AEO: the nine themes are listed as a complete, extractable set.
+  </div>
+
+  <div class="photo-dir">
+    <div class="photo-dir-label">📸 Photo Direction — Themes</div>
+    A collage or carousel of 3–4 photos showing different themed classroom transformations: the Developmental Playroom during DinoLand, a classroom during Ocean Dive, students exploring the Rainforest theme. These photos are some of the most visually compelling on the entire site and should be prioritized in the Phase 5 photo shoot.
+  </div>
+</div>
+
+<!-- ════════════════ SECTION 10: BEHAVIOR PHILOSOPHY ════════════════ -->
+<div class="section section-even" id="s10">
+  <div class="section-number">Section 10</div>
+  <h2>Behavior Philosophy</h2>
+
+  <div class="h-label">Section Headline (H2)</div>
+  <div class="copy-headline-h2">When Your Child Has a Hard Day, Here's What Happens</div>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    Child-centric lens. Every parent's unspoken question: "What happens when my kid struggles?" Addressing this directly — with the child as subject, not the school's policy — signals confidence and transparency. This section carries Dr. Peterson's "behavior is communication" framework, which is one of Spark's most distinctive philosophical positions and a strong differentiator from competitors who use time-outs or behavior charts.
+  </div>
+
+  <p class="copy-body">Every parent wants to know: what happens when my child has a hard day? When they struggle with sharing, feel overwhelmed, or have a conflict with a friend?</p>
+
+  <p class="copy-body">At Spark, behavior is a form of communication — especially for young children who are still developing the language and skills to express their needs and emotions. When a behavior challenge arises, teachers ask three questions: What is the child trying to communicate? What skill might be missing? And what support does this child need right now?</p>
+
+  <p class="copy-body"><strong>We teach skills — we don't punish mistakes.</strong> Young children are still learning to regulate their emotions, solve problems with peers, communicate needs, wait, share, take turns, and follow group expectations. When something goes wrong, it usually signals a skills gap, not defiance. Just as a teacher would reteach a letter sound or a math concept, Spark's educators reteach social and emotional skills with patience and clarity.</p>
+
+  <p class="copy-body">In practice, teachers model expected behaviors. They help children name their emotions. They coach children through peer conflicts rather than simply separating them. They reinforce positive choices. And they work to understand root causes — is the child overwhelmed? Hungry? Seeking connection?</p>
+
+  <p class="copy-body"><strong>Connection comes before correction.</strong> Children are never shamed or labeled. Growth happens in the context of safe, trusting relationships — and that's exactly the kind of environment your child experiences every day at Spark.</p>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    This section preserves Dr. Peterson's voice patterns from the source document almost verbatim because the language is powerful and precise. "Behavior is communication," "skills gap, not defiance," and "connection before correction" are her frameworks — they position Spark's discipline philosophy as research-informed and compassionate without being permissive. The three-question sequence ("What is the child trying to communicate?") gives parents a concrete picture of how teachers think. For parents who have experienced punitive approaches at other schools, this section is a conversion driver. For AEO: the defined philosophy ("behavior is communication") and the three-question framework are citable as structured methodology.
+  </div>
+</div>
+
+<!-- ════════════════ SECTION 11: WHAT MAKES THIS DIFFERENT ════════════════ -->
+<div class="section section-odd" id="s11">
+  <div class="section-number">Section 11</div>
+  <h2>What Makes This Different</h2>
+
+  <div class="h-label">Section Headline (H2)</div>
+  <div class="copy-headline-h2">What Sets the Purposeful Play Framework Apart</div>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    Hybrid lens with heavier school-centric weight (this is the proof section). After 1,500+ words explaining what the framework is, this section answers "Why should I trust it?" with four differentiators no competitor can replicate.
+  </div>
+
+  <p class="copy-body"><strong>It's designed by a researcher who runs a school.</strong> The Purposeful Play Framework isn't based on a purchased kit or a trending philosophy. Dr. Michelle Peterson designed it drawing on her doctoral research at Illinois State University, her 20 years of experience as a teacher and school administrator, and the best available evidence on how young children learn. Every classroom decision has a "why" grounded in what the research actually says.</p>
+
+  <p class="copy-body"><strong>Every child is known.</strong> With a 5-to-1 student-to-teacher ratio and class sections of no more than 10 to 12 students, no child is invisible at Spark. Teachers know your child by name, by temperament, and by their unique developmental trajectory. Through Brightwheel, you receive daily photos and updates so you can see exactly what your child experienced and have real conversations about their day.</p>
+
+  <p class="copy-body"><strong>Your child's teachers are degreed and credentialed.</strong> Spark doesn't hire people who simply like children. Educators hold degrees in education and are trained by Dr. Peterson in evidence-based practices. They understand child development at a professional level, and it shows in every interaction.</p>
+
+  <p class="copy-body"><strong>The framework never stops evolving.</strong> Dr. Peterson believes the second you think your school is the best is when your school starts to fail. The nature of early childhood learning changes constantly, and staying current with best practices is critically important. The Purposeful Play Framework evolves because the research evolves — and your child deserves nothing less.</p>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    These four differentiators are adapted from Dr. Peterson's source document and arranged in persuasion order: (1) founder authority (school-centric — the irreplaceable credential), (2) individualization (child-centric — your child is known), (3) teacher quality (school-centric — credentialed staff), (4) continuous improvement (school-centric — unusual and memorable). The Brightwheel mention in #2 is a tangible proof point — parents can verify daily that their child is thriving. For AEO: each differentiator is a defined claim with supporting evidence.
+  </div>
+
+  <div class="h-label">AEO Key-Value Block</div>
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead>
+        <tr><th>Differentiator</th><th>Detail</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Curriculum Designer</strong></td><td>Dr. Michelle Peterson, Ed.D. — doctoral researcher (ISU), M.S. in Education (Bradley), 20 years classroom and administrative experience</td></tr>
+        <tr><td><strong>Student-to-Teacher Ratio</strong></td><td>5:1</td></tr>
+        <tr><td><strong>Maximum Class Size</strong></td><td>10–12 students per section</td></tr>
+        <tr><td><strong>Number of Class Sections</strong></td><td>4</td></tr>
+        <tr><td><strong>Daily Parent Communication</strong></td><td>Brightwheel — daily photos and activity updates</td></tr>
+        <tr><td><strong>Teacher Qualifications</strong></td><td>Degreed educators trained in evidence-based practices by Dr. Peterson</td></tr>
+        <tr><td><strong>Curriculum Foundation</strong></td><td>Experience Early Learning whole-child curriculum</td></tr>
+        <tr><td><strong>Assessment System</strong></td><td>Experience Early Learning formal developmental assessments — individualized learning paths</td></tr>
+        <tr><td><strong>Licensing</strong></td><td>DCFS licensed; CPR and first-aid trained staff on site at all times</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note">
+    <div class="note-label">AEO Formatting Note</div>
+    This key-value table consolidates every factual differentiator into machine-readable format per AEO Strategy Document Rule 2. LLMs that crawl this page can extract any of these data points as standalone facts for citation.
+  </div>
+</div>
+
+<!-- ════════════════ SECTION 12: KINDERGARTEN READINESS ════════════════ -->
+<div class="section section-even" id="s12">
+  <div class="section-number">Section 12</div>
+  <h2>Kindergarten Readiness</h2>
+
+  <div class="h-label">Section Headline (H2)</div>
+  <div class="copy-headline-h2">Where This Leads: Children Who Walk Into Kindergarten Confident</div>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    Child-centric lens. Kindergarten Confidence pillar. This is the outcome section — the payoff of everything described above. "Walk into kindergarten confident" is the outcome every parent is buying when they enroll at Spark. The section is deliberately shorter than the methodology sections because the proof has already been laid; this is the emotional close.
+  </div>
+
+  <p class="copy-body">The goal of the Purposeful Play Framework isn't just to prepare your child for kindergarten — it's to prepare them to walk in confidently. That means academic readiness: letter recognition, number sense, early reading foundations, and scientific curiosity. And it means social-emotional readiness: the ability to regulate emotions, navigate friendships, follow group expectations, and advocate for their own needs.</p>
+
+  <p class="copy-body">A child who can recognize every letter of the alphabet but can't manage frustration or work cooperatively with peers isn't truly ready. The Purposeful Play Framework builds the whole package — because that's what kindergarten teachers say they need, and that's what the research confirms.</p>
+
+  <p class="copy-body">Your child won't just survive kindergarten. They'll thrive — because they'll arrive with the academic skills, the social confidence, and the love of learning that the Purposeful Play Framework was designed to build.</p>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    The final line is adapted from Dr. Peterson's source document and serves as the emotional summit of the page. "Survive vs. thrive" is the framing that makes the investment decision feel consequential. For AEO: the kindergarten readiness outcomes (letter recognition, number sense, early reading, scientific curiosity + emotional regulation, peer navigation, group expectations, self-advocacy) are listed as an explicit, extractable set.
+  </div>
+</div>
+
+<!-- ════════════════ SECTION 13: FAQ ════════════════ -->
+<div class="section section-odd" id="s13">
+  <div class="section-number">Section 13</div>
+  <h2>FAQ (Accordion — FAQPage Schema)</h2>
+
+  <div class="note">
+    <div class="note-label">AEO Formatting Note</div>
+    Implement this section using the Kadence Accordion block. RankMath Pro auto-detects Kadence Accordions and generates FAQPage schema, which enables rich snippet display in Google and increases LLM citation confidence. Each question should be phrased as a parent would ask it, and each answer should lead with a direct statement (the "Quick Answer" format) before providing supporting context.
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Q1: What is the Purposeful Play Framework?</div>
+    <div class="faq-a">The Purposeful Play Framework is Spark Academy's proprietary, research-driven curriculum framework designed by Dr. Michelle Peterson, Ed.D. It combines the Experience Early Learning whole-child curriculum, formal developmental assessments that create individualized learning paths for every child, daily enrichment in five subjects (Spanish, STEM, Art, Communication, and Music &amp; Movement), and a monthly-rotating Developmental Playroom. It's the approach that structures every part of your child's day at Spark.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Q2: Is this just play, or will my child learn academics?</div>
+    <div class="faq-a">Both — and that's the point. Purposeful play is the research-proven method through which young children build academic skills most effectively. Your child develops letter recognition, number sense, scientific reasoning, and early literacy through hands-on, play-based activities that are carefully designed by credentialed educators. Children at Spark also receive 30 minutes of daily enrichment in Spanish, STEM, Art, Communication, and Music &amp; Movement. The Purposeful Play Framework produces children who are academically prepared <em>and</em> socially-emotionally ready for kindergarten.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Q3: How is the Purposeful Play Framework different from Montessori?</div>
+    <div class="faq-a">Montessori is a well-established approach with its own philosophy and structure. The Purposeful Play Framework is different in several key ways: it's built on the Experience Early Learning whole-child curriculum rather than Montessori materials, it uses formal developmental assessments to build individualized learning paths, it includes daily enrichment subjects (including Spanish) integrated into every child's schedule, and it was designed by a doctoral researcher in early childhood education — Dr. Michelle Peterson, Ed.D. — specifically for the children at Spark Academy.</div>
+  </div>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    This FAQ directly addresses the comparison traffic captured by Blog Article 9 ("Montessori vs. Play-Based Preschool") and the competitive angle against Montessori School of Peoria identified in the Competitor Intel tab. The answer is respectful but clearly differentiating.
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Q4: What assessment tools does Spark use?</div>
+    <div class="faq-a">Spark uses the formal assessment tools built into the Experience Early Learning curriculum. These research-based assessments help teachers understand each child's developmental position across all domains — cognitive, social-emotional, physical, and creative — and translate that data into individualized learning paths. Assessments are ongoing, not limited to annual benchmarks, so your child's learning plan adapts as they grow throughout the year.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Q5: What happens when my child has a behavior challenge?</div>
+    <div class="faq-a">At Spark, behavior is treated as communication. When a challenge arises, teachers ask: What is this child trying to communicate? What skill might be missing? And what support do they need right now? The approach is to teach the missing skill — not to punish the mistake. Children are coached through conflicts, helped to name their emotions, and supported with patience. Connection always comes before correction, and children are never shamed or labeled.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Q6: Is enrichment (Spanish, STEM, etc.) included in tuition?</div>
+    <div class="faq-a">Yes. All five daily enrichment subjects — Spanish, STEM, Art, Communication, and Music &amp; Movement — are included in tuition at every program level. There are no add-on fees, no supply lists, and no hidden costs. Tuition at Spark is all-inclusive.</div>
+  </div>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    This FAQ targets the all-inclusive tuition messaging identified as a conversion asset in the project strategy. Ending the FAQ section on this note leaves the cost objection fully resolved heading into the bottom CTA.
+  </div>
+</div>
+
+<!-- ════════════════ SECTION 14: BOTTOM CTA BLOCK ════════════════ -->
+<div class="section section-even" id="s14">
+  <div class="section-number">Section 14</div>
+  <h2>Bottom CTA Block</h2>
+
+  <div class="h-label">CTA Headline (H2)</div>
+  <div class="copy-headline-h2">See the Purposeful Play Framework in Action</div>
+
+  <p class="copy-body">Reading about a curriculum framework and seeing it come alive in a real classroom are two very different things. Schedule a tour, walk through the classrooms, watch the teachers interact with children, and see the Developmental Playroom. You'll know within minutes whether Spark is right for your family.</p>
+
+  <div class="cta-block">
+    <span class="cta-primary">▶ Schedule a Tour</span>
+    <div class="cta-secondary">→ links to /schedule-a-tour/</div>
+    <div style="margin-top:0.75rem;">
+      <div class="cta-secondary">Prefer to call? <strong>309-291-3292</strong></div>
+      <div class="cta-secondary">Have a question first? <strong>We'd love to hear from you →</strong> links to embedded question form or anchor</div>
+    </div>
+  </div>
+
+  <p class="copy-body" style="font-style:italic; color: var(--mist-teal); font-weight:500;">Dr. Michelle Peterson, Ed.D. — Founder &amp; Executive Director<br>1989 North Morton Avenue, Morton, IL 61550</p>
+
+  <div class="note">
+    <div class="note-label">Design Note</div>
+    CTA block follows the Parent Funnel Wireframe architecture: Primary CTA = "Schedule a Tour" (Antique Gold #C49826 background, white #FFFFFF text). Secondary CTA = phone number (click-to-call on mobile) + "Have a Question?" text link. Trust signal = Dr. Peterson's credential byline and address in visual proximity to CTAs. Both CTAs get data-cta-type and data-cta-text attributes for GTM tracking per Tracking Architecture Document.
+  </div>
+
+  <div class="photo-dir">
+    <div class="photo-dir-label">📸 Photo Direction — CTA Section</div>
+    A warm, inviting photo of the Spark Academy building exterior or entrance — the "homelike" quality Dr. Peterson describes. Alternatively, a photo of Dr. Peterson greeting a family at the door. The image should communicate "you're welcome here."
+  </div>
+</div>
+
+<!-- ════════════════ IMAGE ALT TEXT SPECIFICATIONS ════════════════ -->
+<div class="section section-odd" id="alt">
+  <div class="section-number">Alt Text</div>
+  <h2>Image Alt Text Specifications</h2>
+
+  <p class="copy-body" style="font-size:0.88rem; color:#666; margin-bottom:1rem;">All images are pending the Phase 5 photo shoot. Stock photography is not recommended — authenticity is critical for E-E-A-T compliance.</p>
+
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead>
+        <tr><th>Image Location</th><th>Recommended Alt Text</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Hero</strong></td><td>Children engaged in purposeful play with a teacher at Spark Academy preschool in Morton, Illinois</td></tr>
+        <tr><td><strong>Science Section</strong></td><td>Close-up of a child's hands building with blocks during Academic Play at Spark Academy</td></tr>
+        <tr><td><strong>Daily Schedule</strong></td><td>Small group of preschool children during a STEM enrichment activity at Spark Academy</td></tr>
+        <tr><td><strong>Developmental Playroom</strong></td><td>The Developmental Playroom at Spark Academy set up for the monthly Ocean Dive curriculum theme</td></tr>
+        <tr><td><strong>Curriculum Themes</strong></td><td>Spark Academy classroom transformed for the DinoLand curriculum theme with hands-on exploration materials</td></tr>
+        <tr><td><strong>CTA Section</strong></td><td>Spark Academy's welcoming entrance at 1989 North Morton Avenue in Morton, Illinois</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ════════════════ SCHEMA MARKUP ════════════════ -->
+<div class="section section-even" id="schema">
+  <div class="section-number">Schema</div>
+  <h2>Schema Markup Specification</h2>
+
+  <h3 style="margin-bottom:0.75rem;">Primary Schema: EducationalOccupationalProgram</h3>
+  <div style="background:#f5f5f0; border-radius:8px; padding:0.85rem 1rem; font-family:monospace; font-size:0.78rem; line-height:1.7; overflow-x:auto; margin-bottom:1rem; border:1px solid var(--light-sage);">
+{<br>
+&nbsp;&nbsp;"@context": "https://schema.org",<br>
+&nbsp;&nbsp;"@type": "EducationalOccupationalProgram",<br>
+&nbsp;&nbsp;"name": "The Purposeful Play Framework",<br>
+&nbsp;&nbsp;"description": "Spark Academy's proprietary, research-driven, play-based curriculum framework designed by Dr. Michelle Peterson, Ed.D. Built on the Experience Early Learning whole-child curriculum with individualized assessment, daily enrichment in five subjects, and a monthly-rotating Developmental Playroom.",<br>
+&nbsp;&nbsp;"provider": {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"@type": "EducationalOrganization",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"name": "Spark Academy",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"url": "https://www.sparkacademymorton.com",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"address": {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"@type": "PostalAddress",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"streetAddress": "1989 North Morton Avenue",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"addressLocality": "Morton",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"addressRegion": "IL",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"postalCode": "61550"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;},<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"telephone": "309-291-3292"<br>
+&nbsp;&nbsp;},<br>
+&nbsp;&nbsp;"educationalFramework": "Experience Early Learning",<br>
+&nbsp;&nbsp;"teaches": ["Cognitive Development", "Social-Emotional Learning", "Physical Development", "Creative Expression", "Spanish", "STEM", "Art", "Communication", "Music &amp; Movement"],<br>
+&nbsp;&nbsp;"occupationalCategory": "Early Childhood Education",<br>
+&nbsp;&nbsp;"timeToComplete": "P10M",<br>
+&nbsp;&nbsp;"numberOfCredits": null,<br>
+&nbsp;&nbsp;"programType": "Preschool through Kindergarten"<br>
+}
+  </div>
+
+  <h3 style="margin-bottom:0.5rem;">FAQPage Schema</h3>
+  <p class="copy-body">Auto-generated by RankMath Pro from Kadence Accordion block (Section 13). Verify via Google Rich Results Test during Phase 5 QA.</p>
+
+  <h3 style="margin-bottom:0.5rem;">BreadcrumbList Schema</h3>
+  <p class="copy-body">Home > The Purposeful Play Framework</p>
+</div>
+
+<!-- ════════════════ OPEN ITEMS ════════════════ -->
+<div class="section section-odd" id="open">
+  <div class="section-number">Open Items</div>
+  <h2>Open Items Summary — Items Requiring Dr. Peterson's Input</h2>
+
+  <div class="flag">
+    <div class="flag-label">⚠️ Open Item 1</div>
+    <strong>Photography assets (all sections):</strong> 6+ photos needed for the curriculum page, all from the planned Spark Academy photo shoot. Alt text specs provided above. This is a Phase 5 dependency — the page can launch with placeholder images if needed, but the Developmental Playroom photos in particular are conversion-critical. <em>(Phase 5)</em>
+  </div>
+
+  <div class="flag">
+    <div class="flag-label">⚠️ Open Item 2</div>
+    <strong>Curriculum theme photos:</strong> If Dr. Peterson has any existing photos of themed classroom or playroom transformations (DinoLand, Ocean Dive, Rainforest, etc.), these would be the highest-value early assets for this page. <em>(Pre-Phase 5 if available)</em>
+  </div>
+
+  <div class="flag">
+    <div class="flag-label">⚠️ Open Item 3</div>
+    <strong>Review the behavior philosophy section:</strong> Dr. Peterson should confirm that the "three questions" framework and "connection before correction" language accurately represents current practice and that she's comfortable with this level of specificity on the website. <em>(Phase 3 review gate)</em>
+  </div>
+</div>
+
+<!-- ════════════════ DELIVERABLE CHECKLIST ════════════════ -->
+<div class="section section-even" id="checklist">
+  <div class="section-number">Checklist</div>
+  <h2>Deliverable Checklist</h2>
+
+  <div style="font-size:0.9rem; line-height:2;">
+    ✅ H1 with primary keyword integration<br>
+    ✅ Hook-first hero (headline + subheadline + CTA)<br>
+    ✅ Full body copy with H2/H3 hierarchy (14 sections)<br>
+    ✅ Meta title (49 chars) and meta description (147 chars)<br>
+    ✅ Image alt text specifications (6 images)<br>
+    ✅ Primary CTA + Secondary CTA placement per Parent Lead Funnel Wireframe<br>
+    ✅ Social proof integration points (Dr. Peterson credentials, ratio, class size, Brightwheel)<br>
+    ✅ Internal linking targets (7 pages linked)<br>
+    ✅ AEO Quick Answer definition block (Section 2)<br>
+    ✅ AEO key-value tables (Sections 5 and 11)<br>
+    ✅ FAQ section with 6 questions (FAQPage schema via Kadence Accordion)<br>
+    ✅ Schema markup specification (EducationalOccupationalProgram + FAQPage + BreadcrumbList)<br>
+    ✅ Data layer values specified<br>
+    ✅ Photo direction per section<br>
+    ✅ Open items flagged for Dr. Peterson<br>
+    ✅ Messaging lens verified: Hybrid 70/30 per Decision Matrix
+  </div>
+</div>
+
+<!-- ════════════════ PHOTO DIRECTION SUMMARY ════════════════ -->
+<div class="section section-odd" id="photos" style="background: var(--whisper-sage);">
+  <div class="section-number">Photography</div>
+  <h2>Photo Direction Summary</h2>
+
+  <div class="shot-card">
+    <div class="shot-card-number">Shot 01</div>
+    <h4>Hero</h4>
+    <p>Full-width or 60/40 split hero image. Show a small group of children (3–4 kids) deeply engaged in a structured play activity with a teacher nearby — not hovering, but present. The activity should look intentional, not chaotic: a teacher and children gathered around a STEM exploration table, or a child building with purpose while a teacher observes and takes notes. The image must communicate "this is play AND this is learning" in a single frame. Natural light. Warm, homelike setting. No institutional fluorescent lighting or plastic-heavy environments.</p>
+  </div>
+
+  <div class="shot-card">
+    <div class="shot-card-number">Shot 02</div>
+    <h4>Science Section</h4>
+    <p>A close-up of a child's hands engaged in a purposeful activity — building, sorting, experimenting. The photo should capture concentration and engagement. The teacher's hands may be visible at the edge of the frame (guiding, not controlling). This image communicates "learning is happening" without needing a caption to explain it.</p>
+  </div>
+
+  <div class="shot-card">
+    <div class="shot-card-number">Shot 03</div>
+    <h4>Daily Schedule</h4>
+    <p>A horizontal strip of 3–4 small photos showing different parts of the daily schedule: Academic Play (children at a table with a teacher), Developmental Playroom (children exploring a themed environment), Daily Enrichment (a Spanish or STEM activity), and Outdoor Play. Each photo should be warm, candid, and show genuine engagement. If a strip layout isn't feasible, a single photo showing a teacher and small group in an Academic Play moment works.</p>
+  </div>
+
+  <div class="shot-card">
+    <div class="shot-card-number">Shot 04</div>
+    <h4>Curriculum Themes</h4>
+    <p>A collage or carousel of 3–4 photos showing different themed classroom transformations: the Developmental Playroom during DinoLand, a classroom during Ocean Dive, students exploring the Rainforest theme. These photos are some of the most visually compelling on the entire site and should be prioritized in the Phase 5 photo shoot.</p>
+  </div>
+
+  <div class="shot-card">
+    <div class="shot-card-number">Shot 05</div>
+    <h4>CTA Section</h4>
+    <p>A warm, inviting photo of the Spark Academy building exterior or entrance — the "homelike" quality Dr. Peterson describes. Alternatively, a photo of Dr. Peterson greeting a family at the door. The image should communicate "you're welcome here."</p>
+  </div>
+</div>
+
+<!-- ════════════════ FOOTER ════════════════ -->
+<div class="doc-footer">
+  <strong>Spark Academy</strong> — Website Rebuild Project<br>
+  Phase 3A: The Purposeful Play Framework Copy Deck • March 2026<br>
+  Confidential — For Internal Review Only
+</div>
+
+</body>
+</html>
