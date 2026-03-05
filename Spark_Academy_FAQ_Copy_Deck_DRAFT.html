@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spark Academy — FAQ Page Copy Deck (DRAFT)</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --mist-teal: #3D6B62;
+    --antique-gold: #C49826;
+    --cloud-white: #FBFAF8;
+    --whisper-sage: #EFF5F2;
+    --misty-sage: #9BB8AD;
+    --soft-black: #2E2E2E;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cloud-white);
+    color: var(--soft-black);
+    line-height: 1.65;
+    font-size: 16px;
+  }
+  .header {
+    background: var(--mist-teal);
+    color: white;
+    padding: 28px 24px;
+    text-align: center;
+  }
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .header .subtitle {
+    font-size: 13px;
+    opacity: 0.85;
+  }
+  .status-bar {
+    background: var(--antique-gold);
+    color: white;
+    text-align: center;
+    padding: 10px 24px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  .container { max-width: 720px; margin: 0 auto; padding: 24px 20px; }
+  
+  .spec-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 24px;
+    font-size: 14px;
+  }
+  .spec-table th, .spec-table td {
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--misty-sage);
+  }
+  .spec-table th {
+    background: var(--whisper-sage);
+    font-weight: 600;
+    color: var(--mist-teal);
+    width: 35%;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .spec-table td { font-size: 14px; }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    color: var(--mist-teal);
+    font-size: 22px;
+    font-weight: 600;
+    margin: 40px 0 8px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--misty-sage);
+  }
+  h2:first-of-type { margin-top: 24px; }
+  
+  .section-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--antique-gold);
+    font-weight: 700;
+    margin-top: 40px;
+    margin-bottom: 4px;
+  }
+
+  h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--mist-teal);
+    font-size: 18px;
+    font-weight: 600;
+    margin: 28px 0 6px;
+  }
+
+  p { margin: 8px 0 12px; }
+
+  .strategic-note {
+    background: var(--whisper-sage);
+    border-left: 4px solid var(--mist-teal);
+    padding: 14px 16px;
+    margin: 16px 0;
+    font-size: 13px;
+    line-height: 1.55;
+    border-radius: 0 6px 6px 0;
+  }
+  .strategic-note strong { color: var(--mist-teal); }
+
+  .faq-item {
+    margin: 20px 0;
+    padding: 0 0 16px;
+    border-bottom: 1px solid #e8ece9;
+  }
+  .faq-question {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--soft-black);
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .faq-answer { font-size: 15px; line-height: 1.65; }
+
+  .needs-michelle {
+    background: #FFF8E7;
+    border: 1px solid var(--antique-gold);
+    border-left: 4px solid var(--antique-gold);
+    padding: 14px 16px;
+    margin: 12px 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 14px;
+  }
+  .needs-michelle::before {
+    content: "🟡 ";
+  }
+
+  .internal-link {
+    display: inline-block;
+    color: var(--mist-teal);
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: 4px;
+    text-decoration: none;
+    border-bottom: 1px solid var(--misty-sage);
+  }
+
+  .tuition-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0 16px;
+    font-size: 14px;
+  }
+  .tuition-table th {
+    background: var(--mist-teal);
+    color: white;
+    padding: 10px 12px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .tuition-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--misty-sage);
+  }
+  .tuition-table tr:nth-child(even) td { background: var(--whisper-sage); }
+  .tuition-table td:last-child { font-weight: 600; }
+
+  .schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0 16px;
+    font-size: 14px;
+  }
+  .schedule-table th {
+    background: var(--mist-teal);
+    color: white;
+    padding: 10px 12px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .schedule-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--misty-sage);
+  }
+  .schedule-table tr:nth-child(even) td { background: var(--whisper-sage); }
+
+  .cta-block {
+    background: var(--whisper-sage);
+    border: 2px solid var(--mist-teal);
+    border-radius: 10px;
+    padding: 24px 20px;
+    text-align: center;
+    margin: 32px 0;
+  }
+  .cta-block h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--mist-teal);
+    margin-bottom: 8px;
+  }
+  .cta-block p { font-size: 14px; margin-bottom: 12px; }
+  .cta-primary {
+    display: inline-block;
+    background: var(--antique-gold);
+    color: white;
+    padding: 12px 28px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    margin: 6px 4px;
+  }
+  .cta-secondary {
+    display: inline-block;
+    color: var(--mist-teal);
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    margin: 6px 4px;
+    border-bottom: 1px solid var(--misty-sage);
+  }
+  .trust-line {
+    font-size: 13px;
+    font-style: italic;
+    color: var(--mist-teal);
+    margin-top: 12px;
+  }
+
+  .category-header {
+    background: var(--mist-teal);
+    color: white;
+    padding: 14px 18px;
+    border-radius: 8px;
+    margin: 36px 0 16px;
+  }
+  .category-header h2 {
+    font-family: 'Playfair Display', serif;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+  .category-header .objection-tag {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.7;
+    margin-top: 2px;
+  }
+
+  .open-items {
+    margin: 32px 0;
+    padding: 20px;
+    background: #FFF8E7;
+    border: 2px solid var(--antique-gold);
+    border-radius: 10px;
+  }
+  .open-items h3 {
+    color: var(--antique-gold);
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 12px;
+    font-size: 18px;
+  }
+  .open-item-row {
+    display: flex;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid #f0e4c8;
+    font-size: 14px;
+  }
+  .open-item-row:last-child { border-bottom: none; }
+  .open-item-num {
+    font-weight: 700;
+    color: var(--antique-gold);
+    min-width: 24px;
+  }
+
+  .hero-copy {
+    background: var(--whisper-sage);
+    border-radius: 10px;
+    padding: 24px 20px;
+    margin: 20px 0;
+  }
+  .hero-copy .h1-display {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--mist-teal);
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+  .hero-copy .sub-display {
+    font-size: 15px;
+    color: var(--soft-black);
+    line-height: 1.55;
+  }
+  .proof-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .proof-item {
+    background: white;
+    border: 1px solid var(--misty-sage);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--mist-teal);
+  }
+
+  .footer {
+    background: var(--mist-teal);
+    color: white;
+    padding: 20px 24px;
+    text-align: center;
+    font-size: 13px;
+    margin-top: 40px;
+  }
+  .footer a { color: var(--misty-sage); }
+
+  @media (max-width: 480px) {
+    .header h1 { font-size: 19px; }
+    .hero-copy .h1-display { font-size: 20px; }
+    h2 { font-size: 19px; }
+    .category-header h2 { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Spark Academy — FAQ Page Copy Deck</h1>
+  <div class="subtitle">Phase 3A Deliverable · March 2026 · Prepared by Stephen Odanovich</div>
+</div>
+<div class="status-bar">DRAFT — PENDING DR. PETERSON'S REVIEW</div>
+
+<div class="container">
+
+  <!-- PAGE SPECS -->
+  <h2>Page Specifications</h2>
+  <table class="spec-table">
+    <tr><th>URL</th><td>/faq/</td></tr>
+    <tr><th>Primary Keyword</th><td>Spark Academy FAQ</td></tr>
+    <tr><th>Messaging Lens</th><td>Hybrid — 50/50</td></tr>
+    <tr><th>Primary CTA</th><td>Schedule a Tour</td></tr>
+    <tr><th>Secondary CTA</th><td>Have a Question? We'd love to hear from you.</td></tr>
+    <tr><th>Meta Title</th><td>Frequently Asked Questions | Spark Academy Morton IL</td></tr>
+    <tr><th>Meta Description</th><td>Get answers about enrollment, tuition, schedules &amp; more at Spark Academy preschool in Morton, IL.</td></tr>
+    <tr><th>Schema</th><td>FAQPage + BreadcrumbList</td></tr>
+    <tr><th>Word Count</th><td>1,800–2,400 words</td></tr>
+  </table>
+
+  <div class="strategic-note">
+    <strong>Strategic Note:</strong> The FAQ page is the site's primary objection-handling resource. It maps directly to the five parent objections (Cost, Readiness, Play vs. Academics, Social Readiness, Trust/Safety) but organizes them under intuitive, parent-friendly category labels. Each Q&A is structured for FAQPage schema via Kadence Accordion blocks and AEO citation extraction.
+  </div>
+
+  <!-- HERO -->
+  <div class="section-label">Section 1 — Hero</div>
+  <div class="hero-copy">
+    <div class="h1-display">Every Question You Have About Your Child's Next Chapter — Answered.</div>
+    <div class="sub-display">Choosing a preschool comes with questions. Here are the answers — clear, honest, and written by the educator who built the school.</div>
+    <div class="proof-bar">
+      <span class="proof-item">DCFS Licensed</span>
+      <span class="proof-item">Doctoral-Led Curriculum</span>
+      <span class="proof-item">5:1 Ratio</span>
+      <span class="proof-item">Morton, IL</span>
+    </div>
+  </div>
+
+  <!-- CATEGORY 1: ENROLLMENT -->
+  <div class="category-header">
+    <h2>Enrollment & Getting Started</h2>
+    <div class="objection-tag">Addresses: Readiness Objection</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">What age does my child need to be to start at Spark?</div>
+    <div class="faq-answer">Spark Academy serves children ages 3 through kindergarten. Your child must be the required age by their first day of school for the program they're entering: age 3 for the 3's Preschool, age 4 for the 4's Preschool, age 5 by November 30 for Kindergarten Prep, and age 5 by September 30 for Kindergarten. Fresh 3's Fridays uses rolling birthday enrollment — your child can start on the Friday after they turn three, even mid-year.</div>
+    <a href="#" class="internal-link">Learn about age-specific programs → /programs/</a>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">Does my child need to be potty trained?</div>
+    <div class="faq-answer">Yes. All students at Spark Academy — across every program — must be fully potty trained before their first day. If your child is still working on potty training, we recommend waiting until they've achieved independence before enrolling.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">How do I enroll my child?</div>
+    <div class="faq-answer">Enrollment starts with a tour. Every family visits Spark before their child attends — it's how we meet you, answer your questions, and make sure the fit is right for your family. After your tour, you'll complete enrollment paperwork and submit a $100 non-refundable deposit to hold your child's spot. From there, we'll prepare you for your child's first day.</div>
+    <a href="#" class="internal-link">Schedule your tour → /schedule-a-tour/</a>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">Can my child start mid-year?</div>
+    <div class="faq-answer">Yes, subject to availability. Fresh 3's Fridays is designed specifically for rolling mid-year enrollment — your child can begin on their third birthday. For the 3's, 4's, Kindergarten Prep, and Kindergarten programs, mid-year enrollment is welcome when space is available. Contact us and we'll walk you through the timing.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">When should I apply? Is there a specific enrollment window?</div>
+    <div class="needs-michelle"><strong>Need clarity from Michelle.</strong> Does Spark have a formal enrollment window? Is it rolling admission? Do returning families get priority? When do spots typically fill?</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">What documents do I need to enroll?</div>
+    <div class="needs-michelle"><strong>Need clarity from Michelle.</strong> Birth certificate? Immunization records? Medical forms? DCFS-required paperwork? Physical exam? Emergency contacts?</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">When does the school year start and end?</div>
+    <div class="needs-michelle"><strong>Need clarity from Michelle.</strong> Exact dates for 2026–2027. Does Spark follow the Morton District 709 calendar? Any differences?</div>
+  </div>
+
+  <!-- CATEGORY 2: TUITION -->
+  <div class="category-header">
+    <h2>Tuition & Pricing</h2>
+    <div class="objection-tag">Addresses: Cost / Tuition Objection (#1 Parent Hesitation)</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">How much does Spark Academy cost?</div>
+    <div class="faq-answer">
+      <table class="tuition-table">
+        <thead><tr><th>Program</th><th>Schedule</th><th>Monthly</th></tr></thead>
+        <tbody>
+          <tr><td>Fresh 3's Fridays</td><td>Friday</td><td>$100</td></tr>
+          <tr><td>3's Preschool</td><td>T/Th or M/W</td><td>$350</td></tr>
+          <tr><td>4's Preschool</td><td>T/Th</td><td>$350</td></tr>
+          <tr><td>4's Preschool</td><td>M/W/F</td><td>$450</td></tr>
+          <tr><td>4's Preschool</td><td>M–F</td><td>$600</td></tr>
+          <tr><td>Kindergarten Prep</td><td>T/Th</td><td>$400</td></tr>
+          <tr><td>Kindergarten Prep</td><td>M/W/F</td><td>$500</td></tr>
+          <tr><td>Kindergarten Prep</td><td>M–F</td><td>$650</td></tr>
+          <tr><td>Kindergarten</td><td>M–F (only)</td><td>$700</td></tr>
+        </tbody>
+      </table>
+      <p>Every tuition rate is all-inclusive. There are no supply lists, no hidden fees, and no additional costs. Tuition covers curriculum materials, daily enrichment in five subjects, the Developmental Playroom, outdoor play, and snack.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">How does billing work?</div>
+    <div class="faq-answer">Tuition is billed over 10 months. A 10% discount is available for families who pay the full year's tuition by August 15. A $100 non-refundable deposit is required to hold your child's enrollment spot.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">Is preschool tuition tax deductible?</div>
+    <div class="faq-answer">Yes. Spark Academy tuition qualifies for the federal Child and Dependent Care Credit (Form 2441), which allows working parents to claim up to $3,000 per child or $6,000 for two or more children in qualifying childcare expenses. Families with a Dependent Care FSA through their employer may see even greater savings. We'll provide a year-end tuition statement with our tax ID to make filing simple.</div>
+    <a href="#" class="internal-link">Read the full guide: Is Preschool Tax Deductible? → /blog/is-preschool-tax-deductible/</a>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">Do you offer sibling discounts?</div>
+    <div class="needs-michelle"><strong>Need clarity from Michelle.</strong> Camp Play and Discovery Station both offer 10% sibling discounts. Do core preschool and kindergarten programs offer any sibling discount?</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">Do you offer financial aid, scholarships, or payment plans?</div>
+    <div class="needs-michelle"><strong>Need clarity from Michelle.</strong> Discovery Station mentions "bill plans available on request." Is this available for core programs? Any need-based assistance?</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">What is your refund or withdrawal policy?</div>
+    <div class="needs-michelle"><strong>Need clarity from Michelle.</strong> If a family withdraws mid-year, what happens to prepaid tuition? Is the deposit refundable under any circumstances? How much notice is required?</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">What payment methods do you accept?</div>
+    <div class="needs-michelle"><strong>Need clarity from Michelle.</strong> Check, credit card, bank transfer, Brightwheel payment portal?</div>
+  </div>
+
+  <!-- CATEGORY 3: CURRICULUM -->
+  <div class="category-header">
+    <h2>Curriculum & Your Child's Day</h2>
+    <div class="objection-tag">Addresses: Play vs. Academics Objection</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">What does a typical day look like at Spark?</div>
+    <div class="faq-answer">
+      <p>Every program follows a structured daily schedule designed by Dr. Michelle Peterson, Ed.D.:</p>
+      <table class="schedule-table">
+        <thead><tr><th>Block</th><th>Duration</th><th>What Your Child Is Building</th></tr></thead>
+        <tbody>
+          <tr><td>Academic Play</td><td>1.5–2.5 hrs</td><td>Literacy, math, science, and social skills through play-based, individualized learning</td></tr>
+          <tr><td>Developmental Playroom</td><td>30 min</td><td>Creativity, problem-solving, and independence in a monthly-rotating environment</td></tr>
+          <tr><td>Daily Enrichment</td><td>30 min</td><td>Spanish (Mon), STEM (Tue), Art (Wed), Communication (Thu), Music &amp; Movement (Fri)</td></tr>
+          <tr><td>Outdoor Play</td><td>15 min</td><td>Gross motor skills, physical confidence, and unstructured social interaction</td></tr>
+          <tr><td>Snack &amp; Community</td><td>15 min</td><td>Manners, conversation, and the simple art of sitting together</td></tr>
+        </tbody>
+      </table>
+      <p>The 3's and 4's programs run from 8:30 to 11:30 AM. Kindergarten Prep and Kindergarten run from 8:00 AM to 12:00 PM, with an expanded 2.5-hour Academic Play block.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">Is this just playtime, or is there real academic learning?</div>
+    <div class="faq-answer">Both — and that's by design. The Purposeful Play Framework is Spark's proprietary curriculum approach, built on the Experience Early Learning whole-child model and designed by Dr. Peterson drawing on her doctoral research at Illinois State University. Every activity is chosen because the research says it builds something specific in your child's development. This isn't free play and it isn't worksheets — it's the deliberate middle ground that produces the strongest outcomes. Children who complete Spark's programs walk into kindergarten ready academically, socially, and emotionally.</div>
+    <a href="#" class="internal-link">Explore the Purposeful Play Framework → /purposeful-play-framework/</a>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">What is the Developmental Playroom?</div>
+    <div class="faq-answer">The Developmental Playroom is a dedicated play space exclusive to Spark Academy. It transforms completely every month around a new theme — from rainforest explorations to ice castles to space adventures. The playroom is student-driven: children choose their own activities, direct their own play, and build independence in an environment designed to spark curiosity and creative problem-solving. No other preschool in the area offers anything like it.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">What enrichment subjects does my child receive?</div>
+    <div class="faq-answer">Every child in every program receives daily enrichment in a rotating schedule: Spanish on Monday, STEM on Tuesday, Art on Wednesday, Communication on Thursday, and Music &amp; Movement on Friday. These aren't extras or occasional specials — they're core programming built into every schedule, covered by tuition, and taught daily. The neural pathways built through early foreign language exposure, hands-on science, and music are some of the most powerful developmental investments during the preschool years.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">How do you assess my child's progress?</div>
+    <div class="faq-answer">Dr. Peterson's individualized assessment system tracks each child's development across multiple domains throughout the year — not just at year-end. Teachers use these assessments to calibrate your child's learning path to where they actually are, not where a curriculum guide says they should be. You'll have ongoing communication with your child's teachers and a clear picture of their growth at every stage.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">Do children use screens or technology in the classroom?</div>
+    <div class="needs-michelle"><strong>Need clarity from Michelle.</strong> Is the classroom entirely screen-free? Any iPad or smart board use? This is a high-interest question for parents — a clear answer either way is a differentiator.</div>
+  </div>
+
+  <!-- CATEGORY 4: CHILD'S EXPERIENCE -->
+  <div class="category-header">
+    <h2>Your Child's Experience</h2>
+    <div class="objection-tag">Addresses: Social Readiness + Readiness Objections</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">What is the class size and student-to-teacher ratio?</div>
+    <div class="faq-answer">Every classroom at Spark has a maximum of 10 to 12 students and maintains a 5:1 student-to-teacher ratio — the lowest of any preschool program in the area. Your child isn't a face in a crowd. They're known by name, by temperament, and by their unique developmental needs.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">What if my child has a hard time with drop-off?</div>
+    <div class="faq-answer">Separation challenges are completely normal, especially for children starting their first school experience. Spark's teachers are trained to support the adjustment process, and our homelike environment — children walk in and kick off their shoes — is specifically designed to ease the transition. We communicate with you closely during the first few weeks and will always let you know how your child's day went. And for families who want the gentlest possible start, Fresh 3's Fridays is a one-day-per-week program designed as a bridge into the full Spark experience.</div>
+    <a href="#" class="internal-link">Learn about Fresh 3's Fridays → /fresh-3s-fridays/</a>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">How does Spark handle behavior challenges?</div>
+    <div class="faq-answer">
+      <p>We believe behavior is communication. When a child is struggling, our first question is always: what is this child trying to tell us? What skill might be missing? What support do they need right now?</p>
+      <p>Spark's approach is connection before correction. Children are never shamed, labeled, or publicly disciplined. There are no color charts, no clip systems, and no time-out chairs. Instead, teachers coach children through social and emotional challenges — reteaching skills like sharing, turn-taking, and emotional regulation with the same patience they'd use to reteach a letter sound. This philosophy is grounded in Dr. Peterson's decade of PBIS leadership and her doctoral research on inclusive classroom strategies.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">How will I know what my child did today?</div>
+    <div class="faq-answer">Spark uses Brightwheel, a daily communication platform that gives you real-time photos and updates from your child's day. Teachers post throughout the day so you can see exactly what your child experienced — which means you can ask specific questions at dinner instead of getting "I had crackers" as the full report.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">Can outside providers (speech therapists, OTs) come to Spark?</div>
+    <div class="faq-answer">Yes. Spark openly welcomes and collaborates with outside providers. If your child works with a speech therapist, occupational therapist, or behavioral specialist, they're welcome to come into the building during school hours with your coordination. This is a commitment to the whole child — and to the families who are already building a support team around them.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">How do you handle food allergies or dietary restrictions?</div>
+    <div class="needs-michelle"><strong>Need clarity from Michelle.</strong> Is the classroom nut-free? What's the allergy protocol? Can families send alternatives?</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">Do you provide snacks, or does my child bring their own?</div>
+    <div class="needs-michelle"><strong>Need clarity from Michelle.</strong> Snack is part of the daily schedule — who provides it?</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">What if my child gets sick at school?</div>
+    <div class="needs-michelle"><strong>Need clarity from Michelle.</strong> What triggers a parent call? Fever threshold? How quickly does pick-up need to happen? When can the child return?</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">What is the drop-off and pick-up procedure?</div>
+    <div class="needs-michelle"><strong>Need clarity from Michelle.</strong> Where do families go? Car line? Walk to door? Who is authorized for pick-up?</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">What happens on snow days or when school closes unexpectedly?</div>
+    <div class="needs-michelle"><strong>Need clarity from Michelle.</strong> Does Spark follow Morton District 709 closures? How are families notified? Are there make-up days?</div>
+  </div>
+
+  <!-- CATEGORY 5: SAFETY -->
+  <div class="category-header">
+    <h2>Safety, Licensing & Credentials</h2>
+    <div class="objection-tag">Addresses: Trust / Safety Objection</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">Is Spark Academy licensed?</div>
+    <div class="faq-answer">Yes. Spark Academy is fully licensed by the Illinois Department of Children and Family Services (DCFS). Licensing means the facility, staff qualifications, safety protocols, and child-to-staff ratios meet or exceed state standards.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">Is Spark Academy a daycare?</div>
+    <div class="faq-answer">No. Spark Academy is a licensed preschool and early childhood education program — not a daycare. The difference matters: Spark's curriculum is designed by a doctoral researcher, taught by degreed and credentialed teachers, and structured around the Purposeful Play Framework. Children receive daily enrichment in five subjects, individualized developmental assessment, and a 5:1 student-to-teacher ratio. This is intentional education, not custodial care.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">What are Dr. Peterson's qualifications?</div>
+    <div class="faq-answer">Dr. Michelle Peterson holds a Doctor of Education (Ed.D.) from Illinois State University, a Master of Science from Bradley University, and a Bachelor of Science from The University of Texas at Austin. She holds four Illinois certifications — including the Superintendent Certificate and Chief School Business Officer (CSBO) — and has 20 years of professional experience spanning classroom teaching, school administration, doctoral research, and founding Spark Academy. She is the only doctoral-level early childhood education researcher operating a preschool in Central Illinois.</div>
+    <a href="#" class="internal-link">Meet Dr. Peterson → /dr-michelle-peterson/</a>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">Are all teachers degreed and credentialed?</div>
+    <div class="faq-answer">Yes. Every teacher at Spark Academy holds a degree and credential in education. Spark doesn't hire people who simply like children — educators are professionally trained and mentored by Dr. Peterson in evidence-based practices. They understand child development at a professional level, and it shows in every interaction with your child.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">Are staff CPR and First Aid certified?</div>
+    <div class="needs-michelle"><strong>Need clarity from Michelle.</strong> Does this apply to all staff? What certifications are current?</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">Do you run background checks on all staff?</div>
+    <div class="needs-michelle"><strong>Need clarity from Michelle.</strong> Confirm this is standard practice — DCFS likely requires it. State it explicitly for parent trust.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">Is the building secure during school hours?</div>
+    <div class="needs-michelle"><strong>Need clarity from Michelle.</strong> Locked doors? Buzzer/intercom entry? Visitor check-in? Security protocols?</div>
+  </div>
+
+  <!-- CATEGORY 6: PROGRAMS -->
+  <div class="category-header">
+    <h2>Programs & Scheduling</h2>
+    <div class="objection-tag">Cross-cutting: High-traffic keyword captures + navigation</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">What programs does Spark Academy offer?</div>
+    <div class="faq-answer">
+      <p>Spark offers six programs across two divisions:</p>
+      <p><strong>Core Programs (Ages 3–6):</strong> Fresh 3's Fridays (one-day-per-week introduction for 3-year-olds), 3's Preschool, 4's Preschool, Kindergarten Prep, and Kindergarten.</p>
+      <p><strong>Enrichment Programs (Ages 5–11):</strong> Discovery Station (daytime homeschool enrichment on Tuesdays and Thursdays) and After-School Enrichment Programs (open to all kids, Tuesdays at 4:00 PM).</p>
+      <p><strong>Summer:</strong> Camp Play (ages 3–11, June through July).</p>
+    </div>
+    <a href="#" class="internal-link">Find the right program for your child → /programs/</a>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">What is Fresh 3's Fridays?</div>
+    <div class="faq-answer">Fresh 3's Fridays is a standalone introductory program for any child turning three — not a trial, not a lite version, but the full Spark experience delivered one day a week. Your child follows the same daily schedule as the 3's Preschool class: Academic Play, Developmental Playroom, Daily Enrichment, outdoor play, and snack. Enrollment is rolling — your child can start on the Friday after their third birthday, even mid-year. Maximum 12 students. $100/month. And when your family is ready, transitioning to the Monday/Wednesday 3's class happens organically, with no re-enrollment required.</div>
+    <a href="#" class="internal-link">Learn more about Fresh 3's Fridays → /fresh-3s-fridays/</a>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">My child turns 5 between September and November — what are my options?</div>
+    <div class="faq-answer">Kindergarten Prep was designed specifically for your family. Illinois public schools require children to turn 5 by September 1 (some districts use September 30). If your child misses that cutoff — or if you believe they'd benefit from a stronger preparatory year before entering public kindergarten — Kindergarten Prep gives them a full academic program with 2.5 hours of daily Academic Play, five-subject enrichment, and the 5:1 ratio that defines every Spark classroom.</div>
+    <a href="#" class="internal-link">Explore Kindergarten Prep → /kindergarten-prep/</a>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">Do you offer full-day care or extended afternoon hours?</div>
+    <div class="needs-michelle"><strong>Need clarity from Michelle.</strong> If no, say so clearly and frame intentionally — not as a limitation but as a design choice.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">Do you offer before- or after-school care for Spark students?</div>
+    <div class="needs-michelle"><strong>Need clarity from Michelle.</strong> Same — if no, transparency builds trust. Frame it as intentional.</div>
+  </div>
+
+  <!-- CTA BLOCK -->
+  <div class="cta-block">
+    <h3>Still Have a Question?</h3>
+    <p>We'd rather you ask than wonder. If your question isn't answered here, reach out — Dr. Peterson and our team are happy to help.</p>
+    <a href="#" class="cta-primary">Schedule a Tour</a>
+    <br>
+    <a href="#" class="cta-secondary">Have a Question? We'd love to hear from you.</a>
+    <br>
+    <a href="tel:3092913292" class="cta-secondary">Prefer to call? 309-291-3292</a>
+    <div class="trust-line">The only preschool in Central Illinois founded and led by a doctoral researcher in early childhood education.</div>
+  </div>
+
+  <!-- OPEN ITEMS -->
+  <div class="open-items">
+    <h3>Open Items — Dr. Peterson's Input Needed (20 Items)</h3>
+    <div class="open-item-row"><span class="open-item-num">1</span><span>When should I apply? Is there an enrollment window?</span></div>
+    <div class="open-item-row"><span class="open-item-num">2</span><span>What documents do I need to enroll?</span></div>
+    <div class="open-item-row"><span class="open-item-num">3</span><span>When does the school year start and end?</span></div>
+    <div class="open-item-row"><span class="open-item-num">4</span><span>Do you offer sibling discounts for core programs?</span></div>
+    <div class="open-item-row"><span class="open-item-num">5</span><span>Financial aid, scholarships, or payment plans?</span></div>
+    <div class="open-item-row"><span class="open-item-num">6</span><span>Refund or withdrawal policy?</span></div>
+    <div class="open-item-row"><span class="open-item-num">7</span><span>Payment methods accepted?</span></div>
+    <div class="open-item-row"><span class="open-item-num">8</span><span>Screens or technology in the classroom?</span></div>
+    <div class="open-item-row"><span class="open-item-num">9</span><span>Food allergy and dietary restriction protocol?</span></div>
+    <div class="open-item-row"><span class="open-item-num">10</span><span>Who provides snacks — Spark or families?</span></div>
+    <div class="open-item-row"><span class="open-item-num">11</span><span>Sick child policy (fever threshold, pick-up, return)?</span></div>
+    <div class="open-item-row"><span class="open-item-num">12</span><span>Drop-off and pick-up procedure?</span></div>
+    <div class="open-item-row"><span class="open-item-num">13</span><span>Snow day / school closure policy?</span></div>
+    <div class="open-item-row"><span class="open-item-num">14</span><span>CPR / First Aid certification — all staff?</span></div>
+    <div class="open-item-row"><span class="open-item-num">15</span><span>Background checks on all staff?</span></div>
+    <div class="open-item-row"><span class="open-item-num">16</span><span>Building security during school hours?</span></div>
+    <div class="open-item-row"><span class="open-item-num">17</span><span>Full-day care or extended afternoon hours?</span></div>
+    <div class="open-item-row"><span class="open-item-num">18</span><span>Before- or after-school care for Spark students?</span></div>
+    <div class="open-item-row"><span class="open-item-num">19</span><span>Bad weather / indoor alternative for outdoor play?</span></div>
+    <div class="open-item-row"><span class="open-item-num">20</span><span>Dress code or clothing guidelines?</span></div>
+  </div>
+
+</div>
+
+<div class="footer">
+  Spark Academy Website Project · Phase 3A: FAQ Copy Deck · March 2026<br>
+  Prepared by Stephen Odanovich · For Dr. Michelle Peterson, Ed.D.
+</div>
+
+</body>
+</html>
