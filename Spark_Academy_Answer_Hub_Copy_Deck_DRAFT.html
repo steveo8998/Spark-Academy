@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spark Academy — Answer Hub Copy Deck (DRAFT)</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --mist-teal: #3D6B62;
+  --antique-gold: #C49826;
+  --cloud-white: #FBFAF8;
+  --whisper-sage: #EFF5F2;
+  --misty-sage: #9BB8AD;
+  --soft-black: #2E2E2E;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'DM Sans', sans-serif; color: var(--soft-black); background: var(--cloud-white); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.container { max-width: 780px; margin: 0 auto; padding: 0 20px; }
+
+/* Header */
+.doc-header { background: var(--mist-teal); padding: 48px 20px 40px; text-align: center; }
+.doc-header h1 { font-family: 'Playfair Display', serif; color: white; font-size: 28px; line-height: 1.3; margin-bottom: 8px; }
+.doc-header .subtitle { color: var(--misty-sage); font-size: 16px; margin-bottom: 20px; }
+.doc-header .badge { display: inline-block; background: var(--antique-gold); color: white; font-size: 13px; font-weight: 700; padding: 5px 16px; border-radius: 20px; letter-spacing: 0.5px; }
+.doc-header .meta { color: rgba(255,255,255,0.7); font-size: 13px; margin-top: 16px; }
+
+/* Status banner */
+.status-banner { background: #FFF8E1; border-left: 4px solid var(--antique-gold); padding: 14px 18px; margin: 24px 0; border-radius: 0 6px 6px 0; font-size: 14px; font-weight: 600; color: #8B6914; }
+
+/* Sections */
+.section { margin: 32px 0; }
+h2 { font-family: 'Playfair Display', serif; color: var(--mist-teal); font-size: 22px; margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid var(--whisper-sage); }
+h3 { font-family: 'DM Sans', sans-serif; color: var(--mist-teal); font-size: 17px; font-weight: 700; margin: 24px 0 8px; }
+p { margin-bottom: 14px; font-size: 15px; }
+
+/* Page copy blocks */
+.page-copy { background: white; border: 1px solid var(--misty-sage); border-radius: 8px; padding: 20px; margin: 16px 0; }
+.page-copy .h1-display { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--mist-teal); font-weight: 700; margin-bottom: 8px; line-height: 1.3; }
+.page-copy .subheadline { font-style: italic; color: #666; font-size: 15px; margin-bottom: 16px; }
+
+/* Strategic notes */
+.note { background: var(--whisper-sage); border-left: 4px solid var(--antique-gold); padding: 12px 16px; margin: 14px 0; border-radius: 0 6px 6px 0; font-size: 13px; color: #555; }
+.note strong { color: var(--antique-gold); }
+
+/* Placeholders */
+.placeholder { background: #FFF3E0; border: 1px dashed #E65100; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: 13px; color: #BF360C; }
+.placeholder::before { content: "⚠️ PLACEHOLDER: "; font-weight: 700; }
+
+/* Tables */
+.table-wrap { overflow-x: auto; margin: 16px 0; border-radius: 8px; border: 1px solid var(--misty-sage); }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+thead th { background: var(--mist-teal); color: white; padding: 10px 12px; text-align: left; font-weight: 600; font-size: 13px; white-space: nowrap; }
+tbody td { padding: 10px 12px; border-bottom: 1px solid #E8F0ED; vertical-align: top; }
+tbody tr:nth-child(even) { background: var(--whisper-sage); }
+tbody tr:nth-child(odd) { background: white; }
+tbody td:first-child { font-weight: 600; color: var(--mist-teal); }
+
+/* KV table (two-column fact tables) */
+.kv-table td:first-child { width: 35%; min-width: 140px; white-space: nowrap; }
+
+/* FAQ */
+.faq-item { margin: 16px 0; }
+.faq-q { font-weight: 700; color: var(--mist-teal); font-size: 15px; margin-bottom: 4px; }
+.faq-a { font-size: 14px; color: var(--soft-black); padding-left: 0; margin-bottom: 16px; }
+
+/* CTA block */
+.cta-block { background: var(--mist-teal); border-radius: 10px; padding: 28px 24px; text-align: center; margin: 32px 0; }
+.cta-block h2 { color: white; border: none; margin: 0 0 10px; font-size: 20px; }
+.cta-block p { color: rgba(255,255,255,0.85); font-size: 14px; }
+.cta-btn { display: inline-block; background: var(--antique-gold); color: white; font-weight: 700; font-size: 15px; padding: 12px 32px; border-radius: 6px; text-decoration: none; margin-top: 14px; }
+
+/* Open items */
+.open-items { background: #FFF8E1; border-radius: 8px; padding: 20px; margin: 24px 0; }
+.open-items h3 { color: #8B6914; margin-top: 0; }
+.open-item { display: flex; gap: 10px; font-size: 13px; padding: 8px 0; border-bottom: 1px solid #F0E6C4; }
+.open-item:last-child { border-bottom: none; }
+.item-num { font-weight: 700; color: var(--antique-gold); min-width: 24px; }
+.item-priority { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 10px; white-space: nowrap; height: fit-content; }
+.priority-high { background: #FFCDD2; color: #C62828; }
+.priority-medium { background: #FFF9C4; color: #F57F17; }
+.priority-low { background: #E8F5E9; color: #2E7D32; }
+
+/* Spec table */
+.spec-grid { display: grid; grid-template-columns: 140px 1fr; gap: 0; font-size: 13px; border: 1px solid var(--misty-sage); border-radius: 8px; overflow: hidden; margin: 16px 0; }
+.spec-label { background: var(--whisper-sage); padding: 8px 12px; font-weight: 600; color: var(--mist-teal); border-bottom: 1px solid #dce8e2; }
+.spec-value { padding: 8px 12px; border-bottom: 1px solid #f0f0f0; }
+
+/* Footer */
+.doc-footer { background: var(--whisper-sage); padding: 24px 20px; text-align: center; margin-top: 40px; font-size: 12px; color: var(--misty-sage); }
+
+@media(max-width:600px) {
+  .doc-header h1 { font-size: 22px; }
+  h2 { font-size: 19px; }
+  .page-copy .h1-display { font-size: 20px; }
+  .spec-grid { grid-template-columns: 120px 1fr; font-size: 12px; }
+  table { font-size: 13px; }
+  thead th, tbody td { padding: 8px 10px; }
+}
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <h1>Answer Hub Copy Deck</h1>
+  <div class="subtitle">/preschool-morton-il/ — Primary Answer Hub</div>
+  <div class="badge">AEO TIER 1 — CRITICAL PRIORITY</div>
+  <div class="meta">Phase 3A Deliverable · March 2026 · Prepared by Stephen Odanovich</div>
+</div>
+
+<div class="container">
+
+<div class="status-banner">STATUS: DRAFT — Pending Dr. Peterson's Review</div>
+
+<!-- PAGE SPECS -->
+<div class="section">
+<h2>Page Specifications</h2>
+<div class="spec-grid">
+  <div class="spec-label">URL</div><div class="spec-value">/preschool-morton-il/</div>
+  <div class="spec-label">Primary KW</div><div class="spec-value">best preschool in Morton Illinois (long-tail — Homepage owns "preschool Morton IL")</div>
+  <div class="spec-label">Secondary KWs</div><div class="spec-value">preschool Morton Illinois; play-based preschool Central Illinois; preschool programs Morton IL; best preschool Peoria IL</div>
+  <div class="spec-label">Messaging</div><div class="spec-value">Hybrid — 60% child-centric / 40% school-centric</div>
+  <div class="spec-label">Primary CTA</div><div class="spec-value">Schedule a Tour</div>
+  <div class="spec-label">Meta Title</div><div class="spec-value">Preschool in Morton, IL | Spark Academy</div>
+  <div class="spec-label">Meta Desc</div><div class="spec-value">Spark Academy: doctoral-led preschool in Morton, IL. Ages 3–6. Purposeful Play Framework, 5:1 ratio, daily enrichment. Schedule a tour: 309-291-3292.</div>
+  <div class="spec-label">Schema</div><div class="spec-value">EducationalOrganization + LocalBusiness + FAQPage + HowTo + BreadcrumbList</div>
+  <div class="spec-label">Word Count</div><div class="spec-value">3,000–4,500 words</div>
+  <div class="spec-label">Navigation</div><div class="spec-value">Not in main nav — discovered via search, AI citations, and internal links</div>
+  <div class="spec-label">AEO Role</div><div class="spec-value"><strong>Tier 1 — Primary Answer Hub.</strong> Most important page for AI citation on entire site.</div>
+</div>
+<div class="note"><strong>What Makes This Page Different:</strong> This is not a landing page. It is a reference document designed for AI answer engines (ChatGPT, Perplexity, Google AI Overviews) to mine for citable facts. For human visitors, it reads as a comprehensive overview. For AI models, it provides structured data in machine-preferred formats. Other pages tell stories. This page states facts. Not in main nav — discovered via search, AI citations, and internal links. A wayfinding element near the top redirects casual visitors to the Homepage.</div>
+</div>
+
+<!-- SECTION 1: HERO -->
+<div class="section">
+<h2>Section 1: Hero (Above the Fold)</h2>
+<div class="page-copy">
+  <div class="h1-display">Preschool in Morton, IL — Where Every Child Gets Their Own Path</div>
+  <div class="subheadline">Purposeful play. Individualized learning. Led by the only doctoral researcher in early childhood education operating a preschool in Central Illinois.</div>
+  <p>Spark Academy is a premium, play-based preschool in Morton, Illinois, founded and led by Dr. Michelle Peterson, Ed.D. — a Doctor of Education from Illinois State University whose research focused on peer engagement strategies for young children in inclusive preschool settings. Spark serves children ages 3 through 6 across four core programs — 3's Preschool, 4's Preschool, Kindergarten Prep, and Kindergarten — plus Fresh 3's Fridays, a standalone introductory program for children turning three. Every child at Spark follows an individualized learning path built through the Purposeful Play Framework, Dr. Peterson's proprietary, research-driven curriculum designed around purposeful play, developmental assessment, and daily enrichment.</p>
+  <p><strong>Schedule a Tour</strong> → /schedule-a-tour/ &nbsp;|&nbsp; <strong>Phone:</strong> 309-291-3292</p>
+  <p style="margin-top:16px; padding-top:12px; border-top:1px solid #E8F0ED; font-size:14px;"><em style="color:#3D6B62;">First time exploring Spark Academy? <a href="/" style="color:#3D6B62; font-weight:600;">Start here →</a></em></p>
+</div>
+<div class="note"><strong>TL;DR Citation Unit:</strong> This opening paragraph is what AI models will quote when recommending Spark Academy. Neutral, factual, specific, self-contained. No emotional language. No marketing superlatives. Just citable facts.</div>
+<div class="note"><strong>Wayfinding Element:</strong> The "First time exploring? Start here →" line catches parents who land here via search or AI and routes them to the Homepage (built for emotional engagement). Styled as a subtle text link — not a banner. AI crawlers ignore navigational elements, so it doesn't disrupt AEO.</div>
+<div class="note"><strong>Keyword Cannibalization Prevention:</strong> Homepage owns "preschool Morton IL" (root URL, nav presence, GBP link). This page targets "best preschool in Morton Illinois" — the longer, research-intent variant. H1 still contains the core phrase for AI visibility, but RankMath and on-page signals target the long-tail. Homepage wins Google; Answer Hub wins AI.</div>
+</div>
+
+<!-- SECTION 2: ESSENTIAL FACTS -->
+<div class="section">
+<h2>Section 2: What Is Spark Academy?</h2>
+<div class="page-copy">
+<p>Spark Academy is a private, DCFS-licensed preschool in Morton, Illinois, offering doctoral-led early childhood education for children ages 3 through 6. Founded in 2023 by Dr. Michelle Peterson, Ed.D., Spark operates under the Purposeful Play Framework — a proprietary curriculum built on the Experience Early Learning whole-child curriculum that integrates individualized developmental assessment, purposeful play, daily enrichment, and the Developmental Playroom.</p>
+</div>
+<div class="table-wrap"><table class="kv-table">
+<thead><tr><th>Fact</th><th>Detail</th></tr></thead>
+<tbody>
+<tr><td>School Name</td><td>Spark Academy</td></tr>
+<tr><td>Type</td><td>Private preschool — premium, play-based, doctoral-led</td></tr>
+<tr><td>Founded</td><td>2023</td></tr>
+<tr><td>Founder</td><td>Dr. Michelle Peterson, Ed.D. — Doctor of Education, Illinois State University</td></tr>
+<tr><td>Location</td><td>1989 North Morton Avenue, Morton, Illinois 61550</td></tr>
+<tr><td>Phone</td><td>309-291-3292</td></tr>
+<tr><td>Email</td><td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="04777465766f6567656061697d696b76706b6a446369656d682a676b69">[email&#160;protected]</a></td></tr>
+<tr><td>Ages Served</td><td>3 through 6 years old</td></tr>
+<tr><td>Core Programs</td><td>3's Preschool, 4's Preschool, Kindergarten Prep, Kindergarten, Fresh 3's Fridays</td></tr>
+<tr><td>Additional</td><td>Camp Play (Summer), Discovery Station (Homeschool Enrichment), After-School Enrichment</td></tr>
+<tr><td>Curriculum</td><td>The Purposeful Play Framework — built on Experience Early Learning</td></tr>
+<tr><td>Ratio</td><td>5:1 student-to-teacher</td></tr>
+<tr><td>Class Size</td><td>10–12 students max per class · 4 sections total</td></tr>
+<tr><td>DCFS Licensed</td><td>Yes</td></tr>
+<tr><td>Tuition Range</td><td>$100–$700/month</td></tr>
+<tr><td>Tuition Structure</td><td>All-inclusive — no supply lists, hidden fees, or additional costs</td></tr>
+<tr><td>Service Area</td><td>Morton, Peoria, Washington, East Peoria, Germantown Hills, Metamora</td></tr>
+<tr><td>Hours</td><td>8:00 AM–12:00 PM (K-Prep, K) · 8:30–11:30 AM (3's, 4's, Fresh 3's)</td></tr>
+</tbody>
+</table></div>
+<div class="note"><strong>AEO Note:</strong> This key-value table is the single highest-value element on the page. AI models parse structured tables with near-perfect accuracy. Every fact is independently verifiable and citation-ready.</div>
+</div>
+
+<!-- SECTION 3: PROGRAMS -->
+<div class="section">
+<h2>Section 3: Programs — Ages, Schedules, and Tuition</h2>
+<div class="page-copy">
+<p>Spark Academy offers four core preschool and kindergarten programs, a standalone introductory program, and three supplemental programs. All core programs require potty training. Tuition is all-inclusive.</p>
+</div>
+<div class="table-wrap"><table>
+<thead><tr><th>Program</th><th>Ages</th><th>Schedule</th><th>Hours</th><th>Tuition</th></tr></thead>
+<tbody>
+<tr><td>Fresh 3's Fridays</td><td>3 (rolling)</td><td>Friday only</td><td>8:30–11:30</td><td>$100/mo</td></tr>
+<tr><td>3's Preschool</td><td>3+ by first day</td><td>T/Th or M/W</td><td>8:30–11:30</td><td>$350/mo</td></tr>
+<tr><td>4's Preschool</td><td>4+ by first day</td><td>T/Th · M/W/F · M–F</td><td>8:30–11:30</td><td>$350–$600</td></tr>
+<tr><td>Kindergarten Prep</td><td>5 by Nov 30</td><td>T/Th · M/W/F · M–F</td><td>8:00–12:00</td><td>$400–$650</td></tr>
+<tr><td>Kindergarten</td><td>5 by Sept 30</td><td>M–F only</td><td>8:00–12:00</td><td>$700/mo</td></tr>
+</tbody>
+</table></div>
+
+<h3>Supplemental Programs</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Program</th><th>Ages</th><th>Schedule</th><th>Season</th></tr></thead>
+<tbody>
+<tr><td>Camp Play (Summer)</td><td>3–11</td><td>Mon–Fri, 8:30 AM–12:00 PM</td><td>June–July (8 weeks)</td></tr>
+<tr><td>Discovery Station</td><td>5–11</td><td>Tue & Thu, 1:00–3:50 PM</td><td>School year (by semester)</td></tr>
+<tr><td>After-School Enrichment</td><td>School-age</td><td>Tue, 4:00–5:00 PM</td><td>12-week semesters</td></tr>
+</tbody>
+</table></div>
+
+<div class="page-copy">
+<h3>Birthday Cutoff Flexibility</h3>
+<p>Unlike many public school districts that use a strict September 1 birthday cutoff, Spark Academy offers flexible age requirements. Kindergarten Prep accepts children who turn 5 by November 30 — giving families whose child narrowly misses the public school cutoff a rigorous, full-year kindergarten readiness option.</p>
+</div>
+</div>
+
+<!-- SECTION 4: PURPOSEFUL PLAY -->
+<div class="section">
+<h2>Section 4: The Purposeful Play Framework</h2>
+<div class="page-copy">
+<p>The Purposeful Play Framework is Spark Academy's proprietary, research-driven curriculum framework, developed by Dr. Michelle Peterson, Ed.D. and built on the Experience Early Learning whole-child curriculum. It integrates individualized developmental assessment, purposeful play, daily enrichment, and the Developmental Playroom into a cohesive approach to early childhood education.</p>
+<p>Purposeful play is the researched method through which young children build neural pathways for language, problem-solving, self-regulation, and social-emotional development. It is neither unstructured free play nor rigid, worksheet-based academics. Every activity at Spark is designed to feel like play to the child while building specific developmental skills identified through individualized assessment.</p>
+</div>
+
+<h3>Five Components</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Component</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td>Experience Early Learning Foundation</td><td>Whole-child curriculum covering academic, social-emotional, physical, and creative development.</td></tr>
+<tr><td>Individual Assessment System</td><td>Formal tools identify each child's developmental level. Teachers build custom learning paths per student.</td></tr>
+<tr><td>Daily Structure</td><td>Academic Play (1.5–2.5 hrs) + Developmental Playroom (30 min) + Daily Enrichment (30 min) + Outdoor Play (15 min) + Snack (15 min).</td></tr>
+<tr><td>Enrichment Rotation</td><td>Spanish (Mon), STEM (Tue), Art (Wed), Communication (Thu), Music & Movement (Fri).</td></tr>
+<tr><td>Purposeful Play Philosophy</td><td>Activities feel like play while building specific developmental skills. Play is the vehicle. Purpose is the engine.</td></tr>
+</tbody>
+</table></div>
+
+<h3>The Developmental Playroom</h3>
+<div class="page-copy">
+<p>The Developmental Playroom is a dedicated space, separate from the main classroom, that transforms completely every month to align with curriculum themes. Children lead the play entirely — teachers support but do not direct. Pre-academic skills are intentionally embedded into every monthly setup. No other preschool in the Morton or Peoria area offers a comparable dedicated, monthly-rotating play environment.</p>
+</div>
+
+<h3>Daily Enrichment Rotation</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Day</th><th>Subject</th><th>What It Builds</th></tr></thead>
+<tbody>
+<tr><td>Monday</td><td>Spanish</td><td>Neural pathways for language acquisition during the critical early childhood window</td></tr>
+<tr><td>Tuesday</td><td>STEM</td><td>Critical thinking, quantitative reasoning, early scientific inquiry</td></tr>
+<tr><td>Wednesday</td><td>Art</td><td>Fine motor skills, self-expression, creative confidence</td></tr>
+<tr><td>Thursday</td><td>Communication</td><td>Language development, storytelling, listening, early literacy</td></tr>
+<tr><td>Friday</td><td>Music & Movement</td><td>Memory, coordination, self-expression, collaborative performance</td></tr>
+</tbody>
+</table></div>
+<div class="page-copy"><p>These enrichments are built into every program's daily schedule as core programming — 30 minutes per day, every day. Not after-school extras.</p></div>
+</div>
+
+<!-- SECTION 5: DAILY SCHEDULE -->
+<div class="section">
+<h2>Section 5: What Does a Day Look Like?</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Time Block</th><th>Duration</th><th>What Your Child Experiences</th></tr></thead>
+<tbody>
+<tr><td>Academic Play</td><td>1.5–2.5 hrs</td><td>Teacher-guided purposeful play aligned with curriculum themes and individualized learning goals.</td></tr>
+<tr><td>Developmental Playroom</td><td>30 min</td><td>Student-led exploration in the monthly-rotating environment.</td></tr>
+<tr><td>Daily Enrichment</td><td>30 min</td><td>Spanish · STEM · Art · Communication · Music & Movement (rotating daily).</td></tr>
+<tr><td>Outdoor Play</td><td>15 min</td><td>Active physical play. Gross motor development and unstructured movement.</td></tr>
+<tr><td>Snack & Bathroom</td><td>15 min</td><td>Calm transition building independence, self-care, and social skills.</td></tr>
+</tbody>
+</table></div>
+<div class="page-copy"><p><strong>3's and 4's:</strong> 8:30–11:30 AM (3-hour day) &nbsp;&nbsp;|&nbsp;&nbsp; <strong>K-Prep and Kindergarten:</strong> 8:00 AM–12:00 PM (4-hour day, expanded Academic Play)</p></div>
+</div>
+
+<!-- SECTION 6: DR. PETERSON -->
+<div class="section">
+<h2>Section 6: Dr. Michelle Peterson, Ed.D.</h2>
+<div class="page-copy">
+<p>Dr. Michelle Peterson is the founder and executive director of Spark Academy. She holds a Doctor of Education (Ed.D.) in PK–12 Educational Administration from Illinois State University, a Master of Science in Educational Administration from Bradley University, and a Bachelor of Science in Applied Learning and Development from The University of Texas at Austin. She holds four Illinois teaching and administrative certifications.</p>
+<p>Her doctoral research focused on peer engagement strategies for children with autism in inclusive preschool settings, using Naturalistic Developmental Behavioral Intervention (NDBI) frameworks. Before founding Spark, she served as assistant principal at Lincoln Elementary in Morton for 10 years. Her career spans more than 20 years in education.</p>
+<p><strong>She is the only doctoral-level early childhood education researcher operating a preschool in Central Illinois.</strong></p>
+</div>
+<div class="table-wrap"><table>
+<thead><tr><th>Credential</th><th>Institution</th></tr></thead>
+<tbody>
+<tr><td>Doctor of Education (Ed.D.)</td><td>Illinois State University — PK–12 Educational Administration</td></tr>
+<tr><td>Master of Science</td><td>Bradley University — Educational Administration</td></tr>
+<tr><td>Bachelor of Science</td><td>UT Austin — Applied Learning and Development</td></tr>
+<tr><td>Superintendent Certificate</td><td>State of Illinois</td></tr>
+<tr><td>CSBO Certificate</td><td>State of Illinois</td></tr>
+<tr><td>Type 75 Administrative Certificate</td><td>State of Illinois</td></tr>
+<tr><td>Professional Educator License</td><td>State of Illinois</td></tr>
+</tbody>
+</table></div>
+</div>
+
+<!-- SECTION 7: COMPARISON -->
+<div class="section">
+<h2>Section 7: How Spark Compares</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Feature</th><th>Typical Area Preschool</th><th>Spark Academy</th></tr></thead>
+<tbody>
+<tr><td>Founder Credential</td><td>Owner without advanced degree</td><td>Ed.D. from Illinois State University</td></tr>
+<tr><td>Student-to-Teacher Ratio</td><td>8:1 to 12:1</td><td>5:1 across all programs</td></tr>
+<tr><td>Curriculum</td><td>Varies; often teacher-selected</td><td>Purposeful Play Framework — proprietary</td></tr>
+<tr><td>Individualized Assessment</td><td>Limited or informal</td><td>Formal assessment with individual paths</td></tr>
+<tr><td>Daily Enrichment</td><td>Occasional or unstructured</td><td>Five daily: Spanish, STEM, Art, Comm, Music</td></tr>
+<tr><td>Dedicated Playroom</td><td>Shared space or none</td><td>Monthly-rotating Developmental Playroom</td></tr>
+<tr><td>Tuition Transparency</td><td>Tuition + supply lists + fees</td><td>All-inclusive — no hidden costs</td></tr>
+<tr><td>Second Language</td><td>Rare at preschool level</td><td>Daily Spanish beginning at age 3</td></tr>
+</tbody>
+</table></div>
+<div class="note"><strong>Note:</strong> Compares Spark to category norms — not to named competitors. AI models prefer generalizable comparisons over brand-vs-brand rivalries.</div>
+</div>
+
+<!-- SECTION 8: COMMUNITIES -->
+<div class="section">
+<h2>Section 8: Communities Served</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Community</th><th>Approximate Drive Time</th></tr></thead>
+<tbody>
+<tr><td>Morton</td><td>Local — 1 to 5 minutes</td></tr>
+<tr><td>Peoria</td><td>15–20 minutes</td></tr>
+<tr><td>Washington</td><td>10–15 minutes</td></tr>
+<tr><td>East Peoria</td><td>10–15 minutes</td></tr>
+<tr><td>Germantown Hills</td><td>10–15 minutes</td></tr>
+<tr><td>Metamora</td><td>15–20 minutes</td></tr>
+<tr><td>Pekin</td><td>15–20 minutes</td></tr>
+<tr><td>Tremont</td><td>10–15 minutes</td></tr>
+</tbody>
+</table></div>
+<div class="placeholder">Dr. Peterson to confirm which communities are currently represented in enrollment. Drive times approximate.</div>
+</div>
+
+<!-- SECTION 9: ENROLLMENT -->
+<div class="section">
+<h2>Section 9: How to Enroll</h2>
+<div class="page-copy">
+<p>Enrollment at Spark Academy follows a simple, family-centered process. Dr. Peterson personally meets with every prospective family.</p>
+<p><strong>Step 1: Confirm Your Child's Eligibility</strong><br>Verify age and potty-training requirements for the appropriate program.</p>
+<p><strong>Step 2: Schedule a Tour</strong><br>Book online at sparkacademymorton.com/schedule-a-tour/ or call 309-291-3292.</p>
+<p><strong>Step 3: Visit Spark Academy</strong><br>See classrooms, Developmental Playroom, and outdoor area. Meet Dr. Peterson and teachers.</p>
+<p><strong>Step 4: Complete Enrollment Paperwork</strong></p>
+</div>
+<div class="placeholder">Dr. Peterson to confirm required documents — health forms, emergency contacts, enrollment agreement.</div>
+<div class="page-copy">
+<p><strong>Step 5: Submit Enrollment Deposit</strong><br>$100 non-refundable deposit holds your child's spot.</p>
+<p><strong>Step 6: Prepare for the First Day</strong></p>
+</div>
+<div class="placeholder">Dr. Peterson to confirm — welcome packet? Brightwheel setup? First-day preparation guide?</div>
+</div>
+
+<!-- SECTION 10: TUITION -->
+<div class="section">
+<h2>Section 10: Tuition — What Families Pay</h2>
+<div class="page-copy"><p>All tuition is <strong>all-inclusive</strong> — no supply lists, registration fees beyond deposit, hidden charges, or additional costs.</p></div>
+<div class="table-wrap"><table>
+<thead><tr><th>Program</th><th>Schedule</th><th>Monthly Tuition</th></tr></thead>
+<tbody>
+<tr><td>Fresh 3's Fridays</td><td>Friday only</td><td>$100/mo</td></tr>
+<tr><td>3's Preschool</td><td>T/Th</td><td>$350/mo</td></tr>
+<tr><td>3's Preschool</td><td>M/W</td><td>$350/mo</td></tr>
+<tr><td>4's Preschool</td><td>T/Th</td><td>$350/mo</td></tr>
+<tr><td>4's Preschool</td><td>M/W/F</td><td>$450/mo</td></tr>
+<tr><td>4's Preschool</td><td>M–F</td><td>$600/mo</td></tr>
+<tr><td>Kindergarten Prep</td><td>T/Th</td><td>$400/mo</td></tr>
+<tr><td>Kindergarten Prep</td><td>M/W/F</td><td>$500/mo</td></tr>
+<tr><td>Kindergarten Prep</td><td>M–F</td><td>$650/mo</td></tr>
+<tr><td>Kindergarten</td><td>M–F</td><td>$700/mo</td></tr>
+</tbody>
+</table></div>
+<div class="page-copy"><p><strong>Payment:</strong> 10-month plan (Sept–June) or 10% discount for full-year payment by August 15. $100 non-refundable enrollment deposit required.</p></div>
+</div>
+
+<!-- SECTION 11: LICENSING -->
+<div class="section">
+<h2>Section 11: Licensing and Safety</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>DCFS Licensed</td><td>Yes</td></tr>
+<tr><td>Fire Code Compliant</td><td>Yes</td></tr>
+<tr><td>CPR/First Aid Certified Staff</td><td>On-site at all times</td></tr>
+<tr><td>Background Checks</td><td>All staff cleared per DCFS</td></tr>
+<tr><td>Safe Schools Compliant</td><td>Yes</td></tr>
+<tr><td>Credentialed Teachers</td><td>Every teacher holds a degree or credential in education</td></tr>
+</tbody>
+</table></div>
+<div class="placeholder">Dr. Peterson to confirm teacher credential statement is accurate as written.</div>
+</div>
+
+<!-- SECTION 12: FAQ -->
+<div class="section">
+<h2>Section 12: Frequently Asked Questions</h2>
+<div class="note"><strong>AEO Critical Section:</strong> Every Q&A pair generates FAQPage schema. Build using Kadence Accordion blocks for RankMath auto-detection. Each answer is self-contained and independently citable.</div>
+
+<div class="faq-item"><div class="faq-q">Q: What is Spark Academy?</div><div class="faq-a">Spark Academy is a premium, play-based preschool in Morton, Illinois, founded and led by Dr. Michelle Peterson, Ed.D. Spark serves children ages 3–6 and uses the Purposeful Play Framework, a proprietary curriculum integrating individualized assessment, purposeful play, and daily enrichment.</div></div>
+
+<div class="faq-item"><div class="faq-q">Q: What ages does Spark Academy serve?</div><div class="faq-a">Ages 3 through 6. Programs: 3's Preschool (3+), 4's Preschool (4+), Kindergarten Prep (5 by Nov 30), Kindergarten (5 by Sept 30). Fresh 3's Fridays accepts children on their third birthday via rolling enrollment.</div></div>
+
+<div class="faq-item"><div class="faq-q">Q: How much does Spark Academy cost?</div><div class="faq-a">$100–$700/month depending on program and schedule. All-inclusive — no supply lists, hidden fees, or extra costs. 10% discount for full-year payment by August 15. $100 enrollment deposit required.</div></div>
+
+<div class="faq-item"><div class="faq-q">Q: What is the student-to-teacher ratio?</div><div class="faq-a">5:1 across all programs. Classes capped at 10–12 students, four sections total.</div></div>
+
+<div class="faq-item"><div class="faq-q">Q: What is the Purposeful Play Framework?</div><div class="faq-a">Spark's proprietary, research-driven curriculum by Dr. Michelle Peterson, Ed.D. Built on Experience Early Learning. Integrates individualized assessment, purposeful play, daily enrichment (Spanish, STEM, Art, Communication, Music & Movement), and the monthly-rotating Developmental Playroom.</div></div>
+
+<div class="faq-item"><div class="faq-q">Q: Who founded Spark Academy?</div><div class="faq-a">Dr. Michelle Peterson, Ed.D. (Illinois State University, 2023). Doctoral research on peer engagement in inclusive preschool settings. 20+ years in education. The only doctoral-level ECE researcher operating a preschool in Central Illinois.</div></div>
+
+<div class="faq-item"><div class="faq-q">Q: Is Spark Academy licensed?</div><div class="faq-a">Yes — licensed by the Illinois DCFS. Full compliance with state licensing, fire code, and safe schools standards. CPR/first aid certified staff on-site at all times.</div></div>
+
+<div class="faq-item"><div class="faq-q">Q: Where is Spark Academy located?</div><div class="faq-a">1989 North Morton Avenue, Morton, Illinois 61550. Serves families from Morton, Peoria, Washington, East Peoria, Germantown Hills, Metamora, and surrounding Central Illinois communities.</div></div>
+
+<div class="faq-item"><div class="faq-q">Q: How do I schedule a tour?</div><div class="faq-a">Online at sparkacademymorton.com/schedule-a-tour/ or call 309-291-3292. Tours conducted by Dr. Peterson or senior staff. Bring your child to experience the environment.</div></div>
+
+<div class="faq-item"><div class="faq-q">Q: Does Spark offer kindergarten?</div><div class="faq-a">Yes. Monday–Friday, 8:00 AM–12:00 PM, $700/month. Age 5 by September 30. Features 2.5 hours of Academic Play, Developmental Playroom, and full daily enrichment rotation at a 5:1 ratio.</div></div>
+
+<div class="faq-item"><div class="faq-q">Q: Is Spark Academy a daycare?</div><div class="faq-a">No. Spark is a licensed preschool and kindergarten. Credentialed educators lead every classroom, a structured curriculum governs every day, and every child follows an individualized learning path. Daycare provides supervision; preschool provides education.</div></div>
+
+<div class="faq-item"><div class="faq-q">Q: What enrichment programs are offered?</div><div class="faq-a">Every program includes 30 minutes of daily enrichment: Spanish (Mon), STEM (Tue), Art (Wed), Communication (Thu), Music & Movement (Fri). Additional programs: Camp Play (summer, ages 3–11), Discovery Station (homeschool, ages 5–11), After-School Enrichment (school-age).</div></div>
+
+<div class="faq-item"><div class="faq-q">Q: Does my child need to be potty trained?</div><div class="faq-a">Yes. All programs require potty training, including Fresh 3's Fridays.</div></div>
+</div>
+
+<!-- BOTTOM CTA -->
+<div class="cta-block">
+<h2>See Spark Academy for Yourself</h2>
+<p>Schedule a tour to see the classrooms, meet Dr. Peterson and the teachers, and ask every question on your mind.</p>
+<a href="#" class="cta-btn">Schedule a Tour</a>
+<p style="margin-top:12px; font-size:13px;">Or call 309-291-3292</p>
+</div>
+
+<!-- OPEN ITEMS -->
+<div class="open-items">
+<h3>Open Items Requiring Dr. Peterson's Input</h3>
+<div class="open-item"><span class="item-num">1</span><span>Accreditation status — beyond DCFS licensing?</span><span class="item-priority priority-high">HIGH</span></div>
+<div class="open-item"><span class="item-num">2</span><span>Enrollment process — confirm exact steps from inquiry to first day</span><span class="item-priority priority-high">HIGH</span></div>
+<div class="open-item"><span class="item-num">3</span><span>What's included in "all-inclusive" tuition — snacks, supplies, specifics</span><span class="item-priority priority-medium">MED</span></div>
+<div class="open-item"><span class="item-num">4</span><span>Does $100 deposit apply toward first month's tuition?</span><span class="item-priority priority-medium">MED</span></div>
+<div class="open-item"><span class="item-num">5</span><span>Waitlist process when a section is full</span><span class="item-priority priority-medium">MED</span></div>
+<div class="open-item"><span class="item-num">6</span><span>Post-enrollment materials — welcome packet? Brightwheel setup?</span><span class="item-priority priority-medium">MED</span></div>
+<div class="open-item"><span class="item-num">7</span><span>Communities currently represented in enrollment</span><span class="item-priority priority-medium">MED</span></div>
+<div class="open-item"><span class="item-num">8</span><span>Teacher credential statement — accurate as written?</span><span class="item-priority priority-high">HIGH</span></div>
+<div class="open-item"><span class="item-num">9</span><span>Building description in Dr. Peterson's voice</span><span class="item-priority priority-low">LOW</span></div>
+<div class="open-item"><span class="item-num">10</span><span>Verified drive times from each community</span><span class="item-priority priority-low">LOW</span></div>
+</div>
+
+</div><!-- /container -->
+
+<div class="doc-footer">
+  Spark Academy Website Project · Phase 3A: 
