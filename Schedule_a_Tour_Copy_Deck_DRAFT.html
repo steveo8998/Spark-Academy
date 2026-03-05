@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spark Academy — Schedule a Tour Copy Deck (DRAFT)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --mist-teal: #3D6B62;
+  --antique-gold: #C49826;
+  --cloud-white: #FBFAF8;
+  --whisper-sage: #EFF5F2;
+  --misty-sage: #9BB8AD;
+  --soft-black: #2E2E2E;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--soft-black);
+  background: var(--cloud-white);
+  line-height: 1.65;
+  font-size: 16px;
+  padding: 0;
+}
+.container { max-width: 780px; margin: 0 auto; padding: 24px 20px; }
+
+/* Header */
+.doc-header {
+  background: var(--mist-teal);
+  color: white;
+  padding: 40px 20px 32px;
+  text-align: center;
+}
+.doc-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+.doc-header .subtitle {
+  font-size: 18px;
+  font-weight: 500;
+  opacity: 0.9;
+  margin-bottom: 16px;
+}
+.doc-header .meta {
+  font-size: 13px;
+  opacity: 0.75;
+  line-height: 1.6;
+}
+.status-badge {
+  display: inline-block;
+  background: var(--antique-gold);
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 5px 16px;
+  border-radius: 20px;
+  margin-top: 14px;
+  letter-spacing: 0.5px;
+}
+
+/* Sections */
+.section {
+  margin-bottom: 36px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--misty-sage);
+}
+.section:last-child { border-bottom: none; }
+h2 {
+  font-family: 'Playfair Display', serif;
+  color: var(--mist-teal);
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  margin-top: 8px;
+}
+h3 {
+  color: var(--soft-black);
+  font-size: 17px;
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+h4 {
+  color: var(--mist-teal);
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+p { margin-bottom: 14px; }
+
+/* Page copy styling */
+.page-copy {
+  background: white;
+  border: 2px solid var(--misty-sage);
+  border-radius: 8px;
+  padding: 20px;
+  margin: 16px 0;
+}
+.page-copy .h1-display {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--soft-black);
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+.page-copy .subheadline {
+  font-size: 17px;
+  color: #555;
+  font-style: italic;
+  margin-bottom: 14px;
+  line-height: 1.55;
+}
+.page-copy .body-copy {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--soft-black);
+}
+.page-copy .body-copy strong {
+  color: var(--mist-teal);
+}
+
+/* Strategic notes */
+.note {
+  border-left: 4px solid var(--antique-gold);
+  background: #FFF9EE;
+  padding: 14px 16px;
+  margin: 14px 0;
+  font-size: 14px;
+  border-radius: 0 6px 6px 0;
+  line-height: 1.6;
+}
+.note .label {
+  font-weight: 700;
+  color: var(--antique-gold);
+  display: block;
+  margin-bottom: 4px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Flag notes */
+.flag {
+  border-left: 4px solid #CC3333;
+  background: #FFF5F5;
+  padding: 14px 16px;
+  margin: 14px 0;
+  font-size: 14px;
+  border-radius: 0 6px 6px 0;
+  line-height: 1.6;
+}
+.flag .label {
+  font-weight: 700;
+  color: #CC3333;
+  display: block;
+  margin-bottom: 4px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0;
+  font-size: 14px;
+}
+th {
+  background: var(--mist-teal);
+  color: white;
+  padding: 10px 12px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 13px;
+}
+td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--misty-sage);
+  vertical-align: top;
+}
+tr:nth-child(even) td { background: var(--whisper-sage); }
+
+/* Testimonial */
+.testimonial {
+  border-left: 4px solid var(--antique-gold);
+  background: var(--whisper-sage);
+  padding: 20px;
+  margin: 16px 0;
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+  line-height: 1.7;
+}
+.testimonial .attribution {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--mist-teal);
+  margin-top: 12px;
+}
+
+/* Welcome message */
+.welcome-msg {
+  background: var(--whisper-sage);
+  border: 2px solid var(--misty-sage);
+  border-radius: 8px;
+  padding: 24px;
+  margin: 16px 0;
+  font-style: italic;
+  line-height: 1.7;
+}
+.welcome-msg .signature {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--mist-teal);
+  margin-top: 12px;
+}
+.welcome-msg .title-line {
+  font-style: normal;
+  font-size: 14px;
+  color: #666;
+}
+
+/* Form preview */
+.form-preview {
+  background: white;
+  border: 2px solid var(--misty-sage);
+  border-radius: 8px;
+  padding: 20px;
+  margin: 16px 0;
+}
+.form-field {
+  margin-bottom: 14px;
+}
+.form-field label {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 4px;
+  color: var(--soft-black);
+}
+.form-field .field-meta {
+  font-size: 12px;
+  color: #888;
+}
+.form-field input, .form-field select, .form-field textarea {
+  width: 100%;
+  border: 1px solid var(--misty-sage);
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  background: var(--cloud-white);
+}
+.form-field textarea { min-height: 70px; resize: vertical; }
+.btn-primary {
+  display: block;
+  width: 100%;
+  background: var(--antique-gold);
+  color: white;
+  border: none;
+  padding: 14px;
+  font-size: 17px;
+  font-weight: 700;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  letter-spacing: 0.3px;
+  margin-top: 8px;
+}
+.btn-secondary {
+  display: block;
+  width: 100%;
+  background: transparent;
+  color: var(--mist-teal);
+  border: 2px solid var(--mist-teal);
+  padding: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  margin-top: 10px;
+}
+.phone-alt {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 15px;
+  color: #666;
+}
+.phone-alt a {
+  color: var(--mist-teal);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* Trust signals */
+.trust-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0;
+  justify-content: center;
+}
+.trust-badge {
+  background: var(--whisper-sage);
+  border: 1px solid var(--misty-sage);
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--mist-teal);
+  white-space: nowrap;
+}
+
+/* FAQ */
+.faq-item {
+  margin-bottom: 18px;
+}
+.faq-item .question {
+  font-weight: 700;
+  color: var(--mist-teal);
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+.faq-item .answer {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--soft-black);
+}
+
+/* Schema code */
+.code-block {
+  background: #f4f4f4;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 14px;
+  font-family: monospace;
+  font-size: 12px;
+  overflow-x: auto;
+  white-space: pre;
+  margin: 14px 0;
+  line-height: 1.5;
+}
+
+/* Footer */
+.doc-footer {
+  text-align: center;
+  padding: 24px;
+  font-size: 13px;
+  color: #999;
+  border-top: 1px solid var(--misty-sage);
+  margin-top: 32px;
+}
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <h1>SPARK ACADEMY</h1>
+  <div class="subtitle">Schedule a Tour — Copy Deck</div>
+  <div class="meta">
+    Phase 3A Deliverable — March 2026<br>
+    Prepared for Dr. Michelle Peterson, Ed.D.<br>
+    Prepared by Stephen Odanovich — Internet Marketing Specialist
+  </div>
+  <div class="status-badge">DRAFT — PENDING DR. PETERSON'S REVIEW</div>
+</div>
+
+<div class="container">
+
+  <!-- PAGE SPECIFICATIONS -->
+  <div class="section">
+    <h2>Page Specifications</h2>
+    <table>
+      <tr><th>Field</th><th>Detail</th></tr>
+      <tr><td><strong>Page</strong></td><td>Schedule a Tour</td></tr>
+      <tr><td><strong>URL</strong></td><td>/schedule-a-tour/</td></tr>
+      <tr><td><strong>Primary Keyword</strong></td><td>schedule preschool tour Morton IL (&lt;10/mo, KD 0)</td></tr>
+      <tr><td><strong>Messaging Lens</strong></td><td>Child-Centric — 75/25</td></tr>
+      <tr><td><strong>Primary CTA</strong></td><td>Tour booking form (the page IS the CTA)</td></tr>
+      <tr><td><strong>Secondary CTA</strong></td><td>Prefer to call? 309-291-3292</td></tr>
+      <tr><td><strong>Meta Title</strong></td><td>Schedule a Tour | Spark Academy Preschool Morton IL (53 chars)</td></tr>
+      <tr><td><strong>Meta Description</strong></td><td>See Spark Academy in person. Meet Dr. Michelle Peterson, Ed.D., tour the classrooms, and picture your child here. Book your visit today. (137 chars)</td></tr>
+      <tr><td><strong>Schema</strong></td><td>LocalBusiness + FAQPage + BreadcrumbList</td></tr>
+      <tr><td><strong>Word Count</strong></td><td>800–1,100 words</td></tr>
+    </table>
+    <div class="note">
+      <span class="label">Strategic Note</span>
+      This is the most important conversion page on the entire site. Every other parent-facing page exists to get a parent here. The page has one job: get the form submitted. Copy is intentionally lean — the parent has already been educated by program pages, Why Spark, and blog posts. Now they need a warm invitation, clear expectations, and a frictionless form.
+    </div>
+  </div>
+
+  <!-- SECTION 1: HERO -->
+  <div class="section">
+    <h2>Section 1: Hero (Above the Fold)</h2>
+
+    <div class="page-copy">
+      <div class="h1-display">See Where Your Child Will Learn, Grow, and Belong</div>
+      <div class="subheadline">The best way to know if Spark is right for your family is to experience it. Schedule a visit — we'd love to show you around.</div>
+    </div>
+
+    <div class="note">
+      <span class="label">Strategic Note</span>
+      Child-centric lens. Known & Nurtured pillar. "Learn, grow, and belong" covers the three pillars parents care about most. Selected from the Headline Bank over the directive alternative ("Walk through the door…") because this version is aspirational — it mirrors the parent's internal question.
+    </div>
+
+    <h4>Photo Direction — Hero Image</h4>
+    <p>Wide-angle shot of the Spark Academy interior — warm natural light, child-sized furniture, open learning materials, homelike environment. No children required (the parent imagines their child here).</p>
+    <p><em>Alt Text: "Inside Spark Academy preschool in Morton, Illinois — a warm, homelike classroom with natural light and hands-on learning materials"</em></p>
+  </div>
+
+  <!-- SECTION 2: WHAT TO EXPECT -->
+  <div class="section">
+    <h2>Section 2: What Your Tour Looks Like</h2>
+
+    <div class="page-copy">
+      <div class="body-copy">
+        <p>A tour at Spark takes about 30 minutes. There's no script and no sales pitch — just a personal walk through the classrooms with Dr. Michelle Peterson, Ed.D., who founded and leads the school.</p>
+        <p>Here's what you'll see and do:</p>
+        <p><strong>Walk through every classroom.</strong> You'll see the learning spaces set up for the age group your child would join — including the Developmental Playroom, which transforms with a new theme every month.</p>
+        <p><strong>Watch purposeful play in action.</strong> If your visit falls during class hours, you'll observe real learning happening — children building, creating, collaborating, and problem-solving with teacher guidance.</p>
+        <p><strong>Ask anything.</strong> Whether you're curious about the daily schedule, the curriculum, how teachers handle big emotions, or how Spark supports children with different learning styles — bring your questions. That's what this visit is for.</p>
+        <p><strong>Leave with clarity.</strong> You'll walk out knowing whether Spark is the right fit for your child and your family. No pressure, no follow-up calls unless you want them.</p>
+      </div>
+    </div>
+
+    <div class="note">
+      <span class="label">Strategic Note</span>
+      "How Spark supports children with different learning styles" gives Megan (Persona 3) explicit permission to ask about individual learning differences — per the Parent Personas doc. "No follow-up calls unless you want them" addresses a common concern about giving a phone number to a school.
+    </div>
+  </div>
+
+  <!-- SECTION 3: TOUR BOOKING FORM -->
+  <div class="section">
+    <h2>Section 3: Tour Booking Form</h2>
+
+    <div class="page-copy">
+      <h3 style="color: var(--mist-teal); font-family: 'Playfair Display', serif; font-size: 20px; margin-bottom: 12px;">Book Your Visit</h3>
+      <p style="font-size: 15px; margin-bottom: 18px;">We're available for tours throughout the week. Fill out the form below and we'll reach out to confirm a time that works for your family.</p>
+
+      <div class="form-preview">
+        <div class="form-field">
+          <label>Your Name <span style="color: #CC3333;">*</span></label>
+          <input type="text" placeholder="First name" disabled>
+        </div>
+        <div class="form-field">
+          <label>Email Address <span style="color: #CC3333;">*</span></label>
+          <input type="email" placeholder="email@example.com" disabled>
+        </div>
+        <div class="form-field">
+          <label>Best Number to Reach You <span style="color: #CC3333;">*</span></label>
+          <input type="tel" placeholder="(309) 555-0000" disabled>
+        </div>
+        <div class="form-field">
+          <label>Your Child's Age <span style="color: #CC3333;">*</span></label>
+          <select disabled>
+            <option>Select age…</option>
+            <option>My child is 2</option>
+            <option>My child is 3</option>
+            <option>My child is 4</option>
+            <option>My child is 5</option>
+            <option>My child is 5+</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>When Would You Like to Visit?</label>
+          <select disabled>
+            <option>Select timing…</option>
+            <option>As soon as possible</option>
+            <option>This month</option>
+            <option>Next month</option>
+            <option>Just exploring for now</option>
+          </select>
+          <div class="field-meta">Optional</div>
+        </div>
+        <div class="form-field">
+          <label>Anything You'd Like Us to Know?</label>
+          <textarea placeholder="Siblings, special considerations, schedule constraints…" disabled></textarea>
+          <div class="field-meta">Optional</div>
+        </div>
+        <button class="btn-primary" disabled>Book Your Visit</button>
+      </div>
+
+      <div class="trust-row">
+        <span class="trust-badge">Dr. Michelle Peterson, Ed.D.</span>
+        <span class="trust-badge">5:1 Student-to-Teacher Ratio</span>
+        <span class="trust-badge">DCFS Licensed · Morton, IL</span>
+      </div>
+
+      <div class="phone-alt">
+        Prefer to call? <a href="tel:3092913292">309-291-3292</a>
+      </div>
+    </div>
+
+    <div class="note">
+      <span class="label">CRO Principle</span>
+      4 required fields + 2 optional. Per Formstack research, every additional required field reduces completion by ~4%. The "Just exploring for now" timing option validates parents not ready for immediate commitment — keeps them in the funnel instead of bouncing.
+    </div>
+  </div>
+
+  <!-- SECTION 4: DR. PETERSON'S WELCOME -->
+  <div class="section">
+    <h2>Section 4: A Note from Dr. Peterson</h2>
+
+    <div class="welcome-msg">
+      <p>I started Spark because I wanted to build the kind of school I'd want my own children to attend — a place where every child is known, where learning happens through play, and where the adults in the room have the training to make every moment count.</p>
+      <p>When you visit, you'll see what that looks like in practice. You'll walk through classrooms designed to feel like home. You'll meet teachers who hold degrees and credentials in education — not just people who like kids. And you'll have my full attention to answer whatever questions matter most to your family.</p>
+      <p>I look forward to meeting you.</p>
+      <div class="signature">— Dr. Michelle Peterson, Ed.D.</div>
+      <div class="title-line">Founder & Executive Director, Spark Academy</div>
+    </div>
+
+    <div class="flag">
+      <span class="label">⚠️ Needs Dr. Peterson's Input</span>
+      This section is written in Dr. Peterson's voice using confirmed quotes and speech patterns from the video call. She should review and edit to ensure it sounds like something she'd actually say.
+    </div>
+  </div>
+
+  <!-- SECTION 5: TESTIMONIAL -->
+  <div class="section">
+    <h2>Section 5: Testimonial Spotlight</h2>
+
+    <div class="testimonial">
+      "One thing my husband and I strive to teach and instill in him is curiosity, and Spark is the perfect place for this, along with an excellent academic curriculum! Since beginning at Spark, our son has begun to notice and identify letters while we are out and about. He has also made friends there and is learning awesome social and emotional skills. Spark is a wonderful partner with us as we seek together to spur on our son's love of learning and exploration."
+      <div class="attribution">— Holly, Spark Academy Parent</div>
+    </div>
+
+    <div class="flag">
+      <span class="label">⚠️ Needs Dr. Peterson's Input</span>
+      Confirm Holly's written permission for website use. If a tour-specific testimonial is available from any family ("We walked in and knew immediately…"), it would outperform this general testimonial on the conversion page.
+    </div>
+  </div>
+
+  <!-- SECTION 6: FAQ -->
+  <div class="section">
+    <h2>Section 6: Questions About Visiting Spark</h2>
+
+    <div class="note">
+      <span class="label">Strategic Note</span>
+      Dual purpose: (1) removes last-minute hesitations that prevent form submission, (2) generates FAQPage schema for AEO — making this page citable by AI search tools.
+    </div>
+
+    <div class="faq-item">
+      <div class="question">Q: How long does a tour take?</div>
+      <div class="answer">Most tours last about 30 minutes. If you have more questions, we're happy to take as much time as you need.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question">Q: Should I bring my child?</div>
+      <div class="answer">You're welcome to bring your child, but it's not required. Some parents prefer to visit first on their own so they can focus on asking questions — and that's completely fine. If your child does come along, they're welcome to explore the classroom.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question">Q: What will I see during the tour?</div>
+      <div class="answer">You'll walk through all of our learning spaces, including the classrooms for your child's age group and the Developmental Playroom. If you visit during class hours, you'll see learning in action. Dr. Peterson leads every tour personally, so you'll have a chance to ask questions directly.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question">Q: Can both parents come?</div>
+      <div class="answer">Absolutely. We encourage it. Choosing a preschool is a big decision, and we want both parents (or any caregivers involved in the decision) to feel confident and informed.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question">Q: What if I'm not ready to enroll after the tour?</div>
+      <div class="answer">No pressure at all. Some families tour months before they're ready to enroll. Some visit more than once. We're here whenever you're ready — and if questions come up later, you can always reach out.</div>
+    </div>
+  </div>
+
+  <!-- SECTION 7: HAVE A QUESTION -->
+  <div class="section">
+    <h2>Section 7: Not Ready to Tour? That's Okay.</h2>
+
+    <div class="page-copy">
+      <div class="body-copy">
+        <p>If you have a question but aren't quite ready to schedule a visit, we'd love to hear from you. Send us your question and someone from our team will respond personally.</p>
+      </div>
+
+      <div class="form-preview" style="margin-top: 14px;">
+        <div class="form-field">
+          <label>Your Name <span style="color: #CC3333;">*</span></label>
+          <input type="text" disabled>
+        </div>
+        <div class="form-field">
+          <label>Email Address <span style="color: #CC3333;">*</span></label>
+          <input type="email" disabled>
+        </div>
+        <div class="form-field">
+          <label>What Would You Like to Know? <span style="color: #CC3333;">*</span></label>
+          <textarea disabled></textarea>
+        </div>
+        <button class="btn-secondary" disabled>Send Your Question</button>
+      </div>
+    </div>
+
+    <div class="note">
+      <span class="label">Design Decision</span>
+      Included with clear visual separation below the FAQ. A parent who scrolls past the tour form and reads the FAQ but still isn't ready needs a lower-commitment exit ramp. Without it, they leave entirely. Per the Funnel Wireframe's Tertiary Conversion Path, Dr. Peterson's personal email response often converts these parents to tours later.
+    </div>
+  </div>
+
+  <!-- SECTION 8: LOCATION -->
+  <div class="section">
+    <h2>Section 8: Find Us</h2>
+    <div class="page-copy">
+      <p><strong>Spark Academy</strong><br>
+      1989 North Morton Avenue<br>
+      Morton, IL 61550</p>
+      <p><strong>Phone:</strong> <a href="tel:3092913292" style="color: var(--mist-teal); font-weight: 600;">309-291-3292</a><br>
+      <strong>Email:</strong> sparkacademymorton@gmail.com</p>
+    </div>
+  </div>
+
+  <!-- ITEMS FOR DR. PETERSON -->
+  <div class="section">
+    <h2>Items Requiring Dr. Peterson's Input</h2>
+    <table>
+      <tr><th>#</th><th>Item</th><th>Section</th><th>What's Needed</th></tr>
+      <tr><td>1</td><td><strong>Welcome message review</strong></td><td>Section 4</td><td>Review first-person message for authenticity</td></tr>
+      <tr><td>2</td><td><strong>Tour duration</strong></td><td>Sec 2 + FAQ</td><td>Confirm ~30 minutes is accurate</td></tr>
+      <tr><td>3</td><td><strong>Tour availability</strong></td><td>Section 3</td><td>Confirm tours available throughout the week</td></tr>
+      <tr><td>4</td><td><strong>Holly's permission</strong></td><td>Section 5</td><td>Written opt-in consent for website use</td></tr>
+      <tr><td>5</td><td><strong>Tour-specific testimonial</strong></td><td>Section 5</td><td>Any family describing tour experience</td></tr>
+      <tr><td>6</td><td><strong>Photography</strong></td><td>Shot List</td><td>Interior, tour-in-progress, classroom shots</td></tr>
+      <tr><td>7</td><td><strong>Dr. Peterson leads tours</strong></td><td>Sec 2 + FAQ</td><td>Confirm accuracy or adjust language</td></tr>
+    </table>
+  </div>
+
+  <!-- CRO NOTES -->
+  <div class="section">
+    <h2>Page-Level CRO Notes</h2>
+    <p><strong>Form position:</strong> On desktop, recommended split layout: hero copy left, form right — visible simultaneously in first viewport. On mobile: hero → scroll → form.</p>
+    <p><strong>Visual hierarchy:</strong> Tour form > What to Expect > FAQ > Have a Question? form > Location.</p>
+    <p><strong>Mobile optimization:</strong> Both "Book Your Visit" and phone number must be thumb-accessible. Phone number = full-width tap target on mobile.</p>
+    <p><strong>Page speed:</strong> Target LCP < 2.0s (tighter than sitewide 2.5s). Hero image must be eager-loaded. WebP format.</p>
+    <p><strong>GTM data attributes:</strong> Both submit buttons and phone link require data-cta-type and data-cta-text attributes per Tracking Architecture Document.</p>
+  </div>
+
+</div>
+
+<div class="doc-footer">
+  Spark Academy — Schedule a Tour Copy Deck (DRAFT) · Phase 3A · March 2026<br>
+  Prepared by Stephen Odanovich · Internet Marketing Specialist
+</div>
+
+</body>
+</html>
