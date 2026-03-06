@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spark Academy — Blog Hub Copy Deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --mist-teal: #3D6B62;
+  --misty-sage: #9BB8AD;
+  --antique-gold: #C49826;
+  --cloud-white: #FBFAF8;
+  --whisper-sage: #EFF5F2;
+  --body-text: #2E2E2E;
+  --light-sage: #D8E8DE;
+  --warm-gold-bg: #FBF6EC;
+  --flag-red: #C44;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--body-text);
+  line-height: 1.65;
+  background: var(--cloud-white);
+}
+
+/* ========== COVER ========== */
+.cover {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  background: linear-gradient(165deg, var(--whisper-sage) 0%, var(--cloud-white) 40%, var(--cloud-white) 100%);
+  position: relative;
+  overflow: hidden;
+}
+.cover::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 280px; height: 280px;
+  border-radius: 50%;
+  background: var(--misty-sage);
+  opacity: 0.12;
+}
+.cover::after {
+  content: '';
+  position: absolute;
+  bottom: -60px; left: -60px;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: var(--antique-gold);
+  opacity: 0.08;
+}
+.cover-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--antique-gold);
+  border: 1.5px solid var(--antique-gold);
+  border-radius: 100px;
+  padding: 0.35rem 1.2rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+.cover h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--mist-teal);
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+  position: relative;
+  z-index: 1;
+}
+.cover .subtitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  color: var(--misty-sage);
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+.cover-meta {
+  font-size: 0.85rem;
+  color: #888;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+.cover-meta strong { color: var(--body-text); }
+.cover-status {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--antique-gold);
+  background: var(--warm-gold-bg);
+  padding: 0.45rem 1.2rem;
+  border-radius: 100px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ========== TABLE OF CONTENTS ========== */
+.toc {
+  background: var(--whisper-sage);
+  padding: 2rem 1.5rem;
+  border-bottom: 2px solid var(--light-sage);
+}
+.toc h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--mist-teal);
+  margin-bottom: 1.25rem;
+}
+.toc-list {
+  list-style: none;
+  counter-reset: toc-counter;
+}
+.toc-list li {
+  counter-increment: toc-counter;
+  border-bottom: 1px solid var(--light-sage);
+}
+.toc-list li:last-child { border-bottom: none; }
+.toc-list li a {
+  display: block;
+  padding: 0.6rem 0 0.6rem 2.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--mist-teal);
+  text-decoration: none;
+  position: relative;
+  transition: color 0.2s;
+}
+.toc-list li a:hover { color: var(--antique-gold); }
+.toc-list li a::before {
+  content: counter(toc-counter, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--antique-gold);
+}
+
+/* ========== SPECS ========== */
+.specs {
+  padding: 2rem 1.5rem;
+  background: var(--cloud-white);
+  border-bottom: 3px solid var(--whisper-sage);
+}
+.specs h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--mist-teal);
+  margin-bottom: 1.25rem;
+}
+.spec-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+.spec-row {
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid var(--whisper-sage);
+}
+.spec-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--misty-sage);
+  margin-bottom: 0.2rem;
+}
+.spec-value {
+  font-size: 0.9rem;
+  color: var(--body-text);
+  line-height: 1.55;
+  word-break: break-word;
+}
+.spec-value code {
+  font-size: 0.8rem;
+  background: var(--whisper-sage);
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+}
+
+/* ========== SECTIONS ========== */
+.section {
+  padding: 2rem 1.5rem;
+  border-bottom: 3px solid var(--whisper-sage);
+}
+.section-odd {
+  background: linear-gradient(180deg, var(--cloud-white) 0%, var(--whisper-sage) 100%);
+}
+.section-even {
+  background: var(--cloud-white);
+}
+.section-number {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--antique-gold);
+  margin-bottom: 0.5rem;
+}
+.section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--mist-teal);
+  margin-bottom: 1.25rem;
+  line-height: 1.3;
+}
+.section h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--mist-teal);
+  margin: 1.25rem 0 0.5rem;
+}
+.section h4 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--body-text);
+  margin: 1rem 0 0.4rem;
+}
+
+/* ========== COPY ELEMENTS ========== */
+.copy-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--mist-teal);
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--antique-gold);
+}
+.copy-headline-sm {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--mist-teal);
+  line-height: 1.3;
+  margin-bottom: 0.6rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid var(--antique-gold);
+}
+.copy-body {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  margin-bottom: 1rem;
+  color: var(--body-text);
+}
+.copy-body em {
+  font-style: italic;
+  color: var(--mist-teal);
+}
+.h-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--misty-sage);
+  margin-bottom: 0.25rem;
+}
+
+/* ========== NOTES ========== */
+.note {
+  border-left: 3px solid var(--antique-gold);
+  background: var(--warm-gold-bg);
+  padding: 0.85rem 1rem;
+  margin: 1rem 0;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: #555;
+}
+.note-label {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--antique-gold);
+  margin-bottom: 0.35rem;
+}
+
+/* ========== FLAGS ========== */
+.flag {
+  border-left: 3px solid var(--flag-red);
+  background: #FFF0F0;
+  padding: 0.85rem 1rem;
+  margin: 1rem 0;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: #555;
+}
+.flag-label {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--flag-red);
+  margin-bottom: 0.35rem;
+}
+
+/* ========== CTA BLOCKS ========== */
+.cta-block {
+  margin: 1.25rem 0;
+  padding: 1rem;
+  background: linear-gradient(135deg, var(--whisper-sage) 0%, var(--cloud-white) 100%);
+  border-radius: 10px;
+  border: 1.5px solid var(--light-sage);
+}
+.cta-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--misty-sage);
+  margin-bottom: 0.4rem;
+}
+.cta-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--mist-teal);
+  margin-bottom: 0.5rem;
+}
+.cta-subtext {
+  font-size: 0.85rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+}
+.cta-primary {
+  display: inline-block;
+  background: var(--antique-gold);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 0.6rem 1.5rem;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+}
+.cta-teal {
+  background: var(--mist-teal);
+}
+.cta-secondary {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--mist-teal);
+  font-weight: 500;
+  margin-top: 0.35rem;
+}
+
+/* ========== TABLES ========== */
+.table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1rem 0;
+  border-radius: 10px;
+  border: 1px solid var(--light-sage);
+}
+.table-wrap table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  font-size: 0.85rem;
+  min-width: 400px;
+}
+.table-wrap thead th {
+  background: var(--whisper-sage);
+  color: var(--mist-teal);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.65rem 0.75rem;
+  text-align: left;
+  white-space: nowrap;
+}
+.table-wrap tbody td {
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--whisper-sage);
+  vertical-align: top;
+  line-height: 1.55;
+}
+.table-wrap tbody tr:nth-child(even) { background: var(--cloud-white); }
+.table-wrap tbody tr:last-child td { border-bottom: none; }
+
+/* ========== INTERNAL LINK ========== */
+.int-link {
+  font-size: 0.82rem;
+  color: var(--antique-gold);
+  font-weight: 500;
+  margin: 0.5rem 0;
+}
+.int-link::before { content: '→ '; font-weight: 700; }
+
+/* ========== CHECKLIST ========== */
+.checklist { margin: 1rem 0; }
+.checklist-item {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  padding: 0.3rem 0 0.3rem 1.75rem;
+  position: relative;
+}
+.checklist-item::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+  color: var(--mist-teal);
+  font-size: 0.85rem;
+}
+
+/* ========== FOOTER ========== */
+.doc-footer {
+  background: var(--mist-teal);
+  color: #fff;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  font-size: 0.8rem;
+  line-height: 1.7;
+}
+.doc-footer strong { color: #fff; }
+
+/* ========== RESPONSIVE ========== */
+@media (min-width: 600px) {
+  .cover h1 { font-size: 2.8rem; }
+  .section { padding: 3rem 2.5rem; }
+  .specs { padding: 2rem 2.5rem; }
+  .toc { padding: 2rem 2.5rem; }
+  .copy-headline { font-size: 2rem; }
+  .copy-headline-sm { font-size: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== COVER ==================== -->
+<div class="cover">
+  <div class="cover-badge">Phase 3A Deliverable</div>
+  <h1>Blog Hub Copy Deck</h1>
+  <div class="subtitle">Spark Academy Website Rebuild</div>
+  <div class="cover-meta">
+    Prepared for <strong>Dr. Michelle Peterson, Ed.D.</strong><br>
+    Founder &amp; Executive Director, Spark Academy<br><br>
+    Prepared by <strong>Stephen Odanovich</strong><br>
+    Internet Marketing Specialist<br><br>
+    March 2026
+  </div>
+  <div class="cover-status">Draft — Pending Dr. Peterson's Review</div>
+</div>
+
+<!-- ==================== TABLE OF CONTENTS ==================== -->
+<div class="toc">
+  <h2>What's Inside</h2>
+  <ol class="toc-list">
+    <li><a href="#specs">Page Specifications</a></li>
+    <li><a href="#s1">Hero</a></li>
+    <li><a href="#s2">Category Filter</a></li>
+    <li><a href="#s3">Featured Post Area</a></li>
+    <li><a href="#s4">Post Grid &amp; Post Card Spec</a></li>
+    <li><a href="#s5">Branded Series Display</a></li>
+    <li><a href="#s6">Conditional CTA Blocks</a></li>
+    <li><a href="#s7">Internal Linking Map</a></li>
+    <li><a href="#s8">Schema Markup &amp; Tracking</a></li>
+    <li><a href="#s9">Open Items for Dr. Peterson</a></li>
+    <li><a href="#checklist">Deliverable Checklist</a></li>
+  </ol>
+</div>
+
+<!-- ==================== PAGE SPECIFICATIONS ==================== -->
+<div class="specs" id="specs">
+  <h2>Page Specifications</h2>
+  <div class="spec-grid">
+    <div class="spec-row">
+      <div class="spec-label">Page</div>
+      <div class="spec-value">Blog Hub</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">URL</div>
+      <div class="spec-value">/blog/</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Primary Keyword</div>
+      <div class="spec-value">None targeted — hub page; individual posts carry SEO weight</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Secondary Keywords</div>
+      <div class="spec-value">Spark Academy blog; preschool blog Morton IL; early childhood education blog</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Search Intent</div>
+      <div class="spec-value">Navigational / Informational — user browsing blog content by topic or audience</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Funnel Stage</div>
+      <div class="spec-value">Top-to-Mid Funnel — content discovery and topical exploration for both audiences</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Audience</div>
+      <div class="spec-value">Parents (primary view) and Educators (filtered view)</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Messaging Lens</div>
+      <div class="spec-value">Hybrid — 70% child-centric / 30% school-centric (default parent view); School-Centric when "For Educators" filter is active</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Primary CTA (Parent View)</div>
+      <div class="spec-value">Schedule a Tour</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Primary CTA (Educator View)</div>
+      <div class="spec-value">Work with Dr. Peterson → /consulting/</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Meta Title (≤60 chars)</div>
+      <div class="spec-value">Blog | Spark Academy — Morton, IL <span style="font-size:0.75rem;color:var(--misty-sage);">(39 characters ✅)</span></div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Meta Description (≤155 chars)</div>
+      <div class="spec-value">Research-backed articles on early childhood education by Dr. Michelle Peterson, Ed.D. Parenting insights, preschool guidance, and educator resources. <span style="font-size:0.75rem;color:var(--misty-sage);">(151 characters ✅)</span></div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Schema Markup</div>
+      <div class="spec-value">CollectionPage + BreadcrumbList</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">AEO Tier</div>
+      <div class="spec-value">Tier 3 — Supporting page (not an Answer Hub; individual posts carry AEO weight)</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Data Layer</div>
+      <div class="spec-value"><code>page_type: blog-hub</code> | <code>funnel: shared</code> | <code>content_category: content-hub</code> | <code>has_form: false</code> | <code>page_template: blog-archive</code></div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Word Count Target</div>
+      <div class="spec-value">250–400 words (functional hub — not a narrative page)</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Internal Links From</div>
+      <div class="spec-value">Primary navigation, homepage footer, all page footers, individual blog post breadcrumbs</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-label">Internal Links To</div>
+      <div class="spec-value">Individual blog posts (via post grid), /schedule-a-tour/, /consulting/, /dr-michelle-peterson/</div>
+    </div>
+  </div>
+</div>
+
+<!-- Strategic Note after Specs -->
+<div style="padding: 1rem 1.5rem; background: var(--cloud-white);">
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    This is a functional wayfinding page, not a content page. Its job is to orient visitors, surface the right content for their audience, and provide a clear path to the next conversion step. Individual blog posts do the SEO and AEO heavy lifting — the hub exists to organize and route. The meta description is the one place where the hub earns organic value: it positions Dr. Peterson as the author and signals both audience tracks to Google.
+  </div>
+</div>
+
+<!-- ==================== SECTION 1: HERO ==================== -->
+<div class="section section-odd" id="s1">
+  <div class="section-number">Section 01</div>
+  <h2>Hero</h2>
+
+  <div class="h-label">H1 (Page Title)</div>
+  <div class="copy-headline">Insights from a Researcher, Educator, and Founder</div>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    Hybrid lens. The H1 establishes Dr. Peterson's triple identity — researcher (school-centric credential), educator (warm and relatable), and founder (authority anchor) — without naming the school or sounding institutional. It works for both audiences: parents hear "someone who knows what she's talking about," and educators hear "a peer with credentials." The word "Insights" signals ongoing value (a blog worth returning to), not a static information page. Primary keyword is not forced into the H1 because this page does not target a competitive keyword — clarity and brand positioning take priority here.
+  </div>
+
+  <h3>Hero Subheadline</h3>
+  <p class="copy-body"><em>Dr. Michelle Peterson, Ed.D., writes about what the research says, what the classroom shows, and what it means for your child.</em></p>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    Child-centric close ("what it means for your child") anchors the subheadline in the parent's world while the credential (Ed.D.) and the research/classroom pairing establish E-E-A-T in a single sentence. This subheadline doubles as the blog's elevator pitch — if a parent reads nothing else on this page, they understand who writes the content, why it's credible, and why it matters to them.
+  </div>
+</div>
+
+<!-- ==================== SECTION 2: CATEGORY FILTER ==================== -->
+<div class="section section-even" id="s2">
+  <div class="section-number">Section 02</div>
+  <h2>Category Filter</h2>
+
+  <p class="copy-body">The blog hub displays two primary category filters as tabs or pill-style buttons directly below the hero. These are the primary navigational control for the page.</p>
+
+  <h3>Filter Labels</h3>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Filter</th>
+          <th>Label</th>
+          <th>Behavior</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Default</strong></td>
+          <td>For Parents</td>
+          <td>Shows parent-facing posts. Tour CTA visible. Consulting CTA hidden.</td>
+        </tr>
+        <tr>
+          <td><strong>Secondary</strong></td>
+          <td>For Educators</td>
+          <td>Shows educator-facing posts. "Work with Dr. Peterson" CTA visible. Tour CTA hidden.</td>
+        </tr>
+        <tr>
+          <td><strong>All</strong></td>
+          <td>All Articles</td>
+          <td>Shows both audiences. Tour CTA visible (parent-default). Consulting CTA hidden.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    No filter is labeled "All" by default — the page loads with "For Parents" active because parents are the majority audience (per dual-funnel architecture). An "All Articles" option exists for users who want both, but it is not the default state. This prevents parents from ever seeing educator-facing content first, which could create confusion about what Spark Academy is. The "For Educators" filter is the consulting funnel's blog entry point per the Consulting Funnel Wireframe Section 8.
+  </div>
+
+  <h3>Filter Micro-Copy (Conditional)</h3>
+
+  <h4>When "For Parents" is active:</h4>
+  <p class="copy-body">"Expert guidance on preschool readiness, child development, and choosing the right program for your family."</p>
+
+  <h4>When "For Educators" is active:</h4>
+  <p class="copy-body">"Research-grounded perspectives on curriculum design, inclusive classrooms, and early childhood program leadership."</p>
+
+  <h4>When "All Articles" is active:</h4>
+  <p class="copy-body">No micro-copy displayed — the H1 and subheadline provide sufficient context.</p>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    The micro-copy serves two purposes: it confirms the visitor is in the right place after clicking a filter, and it front-loads audience-specific keywords for crawlers. The parent micro-copy uses child-centric language ("your family"). The educator micro-copy uses professional vocabulary ("curriculum design," "inclusive classrooms") that signals this content is for peers, not parents — reinforcing the Vocabulary Firewall from the Brand Voice Guide.
+  </div>
+</div>
+
+<!-- ==================== SECTION 3: FEATURED POST AREA ==================== -->
+<div class="section section-odd" id="s3">
+  <div class="section-number">Section 03</div>
+  <h2>Featured Post Area</h2>
+
+  <p class="copy-body">A single featured post appears above the main post grid, visually distinct (larger card, hero image, excerpt). This is a pinned position controlled manually in the CMS — not algorithmic.</p>
+
+  <h3>Featured Post Logic</h3>
+
+  <p class="copy-body">One featured post at a time. Swapped manually when a new cornerstone article publishes or when a seasonal priority shifts (e.g., Camp Play registration opens).</p>
+
+  <p class="copy-body">The featured post respects the active filter. If "For Educators" is active and the pinned post is parent-facing, the featured area either shows the top educator post instead or collapses. Recommended behavior: show the most recent post matching the active filter in the featured position when the pinned post doesn't match.</p>
+
+  <p class="copy-body">Launch featured post: <strong>"Daycare vs. Preschool: What's the Real Difference?"</strong> (Article 2 from Blog Content Roadmap — cornerstone article, 9,000/mo addressable volume, highest-impact first publish alongside the tax deductibility post).</p>
+
+  <h3>Featured Post Card Elements</h3>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Element</th>
+          <th>Specification</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Featured image</strong></td>
+          <td>Full-width or 60/40 split with excerpt. Larger than standard post cards.</td>
+        </tr>
+        <tr>
+          <td><strong>Post title (H2)</strong></td>
+          <td>Linked to full post. Playfair Display heading.</td>
+        </tr>
+        <tr>
+          <td><strong>Excerpt</strong></td>
+          <td>2–3 sentences. Hand-written (not auto-generated) for cornerstone articles.</td>
+        </tr>
+        <tr>
+          <td><strong>Author byline</strong></td>
+          <td>Dr. Michelle Peterson, Ed.D. (see Post Card Spec for full format)</td>
+        </tr>
+        <tr>
+          <td><strong>Category tag</strong></td>
+          <td>"For Parents" or "For Educators" — visible on card.</td>
+        </tr>
+        <tr>
+          <td><strong>Read button</strong></td>
+          <td>"Read the Full Article →" — linked to post URL.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ==================== SECTION 4: POST GRID & POST CARD SPEC ==================== -->
+<div class="section section-even" id="s4">
+  <div class="section-number">Section 04</div>
+  <h2>Post Grid &amp; Post Card Spec</h2>
+
+  <p class="copy-body">Below the featured post, all remaining posts display in a responsive grid (3-column desktop, 2-column tablet, 1-column mobile). Posts are ordered by publish date, most recent first. Pagination or infinite scroll — Phase 4 design decision; copy deck is agnostic.</p>
+
+  <h3>Post Card Spec</h3>
+
+  <p class="copy-body">Every post in the grid uses a consistent card format. This spec defines the content architecture for each card — the visual design is a Phase 4 deliverable.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Card Element</th>
+          <th>Content</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Featured image</strong></td>
+          <td>Post's featured image</td>
+          <td>16:9 aspect ratio recommended. WebP format. Lazy-loaded.</td>
+        </tr>
+        <tr>
+          <td><strong>Category tag</strong></td>
+          <td>"For Parents" or "For Educators"</td>
+          <td>Small pill/badge. Visible on every card. Color-coded (Phase 4 decision).</td>
+        </tr>
+        <tr>
+          <td><strong>Post title</strong></td>
+          <td>Full post title (H3 on hub page)</td>
+          <td>Linked to full post. Truncated at 2 lines if needed.</td>
+        </tr>
+        <tr>
+          <td><strong>Excerpt</strong></td>
+          <td>Auto-generated excerpt, 120–160 characters</td>
+          <td>WordPress auto-excerpt or custom excerpt field. Ends with "…" if truncated.</td>
+        </tr>
+        <tr>
+          <td><strong>Author byline</strong></td>
+          <td>By Dr. Michelle Peterson, Ed.D.</td>
+          <td>Consistent on all cards. Links to /dr-michelle-peterson/.</td>
+        </tr>
+        <tr>
+          <td><strong>Publish date</strong></td>
+          <td>Month Day, Year format</td>
+          <td>Displays below byline. Keeps content feeling current.</td>
+        </tr>
+        <tr>
+          <td><strong>Read more link</strong></td>
+          <td>"Read More →"</td>
+          <td>Text link, not a button. Entire card is also clickable (whole-card link pattern).</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Educator Post Card Variation</h3>
+
+  <p class="copy-body">Posts tagged "For Educators" use a slightly modified byline to signal consulting authority:</p>
+
+  <p class="copy-body"><strong>Educator byline:</strong> "By Dr. Michelle Peterson, Ed.D. — Educator, Researcher, Consultant"</p>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    Per the Consulting Funnel Wireframe Section 8, the educator byline adds "Consultant" to signal that Dr. Peterson is available for professional engagement — not just writing about education. The byline still links to /dr-michelle-peterson/, which contains the "For Educators" consulting bridge section. This is subtle but intentional: the card itself is a micro-funnel touchpoint.
+  </div>
+</div>
+
+<!-- ==================== SECTION 5: BRANDED SERIES DISPLAY ==================== -->
+<div class="section section-odd" id="s5">
+  <div class="section-number">Section 05</div>
+  <h2>Branded Series Display</h2>
+
+  <p class="copy-body">Below the main post grid, the blog hub surfaces the three branded series from the Blog Content Roadmap as distinct visual groupings. Each series appears as a horizontal card row or carousel with its own heading, brief description, and 3–4 post cards.</p>
+
+  <h3>Series Specifications</h3>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Series Name</th>
+          <th>Hub Description</th>
+          <th>Audience &amp; Display</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Inside the Classroom</strong></td>
+          <td>A window into what your child's day actually looks like — the activities, the friendships, and the small moments that add up to big growth.</td>
+          <td>For Parents. Visible in default view and "For Parents" filter.</td>
+        </tr>
+        <tr>
+          <td><strong>Ask Dr. Peterson</strong></td>
+          <td>Real questions from parents and educators, answered by a doctoral researcher who runs a school every day.</td>
+          <td>Dual-audience. Visible in all filter states.</td>
+        </tr>
+        <tr>
+          <td><strong>The Homeschool Hub</strong></td>
+          <td>Resources, ideas, and enrichment guidance for homeschool families — from a credentialed educator who built a program just for you.</td>
+          <td>For Parents. Visible in default view and "For Parents" filter.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    Series sections only appear once enough posts exist to populate them (minimum 2 posts per series before the section renders). At launch, these sections will likely be hidden — the Blog Content Roadmap schedules series posts starting in Phase 2 (months 7–12). The series descriptions use child-centric language for parent series and hybrid language for Ask Dr. Peterson, mirroring the lens assignments from the Blog Content Roadmap. The Homeschool Hub series directly supports Discovery Station enrollment.
+  </div>
+
+  <h3>Series "View All" Link</h3>
+
+  <p class="copy-body">Each series section includes a "View All [Series Name] Articles →" link that filters the post grid to show only that series. Implementation: WordPress tag or custom taxonomy. Phase 5 decision.</p>
+</div>
+
+<!-- ==================== SECTION 6: CONDITIONAL CTA BLOCKS ==================== -->
+<div class="section section-even" id="s6">
+  <div class="section-number">Section 06</div>
+  <h2>Conditional CTA Blocks</h2>
+
+  <p class="copy-body">The blog hub displays one CTA block at the bottom of the page, below the post grid and series sections. The CTA swaps based on the active filter state.</p>
+
+  <h3>Parent CTA (Default / "For Parents" / "All Articles")</h3>
+
+  <div class="cta-block">
+    <div class="cta-label">Parent CTA</div>
+    <div class="cta-heading">Ready to See Spark in Person?</div>
+    <div class="cta-subtext">The best way to understand what makes Spark different is to walk through our door. Meet Dr. Peterson, see the classrooms, and picture your child here.</div>
+    <div class="cta-primary">Schedule a Tour</div>
+    <div class="cta-secondary">→ /schedule-a-tour/</div>
+    <p style="font-size:0.75rem; color:var(--misty-sage); margin-top:0.5rem;">Button style: Antique Gold #C49826 background, white text, per sitewide CTA spec.</p>
+  </div>
+
+  <h3>Educator CTA ("For Educators" filter active)</h3>
+
+  <div class="cta-block">
+    <div class="cta-label">Educator CTA</div>
+    <div class="cta-heading">Bring This Expertise to Your Organization</div>
+    <div class="cta-subtext">Dr. Michelle Peterson, Ed.D., consults with schools, districts, and early childhood programs on curriculum design, inclusive classroom strategies, NDBI implementation, and program evaluation.</div>
+    <div class="cta-primary cta-teal">Explore Consulting Services</div>
+    <div class="cta-secondary">→ /consulting/</div>
+    <p style="font-size:0.75rem; color:var(--misty-sage); margin-top:0.5rem;">Button style: Mist Teal #3D6B62 background, white text. Visually distinct from parent CTA to reinforce the audience shift.</p>
+  </div>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    The CTA text matches the consulting funnel's established language from the Consulting Funnel Wireframe CTA Matrix. The educator subtext uses professional vocabulary (NDBI, curriculum design, program evaluation) per the Vocabulary Firewall — these terms signal belonging for an educator audience. The Mist Teal button color differentiates the consulting CTA from the Antique Gold parent CTA, creating a subtle but consistent visual system across the site: gold = parent action, teal = educator action.
+  </div>
+</div>
+
+<!-- ==================== SECTION 7: INTERNAL LINKING MAP ==================== -->
+<div class="section section-odd" id="s7">
+  <div class="section-number">Section 07</div>
+  <h2>Internal Linking Map</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Link Target</th>
+          <th>URL</th>
+          <th>Where on Page</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Schedule a Tour</td>
+          <td>/schedule-a-tour/</td>
+          <td>Parent CTA block (Section 6)</td>
+        </tr>
+        <tr>
+          <td>Consulting Services</td>
+          <td>/consulting/</td>
+          <td>Educator CTA block (Section 6)</td>
+        </tr>
+        <tr>
+          <td>Dr. Michelle Peterson</td>
+          <td>/dr-michelle-peterson/</td>
+          <td>Author byline links on all post cards, hero subheadline</td>
+        </tr>
+        <tr>
+          <td>Individual blog posts</td>
+          <td>/blog/[post-slug]/</td>
+          <td>Post cards in grid and featured area</td>
+        </tr>
+        <tr>
+          <td>Programs Overview</td>
+          <td>/programs/</td>
+          <td>Not directly linked on hub — linked from individual posts</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ==================== SECTION 8: SCHEMA MARKUP & TRACKING ==================== -->
+<div class="section section-even" id="s8">
+  <div class="section-number">Section 08</div>
+  <h2>Schema Markup &amp; Tracking</h2>
+
+  <h3>Schema Specification</h3>
+
+  <p class="copy-body">The blog hub uses CollectionPage schema (auto-generated by RankMath for archive pages) plus sitewide BreadcrumbList. No FAQPage schema on this page — there is no FAQ content here. Individual blog posts carry their own Article + FAQPage schema per the AEO blog post template.</p>
+
+  <h3>Breadcrumb</h3>
+
+  <p class="copy-body">Home &gt; Blog</p>
+
+  <h3>GA4 / GTM Tracking</h3>
+
+  <p class="copy-body">Category filter clicks tracked as custom events: <code>blog_filter_click</code> with parameter <code>filter_value</code> ("parents", "educators", "all").</p>
+
+  <p class="copy-body">Post card clicks tracked: <code>blog_post_click</code> with parameter <code>post_title</code> and <code>post_category</code>.</p>
+
+  <p class="copy-body">CTA button clicks tracked per sitewide CTA tracking spec: <code>data-cta-type="tour"</code> or <code>data-cta-type="consulting"</code> and <code>data-cta-text</code> matching the button label.</p>
+
+  <p class="copy-body">Series section visibility and click-through tracked: <code>blog_series_click</code> with parameter <code>series_name</code>.</p>
+
+  <div class="note">
+    <div class="note-label">Strategic Note</div>
+    The filter click tracking is especially valuable for understanding audience composition. If 30% of blog hub visitors click "For Educators," the consulting content strategy is generating meaningful traffic and the educator publishing cadence may warrant acceleration. This data feeds directly into the monthly KPI review per the Blog Content Roadmap.
+  </div>
+</div>
+
+<!-- ==================== SECTION 9: OPEN ITEMS ==================== -->
+<div class="section section-odd" id="s9">
+  <div class="section-number">Section 09</div>
+  <h2>Open Items for Dr. Peterson</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Item</th>
+          <th>Dependency</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Blog writing workflow preference — Option A (Full Draft Review), B (Voice Memo + Draft), or C (Outline + Interview). Can mix by topic. Flagged in Blog Content Roadmap Section 11.</td>
+          <td>Phase 3 blog post production</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Photography — Dr. Peterson headshot for author byline. Professional quality, consistent with other site photos.</td>
+          <td>Phase 5 (placeholder acceptable at launch)</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Confirm hero subheadline tone — does "what the research says, what the classroom shows, and what it means for your child" sound like something Dr. Peterson would say?</td>
+          <td>Phase 3 review gate</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ==================== DELIVERABLE CHECKLIST ==================== -->
+<div class="section section-even" id="checklist">
+  <div class="section-number">Checklist</div>
+  <h2>Deliverable Checklist</h2>
+
+  <div class="checklist">
+    <div class="checklist-item">H1 with brand positioning (not keyword-forced — hub page strategy)</div>
+    <div class="checklist-item">Hero subheadline establishing Dr. Peterson as author with E-E-A-T signal</div>
+    <div class="checklist-item">Category filter spec with three states and conditional behavior</div>
+    <div class="checklist-item">Filter micro-copy per audience (parent-facing and educator-facing)</div>
+    <div class="checklist-item">Featured post area with pinned post logic and filter-awareness</div>
+    <div class="checklist-item">Post card spec with all card elements and educator byline variation</div>
+    <div class="checklist-item">Branded series display with descriptions, audience mapping, and render logic</div>
+    <div class="checklist-item">Conditional CTA blocks (parent tour CTA and educator consulting CTA)</div>
+    <div class="checklist-item">Meta title (39 chars) and meta description (151 chars)</div>
+    <div class="checklist-item">Schema markup specification (CollectionPage + BreadcrumbList)</div>
+    <div class="checklist-item">Data layer values specified</div>
+    <div class="checklist-item">Internal linking map</div>
+    <div class="checklist-item">GA4/GTM tracking events specified (filter clicks, post clicks, CTA clicks, series clicks)</div>
+    <div class="checklist-item">Open items flagged for Dr. Peterson (3 items)</div>
+    <div class="checklist-item">Messaging lens verified: Hybrid 70/30 default, School-Centric for educator filter state</div>
+  </div>
+</div>
+
+<!-- ==================== FOOTER ==================== -->
+<div class="doc-footer">
+  <strong>Spark Academy</strong> — Website Rebuild Project<br>
+  Phase 3A: Blog Hub Copy Deck • March 2026<br>
+  Confidential — For Internal Review Only
+</div>
+
+</body>
+</html>

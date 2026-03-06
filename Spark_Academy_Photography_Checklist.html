@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Spark Academy — Photography Checklist</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+  :root {
+    --mist-teal: #3D6B62;
+    --antique-gold: #C49826;
+    --cloud-white: #FBFAF8;
+    --whisper-sage: #EFF5F2;
+    --misty-sage: #9BB8AD;
+    --soft-black: #2E2E2E;
+    --completed-bg: #f0f7f4;
+    --tier1: #3D6B62;
+    --tier2: #C49826;
+    --tier3: #6B8F71;
+    --tier4: #8B7355;
+    --tier5: #5B6E8A;
+    --tier6: #9BB8AD;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cloud-white);
+    color: var(--soft-black);
+    line-height: 1.6;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--mist-teal);
+    color: white;
+    padding: 28px 20px 24px;
+    text-align: center;
+  }
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 4px;
+  }
+  .header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+    font-weight: 400;
+  }
+
+  /* ── Progress Bar ── */
+  .progress-container {
+    background: white;
+    padding: 16px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--misty-sage);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .progress-stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+  }
+  .progress-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--mist-teal);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .progress-count {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--soft-black);
+  }
+  .progress-bar-track {
+    width: 100%;
+    height: 8px;
+    background: var(--whisper-sage);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--mist-teal), var(--antique-gold));
+    border-radius: 4px;
+    transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    width: 0%;
+  }
+
+  /* ── Style Direction Card ── */
+  .style-card {
+    margin: 16px;
+    background: var(--whisper-sage);
+    border-radius: 12px;
+    padding: 20px;
+    border-left: 4px solid var(--mist-teal);
+  }
+  .style-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--mist-teal);
+    margin-bottom: 10px;
+  }
+  .style-card ul {
+    list-style: none;
+    padding: 0;
+  }
+  .style-card li {
+    font-size: 0.85rem;
+    padding: 4px 0;
+    padding-left: 20px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .style-card li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: var(--antique-gold);
+    font-size: 0.7rem;
+    top: 6px;
+  }
+
+  /* ── Tier Section ── */
+  .tier-section {
+    margin: 20px 16px;
+  }
+  .tier-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 4px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    transition: background 0.2s;
+  }
+  .tier-header:active {
+    opacity: 0.85;
+  }
+  .tier-header.tier-1 { background: var(--tier1); color: white; }
+  .tier-header.tier-2 { background: var(--tier2); color: white; }
+  .tier-header.tier-3 { background: var(--tier3); color: white; }
+  .tier-header.tier-4 { background: var(--tier4); color: white; }
+  .tier-header.tier-5 { background: var(--tier5); color: white; }
+  .tier-header.tier-6 { background: var(--tier6); color: white; }
+
+  .tier-badge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: rgba(255,255,255,0.2);
+    padding: 3px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  .tier-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    flex: 1;
+  }
+  .tier-count {
+    font-size: 0.75rem;
+    font-weight: 600;
+    opacity: 0.9;
+    white-space: nowrap;
+  }
+  .tier-chevron {
+    font-size: 0.9rem;
+    transition: transform 0.3s;
+  }
+  .tier-chevron.collapsed {
+    transform: rotate(-90deg);
+  }
+  .tier-description {
+    font-size: 0.8rem;
+    color: #666;
+    padding: 0 16px;
+    margin-bottom: 12px;
+    font-style: italic;
+  }
+
+  .shots-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .shots-list.collapsed {
+    display: none;
+  }
+
+  /* ── Shot Card ── */
+  .shot-card {
+    background: white;
+    border-radius: 10px;
+    border: 1.5px solid #e8ece9;
+    overflow: hidden;
+    transition: border-color 0.3s, background 0.3s, opacity 0.3s;
+  }
+  .shot-card.completed {
+    background: var(--completed-bg);
+    border-color: var(--misty-sage);
+    opacity: 0.75;
+  }
+  .shot-card.completed .shot-header {
+    opacity: 0.7;
+  }
+  .shot-card.completed .shot-number {
+    background: var(--misty-sage);
+    text-decoration: line-through;
+  }
+
+  .shot-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    min-height: 56px;
+  }
+
+  /* Custom checkbox */
+  .checkbox-area {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 7px;
+    border: 2.5px solid var(--misty-sage);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s;
+    background: white;
+  }
+  .shot-card.completed .checkbox-area {
+    background: var(--mist-teal);
+    border-color: var(--mist-teal);
+  }
+  .checkmark {
+    display: none;
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .shot-card.completed .checkmark {
+    display: block;
+  }
+
+  .shot-number {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: white;
+    background: var(--mist-teal);
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.3s;
+  }
+  .shot-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    flex: 1;
+    line-height: 1.3;
+  }
+  .shot-expand {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: none;
+    background: var(--whisper-sage);
+    color: var(--mist-teal);
+    font-size: 0.85rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s, background 0.2s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .shot-expand.open {
+    transform: rotate(180deg);
+    background: var(--mist-teal);
+    color: white;
+  }
+
+  .shot-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+  .shot-details-inner {
+    padding: 0 16px 16px;
+    border-top: 1px solid #eef2f0;
+  }
+
+  .detail-row {
+    padding: 8px 0;
+    border-bottom: 1px solid #f4f6f5;
+  }
+  .detail-row:last-child {
+    border-bottom: none;
+  }
+  .detail-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--mist-teal);
+    margin-bottom: 2px;
+  }
+  .detail-text {
+    font-size: 0.83rem;
+    line-height: 1.5;
+    color: #444;
+  }
+  .detail-tag {
+    display: inline-block;
+    background: var(--whisper-sage);
+    color: var(--mist-teal);
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-right: 6px;
+    margin-top: 4px;
+  }
+  .detail-critical {
+    background: #FFF3E0;
+    color: #E65100;
+  }
+  .detail-note {
+    background: #E8F5E9;
+    color: #2E7D32;
+  }
+
+  /* ── File Specs ── */
+  .specs-card {
+    margin: 16px;
+    background: white;
+    border-radius: 12px;
+    border: 1.5px solid #e8ece9;
+    padding: 20px;
+  }
+  .specs-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: var(--mist-teal);
+    margin-bottom: 12px;
+  }
+  .spec-item {
+    display: flex;
+    gap: 8px;
+    padding: 6px 0;
+    font-size: 0.83rem;
+  }
+  .spec-label {
+    font-weight: 600;
+    color: var(--soft-black);
+    min-width: 90px;
+    flex-shrink: 0;
+  }
+  .spec-value {
+    color: #555;
+  }
+
+  /* ── Consent Section ── */
+  .consent-card {
+    margin: 16px;
+    background: #FFF8E1;
+    border-radius: 12px;
+    padding: 20px;
+    border-left: 4px solid var(--antique-gold);
+  }
+  .consent-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: #8B6914;
+    margin-bottom: 8px;
+  }
+  .consent-card p {
+    font-size: 0.83rem;
+    line-height: 1.6;
+    color: #6B5410;
+  }
+
+  /* ── Scheduling ── */
+  .schedule-card {
+    margin: 16px;
+    background: white;
+    border-radius: 12px;
+    border: 1.5px solid #e8ece9;
+    padding: 20px;
+  }
+  .schedule-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: var(--mist-teal);
+    margin-bottom: 12px;
+  }
+  .schedule-row {
+    display: flex;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f2f1;
+    align-items: flex-start;
+  }
+  .schedule-row:last-child { border-bottom: none; }
+  .schedule-when {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--mist-teal);
+    min-width: 100px;
+    flex-shrink: 0;
+    line-height: 1.4;
+  }
+  .schedule-what {
+    font-size: 0.82rem;
+    color: #555;
+    line-height: 1.4;
+  }
+
+  /* ── Reset Button ── */
+  .reset-section {
+    text-align: center;
+    padding: 32px 20px 48px;
+  }
+  .reset-btn {
+    background: white;
+    border: 1.5px solid #ccc;
+    color: #999;
+    padding: 16px 32px;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    min-height: 52px;
+    touch-action: manipulation;
+  }
+  .reset-btn:hover {
+    border-color: #E53935;
+    color: #E53935;
+  }
+  .reset-btn.confirm-state {
+    background: #E53935;
+    border-color: #E53935;
+    color: white;
+    font-weight: 700;
+    animation: pulse 0.6s ease;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+  }
+
+  /* ── Footer ── */
+  .footer {
+    background: var(--mist-teal);
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 20px;
+    font-size: 0.75rem;
+    line-height: 1.6;
+  }
+  .footer strong {
+    color: white;
+  }
+
+  /* ── Celebration ── */
+  .celebration {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(61,107,98,0.92);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    text-align: center;
+    padding: 40px;
+    animation: fadeIn 0.5s;
+  }
+  .celebration.show { display: flex; }
+  .celebration h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    margin-bottom: 12px;
+  }
+  .celebration p {
+    font-size: 1rem;
+    opacity: 0.85;
+    margin-bottom: 24px;
+  }
+  .celebration .emoji {
+    font-size: 3rem;
+    margin-bottom: 16px;
+  }
+  .celebration button {
+    background: var(--antique-gold);
+    color: white;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <h1>Spark Academy</h1>
+  <div class="subtitle">Photography Checklist — March 2026</div>
+</div>
+
+<!-- Progress -->
+<div class="progress-container">
+  <div class="progress-stats">
+    <span class="progress-label">Shoot Progress</span>
+    <span class="progress-count" id="progressCount">0 / 33 shots</span>
+  </div>
+  <div class="progress-bar-track">
+    <div class="progress-bar-fill" id="progressBar"></div>
+  </div>
+</div>
+
+<!-- Style Direction -->
+<div class="style-card">
+  <h2>General Style Direction</h2>
+  <ul>
+    <li>Natural light — use window light, avoid harsh flash</li>
+    <li>Warm, homelike tone — the school feels like a home, not an institution</li>
+    <li>Authentic moments over posed shots — candid over staged, always</li>
+    <li>Children are the protagonists — teachers support, not center-stage</li>
+    <li>Teachers at child-level — kneeling, sitting, engaged</li>
+    <li>Diversity in children where possible</li>
+    <li>No identifiable branding from other companies on clothing or materials</li>
+    <li>Warm color temperature — soft teals, golds, sage greens, cream</li>
+  </ul>
+</div>
+
+<!-- File Specs -->
+<div class="specs-card">
+  <h2>File Delivery Specs</h2>
+  <div class="spec-item">
+    <span class="spec-label">Format</span>
+    <span class="spec-value">High-res JPEG or TIFF (min 300 DPI)</span>
+  </div>
+  <div class="spec-item">
+    <span class="spec-label">Resolution</span>
+    <span class="spec-value">2400px+ for heroes; 1200px+ for all others</span>
+  </div>
+  <div class="spec-item">
+    <span class="spec-label">Color space</span>
+    <span class="spec-value">sRGB (for web)</span>
+  </div>
+  <div class="spec-item">
+    <span class="spec-label">Naming</span>
+    <span class="spec-value">Descriptive (e.g., hero-children-academic-play.jpg)</span>
+  </div>
+  <div class="spec-item">
+    <span class="spec-label">Delivery</span>
+    <span class="spec-value">Edited photos + raw originals</span>
+  </div>
+</div>
+
+<!-- Shot Lists — Built by JS -->
+<div id="shotLists"></div>
+
+<!-- Consent -->
+<div class="consent-card">
+  <h2>Photo Consent &amp; Releases</h2>
+  <p>All children photographed must have a signed photo release on file with Spark Academy before the shoot. Dr. Peterson to confirm which children have existing releases and coordinate with families. Any parents or staff appearing in photos must also confirm consent.</p>
+</div>
+
+<!-- Scheduling -->
+<div class="schedule-card">
+  <h2>Scheduling Notes</h2>
+  <div class="schedule-row">
+    <span class="schedule-when">School Day (AM)</span>
+    <span class="schedule-what">Shots 1–19, 27–33 — children & staff present, enrichment activities running</span>
+  </div>
+  <div class="schedule-row">
+    <span class="schedule-when">Tue/Thu PM</span>
+    <span class="schedule-what">Shots 22–24 — Discovery Station in session</span>
+  </div>
+  <div class="schedule-row">
+    <span class="schedule-when">Tue 4–5 PM</span>
+    <span class="schedule-what">Shots 25–26 — After-School Enrichment</span>
+  </div>
+  <div class="schedule-row">
+    <span class="schedule-when">Summer (Jun–Jul)</span>
+    <span class="schedule-what">Shots 20–21 — Camp Play, separate shoot required</span>
+  </div>
+  <div class="schedule-row">
+    <span class="schedule-when">Dr. Peterson</span>
+    <span class="schedule-what">Shots 2, 3, 27, 28 — coordinate her availability for portraits & interactions</span>
+  </div>
+</div>
+
+<!-- Reset -->
+<div class="reset-section">
+  <button class="reset-btn" id="resetBtn">Reset All Checkmarks</button>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <strong>Spark Academy</strong><br>
+  1989 North Morton Avenue, Morton, IL 61550<br>
+  309-291-3292 · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="25565544574e4446444140485c484a57514a4b654248444c490b464a48">[email&#160;protected]</a><br><br>
+  Spark Academy Website Project · March 2026
+</div>
+
+<!-- Celebration overlay -->
+<div class="celebration" id="celebration">
+  <div class="emoji">🎉</div>
+  <h2>All Shots Complete!</h2>
+  <p>Every shot on the checklist has been captured. Great work!</p>
+  <button onclick="document.getElementById('celebration').classList.remove('show')">Close</button>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+const TIERS = [
+  {
+    id: 'tier-1',
+    tier: 1,
+    title: 'Must-Have',
+    badge: 'CRITICAL',
+    description: 'The site cannot launch without these shots.',
+    shots: [
+      {
+        num: 1,
+        name: 'Hero Image — Homepage',
+        critical: true,
+        usedOn: 'Homepage (full-bleed hero), social media headers',
+        orientation: 'Horizontal — min 2400px wide',
+        description: 'Wide-angle shot of 2–3 children actively engaged in hands-on learning. Natural light from windows. Homelike interior visible. At least one child smiling or showing deep concentration. Teacher in background or at child-level — engaged but not center-stage. No posed group shots. No looking at camera. Capture a real moment of purposeful play.',
+        mood: 'Warm, joyful, alive with learning'
+      },
+      {
+        num: 2,
+        name: 'Dr. Peterson — Environmental Portrait',
+        critical: true,
+        usedOn: 'Homepage, Founder Hub, blog byline, consulting page, Google Business Profile, social media, print',
+        orientation: 'Vertical or square — min 1200px wide',
+        description: 'Professional but warm portrait. NOT a stiff corporate headshot. Smiling naturally, approachable, in the Spark environment — in a classroom, at child-level, or near learning materials. Business casual. Natural light. Must communicate: "This is someone I\'d trust with my child."',
+        note: 'Capture multiple frames — needs to work as a small blog thumbnail AND a large feature image.'
+      },
+      {
+        num: 3,
+        name: 'Dr. Peterson — Interacting with Students',
+        usedOn: 'Founder Hub, Why Spark, About section',
+        orientation: 'Horizontal (wide enough for section background)',
+        description: 'Dr. Peterson interacting with 2–3 children during an activity. At child-level, engaged, present — not posing. Could be reading together, examining something a child made, guiding a small group, or having a conversation. Proves the "researcher who walks the hallways every day" message.'
+      },
+      {
+        num: 4,
+        name: 'Developmental Playroom — Theme Setup',
+        critical: true,
+        usedOn: 'Homepage, Why Spark, Purposeful Play Framework, 3\'s page, 4\'s page, Programs Overview',
+        orientation: 'Horizontal preferred; also capture square/vertical',
+        description: 'Wide shot of the Developmental Playroom showing the current monthly theme (e.g., DinoLand, Ocean Dive, Rainforest). Must look designed, not random. Show the full room. Include 1–2 children if timing allows.',
+        note: 'Conversion-critical — parents frequently cite the Playroom as why they chose Spark. Capture multiple angles.'
+      },
+      {
+        num: 5,
+        name: 'Building Exterior',
+        usedOn: 'Homepage, Tour page, Google Business Profile, Answer Hub',
+        orientation: 'Horizontal (wide, section background)',
+        description: 'Spark Academy building exterior. Warm, inviting, homelike quality. Good weather, landscaping visible. NOT a cold institutional facade. A parent should think: "My child would feel comfortable here."',
+        note: 'Also capture a version with the entrance/front door visible.'
+      },
+      {
+        num: 6,
+        name: 'Interior — Homelike Quality',
+        usedOn: 'Founder Hub, Tour page, Why Spark',
+        orientation: 'Horizontal',
+        description: 'Wide interior shot showing the warm, homelike environment. Natural light, child-sized furniture, organized learning materials on open shelves. No children required — the space itself communicates warmth and intentionality.'
+      }
+    ]
+  },
+  {
+    id: 'tier-2',
+    tier: 2,
+    title: 'Program-Specific',
+    badge: 'BY AGE',
+    description: 'One shot per program, matched to the age and developmental stage.',
+    shots: [
+      {
+        num: 7,
+        name: '3\'s Preschool — Sensory/Tactile Play',
+        usedOn: '3\'s Preschool page, Homepage program card, Programs Overview',
+        orientation: 'Square or vertical',
+        description: 'Close or medium shot of a 3-year-old in sensory play, painting, or simple construction. Wide-eyed wonder and engagement. Age-appropriate and tactile — finger paint, playdough, water play.'
+      },
+      {
+        num: 8,
+        name: '4\'s Preschool — Collaborative Activity',
+        usedOn: '4\'s Preschool page, Homepage program card, Programs Overview',
+        orientation: 'Square or vertical',
+        description: 'Two children (age 4) collaborating on a building project, STEM activity, or creative construction. Interaction between the children is key — show the social learning component.'
+      },
+      {
+        num: 9,
+        name: 'Kindergarten Prep — Academic Readiness',
+        usedOn: 'K-Prep page, Homepage program card, Programs Overview',
+        orientation: 'Square or vertical',
+        description: 'A 5-year-old writing letters, doing a pre-reading activity, or in a small-group instructional moment with a teacher nearby. Communicate "readiness" and "purpose."'
+      },
+      {
+        num: 10,
+        name: 'Kindergarten — Structured Learning',
+        usedOn: 'Kindergarten page, Homepage program card, Programs Overview',
+        orientation: 'Square or vertical',
+        description: 'Children in a structured learning moment: small group instruction, circle time, or an academic activity. Slightly more structured feel than preschool shots, reflecting the kindergarten program\'s academic emphasis.'
+      },
+      {
+        num: 11,
+        name: 'Fresh 3\'s Fridays — First Day Feeling',
+        usedOn: 'Fresh 3\'s Fridays page hero',
+        orientation: 'Square or vertical',
+        description: 'A single child, around age 3, engaged in a hands-on activity — painting, building, or sensory play. Absorbed and at ease, not posed. Natural light. No adults in frame — entirely about the child\'s experience. Communicate: "this child is happy here."'
+      },
+      {
+        num: 12,
+        name: 'Kindergarten Prep — Group Readiness',
+        usedOn: 'K-Prep page (body section)',
+        orientation: 'Horizontal',
+        description: 'A child in a group listening activity — circle time, read-aloud, or structured discussion. Demonstrates social-emotional readiness: sustained attention, group participation, turn-taking.'
+      }
+    ]
+  },
+  {
+    id: 'tier-3',
+    tier: 3,
+    title: 'Enrichment & Activities',
+    badge: 'DAILY LIFE',
+    description: 'The daily schedule in action. Used across multiple pages.',
+    shots: [
+      {
+        num: 13,
+        name: 'Daily Enrichment — Spanish',
+        usedOn: 'Why Spark, Purposeful Play Framework, program pages',
+        orientation: 'Horizontal or square',
+        description: 'Teacher or specialist leading Spanish instruction. Could be vocabulary with visual aids, a Spanish song, or cultural activity. Children engaged and participating.'
+      },
+      {
+        num: 14,
+        name: 'Daily Enrichment — STEM',
+        usedOn: 'Why Spark, Purposeful Play Framework, program pages',
+        orientation: 'Horizontal or square',
+        description: 'Children in a STEM activity — building, measuring, experimenting, problem-solving. STEM photographs well because of unique, visually interesting materials.'
+      },
+      {
+        num: 15,
+        name: 'Daily Enrichment — Art',
+        usedOn: 'Why Spark, Purposeful Play Framework, program pages',
+        orientation: 'Square or vertical',
+        description: 'Child or small group creating art — painting, sculpting, collaging. Focus on the process (hands working, concentration) rather than the finished product.'
+      },
+      {
+        num: 16,
+        name: 'Daily Enrichment — Music & Movement',
+        usedOn: 'Why Spark, Purposeful Play Framework, Fresh 3\'s Fridays',
+        orientation: 'Horizontal',
+        description: 'Children during music and movement — playing instruments, dancing, singing. Energy and joy. This is the Friday enrichment subject, so it supports the Fresh 3\'s page directly.'
+      },
+      {
+        num: 17,
+        name: 'Outdoor Play',
+        usedOn: 'Why Spark, program pages, blog posts',
+        orientation: 'Horizontal',
+        description: 'Children during outdoor play — running, climbing, playing naturally. Safe, maintained outdoor space. Natural interaction and movement.'
+      },
+      {
+        num: 18,
+        name: 'Academic Play — Small Group at Table',
+        usedOn: 'Why Spark, program pages, blog posts',
+        orientation: 'Horizontal',
+        description: '3–5 children at a table with a teacher for academic play. Teacher at their level, guiding not lecturing. Represents the 1.5–2.5 hour Academic Play block — the core of every daily schedule.'
+      },
+      {
+        num: 19,
+        name: 'Snack Time / Community Moment',
+        usedOn: 'Program pages, blog, social media',
+        orientation: 'Horizontal or square',
+        description: 'Children seated together at snack time. Calm, pleasant, social. Represents the daily community time block and the school\'s family-like atmosphere.'
+      }
+    ]
+  },
+  {
+    id: 'tier-4',
+    tier: 4,
+    title: 'Supplemental Programs',
+    badge: 'SEASONAL',
+    description: 'Summer camp, Discovery Station, and after-school. May require separate sessions.',
+    shots: [
+      {
+        num: 20,
+        name: 'Camp Play — Outdoor Summer Activity',
+        usedOn: 'Summer Camp page hero',
+        orientation: 'Horizontal (wide, hero format)',
+        description: 'Wide, sun-drenched outdoor shot — children running, playing, or in a group activity. Multiple ages visible (young + older, reflecting ages 3–11). Joy, movement, summer energy. Must communicate the season: warm, bright, alive.',
+        note: 'Requires summer shoot (June–July 2026). Placeholder needed if site launches before summer.'
+      },
+      {
+        num: 21,
+        name: 'Camp Play — Activity Variety (3–4 shots)',
+        usedOn: 'Summer Camp page (body sections)',
+        orientation: 'Mixed (horizontal preferred)',
+        description: '3–4 shots showing different camp activities: science experiment, art project, outdoor games, cooking or LEGOs. Children active and engaged. Demonstrates the range of Camp Play.',
+        note: 'Same summer timing as Shot 20.'
+      },
+      {
+        num: 22,
+        name: 'Discovery Station — Collaborative Project',
+        usedOn: 'Discovery Station page hero',
+        orientation: 'Horizontal',
+        description: 'School-age children (ages 7–9) collaborating on a hands-on project. Laughter, interaction, friendship visible. Adults in background. Communicates social connection and peer learning that homeschool families seek.',
+        note: 'Capture on a Tuesday or Thursday when Discovery Station is in session.'
+      },
+      {
+        num: 23,
+        name: 'Discovery Station — Class Variety (3–4 shots)',
+        usedOn: 'Discovery Station page (class offerings)',
+        orientation: 'Mixed',
+        description: 'Different Discovery Station class types — cooking, theater, science, art, game club. One per class type if possible. Shows the breadth of offerings.',
+        note: 'Multiple visits may be needed for different classes.'
+      },
+      {
+        num: 24,
+        name: 'Discovery Station — Social / Celebration',
+        usedOn: 'Discovery Station page (emotional anchor)',
+        orientation: 'Horizontal or square',
+        description: 'Children in a celebratory or social moment — end-of-semester party, spirit week, candid friendship moment. This is the emotional anchor of the page — social connection is the #1 thing homeschool families want.'
+      },
+      {
+        num: 25,
+        name: 'After-School Enrichment — Creative Activity',
+        usedOn: 'After-School Enrichment page hero',
+        orientation: 'Horizontal',
+        description: 'Small group of school-age children in a dramatic or creative activity — rehearsing a scene, building sets, cooking, collaborating. Energy and joy. Communicate: "this is the best hour of their week."'
+      },
+      {
+        num: 26,
+        name: '"Off to Oz" Production (Spring 2026)',
+        usedOn: 'After-School Enrichment page (current program)',
+        orientation: 'Mixed',
+        description: '2–3 photos of "Off to Oz" rehearsals — children on stage, building sets, practicing lines. These are semester-specific and will be replaced each term.',
+        note: 'Capture before the May 2026 performance.'
+      }
+    ]
+  },
+  {
+    id: 'tier-5',
+    tier: 5,
+    title: 'Dr. Peterson Professional',
+    badge: 'CONSULTING',
+    description: 'Positions Dr. Peterson as a consultant and educational leader.',
+    shots: [
+      {
+        num: 27,
+        name: 'Dr. Peterson — Professional / Leadership',
+        usedOn: 'Consulting Services page, Founder Hub ("For Educators" section)',
+        orientation: 'Horizontal or square',
+        description: 'Dr. Peterson in a professional context — reviewing materials at a desk, leading a teacher meeting, working with another educator, or presenting. Positions her as a consultant and colleague, not just a preschool operator.',
+        note: 'A real teacher meeting or planning session is ideal. Candid desk/curriculum review works as a fallback.'
+      },
+      {
+        num: 28,
+        name: 'Dr. Peterson — Tour in Progress',
+        usedOn: 'Schedule a Tour page (highest-impact image)',
+        orientation: 'Horizontal',
+        description: 'Dr. Peterson walking a parent or parent couple through a classroom. Natural, not posed. Smiling, gesturing toward something, engaged in conversation. Parent(s) interested and comfortable. Shows exactly what visitors sign up for.',
+        note: 'Requires a willing parent or volunteer to stage. Coordinate with Dr. Peterson in advance.'
+      }
+    ]
+  },
+  {
+    id: 'tier-6',
+    tier: 6,
+    title: 'Supporting & Blog',
+    badge: 'BONUS',
+    description: 'Adds depth for blog posts, social media, and ongoing content.',
+    shots: [
+      {
+        num: 29,
+        name: 'Teacher-Child One-on-One Moment',
+        usedOn: 'Blog posts, Why Spark, social media',
+        orientation: 'Vertical or square',
+        description: 'A teacher kneeling at eye level with a child, having a calm conversation. Could be during behavior coaching, reading, or simply checking in. Communicates genuine care and presence.'
+      },
+      {
+        num: 30,
+        name: 'Brightwheel Documentation Moment',
+        usedOn: 'Why Spark (Brightwheel section), blog posts',
+        orientation: 'Square or horizontal',
+        description: 'A teacher taking a photo of children at work with a phone or tablet. Alternatively, a parent\'s-perspective shot of a phone showing a notification. Message: this school communicates proactively.'
+      },
+      {
+        num: 31,
+        name: 'Curriculum Theme Transformations',
+        usedOn: 'Purposeful Play Framework page, blog "Inside the Classroom" series',
+        orientation: 'Mixed — wide horizontal for rooms, square for details',
+        description: 'Current Playroom theme from multiple angles: wide room shot + detail shots of specific stations or materials. High-value assets for the blog\'s recurring "Inside the Classroom" series.'
+      },
+      {
+        num: 32,
+        name: 'Separation / Arrival Moment',
+        usedOn: 'Fresh 3\'s page, 3\'s Preschool page, blog posts about starting preschool',
+        orientation: 'Vertical or square',
+        description: 'A warm arrival moment — a child at the door, or a teacher welcoming a child at drop-off. Calm and reassuring, not chaotic. Supports separation anxiety messaging on younger program pages.'
+      },
+      {
+        num: 33,
+        name: 'Parent and Child Entering Together',
+        usedOn: 'Blog (How to Choose a Preschool), Tour page',
+        orientation: 'Horizontal',
+        description: 'Parent and child entering the building or walking into a classroom together. Natural light, welcoming environment. The image is an invitation: "come see for yourself."'
+      }
+    ]
+  }
+];
+
+const STORAGE_KEY = 'spark_photo_checklist';
+
+function loadState() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    return saved ? JSON.parse(saved) : {};
+  } catch { return {}; }
+}
+
+function saveState(state) {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+  catch {}
+}
+
+function updateProgress() {
+  const state = loadState();
+  const total = 33;
+  const done = Object.keys(state).filter(k => state[k]).length;
+  document.getElementById('progressCount').textContent = `${done} / ${total} shots`;
+  document.getElementById('progressBar').style.width = `${(done / total) * 100}%`;
+
+  // Update tier counts
+  TIERS.forEach(tier => {
+    const tierDone = tier.shots.filter(s => state[`shot-${s.num}`]).length;
+    const el = document.getElementById(`tier-count-${tier.tier}`);
+    if (el) el.textContent = `${tierDone}/${tier.shots.length}`;
+  });
+
+  if (done === total) {
+    document.getElementById('celebration').classList.add('show');
+  }
+}
+
+function toggleShot(num) {
+  const state = loadState();
+  const key = `shot-${num}`;
+  state[key] = !state[key];
+  saveState(state);
+
+  const card = document.getElementById(`shot-card-${num}`);
+  if (state[key]) {
+    card.classList.add('completed');
+  } else {
+    card.classList.remove('completed');
+  }
+  updateProgress();
+}
+
+function toggleDetails(num) {
+  const details = document.getElementById(`shot-details-${num}`);
+  const btn = document.getElementById(`shot-expand-${num}`);
+  if (details.style.maxHeight && details.style.maxHeight !== '0px') {
+    details.style.maxHeight = '0px';
+    btn.classList.remove('open');
+  } else {
+    details.style.maxHeight = details.scrollHeight + 'px';
+    btn.classList.add('open');
+  }
+}
+
+function toggleTier(tierId) {
+  const list = document.getElementById(`shots-${tierId}`);
+  const chevron = document.getElementById(`chevron-${tierId}`);
+  const desc = list.previousElementSibling; // tier-description
+  list.classList.toggle('collapsed');
+  chevron.classList.toggle('collapsed');
+  if (desc && desc.classList.contains('tier-description')) {
+    desc.style.display = list.classList.contains('collapsed') ? 'none' : '';
+  }
+}
+
+function renderShots() {
+  const container = document.getElementById('shotLists');
+  const state = loadState();
+
+  TIERS.forEach(tier => {
+    const section = document.createElement('div');
+    section.className = 'tier-section';
+
+    const header = document.createElement('div');
+    header.className = `tier-header tier-${tier.tier}`;
+    header.onclick = () => toggleTier(tier.id);
+
+    const tierDone = tier.shots.filter(s => state[`shot-${s.num}`]).length;
+
+    header.innerHTML = `
+      <span class="tier-badge">${tier.badge}</span>
+      <span class="tier-title">${tier.title}</span>
+      <span class="tier-count" id="tier-count-${tier.tier}">${tierDone}/${tier.shots.length}</span>
+      <span class="tier-chevron" id="chevron-${tier.id}">▾</span>
+    `;
+
+    const desc = document.createElement('div');
+    desc.className = 'tier-description';
+    desc.textContent = tier.description;
+
+    const list = document.createElement('div');
+    list.className = 'shots-list';
+    list.id = `shots-${tier.id}`;
+
+    tier.shots.forEach(shot => {
+      const isCompleted = state[`shot-${shot.num}`];
+      const card = document.createElement('div');
+      card.className = `shot-card${isCompleted ? ' completed' : ''}`;
+      card.id = `shot-card-${shot.num}`;
+
+      let detailsHTML = '';
+      detailsHTML += `<div class="detail-row"><div class="detail-label">Description</div><div class="detail-text">${shot.description}</div></div>`;
+      detailsHTML += `<div class="detail-row"><div class="detail-label">Used On</div><div class="detail-text">${shot.usedOn}</div></div>`;
+      detailsHTML += `<div class="detail-row"><div class="detail-label">Orientation</div><div class="detail-text">${shot.orientation}</div></div>`;
+      if (shot.mood) {
+        detailsHTML += `<div class="detail-row"><div class="detail-label">Mood</div><div class="detail-text">${shot.mood}</div></div>`;
+      }
+
+      let tags = '';
+      if (shot.critical) tags += '<span class="detail-tag detail-critical">CRITICAL</span>';
+      if (shot.note) tags += `<span class="detail-tag detail-note">NOTE</span>`;
+
+      if (shot.note) {
+        detailsHTML += `<div class="detail-row"><div class="detail-label">Note</div><div class="detail-text">${shot.note}</div></div>`;
+      }
+
+      card.innerHTML = `
+        <div class="shot-header">
+          <div class="checkbox-area" onclick="event.stopPropagation(); toggleShot(${shot.num})">
+            <span class="checkmark">✓</span>
+          </div>
+          <span class="shot-number">${shot.num}</span>
+          <span class="shot-name">${shot.name}${tags ? '<br>' + tags : ''}</span>
+          <button class="shot-expand" id="shot-expand-${shot.num}" onclick="event.stopPropagation(); toggleDetails(${shot.num})" aria-label="Toggle details">▾</button>
+        </div>
+        <div class="shot-details" id="shot-details-${shot.num}">
+          <div class="shot-details-inner">${detailsHTML}</div>
+        </div>
+      `;
+
+      list.appendChild(card);
+    });
+
+    section.appendChild(header);
+    section.appendChild(desc);
+    section.appendChild(list);
+    container.appendChild(section);
+  });
+
+  updateProgress();
+}
+
+// Reset — two-tap confirmation (avoids iOS confirm() issues)
+(function() {
+  const btn = document.getElementById('resetBtn');
+  let confirmPending = false;
+  let resetTimer = null;
+
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (!confirmPending) {
+      // First tap — enter confirm state
+      confirmPending = true;
+      btn.textContent = 'Tap Again to Confirm Reset';
+      btn.classList.add('confirm-state');
+
+      // Auto-revert after 3 seconds if no second tap
+      resetTimer = setTimeout(() => {
+        confirmPending = false;
+        btn.textContent = 'Reset All Checkmarks';
+        btn.classList.remove('confirm-state');
+      }, 3000);
+    } else {
+      // Second tap — do the reset
+      clearTimeout(resetTimer);
+      confirmPending = false;
+      localStorage.removeItem(STORAGE_KEY);
+      document.querySelectorAll('.shot-card').forEach(card => {
+        card.classList.remove('completed');
+      });
+      document.querySelectorAll('.shot-details').forEach(d => {
+        d.style.maxHeight = '0px';
+      });
+      document.querySelectorAll('.shot-expand').forEach(b => {
+        b.classList.remove('open');
+      });
+      document.getElementById('celebration').classList.remove('show');
+      updateProgress();
+      btn.textContent = 'Done — All Reset';
+      btn.classList.remove('confirm-state');
+      btn.style.borderColor = 'var(--mist-teal)';
+      btn.style.color = 'var(--mist-teal)';
+      setTimeout(() => {
+        btn.textContent = 'Reset All Checkmarks';
+        btn.style.borderColor = '';
+        btn.style.color = '';
+      }, 2000);
+    }
+  });
+})();
+
+// Init
+renderShots();
+</script>
+</body>
+</html>
