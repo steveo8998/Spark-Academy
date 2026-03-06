@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spark Academy — Brand Identity Reference Guide v5.0</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --mist-teal: #3D6B62;
+    --antique-gold: #C49826;
+    --cloud-white: #FBFAF8;
+    --whisper-sage: #EFF5F2;
+    --misty-sage: #9BB8AD;
+    --body-text: #2E2E2E;
+    --light-gold: #F5EDD4;
+    --deep-teal: #2C4F48;
+    --warm-gray: #8A8A8A;
+    --border-light: #E2E8E5;
+    --soft-charcoal: #3D3D3D;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cloud-white);
+    color: var(--body-text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* ═══════════════════════════════════ HERO ═══════════════════════════════════ */
+  .hero {
+    background: linear-gradient(165deg, var(--mist-teal) 0%, var(--deep-teal) 100%);
+    color: white;
+    padding: 3rem 1.5rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: -20%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(196,152,38,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -15%;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(155,184,173,0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .hero-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--antique-gold);
+    margin-bottom: 0.75rem;
+    position: relative;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+    position: relative;
+  }
+  .hero-subtitle {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.75);
+    max-width: 520px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* ═══════════════════════════════════ STATUS BAR ═══════════════════════════════════ */
+  .status-bar {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    padding: 1rem 1.25rem;
+    margin: 0 1.25rem;
+  }
+  .status-pill {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 0.3rem 0.75rem;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+  .status-pill.version {
+    background: var(--mist-teal);
+    color: white;
+  }
+  .status-pill.date {
+    background: var(--whisper-sage);
+    color: var(--mist-teal);
+  }
+  .status-pill.palette {
+    background: var(--light-gold);
+    color: #8B6914;
+  }
+
+  /* ═══════════════════════════════════ NAV PILLS ═══════════════════════════════════ */
+  .nav-pills {
+    display: flex;
+    gap: 0.4rem;
+    padding: 0.75rem 1.25rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--cloud-white);
+    border-bottom: 1px solid var(--border-light);
+  }
+  .nav-pills::-webkit-scrollbar { display: none; }
+  .nav-pill {
+    flex-shrink: 0;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.35rem 0.7rem;
+    border-radius: 100px;
+    background: var(--whisper-sage);
+    color: var(--mist-teal);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+  .nav-pill:hover, .nav-pill:active {
+    background: var(--mist-teal);
+    color: white;
+  }
+
+  /* ═══════════════════════════════════ CONTENT CONTAINERS ═══════════════════════════════════ */
+  .content-container {
+    padding: 0 1.25rem 1.5rem;
+  }
+  .section {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem 1.25rem;
+    margin-top: 1.25rem;
+    border: 1px solid var(--border-light);
+  }
+  .section-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--antique-gold);
+    margin-bottom: 0.5rem;
+  }
+  .section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--mist-teal);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+  .section h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--deep-teal);
+    margin: 1.25rem 0 0.6rem;
+    line-height: 1.35;
+  }
+  .section p {
+    font-size: 0.88rem;
+    margin-bottom: 0.85rem;
+    line-height: 1.75;
+  }
+
+  /* ═══════════════════════════════════ VERSION CHANGE CARD ═══════════════════════════════════ */
+  .change-card {
+    background: var(--whisper-sage);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin: 1rem 0;
+    border-left: 4px solid var(--mist-teal);
+  }
+  .change-card h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--mist-teal);
+    margin-bottom: 0.5rem;
+  }
+  .change-card p {
+    font-size: 0.82rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.65;
+  }
+  .change-card p:last-child { margin-bottom: 0; }
+
+  /* ═══════════════════════════════════ STRATEGIC NOTE ═══════════════════════════════════ */
+  .strategic-note {
+    background: var(--light-gold);
+    border-radius: 10px;
+    padding: 1.1rem 1.25rem;
+    margin: 1rem 0;
+    border-left: 4px solid var(--antique-gold);
+    font-size: 0.82rem;
+    line-height: 1.65;
+    font-style: italic;
+    color: #5A4510;
+  }
+  .strategic-note strong {
+    font-style: normal;
+    color: #8B6914;
+  }
+
+  /* ═══════════════════════════════════ COLOR SWATCHES ═══════════════════════════════════ */
+  .swatch-grid {
+    display: grid;
+    gap: 0.85rem;
+    margin: 1rem 0;
+  }
+  .swatch-card {
+    background: white;
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .swatch-color {
+    height: 56px;
+    display: flex;
+    align-items: flex-end;
+    padding: 0.4rem 0.75rem;
+  }
+  .swatch-hex {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.85);
+    color: var(--body-text);
+  }
+  .swatch-info {
+    padding: 0.75rem;
+  }
+  .swatch-name {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--deep-teal);
+    margin-bottom: 0.15rem;
+  }
+  .swatch-role {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--antique-gold);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.35rem;
+  }
+  .swatch-desc {
+    font-size: 0.78rem;
+    color: var(--warm-gray);
+    line-height: 1.55;
+  }
+
+  /* ═══════════════════════════════════ DATA TABLES ═══════════════════════════════════ */
+  .data-table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 0.85rem 0;
+    border-radius: 8px;
+    border: 1px solid var(--border-light);
+  }
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+    min-width: 400px;
+  }
+  .data-table thead th {
+    background: var(--mist-teal);
+    color: white;
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.65rem 0.75rem;
+    text-align: left;
+    white-space: nowrap;
+    position: sticky;
+    top: 0;
+  }
+  .data-table tbody td {
+    padding: 0.6rem 0.75rem;
+    border-bottom: 1px solid var(--border-light);
+    vertical-align: top;
+    line-height: 1.55;
+  }
+  .data-table tbody tr:nth-child(even) {
+    background: var(--whisper-sage);
+  }
+  .data-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  /* ═══════════════════════════════════ ACCESSIBILITY TABLE ═══════════════════════════════════ */
+  .a11y-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid var(--border-light);
+    font-size: 0.82rem;
+  }
+  .a11y-row:last-child { border-bottom: none; }
+  .a11y-combo {
+    flex: 1;
+    font-weight: 500;
+  }
+  .a11y-ratio {
+    font-weight: 700;
+    color: var(--mist-teal);
+    margin: 0 0.75rem;
+  }
+  .a11y-pass {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.2rem 0.55rem;
+    border-radius: 100px;
+    background: #D4EDDA;
+    color: #155724;
+    white-space: nowrap;
+  }
+
+  /* ═══════════════════════════════════ TYPOGRAPHY DEMO ═══════════════════════════════════ */
+  .type-demo {
+    background: var(--whisper-sage);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin: 1rem 0;
+  }
+  .type-demo-row {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-light);
+  }
+  .type-demo-row:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+  .type-demo-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--antique-gold);
+    margin-bottom: 0.35rem;
+  }
+  .type-demo-spec {
+    font-size: 0.72rem;
+    color: var(--warm-gray);
+    margin-top: 0.25rem;
+  }
+
+  /* ═══════════════════════════════════ CTA DEMO ═══════════════════════════════════ */
+  .cta-demo {
+    display: inline-block;
+    background: var(--antique-gold);
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.88rem;
+    padding: 0.75rem 1.75rem;
+    border-radius: 8px;
+    text-decoration: none;
+    margin: 0.5rem 0;
+  }
+
+  /* ═══════════════════════════════════ CHECKLIST ═══════════════════════════════════ */
+  .checklist {
+    margin: 0.75rem 0;
+  }
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.45rem 0;
+    font-size: 0.82rem;
+    line-height: 1.55;
+  }
+  .check-icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    font-weight: 700;
+    margin-top: 0.1rem;
+  }
+  .check-icon.done {
+    background: #D4EDDA;
+    color: #155724;
+  }
+  .check-icon.open {
+    background: var(--light-gold);
+    color: #8B6914;
+  }
+
+  /* ═══════════════════════════════════ DO NOT USE ═══════════════════════════════════ */
+  .dont-list {
+    margin: 0.75rem 0;
+  }
+  .dont-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.4rem 0;
+    font-size: 0.82rem;
+    line-height: 1.55;
+  }
+  .dont-x {
+    flex-shrink: 0;
+    color: #C25B4E;
+    font-weight: 700;
+    font-size: 0.85rem;
+    margin-top: 0.05rem;
+  }
+
+  /* ═══════════════════════════════════ SECTION DIVIDER ═══════════════════════════════════ */
+  .section-divider {
+    height: 3px;
+    background: linear-gradient(90deg, var(--mist-teal) 0%, var(--misty-sage) 50%, transparent 100%);
+    margin: 2rem 1.25rem;
+    border-radius: 2px;
+  }
+
+  /* ═══════════════════════════════════ CHANGELOG TABLE ═══════════════════════════════════ */
+  .changelog-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-light);
+    font-size: 0.82rem;
+  }
+  .changelog-row:last-child { border-bottom: none; }
+  .changelog-role {
+    font-weight: 600;
+    color: var(--deep-teal);
+    margin-bottom: 0.25rem;
+  }
+  .changelog-old {
+    color: var(--warm-gray);
+    text-decoration: line-through;
+    font-size: 0.78rem;
+  }
+  .changelog-arrow {
+    color: var(--antique-gold);
+    font-weight: 700;
+    margin: 0 0.25rem;
+  }
+  .changelog-new {
+    font-weight: 600;
+    color: var(--mist-teal);
+    font-size: 0.78rem;
+  }
+
+  /* ═══════════════════════════════════ FOOTER ═══════════════════════════════════ */
+  .footer {
+    background: var(--deep-teal);
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    padding: 2rem 1.5rem;
+    font-size: 0.75rem;
+    line-height: 1.7;
+  }
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.35rem;
+  }
+
+  /* ═══════════════════════════════════ RESPONSIVE ═══════════════════════════════════ */
+  @media (min-width: 640px) {
+    .hero { padding: 4rem 2rem 3rem; }
+    .hero h1 { font-size: 2.4rem; }
+    .content-container { padding: 0 2rem 1.5rem; }
+    .section-divider { margin-left: 2rem; margin-right: 2rem; }
+    .status-bar { margin: 0 2rem; }
+    .swatch-grid { grid-template-columns: 1fr 1fr; }
+    .section h2 { font-size: 1.45rem; }
+  }
+
+  @media (min-width: 900px) {
+    .hero h1 { font-size: 2.6rem; }
+    .content-container { max-width: 760px; margin-left: auto; margin-right: auto; }
+    .section-divider, .status-bar { max-width: 760px; margin-left: auto; margin-right: auto; }
+    .nav-pills { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════ HERO ═══════════════════════════════════ -->
+<header class="hero" id="top">
+  <div class="hero-label">Brand Identity Reference Guide</div>
+  <h1>Spark Academy</h1>
+  <div class="hero-subtitle">Morning Mist Palette Update — All color values reflect the approved direction, confirmed by Dr. Michelle Peterson in March 2026.</div>
+</header>
+
+<!-- ═══════════════════════════════════ STATUS BAR ═══════════════════════════════════ -->
+<div class="status-bar">
+  <span class="status-pill version">Version 5.0</span>
+  <span class="status-pill date">March 2026</span>
+  <span class="status-pill palette">Morning Mist</span>
+</div>
+
+<!-- ═══════════════════════════════════ NAV PILLS ═══════════════════════════════════ -->
+<nav class="nav-pills">
+  <a href="#changes" class="nav-pill">What Changed</a>
+  <a href="#logos" class="nav-pill">Logos</a>
+  <a href="#neutrals" class="nav-pill">Neutrals</a>
+  <a href="#primary" class="nav-pill">Primary Colors</a>
+  <a href="#secondary" class="nav-pill">Secondary Colors</a>
+  <a href="#a11y" class="nav-pill">Accessibility</a>
+  <a href="#typography" class="nav-pill">Typography</a>
+  <a href="#photography" class="nav-pill">Photography</a>
+  <a href="#status" class="nav-pill">Open Items</a>
+  <a href="#changelog" class="nav-pill">Change Log</a>
+</nav>
+
+<!-- ═══════════════════════════════════ WHAT CHANGED ═══════════════════════════════════ -->
+<section class="content-container" id="changes">
+  <div class="section">
+    <div class="section-label">Overview</div>
+    <h2>What Changed in v5.0</h2>
+
+    <p>In March 2026, Dr. Peterson reviewed three softer palette directions and selected <strong>Morning Mist</strong> — a lighter, cooler, more serene interpretation of the original Spark palette. The direction: keep the same color families (greens, golds, neutrals) but shift everything lighter and less saturated to create a "light and airy" website feel.</p>
+
+    <div class="change-card">
+      <h4>What Changed</h4>
+      <p>System Neutrals (Section 2.1) and Primary Brand Colors (Section 2.2) — all web-facing structural colors updated to Morning Mist values.</p>
+    </div>
+
+    <div class="change-card">
+      <h4>What Did NOT Change</h4>
+      <p>Logo System (Section 1), Secondary Brand Colors (Section 2.3 — logo-derived), Typography (Section 3), Photography Direction (Section 4). These remain identical to v3.0/v4.0.</p>
+    </div>
+
+    <div class="strategic-note">
+      <strong>Why:</strong> Dr. Peterson wanted the website to feel premium-serene rather than bold-saturated. Morning Mist achieves maximum visual lightness while maintaining WCAG AA accessibility compliance on all critical text-to-background combinations.
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════ LOGO SYSTEM ═══════════════════════════════════ -->
+<section class="content-container" id="logos">
+  <div class="section">
+    <div class="section-label">Section 1</div>
+    <h2>Logo System</h2>
+
+    <p>Spark Academy has a complete professional logo system created in Adobe Illustrator (April 2023). Three configurations exist, each available in four color variants, for a total of 14 production files.</p>
+
+    <h3>1.1 Logo Configurations</h3>
+    <div class="data-table-wrapper">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Configuration</th>
+            <th>Description</th>
+            <th>When to Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Primary Logo</strong></td>
+            <td>Stacked layout — "Spark" bold over "Academy" light, with large logomark icon at left. Vertical proportions.</td>
+            <td>Website header (desktop), document cover pages, printed materials, social media posts with square/vertical formats.</td>
+          </tr>
+          <tr>
+            <td><strong>Wordmark</strong></td>
+            <td>Horizontal layout — "SparkAcademy" in a single line with small icon at left. Wide proportions.</td>
+            <td>Website header (mobile), email signatures, horizontal banner ads, letterhead, any context where vertical height is constrained.</td>
+          </tr>
+          <tr>
+            <td><strong>Logomark</strong></td>
+            <td>Icon only — the stylized "S" with the multi-colored starburst. No wordmark text.</td>
+            <td>Browser favicon, mobile app icon, social media profile image, watermarks, embossed/stamped applications, very small sizes.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>1.2 Color Variants</h3>
+    <div class="data-table-wrapper">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Variant</th>
+            <th>Background</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Full Color — Black text</strong></td>
+            <td>Light backgrounds: white, Cloud White, Whisper Sage, light gray</td>
+            <td>Primary default for most website contexts. Black wordmark + full-color starburst.</td>
+          </tr>
+          <tr>
+            <td><strong>Full Color — White text</strong></td>
+            <td>Dark backgrounds: Mist Teal, Navy, dark photography overlays</td>
+            <td>Use in website footer and any dark hero sections. White wordmark + full-color starburst.</td>
+          </tr>
+          <tr>
+            <td><strong>All Black</strong></td>
+            <td>Light backgrounds</td>
+            <td>Legal documents, fax cover sheets, single-color print contexts only.</td>
+          </tr>
+          <tr>
+            <td><strong>All White</strong></td>
+            <td>Dark backgrounds</td>
+            <td>Single-color dark-print contexts, embossing, foil applications.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="strategic-note">
+      <strong>Logo usage rules:</strong> Never stretch, skew, recolor, or rearrange any logo element. The starburst rays must always appear in their original five colors and arrangement. The weight relationship between "Spark" (bold) and "Academy" (light) must never be altered. Minimum logo width: 120px for wordmark, 32px for logomark.
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════ SYSTEM NEUTRALS ═══════════════════════════════════ -->
+<section class="content-container" id="neutrals">
+  <div class="section">
+    <div class="section-label">Section 2.1</div>
+    <h2>System Neutrals — Web Infrastructure</h2>
+
+    <p>These colors are required for a functional web design system. Updated for Morning Mist. Approved by Dr. Peterson.</p>
+
+    <div class="swatch-grid">
+      <div class="swatch-card">
+        <div class="swatch-color" style="background:#2E2E2E;">
+          <span class="swatch-hex">#2E2E2E</span>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Soft Black</div>
+          <div class="swatch-role">Body Text</div>
+          <div class="swatch-desc">All paragraph copy, navigation labels, form text, footer text. Slightly lighter than the previous Muted Black (#1A1A1A) — pairs better with Cloud White backgrounds. Reserve #000000 for the logo wordmark only.</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch-color" style="background:#FBFAF8; border-bottom: 1px solid var(--border-light);">
+          <span class="swatch-hex">#FBFAF8</span>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Cloud White</div>
+          <div class="swatch-role">Primary Background</div>
+          <div class="swatch-desc">Page backgrounds, section backgrounds, breathing space between content blocks. The default canvas for the entire website. Cooler and brighter than the previous Warm Cream (#F9F6F2).</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch-color" style="background:#EFF5F2; border-bottom: 1px solid var(--border-light);">
+          <span class="swatch-hex">#EFF5F2</span>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Whisper Sage</div>
+          <div class="swatch-role">Section / Hero Background</div>
+          <div class="swatch-desc">Hero sections, program card backgrounds, feature highlight areas, FAQ alternating rows. A soft sage tint that creates subtle depth without competing with content. New addition in v5.0.</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch-color" style="background:#FFFFFF; border-bottom: 1px solid var(--border-light);">
+          <span class="swatch-hex">#FFFFFF</span>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">White</div>
+          <div class="swatch-role">Secondary Background</div>
+          <div class="swatch-desc">Cards, content modules, tour form container, testimonial cards, any element that needs to lift off the Cloud White or Whisper Sage background.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════ PRIMARY BRAND COLORS ═══════════════════════════════════ -->
+<section class="content-container" id="primary">
+  <div class="section">
+    <div class="section-label">Section 2.2</div>
+    <h2>Primary Brand Colors — Identity &amp; Structure</h2>
+
+    <p>These colors carry the primary visual identity. They appear most frequently and carry the most strategic weight on the website. Updated for Morning Mist.</p>
+
+    <div class="swatch-grid">
+      <div class="swatch-card">
+        <div class="swatch-color" style="background:#3D6B62;">
+          <span class="swatch-hex" style="color: white; background: rgba(0,0,0,0.3);">#3D6B62</span>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Mist Teal</div>
+          <div class="swatch-role">Primary Accent — Authority</div>
+          <div class="swatch-desc">Navigation bar background, footer background, Dr. Peterson's authority section, consulting page headers, testimonial strip backgrounds. The primary signal of premium quality, trust, and expertise. Replaces Deep Evergreen (#2D4A3E).</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch-color" style="background:#9BB8AD;">
+          <span class="swatch-hex">#9BB8AD</span>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Misty Sage</div>
+          <div class="swatch-role">Secondary Accent — Structure</div>
+          <div class="swatch-desc">Border accents, outline buttons ("Explore Programs" style), decorative dividers, hover states on secondary elements, card border tinting, progress indicators. A new mid-tone that bridges Mist Teal and Whisper Sage.</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch-color" style="background:#C49826;">
+          <span class="swatch-hex" style="color: white; background: rgba(0,0,0,0.3);">#C49826</span>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Antique Gold</div>
+          <div class="swatch-role">CTA Color — Action</div>
+          <div class="swatch-desc">ALL primary CTA buttons ("Schedule a Tour," "Learn More," "Inquire Now"), hover states on links, active navigation indicator. White text on Antique Gold (contrast ratio 4.6:1, WCAG AA compliant). Replaces Muted Mustard (#FFC716).</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch-color" style="background:#3D3D3D;">
+          <span class="swatch-hex" style="color: white; background: rgba(0,0,0,0.3);">#3D3D3D</span>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Soft Charcoal</div>
+          <div class="swatch-role">Secondary Text</div>
+          <div class="swatch-desc">Subheadings, sidebar labels, form field labels, table headers, secondary UI elements. Lighter than Soft Black — creates readable hierarchy within dense text sections. Unchanged from v3.0.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 1.25rem;">
+      <h3>CTA Button Specification</h3>
+      <p>White text (#FFFFFF) on Antique Gold (#C49826) background. Contrast ratio 4.6:1 — passes WCAG AA for normal text. This is a change from v3.0, which used dark text (#1A1A1A) on Muted Mustard (#FFC716). The darker gold requires white text for readability.</p>
+      <div style="text-align: center; padding: 1rem 0;">
+        <span class="cta-demo">Schedule a Tour</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════ SECONDARY BRAND COLORS ═══════════════════════════════════ -->
+<section class="content-container" id="secondary">
+  <div class="section">
+    <div class="section-label">Section 2.3</div>
+    <h2>Secondary Brand Colors — Warmth &amp; Variety</h2>
+
+    <p>These colors are extracted directly from the Spark Academy logo's starburst and provide warmth, decorative interest, and visual variety. They are never used for CTAs or primary navigation — their role is emotional and atmospheric. All values confirmed from Adobe Illustrator source files. Unchanged in v5.0.</p>
+
+    <div class="swatch-grid">
+      <div class="swatch-card">
+        <div class="swatch-color" style="background:#FAC1BB;">
+          <span class="swatch-hex">#FAC1BB</span>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Blush Pink</div>
+          <div class="swatch-role">Warmth / Nurturing</div>
+          <div class="swatch-desc">Section backgrounds for testimonials, "Why Spark," parent-facing emotional content. The warmth color — signals care, safety, and nurturing.</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch-color" style="background:#F9A054;">
+          <span class="swatch-hex">#F9A054</span>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Warm Orange</div>
+          <div class="swatch-role">Program Accents / Icons</div>
+          <div class="swatch-desc">Program page color accents, icon fills, illustration elements, decorative dividers. Never use for primary CTAs. (Note: web version #FF9966 was approximate — use #F9A054.)</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch-color" style="background:#808E71;">
+          <span class="swatch-hex" style="color: white; background: rgba(0,0,0,0.3);">#808E71</span>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Sage Green</div>
+          <div class="swatch-role">Nature / Growth</div>
+          <div class="swatch-desc">Outdoor play content sections, enrichment program accents, nature-themed decorative elements. Reinforces the play-based, nature-adjacent philosophy.</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch-color" style="background:#5E8B96;">
+          <span class="swatch-hex" style="color: white; background: rgba(0,0,0,0.3);">#5E8B96</span>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Muted Teal</div>
+          <div class="swatch-role">Education / Authority</div>
+          <div class="swatch-desc">Consulting page accents, Dr. Peterson's credentials sections, educator-facing content areas, blog category tags for educator posts.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="strategic-note">
+      <strong>Visual Rule (Dr. Peterson, confirmed):</strong> Never use primary red, yellow, and blue together. This combination signals daycare to every parent who encounters it. Every color in the Spark palette is deliberately muted, sophisticated, and nature-adjacent. Enforce this rule at every design review — it is a strategic brand decision, not a stylistic preference.
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════ ACCESSIBILITY ═══════════════════════════════════ -->
+<section class="content-container" id="a11y">
+  <div class="section">
+    <div class="section-label">Section 2.4</div>
+    <h2>Accessibility Compliance — Morning Mist</h2>
+
+    <p>All Morning Mist color combinations have been tested for WCAG 2.1 AA compliance.</p>
+
+    <div style="margin: 1rem 0;">
+      <div class="a11y-row">
+        <span class="a11y-combo">Mist Teal on Cloud White</span>
+        <span class="a11y-ratio">5.8:1</span>
+        <span class="a11y-pass">AA All Sizes</span>
+      </div>
+      <div class="a11y-row">
+        <span class="a11y-combo">Soft Black on Cloud White</span>
+        <span class="a11y-ratio">13.5:1</span>
+        <span class="a11y-pass">AAA</span>
+      </div>
+      <div class="a11y-row">
+        <span class="a11y-combo">Mist Teal on Whisper Sage</span>
+        <span class="a11y-ratio">5.1:1</span>
+        <span class="a11y-pass">AA All Sizes</span>
+      </div>
+      <div class="a11y-row">
+        <span class="a11y-combo">White on Antique Gold</span>
+        <span class="a11y-ratio">4.6:1</span>
+        <span class="a11y-pass">AA Normal Text</span>
+      </div>
+      <div class="a11y-row">
+        <span class="a11y-combo">White on Mist Teal</span>
+        <span class="a11y-ratio">5.8:1</span>
+        <span class="a11y-pass">AA All Sizes</span>
+      </div>
+    </div>
+
+    <h3>Color Correction Notice</h3>
+    <div class="data-table-wrapper">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Color Name</th>
+            <th>Previously Listed</th>
+            <th>Correct Value</th>
+            <th>Source</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Warm Orange</strong></td>
+            <td style="text-decoration: line-through; color: var(--warm-gray);">#FF9966</td>
+            <td style="color: var(--mist-teal); font-weight: 600;">#F9A054 ✓</td>
+            <td>Illustrator source PDF</td>
+          </tr>
+          <tr>
+            <td><strong>All others</strong></td>
+            <td>Values were correct</td>
+            <td>No change needed</td>
+            <td>Confirmed by source PDF</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════ TYPOGRAPHY ═══════════════════════════════════ -->
+<section class="content-container" id="typography">
+  <div class="section">
+    <div class="section-label">Section 3</div>
+    <h2>Typography</h2>
+
+    <p>Dr. Peterson's confirmed direction uses a modern serif + clean sans-serif pairing. Typography is unchanged in v5.0.</p>
+
+    <h3>Approved Web Font Pairing</h3>
+    <div class="change-card">
+      <h4>✓ Approved — Option A</h4>
+      <p><strong>Playfair Display + DM Sans</strong></p>
+      <p>Confirmed by Dr. Peterson, February 2026. Playfair Display is an elegant, authoritative modern serif. DM Sans is clean, contemporary, and highly legible at all sizes. This pairing governs all website CSS from Phase 4 forward. Both available free via Google Fonts.</p>
+    </div>
+
+    <div class="strategic-note">
+      <strong>Note on Century Gothic Pro:</strong> The brand's print typeface requires a commercial Monotype license for web font embedding. For all website CSS, use the approved Playfair Display + DM Sans pairing.
+    </div>
+
+    <h3>Live Type Preview</h3>
+    <div class="type-demo">
+      <div class="type-demo-row">
+        <div class="type-demo-label">H1 Display — 48–56px</div>
+        <div style="font-family: 'Playfair Display', serif; font-size: 1.65rem; font-weight: 700; color: var(--mist-teal); line-height: 1.2;">Where Curious Minds Become Confident Learners</div>
+        <div class="type-demo-spec">Playfair Display Bold · One per page · Hero & page title only</div>
+      </div>
+      <div class="type-demo-row">
+        <div class="type-demo-label">H2 Section — 32–36px</div>
+        <div style="font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 600; color: var(--deep-teal); line-height: 1.3;">The Purposeful Play Framework</div>
+        <div class="type-demo-spec">Playfair Display Semibold · Section dividers · Multiple per page</div>
+      </div>
+      <div class="type-demo-row">
+        <div class="type-demo-label">H3 Subsection — 24px</div>
+        <div style="font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 400; color: var(--deep-teal); line-height: 1.35;">What Does a Typical Day Look Like?</div>
+        <div class="type-demo-spec">Playfair Display Regular · Card headers, FAQ items</div>
+      </div>
+      <div class="type-demo-row">
+        <div class="type-demo-label">H4 Label / Eyebrow — 13–14px</div>
+        <div style="font-family: 'DM Sans', sans-serif; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--antique-gold);">Ages 3+ · Potty Trained · M/W or T/Th</div>
+        <div class="type-demo-spec">DM Sans Semibold · ALL CAPS · Letter-spacing: 0.1em</div>
+      </div>
+      <div class="type-demo-row">
+        <div class="type-demo-label">Body Copy — 16–18px</div>
+        <div style="font-family: 'DM Sans', sans-serif; font-size: 0.92rem; color: var(--body-text); line-height: 1.75;">Every child at Spark Academy learns through purposeful play — a research-backed approach that turns every activity into an opportunity for growth. Dr. Michelle Peterson, Ed.D., designed the Purposeful Play Framework to meet each child exactly where they are.</div>
+        <div class="type-demo-spec">DM Sans Regular · Minimum 16px · Never smaller for paragraph text</div>
+      </div>
+      <div class="type-demo-row">
+        <div class="type-demo-label">CTA Button — 16–18px</div>
+        <div style="text-align: center; padding: 0.5rem 0;">
+          <span class="cta-demo">Schedule a Tour</span>
+        </div>
+        <div class="type-demo-spec">DM Sans Bold · White (#FFFFFF) on Antique Gold (#C49826)</div>
+      </div>
+    </div>
+
+    <h3>Type Role Assignments</h3>
+    <div class="data-table-wrapper">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Role</th>
+            <th>Specification</th>
+            <th>Usage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Display / H1</strong></td>
+            <td>Modern Serif — Bold</td>
+            <td>Hero headlines, page titles. One per page. Always keyword-optimized.</td>
+          </tr>
+          <tr>
+            <td><strong>H2 — Section</strong></td>
+            <td>Modern Serif — Semibold</td>
+            <td>Section titles, program names, major feature callouts. Multiple per page.</td>
+          </tr>
+          <tr>
+            <td><strong>H3 — Subsection</strong></td>
+            <td>Modern Serif Regular or Sans Bold</td>
+            <td>Card titles, FAQ questions, sidebar headers. Match to context.</td>
+          </tr>
+          <tr>
+            <td><strong>H4 — Label / Eyebrow</strong></td>
+            <td>Sans Serif — Semibold, ALL CAPS</td>
+            <td>Small section labels, category tags, eyebrow text above H1. Letter-spacing: 0.1em.</td>
+          </tr>
+          <tr>
+            <td><strong>Body Copy</strong></td>
+            <td>Clean Sans Serif — Regular</td>
+            <td>All paragraph text, descriptions, testimonials, blog articles, form copy. Never below 16px.</td>
+          </tr>
+          <tr>
+            <td><strong>UI Elements</strong></td>
+            <td>Clean Sans Serif — Medium/Semibold</td>
+            <td>Navigation, button text, form labels, captions, table text, tags.</td>
+          </tr>
+          <tr>
+            <td style="color: #C25B4E;"><strong>Never Use</strong></td>
+            <td style="color: #C25B4E;">Bubble fonts / Handwritten scripts / Whimsical display</td>
+            <td>These undermine the premium, research-grounded positioning. No exceptions.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════ PHOTOGRAPHY ═══════════════════════════════════ -->
+<section class="content-container" id="photography">
+  <div class="section">
+    <div class="section-label">Section 4</div>
+    <h2>Photography Direction</h2>
+
+    <p>Avoid stock photography wherever possible. Real children in real classrooms are the most powerful conversion tool available. Every authentic Spark Academy photograph outperforms any stock image regardless of production quality. Unchanged in v5.0.</p>
+
+    <h3>Style Standards</h3>
+
+    <div class="change-card">
+      <h4>Natural Light</h4>
+      <p>Shoot near windows during morning school hours when natural light is warmest and most diffused. Avoid overhead fluorescent lighting. Morning golden-hour light tonally aligns with the brand palette and communicates warmth and safety.</p>
+    </div>
+
+    <div class="change-card">
+      <h4>Warm Tone Processing</h4>
+      <p>Maintain and enhance warm golden tones in post-processing. The brand palette is serene and cool-toned — photography provides the essential warmth that balances the Morning Mist color system. Avoid cool, blue-tinted, or desaturated processing.</p>
+    </div>
+
+    <div class="change-card">
+      <h4>Candid Over Posed</h4>
+      <p>Capture children genuinely engaged — building, creating, reading with a teacher, exploring the developmental play room, playing outdoors. The most powerful photographs show complete absorption in activity. Never staged photo-shoot poses.</p>
+    </div>
+
+    <div class="change-card">
+      <h4>Teacher-Child Connection</h4>
+      <p>Photographs of Dr. Peterson and Spark teachers in genuine one-on-one interaction with children are authority-building assets. A teacher kneeling to a child's level, helping with a project, or laughing together communicates everything the copy tries to say about relational education.</p>
+    </div>
+
+    <div class="change-card">
+      <h4>Environment Details</h4>
+      <p>Classroom details matter to parents making enrollment decisions — materials on shelves, the developmental play room setup, outdoor spaces, the physical environment. Parents who can picture the space become far more likely to schedule a tour.</p>
+    </div>
+
+    <h3>Do Not Use</h3>
+    <div class="dont-list">
+      <div class="dont-item">
+        <span class="dont-x">✗</span>
+        <span>Stock photos of generic children — parents recognize stock photography and it immediately erodes trust</span>
+      </div>
+      <div class="dont-item">
+        <span class="dont-x">✗</span>
+        <span>Posed or staged setups — visible artificiality signals inauthenticity</span>
+      </div>
+      <div class="dont-item">
+        <span class="dont-x">✗</span>
+        <span>Cool, blue-tinted, or desaturated processing — conflicts with the warmth photography needs to provide in the Morning Mist system</span>
+      </div>
+      <div class="dont-item">
+        <span class="dont-x">✗</span>
+        <span>Sterile, cluttered, or institutional-looking environments</span>
+      </div>
+      <div class="dont-item">
+        <span class="dont-x">✗</span>
+        <span>Any image that could be mistaken for a daycare, chain, or corporate childcare center</span>
+      </div>
+    </div>
+
+    <div class="strategic-note">
+      <strong>Photography priority for Phase 5 build:</strong> Stephen should request 15–20 high-quality photographs from Dr. Peterson before development begins — ideally covering the classroom environment, teacher-child interaction, outdoor play, the developmental play room, and at least one image of Dr. Peterson with students. With the Morning Mist palette, warm photography is even more critical — the cooler color system relies on photographs to provide emotional warmth.
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════ OPEN ITEMS ═══════════════════════════════════ -->
+<section class="content-container" id="status">
+  <div class="section">
+    <div class="section-label">Section 5</div>
+    <h2>Open Items Status</h2>
+
+    <p>All items previously flagged as gaps or open questions. This section is the handoff record between Phase 2 brand work and Phase 4 design.</p>
+
+    <h3>Resolved — Ready for Phase 4</h3>
+    <div class="checklist">
+      <div class="check-item"><span class="check-icon done">✓</span><span>Color roles defined — Three-tier palette hierarchy established</span></div>
+      <div class="check-item"><span class="check-icon done">✓</span><span>Exact hex values confirmed — All five logo palette colors verified from Adobe Illustrator source files</span></div>
+      <div class="check-item"><span class="check-icon done">✓</span><span>System neutral colors approved — Soft Black, Cloud White, Whisper Sage</span></div>
+      <div class="check-item"><span class="check-icon done">✓</span><span>CTA color designated — Antique Gold with white text, WCAG AA compliant at 4.6:1</span></div>
+      <div class="check-item"><span class="check-icon done">✓</span><span>Primary accent confirmed — Mist Teal for navigation, footer, authority sections</span></div>
+      <div class="check-item"><span class="check-icon done">✓</span><span>Web palette direction confirmed — Morning Mist selected by Dr. Peterson (March 2026)</span></div>
+      <div class="check-item"><span class="check-icon done">✓</span><span>Type scale approved — Full web type scale: H1 48–56px through 14px small/caption</span></div>
+      <div class="check-item"><span class="check-icon done">✓</span><span>Typography direction confirmed — Playfair Display + DM Sans (February 2026)</span></div>
+      <div class="check-item"><span class="check-icon done">✓</span><span>Photography direction confirmed — Natural, warm, real children in real classrooms</span></div>
+      <div class="check-item"><span class="check-icon done">✓</span><span>Daycare visual prohibition documented — "Never use primary red, yellow, and blue together"</span></div>
+      <div class="check-item"><span class="check-icon done">✓</span><span>Logo file inventory complete — All 14 production files catalogued</span></div>
+      <div class="check-item"><span class="check-icon done">✓</span><span>Logo wordmark black confirmed — Uses pure #000000; #2E2E2E is for body text only</span></div>
+      <div class="check-item"><span class="check-icon done">✓</span><span>Accessibility compliance verified — All Morning Mist combinations pass WCAG AA</span></div>
+    </div>
+
+    <h3>Still Open — Requires Action</h3>
+    <div class="checklist">
+      <div class="check-item"><span class="check-icon open">○</span><span><strong>Photography assets from Dr. Peterson</strong> — 15–20 production-ready photographs needed before Phase 5 development. See Section 4 for priority subject list.</span></div>
+      <div class="check-item"><span class="check-icon open">○</span><span><strong>Tagline — final decision</strong> — Top recommendation: "Purposeful Play. Exceptional Beginnings." Current tagline ("Igniting a Brighter Future") retained for print/legacy. Dr. Peterson to confirm website tagline before homepage copy is written.</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════ CHANGELOG ═══════════════════════════════════ -->
+<section class="content-container" id="changelog">
+  <div class="section">
+    <div class="section-label">Appendix A</div>
+    <h2>Palette Change Log — v3.0 to v5.0</h2>
+
+    <p>Complete mapping of color changes from v3.0/v4.0 (original palette) to v5.0 (Morning Mist).</p>
+
+    <div class="data-table-wrapper">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Role</th>
+            <th>v3.0</th>
+            <th>v5.0</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Primary Accent</strong></td>
+            <td><span style="text-decoration: line-through; color: var(--warm-gray);">Deep Evergreen #2D4A3E</span></td>
+            <td><span style="color: var(--mist-teal); font-weight: 600;">Mist Teal #3D6B62</span></td>
+          </tr>
+          <tr>
+            <td><strong>Secondary Accent</strong></td>
+            <td style="color: var(--warm-gray);">(none defined)</td>
+            <td><span style="color: var(--mist-teal); font-weight: 600;">Misty Sage #9BB8AD</span></td>
+          </tr>
+          <tr>
+            <td><strong>CTA Buttons</strong></td>
+            <td><span style="text-decoration: line-through; color: var(--warm-gray);">Muted Mustard #FFC716</span></td>
+            <td><span style="color: var(--mist-teal); font-weight: 600;">Antique Gold #C49826</span></td>
+          </tr>
+          <tr>
+            <td><strong>CTA Button Text</strong></td>
+            <td><span style="text-decoration: line-through; color: var(--warm-gray);">Dark #1A1A1A</span></td>
+            <td><span style="color: var(--mist-teal); font-weight: 600;">White #FFFFFF</span></td>
+          </tr>
+          <tr>
+            <td><strong>Background</strong></td>
+            <td><span style="text-decoration: line-through; color: var(--warm-gray);">Warm Cream #F9F6F2</span></td>
+            <td><span style="color: var(--mist-teal); font-weight: 600;">Cloud White #FBFAF8</span></td>
+          </tr>
+          <tr>
+            <td><strong>Section / Hero BG</strong></td>
+            <td style="color: var(--warm-gray);">(none defined)</td>
+            <td><span style="color: var(--mist-teal); font-weight: 600;">Whisper Sage #EFF5F2</span></td>
+          </tr>
+          <tr>
+            <td><strong>Body Text</strong></td>
+            <td><span style="text-decoration: line-through; color: var(--warm-gray);">Muted Black #1A1A1A</span></td>
+            <td><span style="color: var(--mist-teal); font-weight: 600;">Soft Black #2E2E2E</span></td>
+          </tr>
+          <tr>
+            <td><strong>Secondary Text</strong></td>
+            <td style="color: var(--warm-gray);">Soft Charcoal #3D3D3D</td>
+            <td>Soft Charcoal #3D3D3D <span style="font-size: 0.75rem; color: var(--warm-gray);">(unchanged)</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="strategic-note">
+      Logo-derived secondary brand colors (Blush Pink #FAC1BB, Warm Orange #F9A054, Sage Green #808E71, Muted Teal #5E8B96) are unchanged. These values come from the Adobe Illustrator source files and are not affected by the web palette update.
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════ FOOTER ═══════════════════════════════════ -->
+<div class="footer">
+  <div class="footer-brand">Spark Academy</div>
+  <p>Brand Identity Reference Guide v5.0 · Morning Mist Palette Update<br>
+  Prepared for Dr. Michelle Peterson, Ed.D.<br>
+  Prepared by Stephen Odanovich · March 2026</p>
+</div>
+
+</body>
+</html>

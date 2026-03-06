@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spark Academy — Parent Personas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --mist-teal: #3D6B62;
+  --misty-sage: #9BB8AD;
+  --antique-gold: #C49826;
+  --cloud-white: #FBFAF8;
+  --whisper-sage: #EFF5F2;
+  --body-text: #2E2E2E;
+  --light-sage: #D8E8DE;
+  --warm-gold-bg: #FBF6EC;
+  --flag-red: #C44;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--body-text);
+  line-height: 1.65;
+  background: var(--cloud-white);
+}
+
+/* ── COVER ── */
+.cover {
+  min-height: 100vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center;
+  padding: 2.5rem 1.5rem;
+  background: linear-gradient(165deg, var(--whisper-sage) 0%, var(--cloud-white) 40%, var(--cloud-white) 100%);
+  position: relative; overflow: hidden;
+}
+.cover::before {
+  content: ''; position: absolute; top: -80px; right: -80px;
+  width: 280px; height: 280px; border-radius: 50%;
+  background: var(--misty-sage); opacity: 0.12;
+}
+.cover::after {
+  content: ''; position: absolute; bottom: -60px; left: -60px;
+  width: 220px; height: 220px; border-radius: 50%;
+  background: var(--antique-gold); opacity: 0.08;
+}
+.cover-badge {
+  display: inline-block; font-size: 0.65rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.15em;
+  color: var(--antique-gold); border: 1.5px solid var(--antique-gold);
+  padding: 0.3rem 1rem; border-radius: 100px; margin-bottom: 1.5rem;
+  position: relative; z-index: 1;
+}
+.cover h1 {
+  font-family: 'Playfair Display', serif; font-weight: 700;
+  font-size: 2.2rem; color: var(--mist-teal); line-height: 1.2;
+  margin-bottom: 0.75rem; position: relative; z-index: 1;
+}
+.subtitle {
+  font-family: 'Playfair Display', serif; font-size: 1.15rem;
+  color: var(--misty-sage); margin-bottom: 2rem; position: relative; z-index: 1;
+}
+.cover-meta {
+  font-size: 0.85rem; color: #888; line-height: 1.7;
+  position: relative; z-index: 1; margin-bottom: 1.5rem;
+}
+.cover-meta strong { color: var(--body-text); }
+.cover-status {
+  display: inline-block; font-size: 0.65rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--antique-gold); background: var(--warm-gold-bg);
+  padding: 0.4rem 1.25rem; border-radius: 100px;
+  position: relative; z-index: 1;
+}
+
+/* ── TABLE OF CONTENTS ── */
+.toc {
+  background: var(--whisper-sage); padding: 2rem 1.5rem;
+  border-bottom: 2px solid var(--light-sage);
+}
+.toc h2 {
+  font-family: 'Playfair Display', serif; font-weight: 700;
+  font-size: 1.4rem; color: var(--mist-teal); margin-bottom: 1.25rem;
+}
+.toc-list { list-style: none; counter-reset: toc-counter; }
+.toc-list li { counter-increment: toc-counter; border-bottom: 1px solid var(--light-sage); }
+.toc-list li a {
+  display: block; padding: 0.65rem 0 0.65rem 2.5rem; position: relative;
+  color: var(--mist-teal); text-decoration: none; font-size: 0.92rem; font-weight: 500;
+  transition: color 0.2s;
+}
+.toc-list li a:hover { color: var(--antique-gold); }
+.toc-list li a::before {
+  content: counter(toc-counter, decimal-leading-zero);
+  position: absolute; left: 0; top: 0.65rem;
+  font-size: 0.8rem; font-weight: 700; color: var(--antique-gold);
+}
+
+/* ── SECTIONS ── */
+.section {
+  padding: 2rem 1.5rem;
+  border-bottom: 3px solid var(--whisper-sage);
+}
+.section-odd {
+  background: linear-gradient(180deg, var(--cloud-white) 0%, var(--whisper-sage) 100%);
+}
+.section-even { background: var(--cloud-white); }
+.section-number {
+  display: inline-block; font-size: 0.6rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.15em;
+  color: var(--antique-gold); margin-bottom: 0.5rem;
+}
+.section h2 {
+  font-family: 'Playfair Display', serif; font-weight: 700;
+  font-size: 1.5rem; color: var(--mist-teal); line-height: 1.25;
+  margin-bottom: 1.25rem;
+}
+.section h3 {
+  font-family: 'DM Sans', sans-serif; font-weight: 700;
+  font-size: 1.05rem; color: var(--mist-teal); margin: 1.5rem 0 0.75rem;
+}
+
+/* ── COPY BODY ── */
+p.copy-body {
+  font-size: 0.95rem; line-height: 1.65; margin-bottom: 1rem;
+}
+
+/* ── PERSONA QUOTE ── */
+.persona-quote {
+  font-family: 'Playfair Display', serif; font-style: italic;
+  font-size: 1.1rem; color: var(--mist-teal); line-height: 1.5;
+  border-left: 3px solid var(--antique-gold);
+  padding: 0.5rem 0 0.5rem 1rem; margin: 0.75rem 0 1.25rem;
+}
+
+/* ── TABLES ── */
+.data-table {
+  width: 100%; border-collapse: separate; border-spacing: 0;
+  background: #fff; border-radius: 10px; overflow: hidden;
+  border: 1px solid var(--light-sage); margin: 1rem 0 1.25rem;
+  font-size: 0.85rem;
+}
+.data-table th {
+  background: var(--whisper-sage); color: var(--mist-teal);
+  font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.08em; padding: 0.65rem 0.75rem; text-align: left;
+}
+.data-table td {
+  padding: 0.6rem 0.75rem; border-bottom: 1px solid #f0f0f0;
+  vertical-align: top;
+}
+.data-table tr:last-child td { border-bottom: none; }
+.data-table .label-col {
+  font-weight: 700; color: var(--mist-teal); width: 30%; white-space: nowrap;
+}
+
+/* ── TRIGGER TABLE ── */
+.trigger-table { width: 100%; border-collapse: separate; border-spacing: 0;
+  background: #fff; border-radius: 10px; overflow: hidden;
+  border: 1px solid var(--light-sage); margin: 1rem 0 1.25rem; font-size: 0.85rem; }
+.trigger-table th { background: var(--whisper-sage); color: var(--mist-teal);
+  font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.08em; padding: 0.65rem 0.75rem; text-align: left; }
+.trigger-table td { padding: 0.6rem 0.75rem; border-bottom: 1px solid #f0f0f0; vertical-align: top; }
+.trigger-table tr:last-child td { border-bottom: none; }
+.trigger-table td:first-child { font-weight: 700; color: var(--mist-teal); width: 28%; }
+.trigger-table td:last-child { font-style: italic; color: #555; }
+
+/* ── STRATEGY MATRIX TABLE ── */
+.matrix-table { width: 100%; border-collapse: separate; border-spacing: 0;
+  background: #fff; border-radius: 10px; overflow: hidden;
+  border: 1px solid var(--light-sage); margin: 1rem 0 1.25rem; font-size: 0.8rem; }
+.matrix-table th { background: var(--whisper-sage); color: var(--mist-teal);
+  font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.08em; padding: 0.6rem 0.5rem; text-align: left; }
+.matrix-table td { padding: 0.55rem 0.5rem; border-bottom: 1px solid #f0f0f0; vertical-align: top; }
+.matrix-table tr:last-child td { border-bottom: none; }
+.matrix-table td:first-child { font-weight: 600; color: var(--mist-teal); }
+.table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1rem 0; }
+
+/* ── NOTES ── */
+.note {
+  border-left: 3px solid var(--antique-gold);
+  background: var(--warm-gold-bg);
+  padding: 0.85rem 1rem; margin: 1rem 0;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.82rem; line-height: 1.6; color: #555;
+}
+.note-label {
+  display: inline-block; font-size: 0.65rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--antique-gold); margin-bottom: 0.35rem;
+}
+
+/* ── FLAGS ── */
+.flag {
+  border-left: 3px solid var(--flag-red);
+  background: #FFF0F0;
+  padding: 0.85rem 1rem; margin: 1rem 0;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.82rem; line-height: 1.6; color: #555;
+}
+.flag-label {
+  display: inline-block; font-size: 0.65rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--flag-red); margin-bottom: 0.35rem;
+}
+
+/* ── LIST STYLING ── */
+.content-list {
+  margin: 0.75rem 0 1rem 1.25rem; font-size: 0.92rem; line-height: 1.7;
+}
+.content-list li { margin-bottom: 0.5rem; padding-left: 0.25rem; }
+.content-list li::marker { color: var(--antique-gold); }
+
+/* ── PLACEHOLDER ── */
+.placeholder-block {
+  background: var(--warm-gold-bg); border: 1.5px dashed var(--antique-gold);
+  border-radius: 8px; padding: 0.85rem 1rem; margin: 0.75rem 0;
+  font-size: 0.82rem; font-style: italic; color: #888;
+}
+
+/* ── FOOTER ── */
+.doc-footer {
+  background: var(--mist-teal); text-align: center;
+  padding: 2rem 1.5rem; color: #fff; font-size: 0.82rem; line-height: 1.8;
+}
+.doc-footer strong { color: #fff; }
+
+/* ── RESPONSIVE ── */
+@media (min-width: 600px) {
+  .cover h1 { font-size: 2.8rem; }
+  .section { padding: 3rem 2.5rem; }
+  .toc { padding: 2rem 2.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════ COVER ══════════════════ -->
+<div class="cover">
+  <div class="cover-badge">Phase 2A Deliverable</div>
+  <h1>Parent Personas</h1>
+  <div class="subtitle">Spark Academy Website Rebuild</div>
+  <div class="cover-meta">
+    Prepared for <strong>Dr. Michelle Peterson, Ed.D.</strong><br>
+    Founder &amp; Executive Director, Spark Academy<br><br>
+    Prepared by <strong>Stephen Odanovich</strong><br>
+    Internet Marketing Specialist<br><br>
+    February 2026
+  </div>
+  <div class="cover-status">Confidential — For Internal Project Use Only</div>
+</div>
+
+<!-- ══════════════════ TABLE OF CONTENTS ══════════════════ -->
+<div class="toc">
+  <h2>What's Inside</h2>
+  <ol class="toc-list">
+    <li><a href="#intro">What This Document Is and How to Use It</a></li>
+    <li><a href="#connections">How These Personas Connect to Existing Strategy</a></li>
+    <li><a href="#persona1">Persona 1: Sarah — The Intentional First-Timer</a></li>
+    <li><a href="#persona2">Persona 2: David &amp; Priya — The ROI-Conscious Dual Evaluators</a></li>
+    <li><a href="#persona3">Persona 3: Megan — The Values-First Comparer</a></li>
+    <li><a href="#matrix">Cross-Persona Strategy Matrix</a></li>
+    <li><a href="#lost">Lost-Family Patterns</a></li>
+    <li><a href="#needs">What This Document Needs From Dr. Peterson</a></li>
+  </ol>
+</div>
+
+<!-- ══════════════════ SECTION: INTRO ══════════════════ -->
+<div class="section section-odd" id="intro">
+  <div class="section-number">Section 01</div>
+  <h2>What This Document Is and How to Use It</h2>
+  <p class="copy-body">These personas are fictional composites built from real data: Dr. Peterson's direct observations about her enrolled families, the patterns in why families choose or decline Spark, and the competitive research from Phase 1. They are not demographic reports. They are decision-making portraits — designed to help us write website copy that speaks to the actual thoughts, fears, and aspirations running through a parent's mind while they browse Spark's site at 10pm on their phone.</p>
+</div>
+
+<!-- ══════════════════ SECTION: CONNECTIONS ══════════════════ -->
+<div class="section section-even" id="connections">
+  <div class="section-number">Section 02</div>
+  <h2>How These Personas Connect to Existing Strategy</h2>
+  <p class="copy-body">These personas are not standalone. They integrate directly with three deliverables already completed:</p>
+  <div class="placeholder-block">Placeholder — awaiting Dr. Peterson's input</div>
+  <div class="placeholder-block">Placeholder — awaiting Dr. Peterson's input</div>
+  <div class="placeholder-block">Placeholder — awaiting Dr. Peterson's input</div>
+</div>
+
+<!-- ══════════════════ PERSONA 1: SARAH ══════════════════ -->
+<div class="section section-odd" id="persona1">
+  <div class="section-number">Section 03</div>
+  <h2>Persona 1: Sarah — The Intentional First-Timer</h2>
+
+  <div class="persona-quote">"I'm not looking for daycare. I'm looking for the right foundation for my daughter."</div>
+
+  <h3>Quick Profile</h3>
+  <table class="data-table">
+    <tr><td class="label-col">Age</td><td>31</td></tr>
+    <tr><td class="label-col">Location</td><td>Morton, IL</td></tr>
+    <tr><td class="label-col">Household</td><td>Married; husband works full-time in ag/manufacturing. Sarah is stay-at-home mom.</td></tr>
+    <tr><td class="label-col">Education</td><td>Bachelor's degree (Elementary Education). Husband has a bachelor's in engineering.</td></tr>
+    <tr><td class="label-col">Income</td><td>Household $95K–$130K</td></tr>
+    <tr><td class="label-col">Children</td><td>One daughter, turning 3 in September</td></tr>
+    <tr><td class="label-col">Ethnicity</td><td>White (representative of the majority demographic in Morton)</td></tr>
+    <tr><td class="label-col">Entry Point</td><td>3's Preschool (T/Th at $350/mo)</td></tr>
+    <tr><td class="label-col">Discovery Source</td><td>Facebook / Instagram, then website</td></tr>
+  </table>
+
+  <h3>Who Sarah Is</h3>
+  <p class="copy-body">Sarah is deliberate about everything involving her daughter. She left her teaching career when her daughter was born and plans to stay home through the preschool years. She has a background in education herself — which means she evaluates preschools with a more informed eye than the average parent. She knows the difference between a structured play environment and a glorified playroom. She's not impressed by cute decorations or catchy taglines. She wants to understand the curriculum, meet the teacher, and know the philosophy before she'll even schedule a tour.</p>
+  <p class="copy-body">She found Spark on a local mom's Facebook group. Another parent mentioned it in a thread about preschools in Morton, and Sarah clicked through to the Instagram page first. The photos looked intentional — not staged, but clearly showing children engaged in real learning activities. She then went to the website to learn more.</p>
+  <p class="copy-body">Her husband will attend the tour with her and has veto power, but Sarah drives the research. She's the one comparing options in a spreadsheet at 10pm. Her husband's main concern is whether the investment is worth it compared to waiting another year.</p>
+
+  <h3>What Sarah Is Looking For</h3>
+  <ul class="content-list">
+    <li>A school that takes early childhood education as seriously as she does — not a place that treats preschool as babysitting with crafts</li>
+    <li>A credentialed, experienced leader who can articulate the "why" behind the curriculum — not just the "what"</li>
+    <li>Evidence that her daughter will be genuinely known, not just supervised. Small class sizes, consistent teachers, individualized attention.</li>
+    <li>A clear daily structure that balances play, learning, and socialization — she wants to see the actual schedule</li>
+    <li>A school she can feel proud to name when other parents ask "where does your daughter go?"</li>
+  </ul>
+
+  <h3>Sarah's Dominant Emotional Triggers</h3>
+  <table class="trigger-table">
+    <thead><tr><th>Trigger</th><th>What It Sounds Like in Sarah's Head</th></tr></thead>
+    <tbody>
+      <tr><td>Trust (Primary)</td><td>"I need to know the person making curriculum decisions actually knows what they're doing. A doctorate in early childhood ed? That matters to me."</td></tr>
+      <tr><td>Aspiration</td><td>"I want my daughter to be confident, curious, and socially ready for kindergarten — not just able to count to 20."</td></tr>
+      <tr><td>Guilt</td><td>"She's only 3. Am I pushing her too fast? But I also know these years matter more than any others..."</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Sarah's Primary Objection</h3>
+  <div class="placeholder-block">Placeholder — awaiting content</div>
+
+  <h3>Sarah's Search Behavior</h3>
+  <table class="trigger-table">
+    <thead><tr><th>Where She Searches</th><th>What She Searches</th></tr></thead>
+    <tbody>
+      <tr><td>Facebook Groups</td><td>Reads local parent recommendations; trusts word-of-mouth over ads</td></tr>
+      <tr><td>Instagram</td><td>Evaluates the school's "feel" through photos and stories before visiting the website</td></tr>
+      <tr><td>Google</td><td>"play-based preschool Morton IL," "best preschool near me," "is my 3-year-old ready for preschool"</td></tr>
+      <tr><td>Website (Deep)</td><td>Reads the About page, program details, daily schedule, and philosophy. Will click through 4–6 pages. Wants substance.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>What Converts Sarah</h3>
+  <ul class="content-list">
+    <li>Dr. Peterson's Ed.D. and research background visible on the homepage — not buried on an About page (Competitive Research Principle 1)</li>
+    <li>The daily schedule published on the program page so she can picture her daughter's day (Playgarden insight)</li>
+    <li>A specific, outcome-focused parent testimonial from a family with a similar child — ideally mentioning developmental milestones (Holly's testimonial about her son identifying letters is perfect for Sarah)</li>
+    <li>The Ignite Learning Model named and briefly explained — signaling that this is a defined methodology, not a buzzword</li>
+    <li>A "Schedule a Tour" CTA that feels inviting, not transactional. Sarah wants to feel welcomed, not processed.</li>
+  </ul>
+
+  <h3>Copy Implications for Sarah</h3>
+  <ul class="content-list">
+    <li>Homepage hero must lead with child transformation language and support with Dr. Peterson's credential within the first scroll</li>
+    <li>Program pages need the full daily schedule, class size (5:1 ratio), and enrichment lineup — Sarah evaluates on specifics</li>
+    <li>Blog content targeting "is my child ready for preschool" and "benefits of play-based learning" will bring Sarah to the site through search</li>
+    <li>Tour page should frame the visit as a conversation, not an evaluation: "We'd love to show you what a day at Spark looks like"</li>
+    <li>Avoid any language that sounds like daycare, childcare, or drop-off convenience. Sarah will bounce immediately.</li>
+  </ul>
+</div>
+
+<!-- ══════════════════ PERSONA 2: DAVID & PRIYA ══════════════════ -->
+<div class="section section-even" id="persona2">
+  <div class="section-number">Section 04</div>
+  <h2>Persona 2: David &amp; Priya — The ROI-Conscious Dual Evaluators</h2>
+
+  <div class="persona-quote">"We can afford this. What I need to know is whether it's worth it compared to the other options."</div>
+
+  <h3>Quick Profile</h3>
+  <table class="data-table">
+    <tr><td class="label-col">Ages</td><td>David is 38, Priya is 36</td></tr>
+    <tr><td class="label-col">Location</td><td>Washington, IL (15-minute drive to Morton)</td></tr>
+    <tr><td class="label-col">Household</td><td>Married; David is a financial analyst. Priya is stay-at-home after a career in healthcare administration.</td></tr>
+    <tr><td class="label-col">Education</td><td>David has an MBA. Priya has a master's in health administration.</td></tr>
+    <tr><td class="label-col">Income</td><td>Household $140K–$180K</td></tr>
+    <tr><td class="label-col">Children</td><td>Son, age 4 (currently in a part-time church program). Daughter, age 18 months.</td></tr>
+    <tr><td class="label-col">Ethnicity</td><td>South Asian / White (mixed-ethnicity household)</td></tr>
+    <tr><td class="label-col">Entry Point</td><td>4's Preschool (M/W/F at $450/mo) or Kindergarten Prep</td></tr>
+    <tr><td class="label-col">Discovery Source</td><td>Friend's recommendation, then Google research to verify</td></tr>
+  </table>
+
+  <h3>Who David &amp; Priya Are</h3>
+  <p class="copy-body">David and Priya are the family that does not make impulse decisions. They're college-educated, analytically minded, and approach preschool selection the same way they approached buying their house — with research, comparisons, and a clear rubric for what "good" looks like.</p>
+  <p class="copy-body">Their son has been in a church-based preschool two mornings a week since age 3. It's been fine — safe, friendly, affordable. But Priya has started noticing that her son isn't being challenged. He's bored during free play. He's not developing the pre-reading skills she expected by now. A friend whose daughter attends Spark mentioned how much her child had grown in just one semester, and that sparked the conversation.</p>
+  <p class="copy-body">Priya does the initial research. She'll find 3–4 schools, read every page of their websites, and create a shortlist. David joins for the tours and applies his analytical lens: What's the student-teacher ratio? What are the actual outcomes? How does the cost compare per hour, per day, per developmental outcome? He's not cheap — he's value-conscious. He'll pay more if the ROI is clear.</p>
+  <p class="copy-body">The family is willing to drive from Washington to Morton for the right school. Geography is not the deciding factor — quality is. But they are also comparing Spark against full-day programs, because Priya sometimes wonders if a longer day would be better for their son's development (and would give her more time with their toddler).</p>
+
+  <h3>What David &amp; Priya Are Looking For</h3>
+  <ul class="content-list">
+    <li>Tangible evidence that Spark produces better outcomes than their current church-based program — not just different vibes, but measurable differences</li>
+    <li>A clear articulation of what their son will learn, achieve, and be ready for by the time he enters kindergarten</li>
+    <li>Credentials that justify the tuition premium. The fact that the curriculum is designed by someone with a doctorate matters to David because it signals rigor. It matters to Priya because it signals the school takes child development seriously.</li>
+    <li>Transparency on tuition, schedule, and what's included. No surprises. No hidden fees.</li>
+    <li>A school that reflects their values: diversity, inclusivity, respect for every child's pace of development</li>
+  </ul>
+
+  <h3>David &amp; Priya's Dominant Emotional Triggers</h3>
+  <table class="trigger-table">
+    <thead><tr><th>Trigger</th><th>What It Sounds Like in Their Heads</th></tr></thead>
+    <tbody>
+      <tr><td>Fear of Falling Behind (Primary)</td><td>"Our son starts kindergarten in a year. If he's not ready — socially, academically, emotionally — that's on us. We can't get this year back."</td></tr>
+      <tr><td>Aspiration</td><td>"We want him to walk into kindergarten confident. Not anxious, not behind, not clinging to us at drop-off."</td></tr>
+      <tr><td>Trust</td><td>"A doctorate in education? That's not something you see at the average preschool. That matters."</td></tr>
+    </tbody>
+  </table>
+
+  <h3>David &amp; Priya's Primary Objections</h3>
+  <div class="placeholder-block">Placeholder — awaiting content</div>
+
+  <h3>David &amp; Priya's Search Behavior</h3>
+  <table class="trigger-table">
+    <thead><tr><th>Where They Search</th><th>What They Search</th></tr></thead>
+    <tbody>
+      <tr><td>Word of Mouth (Entry)</td><td>The friend's recommendation is what got Spark on the radar. Peer credibility is the initial trust signal.</td></tr>
+      <tr><td>Google (Verification)</td><td>"preschool Morton IL," "kindergarten prep Peoria area," "best preschool near Washington IL"</td></tr>
+      <tr><td>Website (Comparative)</td><td>Priya opens Spark and 2–3 competitors in tabs. She's comparing: credentials, programs, tuition transparency, and "feel."</td></tr>
+      <tr><td>Google Reviews</td><td>David checks reviews before touring. Spark's current zero reviews on Google is a red flag for this persona.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>What Converts David &amp; Priya</h3>
+  <ul class="content-list">
+    <li>Tuition transparency — pricing on the program pages with a clear breakdown of what's included. Hiding prices forces Priya to call, and she won't. She'll just move to the next tab.</li>
+    <li>The "320 families served" proof point combined with the 5:1 ratio and Dr. Peterson's credential. David needs the numbers. Priya needs the story.</li>
+    <li>A kindergarten readiness outcome statement: "Children who complete our Kindergarten Prep program enter school confident, socially skilled, and academically prepared." (Verify specific outcome claims with Dr. Peterson.)</li>
+    <li>Google Business Profile with 10+ authentic reviews. This is a critical gap. David will not tour a school with zero reviews. GBP optimization is an urgent near-term priority.</li>
+    <li>The professional endorsement from Ms. Brenna at Shine Therapy Services — an external credential that signals quality to this analytically minded couple.</li>
+  </ul>
+
+  <h3>Copy Implications for David &amp; Priya</h3>
+  <ul class="content-list">
+    <li>Program pages must lead with outcomes, not features. "Your child will..." before "Our program includes..."</li>
+    <li>The neural pathways argument belongs on the cost/value page or in an FAQ: "The bulk of brain pathways are formed before kindergarten. Preschool is the highest-ROI investment you can make in your child's future."</li>
+    <li>Blog content targeting "half day vs full day preschool," "is preschool worth the cost," and "kindergarten readiness checklist" will capture David and Priya at the research stage</li>
+    <li>Location-based landing pages for Washington, IL and East Peoria are essential — this family is driving in from outside Morton and is searching with those geographic qualifiers</li>
+    <li>The tour page should mention that both parents are welcome and encouraged to attend. David is part of the decision — the website should speak to him too.</li>
+  </ul>
+</div>
+
+<!-- ══════════════════ PERSONA 3: MEGAN ══════════════════ -->
+<div class="section section-odd" id="persona3">
+  <div class="section-number">Section 05</div>
+  <h2>Persona 3: Megan — The Values-First Comparer</h2>
+
+  <div class="persona-quote">"I want a school that sees my son as a whole person — not just a kid who needs to learn his letters."</div>
+
+  <h3>Quick Profile</h3>
+  <table class="data-table">
+    <tr><td class="label-col">Age</td><td>34</td></tr>
+    <tr><td class="label-col">Location</td><td>East Peoria, IL</td></tr>
+    <tr><td class="label-col">Household</td><td>Married; husband is a physical therapist. Megan works part-time remotely in nonprofit communications (10–15 hrs/week during naps).</td></tr>
+    <tr><td class="label-col">Education</td><td>Megan has a master's in social work. Husband has a doctorate in physical therapy (DPT).</td></tr>
+    <tr><td class="label-col">Income</td><td>Household $110K–$145K</td></tr>
+    <tr><td class="label-col">Children</td><td>Son, age 3 (late August birthday — just turned 3). Considering a second child.</td></tr>
+    <tr><td class="label-col">Ethnicity</td><td>Black / multiracial household</td></tr>
+    <tr><td class="label-col">Entry Point</td><td>3's Preschool (T/Th at $350/mo), potentially adding Fresh 3's Fridays</td></tr>
+    <tr><td class="label-col">Discovery Source</td><td>Instagram ad → Instagram page → Website</td></tr>
+  </table>
+
+  <h3>Who Megan Is</h3>
+  <p class="copy-body">Megan is the parent who leads with values. She's not comparing preschools on a spreadsheet — she's evaluating them on whether the school's philosophy aligns with how she's raising her son at home. She believes childhood is sacred and that three-year-olds should not be drilled on worksheets. But she also knows that "just play" without intentionality is a missed opportunity. She wants both — and she can tell in about 30 seconds on a website whether a school gets that balance right.</p>
+  <p class="copy-body">Her social work background gives her a particular sensitivity to how schools talk about children. She notices language. If a school's website says "behavior management," she hears discipline and control. If it says "regulation before expectation" or "behavior is a form of communication," she hears understanding and respect. The words on the website are not decoration to Megan — they're a signal of the school's culture.</p>
+  <p class="copy-body">Her son has delayed speech. He's in speech therapy and making progress, but Megan worries about how a school will handle a child who communicates differently. She won't ask about this on a first call. She'll look for signals on the website: Does the school mention inclusivity? Do they welcome children of all abilities? Is there any indication that a child who isn't "typical" would be embraced here, not merely tolerated?</p>
+  <p class="copy-body">She considered a faith-based preschool in East Peoria — it's closer, cheaper, and several friends send their kids there. But something about it felt generic. She wants a school with a point of view, led by someone who can explain why they do what they do. A school run by a doctoral researcher in early childhood education resonates with Megan not because she's impressed by degrees — but because it tells her that someone is thinking deeply about what matters for her son.</p>
+
+  <h3>What Megan Is Looking For</h3>
+  <ul class="content-list">
+    <li>A school whose philosophy she can articulate to her husband over dinner: "They believe play is how children learn, but every activity is designed with a purpose." She needs the words to explain the school to others.</li>
+    <li>Visible signals of inclusivity — not a page dedicated to special needs, but a natural, woven-in message that every child belongs regardless of ability, pace, or background</li>
+    <li>A warm, homelike environment where her son won't feel overwhelmed on his first day. The shoes-off culture, the small classes, the teachers who know every child's name.</li>
+    <li>A leader who doesn't just run the school but designed the curriculum from her own research. Megan trusts expertise when it's authentic, not performative.</li>
+    <li>A community she can see herself belonging to. Megan is driving from East Peoria — she needs to feel that the drive is worth it, that this is her people.</li>
+  </ul>
+
+  <h3>Megan's Dominant Emotional Triggers</h3>
+  <table class="trigger-table">
+    <thead><tr><th>Trigger</th><th>What It Sounds Like in Megan's Head</th></tr></thead>
+    <tbody>
+      <tr><td>Belonging (Primary)</td><td>"Will my son be welcomed for who he is? Will we fit in here? Will the teachers see him — really see him?"</td></tr>
+      <tr><td>Trust</td><td>"She has a doctorate. She's researched this. She didn't just open a school — she designed one based on evidence. That tells me she'll take my son's development seriously."</td></tr>
+      <tr><td>Guilt</td><td>"He just turned 3. He's still in speech therapy. Am I pushing him into a world he's not ready for? Or am I giving him exactly the social exposure he needs right now?"</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Megan's Primary Objections</h3>
+  <div class="placeholder-block">Placeholder — awaiting content</div>
+
+  <h3>Megan's Search Behavior</h3>
+  <table class="trigger-table">
+    <thead><tr><th>Where She Searches</th><th>What She Searches</th></tr></thead>
+    <tbody>
+      <tr><td>Instagram (Primary)</td><td>Megan discovers and evaluates schools visually first. Photos of real children engaged in real activities. Teacher interactions. The classroom environment.</td></tr>
+      <tr><td>Google</td><td>"preschool East Peoria IL," "inclusive preschool near me," "play-based preschool Peoria area"</td></tr>
+      <tr><td>Website (Philosophical)</td><td>She goes straight to the About / Philosophy page. She reads how the school talks about children, not just what programs are offered.</td></tr>
+      <tr><td>Facebook Groups</td><td>Asks in mom groups: "Has anyone used Spark Academy? My son has delayed speech and I want somewhere that will embrace him."</td></tr>
+    </tbody>
+  </table>
+
+  <h3>What Converts Megan</h3>
+  <ul class="content-list">
+    <li>The phrase "regulation before expectation" or "behavior is a form of communication" visible on the philosophy or program page. This is the signal Megan is looking for — it tells her the school sees children as people, not problems.</li>
+    <li>The "welcoming children of all abilities" language positioned naturally within program descriptions, not on a separate "special needs" page</li>
+    <li>Dr. Peterson's origin story on the About page — especially the softened personal connection to growing up alongside a family member with autism. This tells Megan that inclusivity isn't a marketing checkbox; it's personal.</li>
+    <li>Ms. Brenna's professional endorsement ("children who are often more socially engaged than in less accommodating environments") — this is the proof point Megan needs to convince herself AND her husband</li>
+    <li>Fresh 3's Fridays as a low-commitment entry point. Megan may not be ready to commit to T/Th at first. One day a week lets her son try the environment — and lets Megan see how the teachers interact with him.</li>
+  </ul>
+
+  <h3>Copy Implications for Megan</h3>
+  <ul class="content-list">
+    <li>The About / Philosophy page is the most important conversion page for Megan. If it reads like a brochure, she's gone. If it reads like a real person explaining why they built a school, she's booking a tour.</li>
+    <li>Blog content targeting "inclusive preschool," "preschool for children with speech delays," and "how play-based learning supports all learners" will capture Megan at the discovery stage</li>
+    <li>Photography on the website must reflect diversity — in ability, in ethnicity, in how children engage. Megan notices representation instantly.</li>
+    <li>The tour page should explicitly mention that parents are welcome to ask about how Spark supports individual learning differences. This gives Megan permission to ask the question she's been holding.</li>
+    <li>Location pages for East Peoria and the broader Peoria metro are critical — Megan isn't searching "Morton preschool" because she doesn't live there. She's searching her own city plus "preschool."</li>
+  </ul>
+</div>
+
+<!-- ══════════════════ CROSS-PERSONA STRATEGY MATRIX ══════════════════ -->
+<div class="section section-even" id="matrix">
+  <div class="section-number">Section 06</div>
+  <h2>Cross-Persona Strategy Matrix</h2>
+  <p class="copy-body">The table below maps each persona to the specific website pages, content types, and conversion elements that serve them. Use this as a planning tool during Phase 3 content creation and Phase 4 UX design.</p>
+
+  <div class="table-scroll">
+    <table class="matrix-table">
+      <thead>
+        <tr><th>Website Page</th><th>Sarah</th><th>David &amp; Priya</th><th>Megan</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Homepage Hero</td>
+          <td>Credential + philosophy hook</td>
+          <td>Outcome statement + proof points</td>
+          <td>Values language + warmth</td>
+        </tr>
+        <tr>
+          <td>Program Pages</td>
+          <td>Daily schedule, enrichment details, Ignite Learning Model</td>
+          <td>Tuition, ratio, kindergarten readiness outcomes</td>
+          <td>Inclusivity signals, whole-child language</td>
+        </tr>
+        <tr>
+          <td>About / Founder</td>
+          <td>Ed.D. credential depth, philosophy rationale</td>
+          <td>Professional credibility, career background</td>
+          <td>Origin story, personal connection, mission</td>
+        </tr>
+        <tr>
+          <td>Tour Page</td>
+          <td>Warm invitation, "see a day at Spark"</td>
+          <td>Both parents welcome, what to expect</td>
+          <td>Permission to ask about individual needs</td>
+        </tr>
+        <tr>
+          <td>Testimonials</td>
+          <td>Holly's letter-recognition story</td>
+          <td>Ms. Brenna's professional endorsement</td>
+          <td>April's "meet each child at their level" testimonial</td>
+        </tr>
+        <tr>
+          <td>Blog Content</td>
+          <td>Play-based learning, child readiness</td>
+          <td>Cost/value, half vs. full day, K readiness</td>
+          <td>Inclusive classrooms, speech/language support</td>
+        </tr>
+        <tr>
+          <td>Google Business</td>
+          <td>Validates social proof after friend rec</td>
+          <td>Primary trust check — zero reviews = red flag</td>
+          <td>Confirms quality before committing to the drive</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══════════════════ LOST-FAMILY PATTERNS ══════════════════ -->
+<div class="section section-odd" id="lost">
+  <div class="section-number">Section 07</div>
+  <h2>Lost-Family Patterns — The Three Families Spark Doesn't Win</h2>
+  <p class="copy-body">Dr. Peterson identified three consistent reasons families decline after inquiry or tour. These are not personas to target — they are decision boundaries to understand. Some of these families are recoverable through better messaging. Others are not Spark's market, and the website should not chase them.</p>
+
+  <h3>1. The Price-Sensitive Family</h3>
+  <div class="placeholder-block">Placeholder — awaiting content</div>
+
+  <h3>2. The Full-Day Family</h3>
+  <div class="placeholder-block">Placeholder — awaiting content</div>
+
+  <h3>3. The Faith-First Family</h3>
+  <div class="placeholder-block">Placeholder — awaiting content</div>
+</div>
+
+<!-- ══════════════════ WHAT THIS DOCUMENT NEEDS ══════════════════ -->
+<div class="section section-even" id="needs">
+  <div class="section-number">Section 08</div>
+  <h2>What This Document Needs From Dr. Peterson</h2>
+  <p class="copy-body">These personas are built from real patterns, but they'll be stronger with Dr. Peterson's gut-check. The following items would sharpen the personas and unlock better Phase 3 copy:</p>
+
+  <div class="flag">
+    <div class="flag-label">⚠️ Awaiting Dr. Peterson's Input</div>
+    <ol style="margin: 0.5rem 0 0 1.25rem; font-size: 0.85rem; line-height: 1.7;">
+      <li style="margin-bottom: 0.35rem;">Placeholder — awaiting Dr. Peterson's input</li>
+      <li style="margin-bottom: 0.35rem;">Placeholder — awaiting Dr. Peterson's input</li>
+      <li style="margin-bottom: 0.35rem;">Placeholder — awaiting Dr. Peterson's input</li>
+      <li style="margin-bottom: 0.35rem;">Placeholder — awaiting Dr. Peterson's input</li>
+    </ol>
+  </div>
+</div>
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<div class="doc-footer">
+  <strong>Spark Academy</strong> — Website Rebuild Project<br>
+  Phase 2A: Parent Personas • February 2026<br>
+  Confidential — For Internal Review Only
+</div>
+
+</body>
+</html>
